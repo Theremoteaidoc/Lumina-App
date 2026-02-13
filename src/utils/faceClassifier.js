@@ -1,14 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Face Shape Classification v3.0 — Corrected Landmark Indices
+   Face Shape Classification v4.0 — Hybrid ML + Rules
    
-   CRITICAL FIX: v1 & v2 used internal mesh points (54, 284, 234, 454)
-   that sit INSIDE the face, not on the actual face boundary. This led
-   to measurements being too narrow.
-   
-   v3 uses the FACE_OVAL contour points from MediaPipe's official 
-   FACEMESH_FACE_OVAL constant, which trace the actual edge of the face.
-   We find the widest points dynamically at each vertical zone.
+   Corrected landmark indices using FACE_OVAL contour.
+   Classification via hybrid system: Random Forest (trained on 5000 faces
+   from Kaggle Face Shape Dataset) + rule-based disambiguation.
    ═══════════════════════════════════════════════════════════════════ */
+
+// Import the trained hybrid classifier
+import { classifyFaceShape as hybridClassify } from './hybridClassifier.js';
 
 // ─── MediaPipe FACE_OVAL contour (official from FACEMESH_FACE_OVAL) ──
 // These are the points that trace the actual face boundary
@@ -195,7 +194,7 @@ export function getMeasurements(landmarks, videoW, videoH) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// CLASSIFIER v3
+// CLASSIFIER v4 — Hybrid (ML trained on 5000 faces + rule-based)
 // ═══════════════════════════════════════════════════════════════════
 
 export function classifyFaceShape(input) {
@@ -218,102 +217,6 @@ export function classifyFaceShape(input) {
     };
   }
 
-  const s = { ovalado: 0, redondo: 0, cuadrado: 0, corazon: 0, alargado: 0, diamante: 0 };
-
-  // ═══ OVAL ═══ WHR 0.66-0.78, cheekbones widest, gentle taper
-  if (f.f1_whr >= 0.64 && f.f1_whr <= 0.80) s.ovalado += 3;
-  else if (f.f1_whr >= 0.60 && f.f1_whr <= 0.84) s.ovalado += 1;
-  if (f.f6_cfR >= 0.98 && f.f5_cjR >= 1.05) s.ovalado += 2;
-  if (f.f10_cheekTaper >= 0.08 && f.f10_cheekTaper <= 0.25) s.ovalado += 3;
-  if (f.f4_jfR >= 0.72 && f.f4_jfR <= 0.92) s.ovalado += 2;
-  if (f.f14_chinAng >= 100 && f.f14_chinAng <= 140) s.ovalado += 2;
-  if (f.f8_lower >= 0.30 && f.f8_lower <= 0.38) s.ovalado += 1;
-
-  // ═══ ROUND ═══ WHR ≥0.82, all widths similar, soft jaw
-  if (f.f1_whr >= 0.82) s.redondo += 4;
-  else if (f.f1_whr >= 0.78) s.redondo += 2;
-  if (f.f17_wVar < 0.10) s.redondo += 3;
-  else if (f.f17_wVar < 0.14) s.redondo += 1;
-  if (f.f4_jfR >= 0.88 && f.f4_jfR <= 1.08) s.redondo += 2;
-  if (f.f13_jawAng >= 130) s.redondo += 2;
-  if (f.f14_chinAng >= 135) s.redondo += 2;
-  if (f.f10_cheekTaper < 0.10) s.redondo += 2;
-  if (f.f9_chin < 0.14) s.redondo += 1;
-
-  // ═══ SQUARE ═══ Angular jaw, widths similar, strong jaw
-  if (f.f1_whr >= 0.76 && f.f1_whr <= 0.96) s.cuadrado += 2;
-  if (f.f13_jawAng < 120) s.cuadrado += 4;
-  else if (f.f13_jawAng < 130) s.cuadrado += 2;
-  if (f.f5_cjR < 1.12) s.cuadrado += 3;
-  else if (f.f5_cjR < 1.18) s.cuadrado += 1;
-  if (f.f17_wVar < 0.12 && f.f13_jawAng < 128) s.cuadrado += 2;
-  if (f.f4_jfR >= 0.86) s.cuadrado += 2;
-  if (f.f15_jawSq >= 0.55) s.cuadrado += 2;
-  if (f.f14_chinAng >= 120 && f.f14_chinAng < 145) s.cuadrado += 1;
-
-  // ═══ HEART ═══ Forehead widest, significant taper, pointed chin
-  if (f.f6_cfR <= 1.03) s.corazon += 3;
-  if (f.f11_fhTaper >= 0.22) s.corazon += 4;
-  else if (f.f11_fhTaper >= 0.16) s.corazon += 2;
-  if (f.f4_jfR < 0.76) s.corazon += 3;
-  else if (f.f4_jfR < 0.82) s.corazon += 1;
-  if (f.f14_chinAng < 105) s.corazon += 3;
-  else if (f.f14_chinAng < 115) s.corazon += 1;
-  if (f.f12_chinTaper >= 0.35) s.corazon += 2;
-  if (f.f1_whr >= 0.62 && f.f1_whr <= 0.82) s.corazon += 1;
-
-  // ═══ OBLONG ═══ Very low WHR, long face
-  if (f.f1_whr < 0.62) s.alargado += 5;
-  else if (f.f1_whr < 0.66) s.alargado += 3;
-  else if (f.f1_whr < 0.70) s.alargado += 1;
-  if (f.f17_wVar < 0.15) s.alargado += 2;
-  if (f.f8_lower > 0.37) s.alargado += 2;
-  if (f.f4_jfR >= 0.78 && f.f4_jfR <= 1.0) s.alargado += 1;
-
-  // ═══ DIAMOND ═══ Cheekbones clearly widest
-  if (f.f6_cfR >= 1.12) s.diamante += 4;
-  else if (f.f6_cfR >= 1.06) s.diamante += 2;
-  if (f.f5_cjR >= 1.15) s.diamante += 3;
-  else if (f.f5_cjR >= 1.08) s.diamante += 1;
-  if (f.f6_cfR >= 1.08 && f.f5_cjR >= 1.10) s.diamante += 3;
-  if (f.f17_wVar >= 0.18) s.diamante += 2;
-  if (f.f14_chinAng < 115) s.diamante += 1;
-
-  // ── Disambiguation ──
-  if (s.redondo > 4 && s.cuadrado > 4) {
-    if (f.f13_jawAng >= 128) s.redondo += 3; else s.cuadrado += 3;
-  }
-  if (s.ovalado > 4 && s.redondo > 4) {
-    if (f.f10_cheekTaper >= 0.10) s.ovalado += 2; else s.redondo += 2;
-  }
-  if (s.ovalado > 4 && s.corazon > 4) {
-    if (f.f6_cfR < 1.0 && f.f11_fhTaper > 0.20) s.corazon += 2; else s.ovalado += 2;
-  }
-  if (s.diamante > 4 && s.corazon > 4) {
-    if (f.f6_cfR >= 1.08) s.diamante += 2; else s.corazon += 2;
-  }
-  if (s.alargado > 3 && s.ovalado > 3) {
-    if (f.f1_whr < 0.64) s.alargado += 3; else s.ovalado += 3;
-  }
-
-  const sorted = Object.entries(s).sort((a, b) => b[1] - a[1]);
-  const [shape, topScore] = sorted[0];
-  const [, secondScore] = sorted[1];
-  const total = Object.values(s).reduce((a, b) => a + b, 0);
-  const rawConf = total > 0 ? (topScore / total) * 100 : 0;
-  const margin = Math.min((topScore - secondScore) * 2, 15);
-  const confidence = Math.min(Math.round(rawConf + margin), 95);
-
-  return {
-    shape, confidence,
-    whr: f.f1_whr.toFixed(3),
-    jfr: f.f4_jfR.toFixed(3),
-    cjr: f.f5_cjR.toFixed(3),
-    allScores: Object.fromEntries(sorted),
-    features: {
-      whr: f.f1_whr, cheekTaper: f.f10_cheekTaper,
-      foreheadTaper: f.f11_fhTaper, jawAngle: f.f13_jawAng,
-      chinAngle: f.f14_chinAng, widthVariance: f.f17_wVar,
-    },
-  };
+  // Use hybrid ML + rules classifier
+  return hybridClassify(f);
 }
