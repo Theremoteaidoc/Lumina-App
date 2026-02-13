@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════
-   FaceScanScreen v3 — Static Photo Capture
+   FaceScanScreen v3b — Static Photo + Upload from Gallery
    
-   Strategy: Live camera is ONLY a viewfinder. When user captures,
-   we take a high-res still image and analyze it with MediaPipe in
-   IMAGE mode (not VIDEO). This eliminates frame-to-frame variance.
+   Fixes from v3:
+   - Overlay lines now aligned correctly (no double-mirror)
+   - Added "Subir Foto" option from file/gallery
    
-   Flow: Intro → Camera viewfinder → Tap capture → Freeze + Analyze
-   → Show photo with overlay + results
+   Flow A: Intro → Camera → Capture → Analyze → Results
+   Flow B: Intro → Upload photo → Analyze → Results
    ═══════════════════════════════════════════════════════════════════ */
 
 import { useState, useRef, useEffect, useCallback } from 'react';
@@ -26,9 +26,7 @@ const C = {
 };
 
 export default function FaceScanScreen({ onBack }) {
-  // ─── State ───
   const [phase, setPhase] = useState('intro');
-  // intro → scanning → analyzing → results
   const [facingMode, setFacingMode] = useState('user');
   const [cameraReady, setCameraReady] = useState(false);
   const [faceDetected, setFaceDetected] = useState(false);
@@ -37,18 +35,18 @@ export default function FaceScanScreen({ onBack }) {
   const [errorMsg, setErrorMsg] = useState(null);
   const [resultsTab, setResultsTab] = useState('face');
   const [mpReady, setMpReady] = useState(false);
-  const [capturedPhoto, setCapturedPhoto] = useState(null);    // dataURL of captured photo
-  const [overlayPhoto, setOverlayPhoto] = useState(null);      // dataURL with measurement overlay
-  const [analyzeStep, setAnalyzeStep] = useState('');          // analyzing phase text
+  const [capturedPhoto, setCapturedPhoto] = useState(null);
+  const [overlayPhoto, setOverlayPhoto] = useState(null);
+  const [analyzeStep, setAnalyzeStep] = useState('');
 
   const videoRef = useRef(null);
-  const canvasRef = useRef(null);     // live preview canvas
+  const canvasRef = useRef(null);
   const streamRef = useRef(null);
   const landmarkerRef = useRef(null);
   const rafRef = useRef(null);
-  const facingRef = useRef('user');   // track current facing for draw functions
+  const facingRef = useRef('user');
+  const fileInputRef = useRef(null);
 
-  // Keep facingRef in sync
   useEffect(() => { facingRef.current = facingMode; }, [facingMode]);
 
   // ─── Camera ───
@@ -123,20 +121,15 @@ export default function FaceScanScreen({ onBack }) {
     }
   }, []);
 
-  // Switch MediaPipe mode between IMAGE and VIDEO
   const setMpMode = useCallback(async (mode) => {
     if (!landmarkerRef.current) return;
-    try {
-      await landmarkerRef.current.setOptions({ runningMode: mode });
-    } catch (e) { console.warn('setOptions error', e); }
+    try { await landmarkerRef.current.setOptions({ runningMode: mode }); } catch (e) { /* */ }
   }, []);
 
-  // ─── Live preview loop (viewfinder only — lightweight face check) ───
+  // ─── Live preview loop ───
 
   const startPreview = useCallback(async () => {
-    // Switch to VIDEO mode for live preview
     await setMpMode('VIDEO');
-
     const loop = () => {
       const video = videoRef.current;
       const canvas = canvasRef.current;
@@ -144,12 +137,11 @@ export default function FaceScanScreen({ onBack }) {
         rafRef.current = requestAnimationFrame(loop);
         return;
       }
-
       const ctx = canvas.getContext('2d');
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
 
-      // Draw grayscale mirrored video
+      // Draw grayscale (mirrored for front camera)
       ctx.filter = 'grayscale(100%) contrast(1.05)';
       if (facingRef.current === 'user') {
         ctx.save(); ctx.scale(-1, 1);
@@ -160,22 +152,21 @@ export default function FaceScanScreen({ onBack }) {
       }
       ctx.filter = 'none';
 
-      // Lightweight face detection for guide feedback
+      // Face detection for feedback — use VIDEO mode on raw video
       if (landmarkerRef.current) {
         try {
           const results = landmarkerRef.current.detectForVideo(video, performance.now());
           if (results.faceLandmarks?.[0]) {
             setFaceDetected(true);
-            drawLiveOverlay(ctx, results.faceLandmarks[0], canvas.width, canvas.height);
+            // Draw live overlay — landmarks from raw video, display on mirrored canvas
+            drawLiveOverlay(ctx, results.faceLandmarks[0], canvas.width, canvas.height, facingRef.current === 'user');
           } else {
             setFaceDetected(false);
           }
-        } catch (e) { /* skip frame */ }
+        } catch (e) { /* skip */ }
       }
 
-      // Always draw guide oval
       drawFaceGuide(ctx, canvas.width, canvas.height);
-
       rafRef.current = requestAnimationFrame(loop);
     };
     rafRef.current = requestAnimationFrame(loop);
@@ -183,9 +174,7 @@ export default function FaceScanScreen({ onBack }) {
 
   // ─── Face guide oval ───
   const drawFaceGuide = (ctx, w, h) => {
-    const cx = w / 2, cy = h * 0.44;
-    const rx = w * 0.28, ry = h * 0.38;
-
+    const cx = w / 2, cy = h * 0.44, rx = w * 0.28, ry = h * 0.38;
     ctx.strokeStyle = 'rgba(92,177,133,0.25)';
     ctx.lineWidth = 2;
     ctx.setLineDash([8, 6]);
@@ -193,30 +182,26 @@ export default function FaceScanScreen({ onBack }) {
     ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
     ctx.stroke();
     ctx.setLineDash([]);
-
-    // Corner bracket marks
+    // Corner brackets
     const s = 16;
     ctx.strokeStyle = 'rgba(92,177,133,0.45)';
     ctx.lineWidth = 2.5;
-    // Top-left
     ctx.beginPath(); ctx.moveTo(cx-rx, cy-ry+s); ctx.lineTo(cx-rx, cy-ry); ctx.lineTo(cx-rx+s, cy-ry); ctx.stroke();
-    // Top-right
     ctx.beginPath(); ctx.moveTo(cx+rx-s, cy-ry); ctx.lineTo(cx+rx, cy-ry); ctx.lineTo(cx+rx, cy-ry+s); ctx.stroke();
-    // Bottom-left
     ctx.beginPath(); ctx.moveTo(cx-rx, cy+ry-s); ctx.lineTo(cx-rx, cy+ry); ctx.lineTo(cx-rx+s, cy+ry); ctx.stroke();
-    // Bottom-right
     ctx.beginPath(); ctx.moveTo(cx+rx-s, cy+ry); ctx.lineTo(cx+rx, cy+ry); ctx.lineTo(cx+rx, cy+ry-s); ctx.stroke();
   };
 
-  // ─── Lightweight live overlay (just contour + eyes, no measurements) ───
-  const drawLiveOverlay = (ctx, lm, w, h) => {
+  // ─── Live overlay — landmarks are from RAW video, canvas is mirrored ───
+  const drawLiveOverlay = (ctx, lm, w, h, mirrored) => {
+    // MediaPipe landmarks are in raw video space (0-1 normalized)
+    // Canvas is mirrored for front camera, so we must mirror the x coordinate
     const px = (idx) => {
       const p = lm[idx];
-      const x = facingRef.current === 'user' ? (1 - p.x) * w : p.x * w;
+      const x = mirrored ? (1 - p.x) * w : p.x * w;
       return { x, y: p.y * h };
     };
-
-    // Face oval contour — thin, subtle
+    // Face oval — thin subtle
     ctx.strokeStyle = 'rgba(92,177,133,0.35)';
     ctx.lineWidth = 1.2;
     ctx.beginPath();
@@ -226,8 +211,7 @@ export default function FaceScanScreen({ onBack }) {
     }
     ctx.closePath();
     ctx.stroke();
-
-    // Eye outlines — subtle
+    // Eyes
     const drawEye = (indices) => {
       ctx.strokeStyle = 'rgba(212,163,115,0.35)';
       ctx.lineWidth = 1;
@@ -243,148 +227,182 @@ export default function FaceScanScreen({ onBack }) {
     drawEye(EYE_LANDMARKS.LEFT_EYE.outline);
   };
 
-  // ─── CAPTURE — take high-res still and analyze ───
+  // ═══════════════════════════════════════════════
+  // ANALYZE — shared analysis pipeline for both camera and upload
+  // Takes: an HTMLCanvasElement with the image already drawn
+  // isFromCamera: whether to apply mirror logic
+  // ═══════════════════════════════════════════════
 
-  const handleCapture = useCallback(async () => {
-    if (!landmarkerRef.current || !videoRef.current) return;
-    const video = videoRef.current;
-
-    // 1. Stop the preview loop
-    if (rafRef.current) { cancelAnimationFrame(rafRef.current); rafRef.current = null; }
-
-    // 2. Capture high-res still from video to an offscreen canvas
-    const offscreen = document.createElement('canvas');
-    offscreen.width = video.videoWidth;
-    offscreen.height = video.videoHeight;
-    const offCtx = offscreen.getContext('2d');
-
-    // Draw mirrored for front camera
-    if (facingRef.current === 'user') {
-      offCtx.save(); offCtx.scale(-1, 1);
-      offCtx.drawImage(video, -offscreen.width, 0, offscreen.width, offscreen.height);
-      offCtx.restore();
-    } else {
-      offCtx.drawImage(video, 0, 0);
-    }
-
-    // Save original photo
-    const photoDataUrl = offscreen.toDataURL('image/jpeg', 0.92);
-    setCapturedPhoto(photoDataUrl);
-
-    // 3. Stop camera (free resources)
-    stopCamera();
-
-    // 4. Switch to analyzing phase
+  const analyzeImage = useCallback(async (imageCanvas, isFromCamera) => {
     setPhase('analyzing');
     setAnalyzeStep('Detectando rostro...');
+    setErrorMsg(null);
 
-    // Small delay so UI updates
+    // Save photo preview
+    setCapturedPhoto(imageCanvas.toDataURL('image/jpeg', 0.88));
+
     await new Promise(r => setTimeout(r, 100));
 
-    // 5. Analyze the STILL image with MediaPipe IMAGE mode
     try {
+      // Ensure IMAGE mode
       await setMpMode('IMAGE');
       await new Promise(r => setTimeout(r, 50));
 
       setAnalyzeStep('Mapeando 478 landmarks faciales...');
-      const results = landmarkerRef.current.detect(offscreen);
+
+      // MediaPipe analyzes the canvas as-is
+      // For camera: canvas already has the mirrored image
+      // For upload: canvas has the original image
+      // Either way, landmarks will match the pixel positions in imageCanvas
+      const results = landmarkerRef.current.detect(imageCanvas);
 
       if (!results.faceLandmarks?.[0]) {
-        setErrorMsg('No se detectó un rostro en la foto. Intenta de nuevo con mejor iluminación.');
-        setPhase('scanning');
-        startCamera(facingRef.current);
+        setErrorMsg('No se detectó un rostro. Intenta con mejor iluminación y el rostro descubierto.');
+        setPhase('intro');
         return;
       }
 
       const lm = results.faceLandmarks[0];
 
-      // 6. Quality checks
+      // Quality checks
       setAnalyzeStep('Verificando calidad...');
       await new Promise(r => setTimeout(r, 200));
 
-      const chin = lm[152];
-      const forehead = lm[10];
-      const faceH = Math.abs(chin.y - forehead.y);
+      const faceH = Math.abs(lm[152].y - lm[10].y);
       const faceCenter = (lm[234].x + lm[454].x) / 2;
 
-      // Face too small?
-      if (faceH < 0.15) {
-        setErrorMsg('Tu rostro está muy lejos. Acércate más a la cámara.');
-        setPhase('scanning');
-        startCamera(facingRef.current);
+      if (faceH < 0.12) {
+        setErrorMsg('El rostro está muy lejos. Acércate más o usa una foto más cercana.');
+        setPhase('intro');
         return;
       }
-      // Face very off-center?
-      if (Math.abs(faceCenter - 0.5) > 0.25) {
-        setErrorMsg('Tu rostro está muy descentrado. Alinéalo dentro del óvalo.');
-        setPhase('scanning');
-        startCamera(facingRef.current);
+      if (Math.abs(faceCenter - 0.5) > 0.28) {
+        setErrorMsg('El rostro está muy descentrado. Centra el rostro en la imagen.');
+        setPhase('intro');
         return;
       }
 
-      // 7. Extract features & classify
+      // Classify face
       setAnalyzeStep('Analizando proporciones faciales...');
       await new Promise(r => setTimeout(r, 300));
       const features = extractFeatures(lm);
       if (!features) {
-        setErrorMsg('No se pudieron extraer proporciones. Intenta de nuevo.');
-        setPhase('scanning');
-        startCamera(facingRef.current);
+        setErrorMsg('No se pudieron extraer proporciones faciales. Intenta con otra foto.');
+        setPhase('intro');
         return;
       }
-      const faceRes = classifyFaceShape(features);
-      setFaceResult(faceRes);
+      setFaceResult(classifyFaceShape(features));
 
+      // Classify eyes
       setAnalyzeStep('Clasificando forma de ojos...');
       await new Promise(r => setTimeout(r, 200));
-      const eyeRes = classifyEyeShape(lm);
-      setEyeResult(eyeRes);
+      setEyeResult(classifyEyeShape(lm));
 
-      // 8. Generate overlay image (photo + measurement lines)
+      // Generate overlay — landmarks match imageCanvas directly, NO mirror needed
       setAnalyzeStep('Generando visualización...');
       await new Promise(r => setTimeout(r, 150));
-      const overlayUrl = drawResultOverlay(offscreen, lm, offscreen.width, offscreen.height);
-      setOverlayPhoto(overlayUrl);
+      setOverlayPhoto(drawResultOverlay(imageCanvas, lm, imageCanvas.width, imageCanvas.height));
 
-      // 9. Done!
       setPhase('results');
       setResultsTab('face');
-
     } catch (e) {
       console.error('Analysis error:', e);
       setErrorMsg('Error durante el análisis. Intenta de nuevo.');
-      setPhase('scanning');
-      startCamera(facingRef.current);
+      setPhase('intro');
     }
-  }, [stopCamera, setMpMode, startCamera]);
+  }, [setMpMode]);
 
-  // ─── Draw result overlay on captured photo ───
+  // ─── CAMERA CAPTURE ───
+
+  const handleCapture = useCallback(async () => {
+    if (!landmarkerRef.current || !videoRef.current) return;
+    const video = videoRef.current;
+
+    if (rafRef.current) { cancelAnimationFrame(rafRef.current); rafRef.current = null; }
+
+    // Capture still — mirror for front camera
+    const offscreen = document.createElement('canvas');
+    offscreen.width = video.videoWidth;
+    offscreen.height = video.videoHeight;
+    const ctx = offscreen.getContext('2d');
+
+    if (facingRef.current === 'user') {
+      ctx.save(); ctx.scale(-1, 1);
+      ctx.drawImage(video, -offscreen.width, 0, offscreen.width, offscreen.height);
+      ctx.restore();
+    } else {
+      ctx.drawImage(video, 0, 0);
+    }
+
+    stopCamera();
+    await analyzeImage(offscreen, true);
+  }, [stopCamera, analyzeImage]);
+
+  // ─── FILE UPLOAD ───
+
+  const handleFileSelect = useCallback(async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Reset input so same file can be selected again
+    e.target.value = '';
+
+    // Load MediaPipe if not ready
+    await loadMediaPipe();
+
+    // Load image
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = () => reject(new Error('No se pudo cargar la imagen'));
+    });
+
+    // Draw to canvas (limit size for performance)
+    const maxDim = 1280;
+    let w = img.naturalWidth, h = img.naturalHeight;
+    if (w > maxDim || h > maxDim) {
+      const scale = maxDim / Math.max(w, h);
+      w = Math.round(w * scale);
+      h = Math.round(h * scale);
+    }
+
+    const offscreen = document.createElement('canvas');
+    offscreen.width = w;
+    offscreen.height = h;
+    offscreen.getContext('2d').drawImage(img, 0, 0, w, h);
+
+    URL.revokeObjectURL(img.src);
+    await analyzeImage(offscreen, false);
+  }, [loadMediaPipe, analyzeImage]);
+
+  // ─── Draw result overlay — landmarks DIRECTLY on canvas coordinates ───
   const drawResultOverlay = (sourceCanvas, lm, w, h) => {
     const overlay = document.createElement('canvas');
     overlay.width = w;
     overlay.height = h;
     const ctx = overlay.getContext('2d');
 
-    // Draw the original photo (already mirrored if needed)
     ctx.drawImage(sourceCanvas, 0, 0);
 
-    // Apply slight darken for contrast
-    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    // Slight darken
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
     ctx.fillRect(0, 0, w, h);
 
+    // KEY FIX: landmarks come from detect(imageCanvas)
+    // They are ALREADY in the same coordinate space as imageCanvas
+    // NO mirroring needed here — just scale normalized (0-1) to pixels
     const px = (idx) => {
       const p = lm[idx];
-      // Landmarks are in ORIGINAL image space (before mirror)
-      // But our sourceCanvas is already mirrored, so we need to mirror landmark x too
-      const x = facingRef.current === 'user' ? (1 - p.x) * w : p.x * w;
-      return { x, y: p.y * h };
+      return { x: p.x * w, y: p.y * h };
     };
 
     const L = LANDMARKS;
 
     // Face oval contour
-    ctx.strokeStyle = 'rgba(92,177,133,0.6)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(92,177,133,0.55)';
+    ctx.lineWidth = Math.max(1.5, w * 0.002);
     ctx.beginPath();
     for (let i = 0; i < FACE_OVAL_INDICES.length; i++) {
       const p = px(FACE_OVAL_INDICES[i]);
@@ -393,32 +411,36 @@ export default function FaceScanScreen({ onBack }) {
     ctx.closePath();
     ctx.stroke();
 
-    // Measurement lines with labels
+    // Measurement lines
+    const fontSize = Math.max(12, Math.round(w * 0.02));
+    const dotR = Math.max(3, w * 0.004);
+    const lineW = Math.max(1.5, w * 0.002);
+
     const drawMeasure = (i1, i2, label, color) => {
       const a = px(i1), b = px(i2);
       ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = lineW;
       ctx.setLineDash([6, 4]);
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       ctx.setLineDash([]);
 
-      // Dots
       for (const p of [a, b]) {
         ctx.fillStyle = color;
-        ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill();
-        ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+        ctx.beginPath(); ctx.arc(p.x, p.y, dotR, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
         ctx.lineWidth = 1;
         ctx.stroke();
       }
 
-      // Label with background
       if (label) {
-        const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2 - 10;
-        ctx.font = `bold ${Math.max(11, w * 0.018)}px system-ui`;
+        const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2 - fontSize * 0.8;
+        ctx.font = `bold ${fontSize}px system-ui`;
         const tw = ctx.measureText(label).width;
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        // Background pill
+        ctx.fillStyle = 'rgba(0,0,0,0.55)';
+        const pad = 5;
         ctx.beginPath();
-        ctx.roundRect(mx - tw/2 - 5, my - 8, tw + 10, 16, 4);
+        ctx.roundRect(mx - tw/2 - pad, my - fontSize/2 - 2, tw + pad*2, fontSize + 4, 4);
         ctx.fill();
         ctx.fillStyle = color;
         ctx.textAlign = 'center';
@@ -430,12 +452,12 @@ export default function FaceScanScreen({ onBack }) {
     drawMeasure(L.foreheadLeft, L.foreheadRight, 'Frente', '#F2CC8F');
     drawMeasure(L.cheekLeft, L.cheekRight, 'Pómulos', '#7fd4a8');
     drawMeasure(L.jawLeft, L.jawRight, 'Mandíbula', '#d4748c');
-    drawMeasure(L.hairline, L.chin, 'Largo', 'rgba(255,255,255,0.5)');
+    drawMeasure(L.hairline, L.chin, '', 'rgba(255,255,255,0.4)');
 
     // Eye outlines
-    const drawEyeOverlay = (indices) => {
-      ctx.strokeStyle = 'rgba(212,163,115,0.65)';
-      ctx.lineWidth = 1.5;
+    const drawEyeOvl = (indices) => {
+      ctx.strokeStyle = 'rgba(212,163,115,0.6)';
+      ctx.lineWidth = Math.max(1, w * 0.0015);
       ctx.beginPath();
       for (let i = 0; i < indices.length; i++) {
         const p = px(indices[i]);
@@ -444,8 +466,8 @@ export default function FaceScanScreen({ onBack }) {
       ctx.closePath();
       ctx.stroke();
     };
-    drawEyeOverlay(EYE_LANDMARKS.RIGHT_EYE.outline);
-    drawEyeOverlay(EYE_LANDMARKS.LEFT_EYE.outline);
+    drawEyeOvl(EYE_LANDMARKS.RIGHT_EYE.outline);
+    drawEyeOvl(EYE_LANDMARKS.LEFT_EYE.outline);
 
     return overlay.toDataURL('image/jpeg', 0.88);
   };
@@ -463,15 +485,11 @@ export default function FaceScanScreen({ onBack }) {
     await startCamera(facingMode);
   }, [facingMode, startCamera, loadMediaPipe]);
 
-  // Start preview loop when both ready
   useEffect(() => {
-    if (phase === 'scanning' && cameraReady && mpReady) {
-      startPreview();
-    }
+    if (phase === 'scanning' && cameraReady && mpReady) startPreview();
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [phase, cameraReady, mpReady, startPreview]);
 
-  // Cleanup
   useEffect(() => () => stopCamera(), [stopCamera]);
 
   // ═══════════════════════════════════════════════
@@ -504,7 +522,7 @@ export default function FaceScanScreen({ onBack }) {
           <div style={{ background: C.card, borderRadius: 14, padding: '16px 18px', textAlign: 'left', marginBottom: 24 }}>
             <p style={{ fontSize: 12, fontWeight: 600, marginBottom: 10, color: C.accent }}>📋 Para mejores resultados:</p>
             {[
-              '💡 Buena iluminación frontal (sin sombras fuertes)',
+              '💡 Buena iluminación frontal (sin sombras)',
               '📷 Mira directo a la cámara',
               '💇‍♀️ Retira el cabello de la frente y mandíbula',
               '😐 Expresión neutra, boca cerrada',
@@ -514,15 +532,38 @@ export default function FaceScanScreen({ onBack }) {
             ))}
           </div>
 
-          {errorMsg && <p style={{ color: '#e74c3c', fontSize: 12, marginBottom: 14 }}>{errorMsg}</p>}
+          {errorMsg && (
+            <div style={{ background: 'rgba(231,76,60,0.1)', border: '1px solid rgba(231,76,60,0.2)', borderRadius: 10, padding: '10px 14px', marginBottom: 16 }}>
+              <p style={{ color: '#e74c3c', fontSize: 12, margin: 0 }}>⚠️ {errorMsg}</p>
+            </div>
+          )}
 
+          {/* Two action buttons */}
           <button onClick={goToScanning} style={{
             width: '100%', padding: '15px', borderRadius: 14,
             background: `linear-gradient(135deg, ${C.accent}, #3d9b6e)`,
             color: '#fff', border: 'none', fontSize: 15, fontWeight: 700, cursor: 'pointer',
+            marginBottom: 10,
           }}>
-            Abrir Cámara ✨
+            📸 Tomar Foto
           </button>
+
+          <button onClick={() => fileInputRef.current?.click()} style={{
+            width: '100%', padding: '14px', borderRadius: 14,
+            background: C.card, border: `1px solid rgba(255,255,255,0.1)`,
+            color: C.text, fontSize: 14, fontWeight: 600, cursor: 'pointer',
+          }}>
+            🖼️ Subir Foto de Galería
+          </button>
+
+          {/* Hidden file input */}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleFileSelect}
+          />
         </div>
       </div>
     );
@@ -542,7 +583,6 @@ export default function FaceScanScreen({ onBack }) {
             position: 'absolute', width: '100%', height: '100%', objectFit: 'cover',
           }} />
 
-          {/* Status */}
           <div style={{
             position: 'absolute', top: 16, left: '50%', transform: 'translateX(-50%)',
             background: faceDetected ? 'rgba(92,177,133,0.2)' : 'rgba(255,80,80,0.15)',
@@ -557,7 +597,6 @@ export default function FaceScanScreen({ onBack }) {
               : '✗ Centra tu rostro en el óvalo'}
           </div>
 
-          {/* Tip at bottom */}
           <div style={{
             position: 'absolute', bottom: 10, left: 0, right: 0, textAlign: 'center',
             fontSize: 10, color: 'rgba(255,255,255,0.35)', padding: '0 20px',
@@ -566,7 +605,6 @@ export default function FaceScanScreen({ onBack }) {
           </div>
         </div>
 
-        {/* Controls bar */}
         <div style={{
           padding: '16px 20px 28px', display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', background: 'rgba(0,0,0,0.9)', flexShrink: 0,
@@ -577,13 +615,10 @@ export default function FaceScanScreen({ onBack }) {
             ← Volver
           </button>
 
-          {/* Capture button */}
           <button onClick={handleCapture} disabled={!faceDetected}
             style={{
               width: 72, height: 72, borderRadius: '50%',
-              background: faceDetected
-                ? `linear-gradient(135deg, ${C.accent}, #3d9b6e)`
-                : 'rgba(255,255,255,0.08)',
+              background: faceDetected ? `linear-gradient(135deg, ${C.accent}, #3d9b6e)` : 'rgba(255,255,255,0.08)',
               border: `4px solid ${faceDetected ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.12)'}`,
               cursor: faceDetected ? 'pointer' : 'default',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -611,16 +646,14 @@ export default function FaceScanScreen({ onBack }) {
   }
 
   // ═══════════════════════════════════════════════
-  // RENDER — ANALYZING (frozen photo + progress)
+  // RENDER — ANALYZING
   // ═══════════════════════════════════════════════
   if (phase === 'analyzing') {
     return (
       <div style={{ minHeight: '100vh', background: '#000', color: C.text, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        {/* Show captured photo */}
         {capturedPhoto && (
-          <div style={{ position: 'relative', width: '80%', maxWidth: 340, aspectRatio: '3/4', borderRadius: 18, overflow: 'hidden', marginBottom: 30 }}>
-            <img src={capturedPhoto} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) contrast(1.05)' }} />
-            {/* Scanning animation overlay */}
+          <div style={{ position: 'relative', width: '75%', maxWidth: 320, borderRadius: 18, overflow: 'hidden', marginBottom: 30 }}>
+            <img src={capturedPhoto} alt="" style={{ width: '100%', display: 'block', filter: 'grayscale(100%) contrast(1.05)' }} />
             <div style={{
               position: 'absolute', inset: 0,
               background: 'linear-gradient(180deg, transparent 0%, rgba(92,177,133,0.08) 50%, transparent 100%)',
@@ -630,7 +663,6 @@ export default function FaceScanScreen({ onBack }) {
           </div>
         )}
 
-        {/* Analyzing spinner + text */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
           <div style={{
             width: 20, height: 20, border: `2px solid ${C.accent}40`,
@@ -639,15 +671,11 @@ export default function FaceScanScreen({ onBack }) {
           }} />
           <span style={{ fontSize: 14, fontWeight: 600 }}>{analyzeStep}</span>
         </div>
-        <p style={{ fontSize: 11, color: C.textSoft }}>Analizando foto estática de alta resolución</p>
+        <p style={{ fontSize: 11, color: C.textSoft }}>Analizando imagen de alta resolución</p>
 
-        {/* CSS animations */}
         <style>{`
           @keyframes spin { to { transform: rotate(360deg); } }
-          @keyframes scanLine {
-            0%, 100% { transform: translateY(-100%); }
-            50% { transform: translateY(100%); }
-          }
+          @keyframes scanLine { 0%,100% { transform: translateY(-100%); } 50% { transform: translateY(100%); } }
         `}</style>
       </div>
     );
@@ -663,12 +691,11 @@ export default function FaceScanScreen({ onBack }) {
 
   return (
     <div style={{ minHeight: '100vh', background: C.bg, color: C.text, paddingBottom: 40 }}>
-      {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', padding: '16px 20px', gap: 12 }}>
         <button onClick={onBack} style={{ background: 'none', border: 'none', color: C.text, fontSize: 22, cursor: 'pointer', padding: 4 }}>←</button>
         <span style={{ fontSize: 17, fontWeight: 600 }}>Tus Resultados</span>
         <div style={{ flex: 1 }} />
-        <button onClick={goToScanning}
+        <button onClick={() => { setPhase('intro'); setErrorMsg(null); }}
           style={{ background: C.card, border: 'none', color: C.accent, padding: '8px 14px', borderRadius: 10, fontSize: 12, cursor: 'pointer' }}>
           Repetir ↻
         </button>
@@ -677,24 +704,20 @@ export default function FaceScanScreen({ onBack }) {
       {/* Photo with overlay */}
       {overlayPhoto && (
         <div style={{ margin: '0 20px 14px', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <img src={overlayPhoto} alt="Análisis" style={{ width: '100%', display: 'block', filter: 'grayscale(80%) contrast(1.05)' }} />
+          <img src={overlayPhoto} alt="Análisis" style={{ width: '100%', display: 'block', filter: 'grayscale(70%) contrast(1.05)' }} />
         </div>
       )}
 
       {/* Summary cards */}
       <div style={{ display: 'flex', gap: 10, padding: '0 20px 14px' }}>
         {fData && (
-          <SummaryCard
-            emoji={fData.emoji} title={fData.title} conf={faceResult.confidence}
-            color={C.accent} active={resultsTab === 'face'} onClick={() => setResultsTab('face')}
-          />
+          <SummaryCard emoji={fData.emoji} title={fData.title} conf={faceResult.confidence}
+            color={C.accent} active={resultsTab === 'face'} onClick={() => setResultsTab('face')} />
         )}
         {eData && (
-          <SummaryCard
-            emoji={eData.emoji} title={eData.title} conf={eyeResult.confidence}
+          <SummaryCard emoji={eData.emoji} title={eData.title} conf={eyeResult.confidence}
             color={C.pink} active={resultsTab === 'eyes'} onClick={() => setResultsTab('eyes')}
-            subtitle={eyeResult.spacing !== 'proporcional' ? `Ojos ${eyeResult.spacing}` : null}
-          />
+            subtitle={eyeResult.spacing !== 'proporcional' ? `Ojos ${eyeResult.spacing}` : null} />
         )}
       </div>
 
@@ -715,7 +738,6 @@ export default function FaceScanScreen({ onBack }) {
       </div>
 
       <div style={{ padding: '0 20px' }}>
-        {/* ═══ FACE ═══ */}
         {resultsTab === 'face' && fData && (<>
           <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6, marginBottom: 16 }}>{fData.desc}</p>
           <Section title="💄 Maquillaje" items={fData.makeup} color={C.pink} />
@@ -731,7 +753,6 @@ export default function FaceScanScreen({ onBack }) {
           )}
         </>)}
 
-        {/* ═══ EYES ═══ */}
         {resultsTab === 'eyes' && eData && (<>
           <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6, marginBottom: 16 }}>{eData.desc}</p>
           <Section title="✏️ Delineador" items={eData.eyeliner} color={C.pink} />
@@ -749,13 +770,11 @@ export default function FaceScanScreen({ onBack }) {
                 text={eyeResult.spacing === 'juntos'
                   ? 'Ilumina el lagrimal con shimmer claro y oscurece la esquina externa para crear separación visual.'
                   : 'Oscurece ligeramente el lagrimal y no extiendas el delineado demasiado hacia afuera.'}
-                color={C.gold}
-              />
+                color={C.gold} />
             )}
           </>)}
         </>)}
 
-        {/* ═══ COMBINED ═══ */}
         {resultsTab === 'combined' && fData && eData && (<>
           <div style={{
             background: `linear-gradient(135deg, ${C.accentSoft}, rgba(212,116,140,0.08))`,
@@ -784,8 +803,7 @@ export default function FaceScanScreen({ onBack }) {
               text={eyeResult.spacing === 'juntos'
                 ? 'Usa sombra clara en el lagrimal y oscura en la esquina externa.'
                 : 'Oscurece ligeramente el lagrimal. No extiendas el delineado hacia afuera.'}
-              color={C.gold}
-            />
+              color={C.gold} />
           )}
         </>)}
       </div>
@@ -797,7 +815,7 @@ export default function FaceScanScreen({ onBack }) {
   );
 }
 
-// ─── Reusable Components ───
+// ─── Mini Components ───
 
 function Header({ onBack, title }) {
   return (
