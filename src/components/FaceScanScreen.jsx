@@ -37,32 +37,45 @@ export default function FaceScanScreen({ onBack }) {
     ctx.clearRect(0, 0, w, h);
     if (!showMesh) return;
 
+    // Draw face oval contour
     ctx.beginPath();
-    ctx.strokeStyle = 'rgba(232,160,180,0.6)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(92,177,133,0.5)';
+    ctx.lineWidth = 1.5;
     LANDMARKS.faceOval.forEach((idx, i) => {
       const p = landmarks[idx];
       if (i === 0) ctx.moveTo(p.x * w, p.y * h);
       else ctx.lineTo(p.x * w, p.y * h);
     });
     ctx.closePath(); ctx.stroke();
+    
+    // Draw face oval points with index labels (debug)
+    LANDMARKS.faceOval.forEach((idx) => {
+      const p = landmarks[idx];
+      ctx.beginPath(); ctx.fillStyle = 'rgba(92,177,133,0.4)';
+      ctx.arc(p.x * w, p.y * h, 2, 0, Math.PI * 2); ctx.fill();
+    });
 
     const drawLine = (i1, i2, color, label) => {
       const p1 = landmarks[i1], p2 = landmarks[i2];
-      ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2;
-      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2.5;
+      ctx.setLineDash([6, 3]);
       ctx.moveTo(p1.x * w, p1.y * h); ctx.lineTo(p2.x * w, p2.y * h);
       ctx.stroke(); ctx.setLineDash([]);
-      [p1, p2].forEach(p => {
+      // Draw endpoint dots with index numbers
+      [{ p: p1, idx: i1 }, { p: p2, idx: i2 }].forEach(({ p, idx }) => {
         ctx.beginPath(); ctx.fillStyle = color;
-        ctx.arc(p.x * w, p.y * h, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2); ctx.fill();
+        // Show landmark index for debug
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(idx, p.x * w, p.y * h - 8);
       });
       if (label) {
         const mx = ((p1.x + p2.x) / 2) * w, my = ((p1.y + p2.y) / 2) * h - 10;
-        ctx.fillStyle = 'rgba(0,0,0,0.6)';
-        ctx.fillRect(mx - 28, my - 8, 56, 14);
-        ctx.fillStyle = 'white'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(label, mx, my + 2);
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fillRect(mx - 32, my - 9, 64, 16);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(label, mx, my + 3);
       }
     };
 
