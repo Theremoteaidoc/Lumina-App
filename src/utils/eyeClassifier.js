@@ -106,52 +106,59 @@ export function classifyEyeShape(lm) {
   const eyeSpacingRatio = avgEyeWidth > 0 ? interEye / avgEyeWidth : 1;
 
   // ═══ PRIORITY CLASSIFICATION ═══
+  // Most eyes are almendra (almond) — this is the natural default.
+  // Other shapes require STRONG, distinctive features to override.
+  // Thresholds are intentionally high to avoid false classifications.
   let shape = 'almendra';
   let confidence = 50;
 
-  // 1️⃣ ENCAPOTADO (hooded) — most distinctive: brow covers lid
-  if (hoodScore < 1.0) {
+  // 1️⃣ ENCAPOTADO (hooded) — brow presses on lid
+  if (hoodScore < 0.9) {
     shape = 'encapotado';
     confidence = 80;
-  } else if (hoodScore < 1.3 && ear < 0.27) {
+  } else if (hoodScore < 1.15 && ear < 0.24) {
     shape = 'encapotado';
     confidence = 60;
   }
 
-  // 2️⃣ RASGADO (upturned) — strong positive corner angle
-  else if (cornerAngle > 7) {
+  // 2️⃣ RASGADO (upturned) — VERY noticeable upward tilt
+  // Normal almond eyes often have 2-7° uptilt — that's NOT rasgado
+  // Rasgado needs 10°+ to be visually obvious
+  else if (cornerAngle > 12) {
     shape = 'rasgado';
-    confidence = Math.min(55 + Math.round(cornerAngle * 2), 85);
-  } else if (cornerAngle > 4 && ear < 0.30) {
+    confidence = Math.min(60 + Math.round(cornerAngle), 85);
+  } else if (cornerAngle > 9 && ear < 0.28) {
     shape = 'rasgado';
     confidence = 55;
   }
 
-  // 3️⃣ CAÍDO (downturned) — negative corner angle
-  else if (cornerAngle < -4) {
+  // 3️⃣ CAÍDO (downturned) — strong negative angle
+  else if (cornerAngle < -6) {
     shape = 'caido';
     confidence = Math.min(55 + Math.round(Math.abs(cornerAngle) * 2), 85);
-  } else if (cornerAngle < -2 && ear >= 0.24) {
+  } else if (cornerAngle < -4 && ear >= 0.24) {
     shape = 'caido';
     confidence = 50;
   }
 
-  // 4️⃣ REDONDO (round) — high EAR + fairly straight
-  else if (ear > 0.32 && Math.abs(cornerAngle) < 5) {
+  // 4️⃣ REDONDO (round) — clearly open, circular eyes
+  else if (ear > 0.34 && Math.abs(cornerAngle) < 6) {
     shape = 'redondo';
-    confidence = Math.min(55 + Math.round((ear - 0.28) * 150), 85);
-  } else if (ear > 0.35) {
+    confidence = Math.min(55 + Math.round((ear - 0.30) * 200), 85);
+  } else if (ear > 0.38) {
     shape = 'redondo';
     confidence = 70;
   }
 
-  // 5️⃣ ALMENDRA (almond) — everything else (balanced features)
+  // 5️⃣ ALMENDRA (almond) — the natural default
+  // Most people have almond eyes. This is not a "leftover" category,
+  // it's the most common shape worldwide.
   else {
     shape = 'almendra';
-    const earOk = ear >= 0.22 && ear <= 0.32;
-    const angleOk = Math.abs(cornerAngle) <= 4;
-    const hoodOk = hoodScore >= 1.3;
-    confidence = 40 + [earOk, angleOk, hoodOk].filter(Boolean).length * 15;
+    const earOk = ear >= 0.20 && ear <= 0.34;
+    const angleOk = Math.abs(cornerAngle) <= 9;
+    const hoodOk = hoodScore >= 1.15;
+    confidence = 45 + [earOk, angleOk, hoodOk].filter(Boolean).length * 14;
   }
 
   return {
