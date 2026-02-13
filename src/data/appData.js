@@ -216,3 +216,120 @@ export const FACE_DATA = {
     contourZones: "Contorno sutil bajo pómulos. Iluminar frente, mentón y lados de mandíbula.",
   },
 };
+
+// ═══════════════════════════════════════════════
+// EYE SHAPE RECOMMENDATIONS (Maquillaje de ojos)
+// Based on: AI-Driven Makeup Suggestions (Technomedia Journal 2024)
+// + IPSY, Maybelline, L'Oréal, Patrick Ta professional guidelines
+// ═══════════════════════════════════════════════
+export const EYE_DATA = {
+  almendra: {
+    title: "Ojos Almendra", emoji: "🌰",
+    desc: "Tus ojos tienen forma ovalada con extremos ligeramente afinados. Es la forma más versátil — casi cualquier técnica te funciona.",
+    eyeliner: [
+      "Wing clásico: sigue la línea natural de tu párpado inferior hacia arriba",
+      "Delineado fino en la línea de las pestañas superiores",
+      "Puedes delinear arriba y abajo sin que se vea pesado",
+    ],
+    eyeshadow: [
+      "Degradado desde la línea de pestañas hasta la cuenca del ojo",
+      "Tono claro en todo el párpado, medio en el pliegue, oscuro en V externa",
+      "Iluminador en el lagrimal y bajo la ceja",
+    ],
+    tips: [
+      "Tienes libertad total — experimenta con smokey eyes, cut crease o halo eye",
+      "El delineado con wing moderado resalta tu forma natural",
+      "Pestañas postizas con más volumen al centro abren la mirada",
+    ],
+  },
+  redondo: {
+    title: "Ojos Redondos", emoji: "👁️",
+    desc: "Tus ojos son grandes y abiertos, con forma circular que les da un look juvenil y expresivo.",
+    eyeliner: [
+      "Alarga el delineado hacia la esquina externa en forma de ala",
+      "Evita delinear completamente alrededor (exagera la redondez)",
+      "Difumina la línea inferior solo en el tercio externo",
+    ],
+    eyeshadow: [
+      "Tono oscuro en la esquina externa formando una V y difuminando hacia afuera",
+      "Tono medio en el pliegue para dar profundidad",
+      "Evita sombra brillante en todo el párpado — úsala solo en el lagrimal",
+    ],
+    tips: [
+      "Técnica de elongación: difumina todo hacia afuera para alargar visualmente",
+      "Smokey eye con énfasis en las esquinas externas es tu look estrella",
+      "Pestañas postizas con más largo en las puntas externas",
+    ],
+  },
+  rasgado: {
+    title: "Ojos Rasgados", emoji: "😺",
+    desc: "Las esquinas externas de tus ojos apuntan hacia arriba, creando un efecto felino natural muy favorecedor.",
+    eyeliner: [
+      "Sigue la línea natural ascendente — ya tienes un cat eye incorporado",
+      "Un delineado fino que trace la línea de pestañas es suficiente",
+      "Puedes delinear la línea inferior también para un efecto más intenso",
+    ],
+    eyeshadow: [
+      "Tonos oscuros en la esquina externa siguiendo la línea ascendente",
+      "Sombra media en el pliegue difuminada hacia arriba",
+      "Iluminador en el lagrimal para abrir la mirada",
+    ],
+    tips: [
+      "Tu forma natural ya es muy deseada — acentúala con un delineado sutil",
+      "Evita wings excesivamente dramáticos que hagan la mirada demasiado intensa",
+      "Pestañas postizas con distribución uniforme complementan muy bien",
+    ],
+  },
+  caido: {
+    title: "Ojos Caídos", emoji: "🕊️",
+    desc: "Las esquinas externas de tus ojos caen ligeramente, dando un look dulce y melancólico muy romántico.",
+    eyeliner: [
+      "Wing hacia ARRIBA — no sigas la línea natural del ojo, levanta la esquina",
+      "Comienza el delineado más grueso a partir de 2/3 del ojo hacia afuera",
+      "Evita delinear la esquina externa inferior (acentúa la caída)",
+    ],
+    eyeshadow: [
+      "Tonos claros en el párpado y tonos oscuros en la esquina externa dirigidos HACIA ARRIBA",
+      "Difumina la sombra con ángulo ascendente, nunca siguiendo la caída",
+      "Iluminador en el lagrimal y bajo la ceja en la esquina externa",
+    ],
+    tips: [
+      "El objetivo es crear un efecto lifting visual — todo va hacia arriba",
+      "Rizador de pestañas es tu herramienta esencial",
+      "Pestañas postizas con más volumen y largo en las esquinas externas levantan la mirada",
+    ],
+  },
+  encapotado: {
+    title: "Ojos Encapotados", emoji: "🧢",
+    desc: "Tu párpado superior tiene un pliegue de piel que cubre parte del ojo. Es muy común y tiene trucos específicos para resaltar tus ojos.",
+    eyeliner: [
+      "Aplica el delineado con los ojos ABIERTOS para ver dónde cae el pliegue",
+      "Usa delineador más grueso para que se vea cuando el ojo está abierto",
+      "El wing debe empezar más arriba de lo normal y ser más pronunciado",
+    ],
+    eyeshadow: [
+      "Aplica la sombra SOBRE el pliegue — la cuenca debe verse con el ojo abierto",
+      "Usa sombras mate en el pliegue — las brillantes acentúan el capuchón",
+      "Sombra de transición por encima del pliegue natural para crear profundidad",
+    ],
+    tips: [
+      "Regla de oro: maquíllate siempre con los ojos abiertos para verificar la visibilidad",
+      "Cut crease y half-cut crease son técnicas que te favorecen mucho",
+      "Usa primer para ojos — los párpados encapotados tienden a mover el maquillaje",
+      "Las pestañas rizadas y con volumen abren mucho la mirada",
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════
+// COMBINED FACE + EYE TIPS
+// ═══════════════════════════════════════════════
+export const COMBINED_TIPS = {
+  // Tips que combinan forma de rostro + forma de ojos
+  "redondo+caido": "Con rostro redondo y ojos caídos, enfócate en crear líneas ascendentes en los ojos y diagonales en el contorno facial para alargar y levantar.",
+  "redondo+redondo": "Rostro y ojos redondos — usa técnicas de elongación tanto en el contorno facial (diagonales) como en los ojos (difuminar hacia afuera).",
+  "cuadrado+encapotado": "Suaviza los ángulos de tu rostro con contorno redondeado y abre tus ojos aplicando sombra sobre el pliegue natural.",
+  "ovalado+almendra": "¡Combinación muy versátil! Tienes libertad total para experimentar con cualquier estilo de maquillaje.",
+  "corazon+rasgado": "Tu look natural ya es muy llamativo — contorno en sienes + delineado sutil que siga tu cat eye natural.",
+  "alargado+encapotado": "Crea ancho visual con blush horizontal y abre los ojos con sombra sobre el pliegue y pestañas con volumen.",
+};

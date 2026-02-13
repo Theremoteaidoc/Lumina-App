@@ -1,384 +1,768 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
-import { LANDMARKS, getMeasurements, extractFeatures, classifyFaceShape } from '../utils/faceClassifier';
-import { FACE_DATA } from '../data/appData';
+/* ═══════════════════════════════════════════════════════════════════
+   FaceScanScreen — Visagismo Analysis
+   
+   Features:
+   - Front/back camera toggle
+   - Grayscale scanning mode with live overlay
+   - Face shape classification (hybrid ML + rules)
+   - Eye shape classification (EAR + corner angle + hooded detection)
+   - Combined face + eye makeup recommendations
+   ═══════════════════════════════════════════════════════════════════ */
+
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { LANDMARKS, extractFeatures, classifyFaceShape, FACE_OVAL_INDICES } from '../utils/faceClassifier';
+import { classifyEyeShape, EYE_LANDMARKS } from '../utils/eyeClassifier';
+import { FACE_DATA, EYE_DATA, COMBINED_TIPS } from '../data/appData';
+
+// ─── Styling constants ───
+
+const C = {
+  bg: '#0a0a0f',
+  card: 'rgba(255,255,255,0.06)',
+  accent: '#5cb185',
+  accentSoft: 'rgba(92,177,133,0.15)',
+  text: '#f0f0f0',
+  textSoft: 'rgba(255,255,255,0.55)',
+  pink: '#d4748c',
+  gold: '#d4a373',
+};
+
+const SHAPE_NAMES = {
+  ovalado: 'Ovalado', redondo: 'Redondo', cuadrado: 'Cuadrado',
+  corazon: 'Corazón', alargado: 'Alargado', diamante: 'Diamante',
+};
+
+const EYE_NAMES = {
+  almendra: 'Almendra', redondo: 'Redondos', rasgado: 'Rasgados',
+  caido: 'Caídos', encapotado: 'Encapotados',
+};
 
 export default function FaceScanScreen({ onBack }) {
-  const [phase, setPhase] = useState('intro');
-  const [status, setStatus] = useState('');
-  const [result, setResult] = useState(null);
-  const [debugInfo, setDebugInfo] = useState(null);
-  const [frames, setFrames] = useState([]);
-  const [showMesh, setShowMesh] = useState(true);
+  // ─── State ───
+  const [phase, setPhase] = useState('intro'); // intro | scanning | results
+  const [facingMode, setFacingMode] = useState('user'); // user | environment
+  const [cameraReady, setCameraReady] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
+  const [faceResult, setFaceResult] = useState(null);
+  const [eyeResult, setEyeResult] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [resultsTab, setResultsTab] = useState('face'); // face | eyes | combined
 
+  // ─── Refs ───
   const videoRef = useRef(null);
-  const overlayRef = useRef(null);
+  const canvasRef = useRef(null);
   const streamRef = useRef(null);
-  const animRef = useRef(null);
   const landmarkerRef = useRef(null);
-  const framesRef = useRef([]);
+  const rafRef = useRef(null);
+  const samplesRef = useRef([]);
 
-  useEffect(() => { framesRef.current = frames; }, [frames]);
+  // ─── Camera management ───
 
   const stopCamera = useCallback(() => {
-    if (animRef.current) cancelAnimationFrame(animRef.current);
-    if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(t => t.stop());
+      streamRef.current = null;
+    }
+    setCameraReady(false);
   }, []);
 
-  useEffect(() => () => {
+  const startCamera = useCallback(async (facing) => {
     stopCamera();
-    if (landmarkerRef.current) landmarkerRef.current.close();
+    try {
+      const constraints = {
+        video: {
+          facingMode: facing,
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+        },
+        audio: false,
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current.play();
+          setCameraReady(true);
+        };
+      }
+    } catch (e) {
+      console.error('Camera error:', e);
+      setErrorMsg('No se pudo acceder a la cámara. Revisa los permisos.');
+    }
   }, [stopCamera]);
 
-  const drawOverlay = useCallback((landmarks, canvas, video) => {
-    const ctx = canvas.getContext('2d');
-    const w = video.videoWidth, h = video.videoHeight;
-    canvas.width = w; canvas.height = h;
-    ctx.clearRect(0, 0, w, h);
-    if (!showMesh) return;
+  const toggleCamera = useCallback(() => {
+    const next = facingMode === 'user' ? 'environment' : 'user';
+    setFacingMode(next);
+    if (phase === 'scanning') startCamera(next);
+  }, [facingMode, phase, startCamera]);
 
-    // Draw face oval contour
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(92,177,133,0.5)';
-    ctx.lineWidth = 1.5;
-    LANDMARKS.faceOval.forEach((idx, i) => {
-      const p = landmarks[idx];
-      if (i === 0) ctx.moveTo(p.x * w, p.y * h);
-      else ctx.lineTo(p.x * w, p.y * h);
-    });
-    ctx.closePath(); ctx.stroke();
-    
-    // Draw face oval points with index labels (debug)
-    LANDMARKS.faceOval.forEach((idx) => {
-      const p = landmarks[idx];
-      ctx.beginPath(); ctx.fillStyle = 'rgba(92,177,133,0.4)';
-      ctx.arc(p.x * w, p.y * h, 2, 0, Math.PI * 2); ctx.fill();
-    });
+  // ─── MediaPipe Loader ───
 
-    const drawLine = (i1, i2, color, label) => {
-      const p1 = landmarks[i1], p2 = landmarks[i2];
-      ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2.5;
-      ctx.setLineDash([6, 3]);
-      ctx.moveTo(p1.x * w, p1.y * h); ctx.lineTo(p2.x * w, p2.y * h);
-      ctx.stroke(); ctx.setLineDash([]);
-      // Draw endpoint dots with index numbers
-      [{ p: p1, idx: i1 }, { p: p2, idx: i2 }].forEach(({ p, idx }) => {
-        ctx.beginPath(); ctx.fillStyle = color;
-        ctx.arc(p.x * w, p.y * h, 5, 0, Math.PI * 2); ctx.fill();
-        // Show landmark index for debug
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
-        ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(idx, p.x * w, p.y * h - 8);
-      });
-      if (label) {
-        const mx = ((p1.x + p2.x) / 2) * w, my = ((p1.y + p2.y) / 2) * h - 10;
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
-        ctx.fillRect(mx - 32, my - 9, 64, 16);
-        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(label, mx, my + 3);
-      }
-    };
-
-    drawLine(LANDMARKS.foreheadLeft, LANDMARKS.foreheadRight, '#E8B931', 'Frente');
-    drawLine(LANDMARKS.cheekLeft, LANDMARKS.cheekRight, '#5CB185', 'Pómulos');
-    drawLine(LANDMARKS.jawLeft, LANDMARKS.jawRight, '#E8A0B4', 'Mandíbula');
-    drawLine(LANDMARKS.hairline, LANDMARKS.chin, 'rgba(255,255,255,0.4)', 'Largo');
-  }, [showMesh]);
-
-  const detectLoop = useCallback(() => {
-    const video = videoRef.current;
-    const lm = landmarkerRef.current;
-    const canvas = overlayRef.current;
-    if (!video || !lm || !canvas || video.readyState < 2) {
-      animRef.current = requestAnimationFrame(detectLoop);
-      return;
-    }
-    const results = lm.detectForVideo(video, performance.now());
-    if (results.faceLandmarks?.length > 0) {
-      const pts = results.faceLandmarks[0];
-      drawOverlay(pts, canvas, video);
-      const m = getMeasurements(pts, video.videoWidth, video.videoHeight);
-      const feat = extractFeatures(pts);
-      setFrames(prev => { const n = [...prev, { m, feat, lm: pts }]; if (n.length > 30) n.shift(); return n; });
-      setDebugInfo({
-        whr: feat ? feat.f1_whr.toFixed(3) : (m.cheekboneWidth / m.faceLength).toFixed(3),
-        fw: m.foreheadWidth.toFixed(0), cw: m.cheekboneWidth.toFixed(0),
-        jw: m.jawlineWidth.toFixed(0), fl: m.faceLength.toFixed(0),
-      });
-      setStatus('Rostro detectado ✓ Mantén la posición...');
-    } else {
-      setStatus('Buscando rostro... Mira directo a la cámara');
-    }
-    animRef.current = requestAnimationFrame(detectLoop);
-  }, [drawOverlay]);
-
-  const startScanning = async () => {
-    setPhase('scanning');
-    setFrames([]);
-    setStatus('Cargando modelo de IA...');
+  const loadMediaPipe = useCallback(async () => {
+    if (landmarkerRef.current) return;
     try {
-      const vision = await FilesetResolver.forVisionTasks(
-        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm'
+      // Wait for CDN-loaded globals
+      if (!window.FilesetResolver || !window.FaceLandmarker) {
+        await new Promise((resolve) => {
+          if (window.FilesetResolver) return resolve();
+          window.addEventListener('mediapipe-ready', resolve, { once: true });
+          // Timeout after 15s
+          setTimeout(resolve, 15000);
+        });
+      }
+
+      if (!window.FilesetResolver || !window.FaceLandmarker) {
+        throw new Error('MediaPipe not loaded');
+      }
+
+      const vision = await window.FilesetResolver.forVisionTasks(
+        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm'
       );
-      const landmarker = await FaceLandmarker.createFromOptions(vision, {
+      const fl = await window.FaceLandmarker.createFromOptions(vision, {
         baseOptions: {
           modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task',
           delegate: 'GPU',
         },
-        runningMode: 'VIDEO', numFaces: 1,
+        runningMode: 'VIDEO',
+        numFaces: 1,
+        outputFaceBlendshapes: false,
+        outputFacialTransformationMatrixes: false,
       });
-      landmarkerRef.current = landmarker;
-      setStatus('Iniciando cámara...');
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
-        audio: false,
-      });
-      streamRef.current = stream;
-      videoRef.current.srcObject = stream;
-      await new Promise(r => { videoRef.current.onloadedmetadata = () => { videoRef.current.play(); r(); }; });
-      setStatus('Detectando rostro...');
-      setTimeout(detectLoop, 300);
-    } catch (err) {
-      console.error(err);
-      setStatus('Error: ' + (err.name === 'NotAllowedError' ? 'Permite el acceso a la cámara en ajustes' : err.message));
+      landmarkerRef.current = fl;
+    } catch (e) {
+      console.error('MediaPipe load error:', e);
+      setErrorMsg('Error cargando el modelo de detección facial. Recarga la página.');
     }
-  };
+  }, []);
 
-  const analyze = () => {
-    if (framesRef.current.length < 10) { setStatus('Necesito más datos. Mantén la posición...'); return; }
-    setPhase('analyzing');
-    const frames = framesRef.current;
-    
-    // Average all 19 features across collected frames for stability
-    const validFeats = frames.filter(fr => fr.feat !== null).map(fr => fr.feat);
-    
-    if (validFeats.length >= 5) {
-      // Use full 19-feature classification (v2)
-      const featureKeys = Object.keys(validFeats[0]).filter(k => !k.startsWith('_'));
-      const avgFeat = {};
-      for (const key of featureKeys) {
-        avgFeat[key] = validFeats.reduce((sum, f) => sum + f[key], 0) / validFeats.length;
+  // MediaPipe loads from CDN in index.html
+
+  // ─── Scanning loop ───
+
+  const startScanning = useCallback(async () => {
+    setPhase('scanning');
+    setScanProgress(0);
+    setFaceResult(null);
+    setEyeResult(null);
+    samplesRef.current = [];
+    setErrorMsg(null);
+
+    await startCamera(facingMode);
+    await loadMediaPipe();
+
+    if (!landmarkerRef.current) {
+      setErrorMsg('No se pudo cargar el modelo. Intenta recargar la página.');
+      return;
+    }
+
+    const SAMPLE_COUNT = 20;
+    const SAMPLE_INTERVAL = 150; // ms between samples
+    let sampleIdx = 0;
+
+    const processFrame = () => {
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      if (!video || !canvas || !landmarkerRef.current || video.readyState < 2) {
+        rafRef.current = requestAnimationFrame(processFrame);
+        return;
       }
-      // Keep raw from last frame for display
-      avgFeat._raw = validFeats[validFeats.length - 1]._raw;
-      const res = classifyFaceShape(avgFeat);
-      setTimeout(() => { stopCamera(); setResult(res); setPhase('result'); }, 1200);
-    } else {
-      // Fallback to basic measurements if features failed
-      const f = frames.map(fr => fr.m);
-      const avg = {
-        faceLength: f.reduce((s, x) => s + x.faceLength, 0) / f.length,
-        foreheadWidth: f.reduce((s, x) => s + x.foreheadWidth, 0) / f.length,
-        cheekboneWidth: f.reduce((s, x) => s + x.cheekboneWidth, 0) / f.length,
-        jawlineWidth: f.reduce((s, x) => s + x.jawlineWidth, 0) / f.length,
-      };
-      const res = classifyFaceShape(avg);
-      setTimeout(() => { stopCamera(); setResult(res); setPhase('result'); }, 1200);
+
+      const ctx = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      // Draw grayscale video
+      ctx.filter = 'grayscale(100%)';
+      if (facingMode === 'user') {
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+        ctx.restore();
+      } else {
+        ctx.drawImage(video, 0, 0);
+      }
+      ctx.filter = 'none';
+
+      // Run face landmark detection
+      try {
+        const results = landmarkerRef.current.detectForVideo(video, performance.now());
+        if (results.faceLandmarks && results.faceLandmarks.length > 0) {
+          const lm = results.faceLandmarks[0];
+          drawOverlay(ctx, lm, canvas.width, canvas.height);
+
+          // Collect samples
+          if (sampleIdx < SAMPLE_COUNT) {
+            const feats = extractFeatures(lm);
+            if (feats) {
+              const eyeRes = classifyEyeShape(lm);
+              samplesRef.current.push({ features: feats, eye: eyeRes });
+              sampleIdx++;
+              setScanProgress(Math.round((sampleIdx / SAMPLE_COUNT) * 100));
+            }
+          }
+
+          // Done sampling
+          if (sampleIdx >= SAMPLE_COUNT) {
+            finishAnalysis();
+            return;
+          }
+        }
+      } catch (e) {
+        // Frame processing error — skip
+      }
+
+      rafRef.current = requestAnimationFrame(processFrame);
+    };
+
+    // Wait for camera to be ready then start
+    const waitForVideo = () => {
+      if (videoRef.current && videoRef.current.readyState >= 2) {
+        processFrame();
+      } else {
+        setTimeout(waitForVideo, 100);
+      }
+    };
+    waitForVideo();
+  }, [facingMode, startCamera, loadMediaPipe]);
+
+  const finishAnalysis = useCallback(() => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    stopCamera();
+
+    const samples = samplesRef.current;
+    if (samples.length === 0) {
+      setErrorMsg('No se detectó un rostro. Intenta con mejor iluminación.');
+      setPhase('intro');
+      return;
     }
+
+    // Average features across samples for stability
+    const avgFeatures = {};
+    const keys = Object.keys(samples[0].features);
+    for (const k of keys) {
+      const vals = samples.map(s => s.features[k]).filter(v => typeof v === 'number' && !isNaN(v));
+      avgFeatures[k] = vals.length > 0 ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
+    }
+
+    // Face shape from averaged features
+    const faceRes = classifyFaceShape(avgFeatures);
+    setFaceResult(faceRes);
+
+    // Eye shape — majority vote from samples
+    const eyeVotes = {};
+    for (const s of samples) {
+      if (s.eye) {
+        eyeVotes[s.eye.shape] = (eyeVotes[s.eye.shape] || 0) + 1;
+      }
+    }
+    const topEye = Object.entries(eyeVotes).sort((a, b) => b[1] - a[1])[0];
+    if (topEye) {
+      // Get the features from the most recent matching sample
+      const bestSample = samples.reverse().find(s => s.eye?.shape === topEye[0]);
+      setEyeResult({
+        shape: topEye[0],
+        confidence: Math.min(Math.round((topEye[1] / samples.length) * 100), 90),
+        features: bestSample?.eye?.features || {},
+        spacing: bestSample?.eye?.spacing || 'proporcional',
+      });
+    }
+
+    setPhase('results');
+  }, [stopCamera]);
+
+  // ─── Draw overlay on scanning canvas ───
+
+  const drawOverlay = (ctx, lm, w, h) => {
+    const L = LANDMARKS;
+
+    // Convert normalized landmark to pixel
+    const px = (idx) => {
+      const p = lm[idx];
+      const x = facingMode === 'user' ? (1 - p.x) * w : p.x * w;
+      return { x, y: p.y * h };
+    };
+
+    // Face oval (subtle green outline)
+    ctx.strokeStyle = 'rgba(92,177,133,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let i = 0; i < FACE_OVAL_INDICES.length; i++) {
+      const p = px(FACE_OVAL_INDICES[i]);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+
+    // Measurement lines
+    const drawLine = (idx1, idx2, label, color) => {
+      const a = px(idx1);
+      const b = px(idx2);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 3]);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Dots at endpoints
+      for (const p of [a, b]) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Label
+      const mx = (a.x + b.x) / 2;
+      const my = (a.y + b.y) / 2;
+      ctx.font = 'bold 9px sans-serif';
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.fillText(label, mx, my - 6);
+    };
+
+    drawLine(L.foreheadLeft, L.foreheadRight, 'Frente', '#F2CC8F');
+    drawLine(L.cheekLeft, L.cheekRight, 'Pómulos', C.accent);
+    drawLine(L.jawLeft, L.jawRight, 'Mandíbula', C.pink);
+    drawLine(L.hairline, L.chin, 'Largo', 'rgba(255,255,255,0.4)');
+
+    // Eye outlines
+    const drawEye = (indices, color) => {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let i = 0; i < indices.length; i++) {
+        const p = px(indices[i]);
+        i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    };
+
+    drawEye(EYE_LANDMARKS.RIGHT_EYE.outline, 'rgba(212,116,140,0.6)');
+    drawEye(EYE_LANDMARKS.LEFT_EYE.outline, 'rgba(212,116,140,0.6)');
   };
 
-  /* ═══════════ RESULT SCREEN ═══════════ */
-  if (phase === 'result' && result) {
-    const data = FACE_DATA[result.shape];
+  // ─── Cleanup ───
+  useEffect(() => () => stopCamera(), [stopCamera]);
+
+  // ═══════════════════════════════════════════════
+  // RENDER — INTRO PHASE
+  // ═══════════════════════════════════════════════
+  if (phase === 'intro') {
     return (
-      <div className="slide-in" style={{ background: 'var(--bg)', minHeight: '100vh' }}>
-        <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <button onClick={() => { setPhase('intro'); setResult(null); }} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 20, color: 'var(--text)' }}>←</button>
-          <h1 style={{ fontSize: 22, fontWeight: 600, color: 'var(--text)' }}>Tu Resultado</h1>
+      <div style={{ minHeight: '100vh', background: C.bg, color: C.text }}>
+        {/* Header */}
+        <div style={{ display: 'flex', alignItems: 'center', padding: '16px 20px', gap: 12 }}>
+          <button onClick={onBack} style={{ background: 'none', border: 'none', color: C.text, fontSize: 22, cursor: 'pointer', padding: 4 }}>←</button>
+          <span style={{ fontSize: 17, fontWeight: 600 }}>Análisis Facial</span>
         </div>
-        <div style={{ padding: '0 20px 40px' }}>
-          {/* Main result card */}
-          <div style={{ background: 'white', borderRadius: 24, padding: '32px 24px', textAlign: 'center', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', marginBottom: 16 }}>
-            <span style={{ fontSize: 48 }}>{data.emoji}</span>
-            <h2 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text)', marginTop: 12 }}>{data.title}</h2>
-            <div style={{ display: 'inline-flex', gap: 6, marginTop: 10, background: 'var(--bg-soft)', borderRadius: 20, padding: '6px 16px' }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'var(--rose)', fontWeight: 600 }}>{result.confidence}% confianza</span>
-            </div>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'var(--text-light)', lineHeight: 1.6, marginTop: 16 }}>{data.desc}</p>
-            {/* Metrics */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginTop: 20, background: 'var(--cream)', borderRadius: 16, padding: 16 }}>
-              {[{ l: 'WHR', v: result.whr, d: 'Ancho/Alto' }, { l: 'JFR', v: result.jfr, d: 'Mandíb/Frente' }, { l: 'CJR', v: result.cjr, d: 'Pómulo/Mandíb' }].map((m, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 18, fontWeight: 600, color: 'var(--rose)' }}>{m.v}</p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, color: 'var(--text-muted)', marginTop: 2 }}>{m.d}</p>
-                </div>
-              ))}
-            </div>
+
+        <div style={{ padding: '20px 24px', textAlign: 'center' }}>
+          {/* Icon */}
+          <div style={{
+            width: 100, height: 100, borderRadius: '50%', background: C.accentSoft,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '20px auto 24px', fontSize: 48,
+          }}>
+            🪞
           </div>
 
-          {/* Recommendation sections */}
-          {[
-            { title: '💄 Maquillaje & Contorno', items: data.makeup, note: data.contourZones },
-            { title: '✂️ Cortes de Cabello', items: data.haircuts },
-            { title: '👗 Escotes Favorables', items: data.necklines },
-          ].map((sec, si) => (
-            <div key={si} style={{ background: 'white', borderRadius: 20, padding: 22, boxShadow: 'var(--shadow)', border: '1px solid var(--border)', marginBottom: 12 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--text)', marginBottom: 14 }}>{sec.title}</h3>
-              {sec.items.map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 10 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--pink)', marginTop: 7, flexShrink: 0 }} />
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'var(--text-light)', lineHeight: 1.6 }}>{item}</p>
-                </div>
-              ))}
-              {sec.note && (
-                <div style={{ background: 'var(--bg-soft)', borderRadius: 12, padding: '10px 14px', marginTop: 12 }}>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'var(--rose)', fontStyle: 'italic', lineHeight: 1.5 }}>💡 {sec.note}</p>
-                </div>
-              )}
-            </div>
-          ))}
+          <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8 }}>Visagismo Inteligente</h2>
+          <p style={{ color: C.textSoft, fontSize: 14, lineHeight: 1.6, marginBottom: 32, maxWidth: 300, margin: '0 auto 32px' }}>
+            Analizaremos la forma de tu rostro y tus ojos usando inteligencia artificial para darte recomendaciones personalizadas de maquillaje.
+          </p>
 
-          <button className="btn-outline" onClick={() => { setPhase('intro'); setResult(null); setFrames([]); }} style={{ marginTop: 8 }}>Repetir Escaneo</button>
-          <button className="btn-primary" onClick={onBack} style={{ marginTop: 10 }}>Volver a Tests</button>
+          {/* What we'll analyze */}
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 32, flexWrap: 'wrap' }}>
+            {[
+              { emoji: '📐', label: 'Forma del rostro' },
+              { emoji: '👁️', label: 'Forma de ojos' },
+              { emoji: '💄', label: 'Tips de maquillaje' },
+            ].map(({ emoji, label }) => (
+              <div key={label} style={{
+                background: C.card, borderRadius: 14, padding: '14px 18px',
+                display: 'flex', alignItems: 'center', gap: 8, fontSize: 13,
+              }}>
+                <span style={{ fontSize: 18 }}>{emoji}</span>
+                {label}
+              </div>
+            ))}
+          </div>
+
+          {/* Instructions */}
+          <div style={{
+            background: C.card, borderRadius: 16, padding: '18px 20px',
+            textAlign: 'left', marginBottom: 28,
+          }}>
+            <p style={{ fontSize: 13, fontWeight: 600, marginBottom: 10, color: C.accent }}>📋 Para mejores resultados:</p>
+            {[
+              'Buena iluminación frontal, sin sombras fuertes',
+              'Mira directamente a la cámara',
+              'Retira el cabello de la frente si es posible',
+              'Expresión neutra, boca cerrada',
+            ].map((tip, i) => (
+              <p key={i} style={{ fontSize: 12, color: C.textSoft, marginBottom: 4, paddingLeft: 8 }}>
+                • {tip}
+              </p>
+            ))}
+          </div>
+
+          {errorMsg && (
+            <p style={{ color: '#e74c3c', fontSize: 13, marginBottom: 16 }}>{errorMsg}</p>
+          )}
+
+          <button
+            onClick={startScanning}
+            style={{
+              width: '100%', padding: '16px 24px', borderRadius: 14,
+              background: `linear-gradient(135deg, ${C.accent}, #3d9b6e)`,
+              color: '#fff', border: 'none', fontSize: 16, fontWeight: 700,
+              cursor: 'pointer', letterSpacing: 0.3,
+            }}
+          >
+            Iniciar Escaneo ✨
+          </button>
         </div>
       </div>
     );
   }
 
-  /* ═══════════ SCANNING SCREEN ═══════════ */
-  if (phase === 'scanning' || phase === 'analyzing') {
-    const progress = Math.min((frames.length / 30) * 100, 100);
+  // ═══════════════════════════════════════════════
+  // RENDER — SCANNING PHASE
+  // ═══════════════════════════════════════════════
+  if (phase === 'scanning') {
     return (
-      <div style={{ background: '#0a0a0a', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
-        <div style={{ position: 'relative', width: '100%', maxWidth: 430, margin: '0 auto' }}>
-          {/* Top buttons */}
-          <button onClick={() => { stopCamera(); setPhase('intro'); }} style={{
-            position: 'absolute', top: 16, left: 16, zIndex: 20, background: 'rgba(0,0,0,0.5)',
-            border: 'none', borderRadius: '50%', width: 40, height: 40, cursor: 'pointer', color: 'white', fontSize: 18,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>←</button>
-          <button onClick={() => setShowMesh(!showMesh)} style={{
-            position: 'absolute', top: 16, right: 16, zIndex: 20, background: 'rgba(0,0,0,0.5)',
-            border: 'none', borderRadius: 12, padding: '8px 12px', cursor: 'pointer', color: 'white', fontSize: 11,
-          }}>{showMesh ? 'Ocultar' : 'Mostrar'} líneas</button>
+      <div style={{ minHeight: '100vh', background: '#000', color: C.text, position: 'relative' }}>
+        {/* Camera feed with canvas overlay */}
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '3/4', background: '#111' }}>
+          <video
+            ref={videoRef}
+            playsInline
+            muted
+            style={{
+              position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+              objectFit: 'cover', opacity: 0,
+            }}
+          />
+          <canvas
+            ref={canvasRef}
+            style={{
+              position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+              objectFit: 'cover',
+            }}
+          />
 
-          {/* Camera viewport */}
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '3/4', overflow: 'hidden', background: '#111' }}>
-            <video ref={videoRef} autoPlay playsInline muted style={{
-              width: '100%', height: '100%', objectFit: 'cover',
-              filter: 'grayscale(100%) contrast(1.1)', transform: 'scaleX(-1)',
+          {/* Face guide oval */}
+          {!cameraReady && (
+            <div style={{
+              position: 'absolute', inset: 0, display: 'flex', alignItems: 'center',
+              justifyContent: 'center', color: C.textSoft, fontSize: 14,
+            }}>
+              Iniciando cámara...
+            </div>
+          )}
+        </div>
+
+        {/* Controls bar */}
+        <div style={{
+          padding: '16px 20px', display: 'flex', justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <button onClick={() => { stopCamera(); setPhase('intro'); }}
+            style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: C.text, padding: '10px 18px', borderRadius: 10, fontSize: 13, cursor: 'pointer' }}>
+            ← Cancelar
+          </button>
+
+          {/* Camera toggle */}
+          <button onClick={toggleCamera}
+            style={{
+              background: 'rgba(255,255,255,0.12)', border: 'none', color: C.text,
+              width: 46, height: 46, borderRadius: '50%', fontSize: 20, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+            title={facingMode === 'user' ? 'Cambiar a cámara trasera' : 'Cambiar a cámara frontal'}
+          >
+            🔄
+          </button>
+
+          <div style={{ fontSize: 13, color: C.textSoft, minWidth: 80, textAlign: 'right' }}>
+            {facingMode === 'user' ? '📱 Frontal' : '📷 Trasera'}
+          </div>
+        </div>
+
+        {/* Progress bar */}
+        <div style={{ padding: '0 20px' }}>
+          <div style={{
+            background: 'rgba(255,255,255,0.08)', borderRadius: 8, height: 6,
+            overflow: 'hidden', marginBottom: 8,
+          }}>
+            <div style={{
+              width: `${scanProgress}%`, height: '100%', borderRadius: 8,
+              background: `linear-gradient(90deg, ${C.accent}, #3d9b6e)`,
+              transition: 'width 0.3s ease',
             }} />
-            <canvas ref={overlayRef} style={{
-              position: 'absolute', inset: 0, width: '100%', height: '100%',
-              transform: 'scaleX(-1)', pointerEvents: 'none',
-            }} />
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-              <div style={{
-                width: '62%', aspectRatio: '3/4', borderRadius: '50%',
-                border: `2px ${frames.length > 10 ? 'solid' : 'dashed'} ${frames.length > 10 ? 'rgba(92,177,133,0.5)' : 'rgba(232,160,180,0.35)'}`,
-                transition: 'border 0.5s',
-              }} />
+          </div>
+          <p style={{ fontSize: 12, color: C.textSoft, textAlign: 'center' }}>
+            {scanProgress < 100 ? `Analizando... ${scanProgress}%` : 'Procesando resultados...'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ═══════════════════════════════════════════════
+  // RENDER — RESULTS PHASE
+  // ═══════════════════════════════════════════════
+  const fData = faceResult ? FACE_DATA[faceResult.shape] : null;
+  const eData = eyeResult ? EYE_DATA[eyeResult.shape] : null;
+  const combinedKey = faceResult && eyeResult ? `${faceResult.shape}+${eyeResult.shape}` : null;
+  const combinedTip = combinedKey ? COMBINED_TIPS[combinedKey] : null;
+
+  return (
+    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, paddingBottom: 40 }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', padding: '16px 20px', gap: 12 }}>
+        <button onClick={onBack} style={{ background: 'none', border: 'none', color: C.text, fontSize: 22, cursor: 'pointer', padding: 4 }}>←</button>
+        <span style={{ fontSize: 17, fontWeight: 600 }}>Resultados</span>
+        <div style={{ flex: 1 }} />
+        <button onClick={() => { setPhase('intro'); }}
+          style={{ background: C.card, border: 'none', color: C.accent, padding: '8px 14px', borderRadius: 10, fontSize: 12, cursor: 'pointer' }}>
+          Repetir ↻
+        </button>
+      </div>
+
+      {/* Summary cards */}
+      <div style={{ display: 'flex', gap: 12, padding: '4px 20px 16px', overflow: 'auto' }}>
+        {/* Face shape card */}
+        {faceResult && fData && (
+          <div style={{
+            flex: '1 0 48%', background: C.card, borderRadius: 16, padding: '16px 14px',
+            textAlign: 'center', border: resultsTab === 'face' ? `1px solid ${C.accent}40` : '1px solid transparent',
+            cursor: 'pointer', transition: 'border 0.2s',
+          }} onClick={() => setResultsTab('face')}>
+            <div style={{ fontSize: 36, marginBottom: 6 }}>{fData.emoji}</div>
+            <div style={{ fontSize: 15, fontWeight: 700 }}>{fData.title}</div>
+            <div style={{ fontSize: 11, color: C.accent, marginTop: 4 }}>
+              {faceResult.confidence}% confianza
             </div>
           </div>
+        )}
 
-          {/* Bottom panel */}
-          <div style={{ padding: '20px 20px 40px' }}>
-            <p style={{ color: frames.length > 10 ? '#5CB185' : 'rgba(255,255,255,0.6)', fontSize: 14, textAlign: 'center', marginBottom: 14, fontWeight: 500 }}>
-              {status}
-            </p>
-            {debugInfo && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 6, marginBottom: 14 }}>
+        {/* Eye shape card */}
+        {eyeResult && eData && (
+          <div style={{
+            flex: '1 0 48%', background: C.card, borderRadius: 16, padding: '16px 14px',
+            textAlign: 'center', border: resultsTab === 'eyes' ? `1px solid ${C.pink}40` : '1px solid transparent',
+            cursor: 'pointer', transition: 'border 0.2s',
+          }} onClick={() => setResultsTab('eyes')}>
+            <div style={{ fontSize: 36, marginBottom: 6 }}>{eData.emoji}</div>
+            <div style={{ fontSize: 15, fontWeight: 700 }}>{eData.title}</div>
+            <div style={{ fontSize: 11, color: C.pink, marginTop: 4 }}>
+              {eyeResult.confidence}% confianza
+              {eyeResult.spacing !== 'proporcional' && (
+                <span style={{ color: C.textSoft }}> · Ojos {eyeResult.spacing}</span>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Tab selector */}
+      <div style={{
+        display: 'flex', gap: 0, margin: '0 20px 16px', background: C.card,
+        borderRadius: 12, overflow: 'hidden',
+      }}>
+        {[
+          { key: 'face', label: '📐 Rostro' },
+          { key: 'eyes', label: '👁️ Ojos' },
+          { key: 'combined', label: '✨ Combinado' },
+        ].map(t => (
+          <button key={t.key} onClick={() => setResultsTab(t.key)}
+            style={{
+              flex: 1, padding: '12px 8px', border: 'none',
+              background: resultsTab === t.key ? C.accentSoft : 'transparent',
+              color: resultsTab === t.key ? C.accent : C.textSoft,
+              fontSize: 12, fontWeight: resultsTab === t.key ? 700 : 500,
+              cursor: 'pointer', transition: 'all 0.2s',
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ═══ FACE TAB ═══ */}
+      {resultsTab === 'face' && fData && (
+        <div style={{ padding: '0 20px' }}>
+          <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6, marginBottom: 20 }}>
+            {fData.desc}
+          </p>
+
+          <ResultSection title="💄 Maquillaje" items={fData.makeup} color={C.pink} />
+          <ResultSection title="✂️ Cortes de Cabello" items={fData.haircuts} color={C.gold} />
+          <ResultSection title="👔 Cuellos que Favorecen" items={fData.necklines} color={C.accent} />
+
+          <div style={{
+            background: C.card, borderRadius: 14, padding: '14px 16px', marginTop: 12,
+          }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: C.gold, marginBottom: 6 }}>🎯 Dónde Aplicar Contorno</p>
+            <p style={{ fontSize: 12, color: C.textSoft, lineHeight: 1.5 }}>{fData.contourZones}</p>
+          </div>
+
+          {/* Measurements */}
+          {faceResult && (
+            <div style={{
+              background: C.card, borderRadius: 14, padding: '14px 16px', marginTop: 12,
+            }}>
+              <p style={{ fontSize: 12, fontWeight: 600, color: C.textSoft, marginBottom: 8 }}>📊 Medidas detectadas</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
                 {[
-                  { l: 'WHR', v: debugInfo.whr }, { l: 'Frente', v: debugInfo.fw },
-                  { l: 'Pómulo', v: debugInfo.cw }, { l: 'Mandíb.', v: debugInfo.jw },
-                  { l: 'Largo', v: debugInfo.fl },
-                ].map((d, i) => (
-                  <div key={i} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: '8px 4px', textAlign: 'center' }}>
-                    <p style={{ fontSize: 14, color: 'white', fontWeight: 600 }}>{d.v}</p>
-                    <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{d.l}</p>
+                  { label: 'WHR', value: faceResult.whr },
+                  { label: 'Jaw/Frente', value: faceResult.jfr },
+                  { label: 'Cheek/Jaw', value: faceResult.cjr },
+                ].map(m => (
+                  <div key={m.label} style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: C.accent }}>{m.value}</div>
+                    <div style={{ fontSize: 10, color: C.textSoft }}>{m.label}</div>
                   </div>
                 ))}
               </div>
-            )}
-            <div style={{ background: 'rgba(255,255,255,0.1)', borderRadius: 8, height: 6, marginBottom: 14, overflow: 'hidden' }}>
-              <div style={{
-                width: `${progress}%`, height: '100%', borderRadius: 8, transition: 'width 0.3s',
-                background: progress >= 100 ? 'linear-gradient(90deg,#5CB185,#4CAF50)' : 'linear-gradient(90deg,var(--pink-light),var(--pink))',
-              }} />
             </div>
-            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', textAlign: 'center', marginBottom: 14 }}>
-              {frames.length < 30 ? `${frames.length}/30 frames` : '✓ Listo para analizar'}
-            </p>
-            <button onClick={analyze} disabled={frames.length < 10 || phase === 'analyzing'} style={{
-              width: '100%', padding: 16, borderRadius: 16, border: 'none',
-              background: frames.length >= 10 ? 'linear-gradient(135deg,var(--pink-light),var(--pink))' : 'rgba(255,255,255,0.1)',
-              color: frames.length >= 10 ? 'white' : 'rgba(255,255,255,0.3)',
-              fontSize: 15, fontWeight: 500, cursor: frames.length >= 10 ? 'pointer' : 'default',
-              opacity: phase === 'analyzing' ? 0.6 : 1,
-            }}>
-              {phase === 'analyzing' ? 'Analizando...' : 'Analizar Mi Rostro'}
-            </button>
-          </div>
+          )}
         </div>
-      </div>
-    );
-  }
+      )}
 
-  /* ═══════════ INTRO SCREEN ═══════════ */
-  return (
-    <div className="slide-in" style={{ background: 'var(--bg)', minHeight: '100vh' }}>
-      <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 10 }}>
-        <button onClick={onBack} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 20, color: 'var(--text)' }}>←</button>
-        <div>
-          <h1 style={{ fontSize: 22, fontWeight: 600, color: 'var(--text)' }}>Análisis Facial Pro</h1>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'var(--text-light)' }}>Visagismo con IA</p>
-        </div>
-      </div>
-      <div style={{ padding: '0 20px 40px' }}>
-        <div style={{ background: 'white', borderRadius: 24, padding: 24, boxShadow: 'var(--shadow)', border: '1px solid var(--border)' }}>
-          <div style={{ background: '#FFF9E6', borderRadius: 14, padding: '14px 16px', display: 'flex', gap: 12, marginBottom: 24 }}>
-            <span style={{ fontSize: 18 }}>ℹ️</span>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'var(--text)', lineHeight: 1.5 }}>
-              Lumina usa <strong>inteligencia artificial (MediaPipe)</strong> para detectar 478 puntos de tu rostro
-              en tiempo real y clasificar tu forma facial por proporciones antropométricas.
-            </p>
-          </div>
-
-          <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 14, letterSpacing: 0.5 }}>CÓMO FUNCIONA</h3>
-          {[
-            { s: '1', t: 'La cámara se abre en escala de grises para mejor detección' },
-            { s: '2', t: 'La IA detecta 478 puntos de tu rostro en tiempo real' },
-            { s: '3', t: 'Se miden 4 distancias: frente, pómulos, mandíbula y largo' },
-            { s: '4', t: 'Un algoritmo clasifica tu forma de rostro por proporciones' },
-          ].map((item, i) => (
-            <div key={i} style={{ display: 'flex', gap: 14, marginBottom: 16 }}>
-              <div style={{
-                width: 28, height: 28, borderRadius: 8, background: 'var(--bg-soft)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: 'var(--rose)',
-              }}>{item.s}</div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'var(--text-light)', lineHeight: 1.5 }}>{item.t}</p>
-            </div>
-          ))}
-
-          <div style={{ height: 1, background: 'var(--border)', margin: '8px 0 20px' }} />
-
-          <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 14, letterSpacing: 0.5 }}>ANTES DE EMPEZAR</h3>
-          {[
-            { icon: '☀️', t: 'Luz natural frontal' },
-            { icon: '👁️', t: 'Cámara a nivel de ojos' },
-            { icon: '💇‍♀️', t: 'Cara despejada (cabello atrás)' },
-            { icon: '😐', t: 'Expresión neutra, boca cerrada' },
-          ].map((r, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-              <div style={{
-                width: 40, height: 40, borderRadius: 12, background: 'var(--bg-soft)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
-              }}>{r.icon}</div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'var(--text)', fontWeight: 500 }}>{r.t}</p>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ marginTop: 16, padding: '12px 16px', background: 'var(--cream)', borderRadius: 14, border: '1px solid var(--border)' }}>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: 'var(--text-muted)', lineHeight: 1.5, textAlign: 'center' }}>
-            🔒 Todo el procesamiento ocurre en tu dispositivo. Ninguna imagen se envía a servidores.
+      {/* ═══ EYES TAB ═══ */}
+      {resultsTab === 'eyes' && eData && (
+        <div style={{ padding: '0 20px' }}>
+          <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6, marginBottom: 20 }}>
+            {eData.desc}
           </p>
-        </div>
 
-        <button className="btn-primary" onClick={startScanning} style={{ marginTop: 20 }}>
-          Comenzar Escaneo Facial
-        </button>
+          <ResultSection title="✏️ Delineador" items={eData.eyeliner} color={C.pink} />
+          <ResultSection title="🎨 Sombras" items={eData.eyeshadow} color={C.gold} />
+          <ResultSection title="💡 Tips Especiales" items={eData.tips} color={C.accent} />
+
+          {/* Eye metrics */}
+          {eyeResult?.features && (
+            <div style={{
+              background: C.card, borderRadius: 14, padding: '14px 16px', marginTop: 12,
+            }}>
+              <p style={{ fontSize: 12, fontWeight: 600, color: C.textSoft, marginBottom: 8 }}>📊 Métricas del ojo</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
+                {[
+                  { label: 'EAR', value: eyeResult.features.ear },
+                  { label: 'Ángulo', value: `${eyeResult.features.cornerAngle}°` },
+                  { label: 'Capucha', value: eyeResult.features.hoodScore },
+                ].map(m => (
+                  <div key={m.label} style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: C.pink }}>{m.value}</div>
+                    <div style={{ fontSize: 10, color: C.textSoft }}>{m.label}</div>
+                  </div>
+                ))}
+              </div>
+              {eyeResult.spacing !== 'proporcional' && (
+                <p style={{ fontSize: 11, color: C.gold, textAlign: 'center', marginTop: 8 }}>
+                  👀 Tus ojos están ligeramente {eyeResult.spacing === 'juntos' ? 'juntos' : 'separados'}
+                  {eyeResult.spacing === 'juntos'
+                    ? ' — ilumina el lagrimal y oscurece la esquina externa'
+                    : ' — oscurece el lagrimal y no alargues demasiado el delineado'}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ═══ COMBINED TAB ═══ */}
+      {resultsTab === 'combined' && fData && eData && (
+        <div style={{ padding: '0 20px' }}>
+          <div style={{
+            background: `linear-gradient(135deg, ${C.accentSoft}, rgba(212,116,140,0.1))`,
+            borderRadius: 16, padding: '18px 16px', marginBottom: 16,
+          }}>
+            <p style={{ fontSize: 14, fontWeight: 700, marginBottom: 8, color: C.text }}>
+              {fData.emoji} {fData.title} + {eData.emoji} {eData.title}
+            </p>
+            {combinedTip ? (
+              <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6 }}>{combinedTip}</p>
+            ) : (
+              <p style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.6 }}>
+                Para tu combinación de {fData.title.toLowerCase()} con {eData.title.toLowerCase()},
+                aplica las técnicas de contorno para tu tipo de rostro y adapta el maquillaje de ojos
+                según la forma específica de tus ojos.
+              </p>
+            )}
+          </div>
+
+          {/* Quick combined tips */}
+          <div style={{ background: C.card, borderRadius: 14, padding: '16px', marginBottom: 12 }}>
+            <p style={{ fontSize: 13, fontWeight: 700, color: C.accent, marginBottom: 10 }}>💄 Tu Look Personalizado</p>
+
+            <TipRow icon="📐" label="Contorno" text={fData.contourZones} />
+            <TipRow icon="✏️" label="Delineador" text={eData.eyeliner[0]} />
+            <TipRow icon="🎨" label="Sombras" text={eData.eyeshadow[0]} />
+            <TipRow icon="✂️" label="Corte ideal" text={fData.haircuts[0]} />
+            <TipRow icon="👔" label="Cuello" text={fData.necklines[0]} />
+          </div>
+
+          {/* Eye spacing extra tip */}
+          {eyeResult?.spacing !== 'proporcional' && (
+            <div style={{
+              background: C.card, borderRadius: 14, padding: '14px 16px',
+            }}>
+              <p style={{ fontSize: 12, color: C.gold, lineHeight: 1.5 }}>
+                👀 Tip extra para ojos {eyeResult.spacing}: {eyeResult.spacing === 'juntos'
+                  ? 'Usa sombra clara en el lagrimal para abrir y oscura en la esquina externa. Lleva las cejas ligeramente hacia afuera.'
+                  : 'Oscurece ligeramente el lagrimal para acercar visualmente. No extiendas el delineado demasiado hacia afuera.'}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Disclaimer */}
+      <p style={{
+        fontSize: 10, color: 'rgba(255,255,255,0.3)', textAlign: 'center',
+        padding: '24px 20px 0', lineHeight: 1.4,
+      }}>
+        Análisis basado en proporciones faciales y landmarks MediaPipe.
+        Los resultados son orientativos para mejorar tus técnicas de maquillaje.
+      </p>
+    </div>
+  );
+}
+
+// ─── Helper components ───
+
+function ResultSection({ title, items, color }) {
+  return (
+    <div style={{
+      background: C.card, borderRadius: 14, padding: '14px 16px', marginBottom: 12,
+    }}>
+      <p style={{ fontSize: 13, fontWeight: 700, color, marginBottom: 10 }}>{title}</p>
+      {items.map((item, i) => (
+        <p key={i} style={{ fontSize: 12, color: C.textSoft, lineHeight: 1.5, marginBottom: 4, paddingLeft: 6 }}>
+          • {item}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function TipRow({ icon, label, text }) {
+  return (
+    <div style={{ display: 'flex', gap: 8, marginBottom: 10, alignItems: 'flex-start' }}>
+      <span style={{ fontSize: 14, flexShrink: 0 }}>{icon}</span>
+      <div>
+        <span style={{ fontSize: 11, fontWeight: 700, color: C.textSoft }}>{label}: </span>
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', lineHeight: 1.4 }}>{text}</span>
       </div>
     </div>
   );
