@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { FaceLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
-import { LANDMARKS, getMeasurements, classifyFaceShape } from '../utils/faceClassifier';
+import { LANDMARKS, getMeasurements, extractFeatures, classifyFaceShape } from '../utils/faceClassifier';
 import { FACE_DATA } from '../data/appData';
 
 export default function FaceScanScreen({ onBack }) {
@@ -85,9 +85,10 @@ export default function FaceScanScreen({ onBack }) {
       const pts = results.faceLandmarks[0];
       drawOverlay(pts, canvas, video);
       const m = getMeasurements(pts, video.videoWidth, video.videoHeight);
-      setFrames(prev => { const n = [...prev, m]; if (n.length > 30) n.shift(); return n; });
+      const feat = extractFeatures(pts);
+      setFrames(prev => { const n = [...prev, { m, feat, lm: pts }]; if (n.length > 30) n.shift(); return n; });
       setDebugInfo({
-        whr: (m.cheekboneWidth / m.faceLength).toFixed(3),
+        whr: feat ? feat.f1_whr.toFixed(3) : (m.cheekboneWidth / m.faceLength).toFixed(3),
         fw: m.foreheadWidth.toFixed(0), cw: m.cheekboneWidth.toFixed(0),
         jw: m.jawlineWidth.toFixed(0), fl: m.faceLength.toFixed(0),
       });
@@ -133,15 +134,34 @@ export default function FaceScanScreen({ onBack }) {
   const analyze = () => {
     if (framesRef.current.length < 10) { setStatus('Necesito más datos. Mantén la posición...'); return; }
     setPhase('analyzing');
-    const f = framesRef.current;
-    const avg = {
-      faceLength: f.reduce((s, x) => s + x.faceLength, 0) / f.length,
-      foreheadWidth: f.reduce((s, x) => s + x.foreheadWidth, 0) / f.length,
-      cheekboneWidth: f.reduce((s, x) => s + x.cheekboneWidth, 0) / f.length,
-      jawlineWidth: f.reduce((s, x) => s + x.jawlineWidth, 0) / f.length,
-    };
-    const res = classifyFaceShape(avg);
-    setTimeout(() => { stopCamera(); setResult(res); setPhase('result'); }, 1200);
+    const frames = framesRef.current;
+    
+    // Average all 19 features across collected frames for stability
+    const validFeats = frames.filter(fr => fr.feat !== null).map(fr => fr.feat);
+    
+    if (validFeats.length >= 5) {
+      // Use full 19-feature classification (v2)
+      const featureKeys = Object.keys(validFeats[0]).filter(k => !k.startsWith('_'));
+      const avgFeat = {};
+      for (const key of featureKeys) {
+        avgFeat[key] = validFeats.reduce((sum, f) => sum + f[key], 0) / validFeats.length;
+      }
+      // Keep raw from last frame for display
+      avgFeat._raw = validFeats[validFeats.length - 1]._raw;
+      const res = classifyFaceShape(avgFeat);
+      setTimeout(() => { stopCamera(); setResult(res); setPhase('result'); }, 1200);
+    } else {
+      // Fallback to basic measurements if features failed
+      const f = frames.map(fr => fr.m);
+      const avg = {
+        faceLength: f.reduce((s, x) => s + x.faceLength, 0) / f.length,
+        foreheadWidth: f.reduce((s, x) => s + x.foreheadWidth, 0) / f.length,
+        cheekboneWidth: f.reduce((s, x) => s + x.cheekboneWidth, 0) / f.length,
+        jawlineWidth: f.reduce((s, x) => s + x.jawlineWidth, 0) / f.length,
+      };
+      const res = classifyFaceShape(avg);
+      setTimeout(() => { stopCamera(); setResult(res); setPhase('result'); }, 1200);
+    }
   };
 
   /* ═══════════ RESULT SCREEN ═══════════ */
