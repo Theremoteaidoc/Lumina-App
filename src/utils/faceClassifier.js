@@ -28,10 +28,10 @@ export const LANDMARKS = {
   // TOP of face (hairline approximation)
   hairline: 10,
   
-  // FOREHEAD zone - widest boundary points at forehead level
-  // Using points roughly at eyebrow height on the face boundary
-  foreheadLeft: 21,      // Left face boundary at forehead level
-  foreheadRight: 251,    // Right face boundary at forehead level
+  // FOREHEAD zone - temple to temple (true forehead width)
+  // Landmarks 54/284 are at the temporal region, above the eyebrows
+  foreheadLeft: 54,      // Left temple
+  foreheadRight: 284,    // Right temple
   
   // CHEEKBONE zone - widest boundary points at cheek level
   // These are the true zygomatic arch points on the face contour
