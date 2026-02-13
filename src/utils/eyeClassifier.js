@@ -1,31 +1,30 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Eye Shape Classification — MediaPipe Landmarks
+   Eye Shape Classification v2 — MediaPipe Landmarks
    
    Based on: "AI-Driven Makeup Suggestions Leveraging MediaPipe Face
    Landmarks For Eye Shape Detection" (Technomedia Journal, 2024)
+   + "Eye-makeup Guidance System" (JAIST thesis)
    
-   Features used:
-   1. EAR (Eye Aspect Ratio) — height/width ratio of eye opening
-   2. Eye Corner Angle — tilt of outer corner (up/down/straight)
-   3. Iris Visibility — how much white shows around iris
-   4. Eye Openness — crease visibility (hooded detection)
-   
-   Classifications: almendra, redondo, rasgado, caido, encapotado
+   v2 FIX: Almond was always winning because its scoring ranges
+   overlapped with every other shape. Now uses PRIORITY-BASED
+   exclusive classification — checks distinctive shapes first,
+   almendra is the fallback for "normal" eyes.
    ═══════════════════════════════════════════════════════════════════ */
 
 // MediaPipe eye landmark indices
 const RIGHT_EYE = {
-  // Outline points (upper + lower lid)
   outline: [33, 7, 163, 144, 145, 153, 154, 155, 133, 173, 157, 158, 159, 160, 161, 246],
-  // Key 6 points for EAR (like the academic paper)
-  innerCorner: 133,    // p1 — inner canthus
-  outerCorner: 33,     // p4 — outer canthus
-  upperLid1: 159,      // p2 — upper eyelid center
-  upperLid2: 158,      // p3 — upper eyelid outer
-  lowerLid1: 145,      // p5 — lower eyelid center
-  lowerLid2: 153,      // p6 — lower eyelid outer
-  // Brow point (for hooded detection)
+  innerCorner: 133,
+  outerCorner: 33,
+  upperLid1: 159,     // upper eyelid center (top of eye)
+  upperLid2: 158,     // upper eyelid outer
+  upperLid3: 160,     // upper eyelid inner
+  lowerLid1: 145,     // lower eyelid center (bottom of eye)
+  lowerLid2: 153,     // lower eyelid outer
+  lowerLid3: 144,     // lower eyelid inner
   browCenter: 105,
+  browInner: 70,
+  browOuter: 46,
 };
 
 const LEFT_EYE = {
@@ -34,146 +33,141 @@ const LEFT_EYE = {
   outerCorner: 263,
   upperLid1: 386,
   upperLid2: 385,
+  upperLid3: 387,
   lowerLid1: 374,
   lowerLid2: 380,
+  lowerLid3: 373,
   browCenter: 334,
+  browInner: 300,
+  browOuter: 276,
 };
 
-// Iris landmarks (indices 468-477, need refine_landmarks=true)
 const LEFT_IRIS = [468, 469, 470, 471, 472];
 const RIGHT_IRIS = [473, 474, 475, 476, 477];
 
-function d(a, b) {
+function dist(a, b) {
   return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
 }
 
 /**
- * Calculate Eye Aspect Ratio (EAR)
- * EAR = (|p2-p6| + |p3-p5|) / (2 * |p1-p4|)
- * Higher EAR = more open/round eye
- * Lower EAR = narrower/more almond eye
+ * EAR — 3 vertical measurements averaged / horizontal
  */
 function calcEAR(lm, eye) {
-  const A = d(lm[eye.upperLid1], lm[eye.lowerLid1]); // vertical 1
-  const B = d(lm[eye.upperLid2], lm[eye.lowerLid2]); // vertical 2
-  const C = d(lm[eye.innerCorner], lm[eye.outerCorner]); // horizontal
-  return C > 0 ? (A + B) / (2 * C) : 0.25;
+  const v1 = dist(lm[eye.upperLid3], lm[eye.lowerLid3]);
+  const v2 = dist(lm[eye.upperLid1], lm[eye.lowerLid1]);
+  const v3 = dist(lm[eye.upperLid2], lm[eye.lowerLid2]);
+  const h  = dist(lm[eye.innerCorner], lm[eye.outerCorner]);
+  return h > 0 ? (v1 + v2 + v3) / (3 * h) : 0.25;
 }
 
 /**
- * Calculate outer corner angle (tilt)
- * Positive = upturned, Negative = downturned, ~0 = straight
+ * Corner angle: inner→outer tilt in degrees
+ * Positive = upturned, Negative = downturned
  */
 function calcCornerAngle(lm, eye) {
   const inner = lm[eye.innerCorner];
   const outer = lm[eye.outerCorner];
   const dx = outer.x - inner.x;
-  const dy = outer.y - inner.y;
-  // Angle in degrees — negative dy means outer corner is higher (upturned)
-  return Math.atan2(-dy, Math.abs(dx)) * (180 / Math.PI);
+  // MediaPipe Y goes DOWN, so inner.y - outer.y = positive when outer is higher
+  const dy = inner.y - outer.y;
+  return Math.atan2(dy, Math.abs(dx)) * (180 / Math.PI);
 }
 
 /**
- * Detect hooded eyes by measuring lid-to-brow distance
- * If brow is very close to upper lid, the eye is hooded
+ * Hood score: brow-to-lid distance / eye opening height
+ * Lower = more hooded
  */
-function calcHoodedScore(lm, eye) {
+function calcHoodScore(lm, eye) {
   const browPt = lm[eye.browCenter];
   const upperLidPt = lm[eye.upperLid1];
-  const eyeHeight = d(lm[eye.upperLid1], lm[eye.lowerLid1]);
-  const browToLid = d(browPt, upperLidPt);
-  // Ratio of brow-to-lid distance vs eye height
-  // Lower ratio = more hooded
-  return eyeHeight > 0 ? browToLid / eyeHeight : 2;
+  const lowerLidPt = lm[eye.lowerLid1];
+  const eyeOpen = dist(upperLidPt, lowerLidPt);
+  const browToLid = dist(browPt, upperLidPt);
+  return eyeOpen > 0 ? browToLid / eyeOpen : 2;
 }
 
 /**
- * Classify eye shape from MediaPipe landmarks
- * @param {Array} lm - 478 MediaPipe landmarks
- * @returns {Object} { shape, shapeName, features, confidence }
+ * Classify eye shape — PRIORITY-BASED exclusive logic
+ * Checks most distinctive shapes first, almendra is fallback
  */
 export function classifyEyeShape(lm) {
   if (!lm || lm.length < 468) return null;
 
-  // Calculate features for both eyes
-  const earR = calcEAR(lm, RIGHT_EYE);
-  const earL = calcEAR(lm, LEFT_EYE);
-  const ear = (earR + earL) / 2;
+  // Average features from both eyes
+  const ear = (calcEAR(lm, RIGHT_EYE) + calcEAR(lm, LEFT_EYE)) / 2;
+  const cornerAngle = (calcCornerAngle(lm, RIGHT_EYE) + calcCornerAngle(lm, LEFT_EYE)) / 2;
+  const hoodScore = (calcHoodScore(lm, RIGHT_EYE) + calcHoodScore(lm, LEFT_EYE)) / 2;
 
-  const angleR = calcCornerAngle(lm, RIGHT_EYE);
-  const angleL = calcCornerAngle(lm, LEFT_EYE);
-  const cornerAngle = (angleR + angleL) / 2;
-
-  const hoodR = calcHoodedScore(lm, RIGHT_EYE);
-  const hoodL = calcHoodedScore(lm, LEFT_EYE);
-  const hoodScore = (hoodR + hoodL) / 2;
-
-  // Eye width ratio (width / face width approximation)
-  const eyeWidthR = d(lm[RIGHT_EYE.innerCorner], lm[RIGHT_EYE.outerCorner]);
-  const eyeWidthL = d(lm[LEFT_EYE.innerCorner], lm[LEFT_EYE.outerCorner]);
-  
-  // Distance between eyes (for close-set / wide-set)
-  const interEye = d(lm[RIGHT_EYE.innerCorner], lm[LEFT_EYE.innerCorner]);
+  // Eye spacing
+  const eyeWidthR = dist(lm[RIGHT_EYE.innerCorner], lm[RIGHT_EYE.outerCorner]);
+  const eyeWidthL = dist(lm[LEFT_EYE.innerCorner], lm[LEFT_EYE.outerCorner]);
+  const interEye = dist(lm[RIGHT_EYE.innerCorner], lm[LEFT_EYE.innerCorner]);
   const avgEyeWidth = (eyeWidthR + eyeWidthL) / 2;
   const eyeSpacingRatio = avgEyeWidth > 0 ? interEye / avgEyeWidth : 1;
 
-  // === Classification scoring ===
-  const scores = {
-    almendra: 0,    // Almond — balanced, slightly tapered
-    redondo: 0,     // Round — high EAR, open
-    rasgado: 0,     // Upturned — high corner angle
-    caido: 0,       // Downturned — low corner angle
-    encapotado: 0,  // Hooded — low hood score
-  };
+  // ═══ PRIORITY CLASSIFICATION ═══
+  let shape = 'almendra';
+  let confidence = 50;
 
-  // ALMOND: moderate EAR (0.22-0.32), slight upward tilt, visible crease
-  if (ear >= 0.20 && ear <= 0.32) scores.almendra += 3;
-  if (cornerAngle >= -3 && cornerAngle <= 8) scores.almendra += 2;
-  if (hoodScore >= 1.2) scores.almendra += 2;
+  // 1️⃣ ENCAPOTADO (hooded) — most distinctive: brow covers lid
+  if (hoodScore < 1.0) {
+    shape = 'encapotado';
+    confidence = 80;
+  } else if (hoodScore < 1.3 && ear < 0.27) {
+    shape = 'encapotado';
+    confidence = 60;
+  }
 
-  // ROUND: high EAR (>0.30), more circular opening
-  if (ear > 0.30) scores.redondo += 4;
-  if (ear > 0.35) scores.redondo += 2;
-  if (cornerAngle >= -4 && cornerAngle <= 4) scores.redondo += 2;
-  if (hoodScore >= 1.3) scores.redondo += 1;
+  // 2️⃣ RASGADO (upturned) — strong positive corner angle
+  else if (cornerAngle > 7) {
+    shape = 'rasgado';
+    confidence = Math.min(55 + Math.round(cornerAngle * 2), 85);
+  } else if (cornerAngle > 4 && ear < 0.30) {
+    shape = 'rasgado';
+    confidence = 55;
+  }
 
-  // UPTURNED (rasgado): high positive corner angle
-  if (cornerAngle > 6) scores.rasgado += 4;
-  if (cornerAngle > 10) scores.rasgado += 2;
-  if (ear >= 0.20 && ear <= 0.32) scores.rasgado += 2;
+  // 3️⃣ CAÍDO (downturned) — negative corner angle
+  else if (cornerAngle < -4) {
+    shape = 'caido';
+    confidence = Math.min(55 + Math.round(Math.abs(cornerAngle) * 2), 85);
+  } else if (cornerAngle < -2 && ear >= 0.24) {
+    shape = 'caido';
+    confidence = 50;
+  }
 
-  // DOWNTURNED (caído): negative corner angle
-  if (cornerAngle < -3) scores.caido += 4;
-  if (cornerAngle < -6) scores.caido += 2;
-  if (ear >= 0.20 && ear <= 0.30) scores.caido += 2;
+  // 4️⃣ REDONDO (round) — high EAR + fairly straight
+  else if (ear > 0.32 && Math.abs(cornerAngle) < 5) {
+    shape = 'redondo';
+    confidence = Math.min(55 + Math.round((ear - 0.28) * 150), 85);
+  } else if (ear > 0.35) {
+    shape = 'redondo';
+    confidence = 70;
+  }
 
-  // HOODED (encapotado): low brow-to-lid ratio
-  if (hoodScore < 1.1) scores.encapotado += 4;
-  if (hoodScore < 0.9) scores.encapotado += 2;
-  if (ear < 0.26) scores.encapotado += 2;
-
-  // Find winner
-  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-  const [shape, topScore] = sorted[0];
-  const total = sorted.reduce((s, [, v]) => s + v, 0) || 1;
-  const confidence = Math.min(Math.round((topScore / total) * 100), 90);
+  // 5️⃣ ALMENDRA (almond) — everything else (balanced features)
+  else {
+    shape = 'almendra';
+    const earOk = ear >= 0.22 && ear <= 0.32;
+    const angleOk = Math.abs(cornerAngle) <= 4;
+    const hoodOk = hoodScore >= 1.3;
+    confidence = 40 + [earOk, angleOk, hoodOk].filter(Boolean).length * 15;
+  }
 
   return {
     shape,
     confidence,
-    allScores: Object.fromEntries(sorted),
+    allScores: { [shape]: confidence },
     features: {
       ear: ear.toFixed(3),
       cornerAngle: cornerAngle.toFixed(1),
       hoodScore: hoodScore.toFixed(2),
       eyeSpacing: eyeSpacingRatio.toFixed(2),
     },
-    // Spacing classification (secondary trait)
     spacing: eyeSpacingRatio < 0.85 ? 'juntos' : eyeSpacingRatio > 1.15 ? 'separados' : 'proporcional',
   };
 }
 
-// Export landmark indices for overlay drawing
 export const EYE_LANDMARKS = {
   RIGHT_EYE,
   LEFT_EYE,
