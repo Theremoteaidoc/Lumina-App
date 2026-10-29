@@ -1,25 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Bebas+Neue&family=Caveat:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+
+/* ── Collage editor fonts ── loaded above via Google Fonts; used only by
+   CollageScreen's COLLAGE_FONTS list (src/components/CollageScreen.jsx). */
 
 :root {
-  --bg: #FDF2F0;
+  /* Backgrounds */
+  --bg: #FFF6F8;
   --bg-card: #FFFFFF;
-  --bg-soft: #FAEAE6;
-  --pink: #E8A0B4;
-  --pink-light: #F5C6D0;
-  --pink-dark: #C27A8E;
-  --rose: #B5707E;
-  --rose-dark: #8B4A5E;
-  --cream: #FFF8F5;
+  --bg-soft: #FFD9E1;
+  --cream: #FFFBFC;
+
+  /* Pinks */
+  --pink: #FA93A5;
+  --pink-light: #FFC4D1;
+  --pink-dark: #E36F88;
+
+  /* Mauves */
+  --rose: #82626E;
+  --rose-dark: #5A434D;
+
+  /* Text */
+  --text: #2A1B22;
+  --text-light: #6A4F5A;
+  --text-muted: #9F838E;
+
+  /* Functional */
   --gold: #E8B931;
-  --text: #5A3D4A;
-  --text-light: #9B7A8A;
-  --text-muted: #C4A4B0;
   --green: #5CB185;
-  --border: #F0D4D4;
-  --shadow: 0 2px 20px rgba(181, 112, 126, 0.1);
-  --shadow-hover: 0 4px 30px rgba(181, 112, 126, 0.18);
+
+  /* Border */
+  --border: #FFD9E1;
+
+  /* Shadows */
+  --shadow: 0 2px 20px rgba(130, 98, 110, 0.10);
+  --shadow-hover: 0 4px 30px rgba(130, 98, 110, 0.18);
+
+  /* Gradient estándar para cards CTA — diagonal oscuro→claro */
+  --gradient-card: linear-gradient(135deg, #FFC4D1 0%, #FFD9E1 60%, #FFF6F8 100%);
+  --gradient-card-hover: linear-gradient(135deg, #FA93A5 0%, #FFC4D1 60%, #FFD9E1 100%);
+
+  /* Safe areas */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Toggle */
+  --toggle-width: 50px;
+  --toggle-height: 28px;
+  --toggle-knob: 22px;
+
+  /* Display typography — italic serif for elegant titles, greetings, result names */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display-style: italic;
+  --font-display-weight: 500;
 }
 
 * {
@@ -80,8 +112,8 @@ body {
   border-radius: 16px;
   padding: 16px 32px;
   color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
   font-weight: 500;
   cursor: pointer;
   width: 100%;
@@ -97,28 +129,28 @@ body {
   border-radius: 16px;
   padding: 16px 32px;
   color: var(--rose);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
   font-weight: 500;
   cursor: pointer;
   width: 100%;
 }
 
 .option-btn {
-  background: white;
+  background: var(--gradient-card);
   border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 15px 18px;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  color: var(--rose);
   transition: all 0.2s ease;
 }
-.option-btn:active { border-color: var(--pink); background: var(--cream); }
-.option-btn.selected { border-color: var(--pink); background: var(--bg-soft); }
+.option-btn:active { border-color: var(--pink); background: var(--gradient-card-hover); }
+.option-btn.selected { border-color: var(--pink); background: var(--gradient-card-hover); }
 
 /* Progress dots */
 .progress-dot {
@@ -135,3 +167,13 @@ body {
 
 .float { animation: float 3s ease-in-out infinite; }
 @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes scanLine { 0%,100% { transform: translateY(-100%); } 50% { transform: translateY(100%); } }
+
+/* Apply elegant italic display style to titles, greetings, result names */
+.font-display {
+  font-family: var(--font-display);
+  font-style: var(--font-display-style);
+  font-weight: var(--font-display-weight);
+}

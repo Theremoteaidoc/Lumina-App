@@ -1,0 +1,261 @@
+{
+  "domain": "visagism",
+  "sources": [
+    {
+      "id": "vis_2003_001",
+      "title": "Visagismo: harmonia e estética (obra fundacional, posteriormente ampliada como 'Visagismo Integrado: identidade, estilo e beleza')",
+      "authors": [
+        "Hallawell, Philip Charles"
+      ],
+      "year": 2003,
+      "type": "book",
+      "doi_or_url": "https://www.editorasenacsp.com.br/livro/visagismo-harmonia-estetica-6-edicao",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional del visagismo moderno publicada por Editora Senac São Paulo. Sistematiza el campo combinando análisis morfológico facial con interpretación de temperamento basada en los cuatro tipos hipocráticos. La versión ampliada 'Visagismo Integrado' fue publicada en 2009. Es la referencia canónica internacional del visagismo profesional.",
+      "reliability_note": "Libro profesional, no peer-reviewed, pero es la obra fundacional del campo y referencia obligada en escuelas de peluquería y estética en Latinoamérica y Europa. Su valor es como sistematización de práctica profesional, no como evidencia científica."
+    },
+    {
+      "id": "vis_undated_002",
+      "title": "O Método Philip Hallawell de Análise do Temperamento (sitio oficial Visagismo.com.br)",
+      "authors": [
+        "Hallawell, Philip Charles"
+      ],
+      "year": null,
+      "type": "professional_website",
+      "doi_or_url": "https://visagismo.com.br/index.php/pt/visagismo-pt-br/sobre-o-visagismo/o-metodo-de-analise-do-temperamento",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Sitio oficial del método Hallawell donde se describe la metodología de análisis de temperamento. Aplica el sistema hipocrático de cuatro temperamentos (sanguíneo, colérico, melancólico, flemático) al análisis de líneas y formas faciales arquetípicas.",
+      "reliability_note": "Fuente primaria del método (sitio del autor), no peer-reviewed. Útil para describir la metodología; no aporta evidencia científica externa."
+    },
+    {
+      "id": "vis_2021_003",
+      "title": "Automatic Face Shape Classification Via Facial Landmark Measurements",
+      "authors": [
+        "Marinescu, A.-I."
+      ],
+      "year": 2021,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.24193/subbi.2021.2.05",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Studia Universitatis Babeș-Bolyai Informatica, 66(2), 69-78. Propone un sistema automático de clasificación de forma facial usando medidas de landmarks faciales y un clasificador Naive Bayes. Distingue 7 categorías: oval, round, rectangle, square, heart, diamond y triangle. Justifica el uso para sistemas recomendadores de peinado y gafas.",
+      "reliability_note": "Peer-reviewed en revista universitaria de informática. Metodología sólida en visión por computador; las categorías son las estándar en literatura técnica de visagismo aplicado."
+    },
+    {
+      "id": "vis_2019_004",
+      "title": "Real-time Facial Surface Geometry from Monocular Video on Mobile GPUs",
+      "authors": [
+        "Kartynnik, Yury",
+        "Ablavatski, Artsiom",
+        "Grishchenko, Ivan",
+        "Grundmann, Matthias"
+      ],
+      "year": 2019,
+      "type": "conference_paper_arxiv",
+      "doi_or_url": "https://arxiv.org/abs/1907.06724",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Paper técnico de Google que describe la arquitectura de MediaPipe Face Mesh, capaz de generar 468 landmarks 3D del rostro en tiempo real (100-1000+ FPS) desde una sola cámara. Es la base técnica usada por la mayoría de apps de análisis facial actuales, incluida la posibilidad de implementación en Lumina.",
+      "reliability_note": "Paper técnico de Google Research presentado en CVPR Workshop 2019. No es estudio clínico sino implementación técnica. Es el estándar de facto en detección facial móvil."
+    },
+    {
+      "id": "vis_2020_005",
+      "title": "Faciometrics: A Practical Guide for Orofacial Harmonization",
+      "authors": [
+        "Cozer, Tatiany Bertollo",
+        "Espaladori, Marcela Carvalho",
+        "Alves e Silva, Micena Roberta Miranda",
+        "Scardua, Maria Tereza"
+      ],
+      "year": 2020,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.30654/MJDE.10014",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Mathews Journal of Dermatology 4(1):14. Describe el sistema faciométrico para análisis de armonía orofacial: divisiones en tercios y quintos, ratios ancho-alto (70-75%), proporciones dentales y de labios. Es una guía clínica práctica para profesionales de armonización orofacial.",
+      "reliability_note": "Peer-reviewed pero en revista de acceso abierto con factor de impacto moderado. Sus mediciones son aplicaciones prácticas de cánones establecidos; no son evidencia experimental sino sistematización clínica."
+    },
+    {
+      "id": "vis_2021_006",
+      "title": "Proportions of the Aesthetic Face (libro de referencia clásica)",
+      "authors": [
+        "Powell, Nelson",
+        "Humphreys, Brian"
+      ],
+      "year": 1984,
+      "type": "book",
+      "doi_or_url": "https://books.google.com/books/about/Proportions_of_the_Aesthetic_Face.html?id=ZV1sAAAAMAAJ",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional de 1984 que sistematizó el análisis estético facial en cirugía plástica facial usando tercios verticales y quintos horizontales. Sigue siendo referencia en literatura quirúrgica aunque su validez universal ha sido cuestionada por estudios posteriores.",
+      "reliability_note": "Libro clínico de referencia histórica. Sus proporciones son guía profesional pero no representan validez estadística universal según Farkas (1985) y estudios posteriores."
+    },
+    {
+      "id": "vis_2008_007",
+      "title": "Marquardt's Phi Mask: Pitfalls of Relying on Fashion Models and the Golden Ratio to Describe a Beautiful Face",
+      "authors": [
+        "Holland, E."
+      ],
+      "year": 2008,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1007/s00266-007-9080-z",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Aesthetic Plastic Surgery 32(2):200-8 (PMID 18175168). Crítica metodológica seminal a la máscara phi de Marquardt: demuestra que es inadecuada para poblaciones no europeas (especialmente africanas subsaharianas y asiáticas orientales) y que representa proporciones de mujeres blancas masculinizadas tipo modelo de pasarela.",
+      "reliability_note": "Peer-reviewed en revista de impacto (Aesthetic Plastic Surgery, Springer). Es la crítica académica seminal a la máscara de Marquardt y referencia obligada al discutir proporción áurea facial."
+    },
+    {
+      "id": "vis_2016_008",
+      "title": "Marquardt's Facial Golden Decagon Mask and Its Fitness with South Indian Facial Traits",
+      "authors": [
+        "Veerala, G.",
+        "Gandikota, C.S.",
+        "Yadagiri, P.K.",
+        "Manne, R.",
+        "Juvvadi, S.R.",
+        "Farah, T.",
+        "Vattipelli, S.",
+        "Gumbelli, S."
+      ],
+      "year": 2016,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.7860/JCDR/2016/16791.7593",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Journal of Clinical and Diagnostic Research. Estudio en 150 individuos sudindios (75 hombres, 75 mujeres) que evaluó ajuste con la máscara phi de Marquardt. Encontraron anchuras intercigomáticas y intergonial mayores que la máscara y altura mediofacial menor. Concluyen que las diferencias étnicas no pueden ignorarse y recomiendan máscaras específicas por etnia.",
+      "reliability_note": "Peer-reviewed. Estudio observacional con tamaño muestral moderado. Refuerza la crítica de Holland (2008) con datos de otra población."
+    },
+    {
+      "id": "vis_2024_009",
+      "title": "The golden ratio—dispelling the myth",
+      "authors": [
+        "Naini, Farhad B."
+      ],
+      "year": 2024,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1186/s40902-024-00411-2",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Maxillofacial Plastic and Reconstructive Surgery 46(1):2 (PMID 38228978). Revisión crítica que argumenta que no hay evidencia convincente de que la proporción áurea esté ligada a proporciones humanas idealizadas o belleza facial. Demuestra que Leonardo da Vinci y los antiguos griegos probablemente nunca usaron phi como se afirma, y rechaza su uso en planificación quirúrgica.",
+      "reliability_note": "Peer-reviewed, reciente (2024) y de un autor de referencia en cirugía maxilofacial. Es la crítica académica más actualizada al mito del golden ratio facial."
+    },
+    {
+      "id": "vis_2021_010",
+      "title": "Historical Tools of Anthropometric Facial Assessment: A Systematic Raw Data Analysis on the Applicability of the Neoclassical Canons and Golden Ratio",
+      "authors": [
+        "Khoshab, Nima",
+        "Donnelly, Megan R.",
+        "Sayadi, Lohrasb R.",
+        "Vyas, Raj M.",
+        "Banyard, Derek A."
+      ],
+      "year": 2021,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1093/asj/sjab339",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Aesthetic Surgery Journal 42(1):NP1-NP10. Análisis sistemático que encontró variabilidad interétnica significativa en mediciones phi y concluye que ningún grupo étnico/género mostró aproximación consistente al 'ideal' de cánones neoclásicos ni a phi. Recomienda no basar la educación contemporánea en cirugía estética en estándares centenarios.",
+      "reliability_note": "Peer-reviewed en revista de alto impacto en cirugía estética. Estudio metodológicamente robusto que sintetiza datos multipoblacionales."
+    },
+    {
+      "id": "vis_2025_011",
+      "title": "The Harmony and Balance of the Facial Organs for a Natural Face Beauty: A Novel Perspective for Cosmetic/Aesthetic Interventions",
+      "authors": [
+        "Babacan, S.",
+        "Deniz, M."
+      ],
+      "year": 2025,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.3390/medicina61060958",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Medicina (Kaunas) 61(6):958. Desarrolla ecuaciones de regresión lineal para predecir proporciones faciales individualizadas en lugar de aplicar estándares universales. Analiza 100 adultos jóvenes con 40 parámetros faciales. Argumenta que la armonía y balance varían según norma poblacional y de género, no según protocolos estandarizados.",
+      "reliability_note": "Peer-reviewed, reciente (2025), en revista MDPI Medicina indexada. Tamaño muestral moderado y población homogénea son limitaciones que los propios autores reconocen."
+    },
+    {
+      "id": "vis_2025_012",
+      "title": "Further evidence that averageness and femininity, rather than symmetry and masculinity, predict facial attractiveness judgments",
+      "authors": [
+        "Lee, P.",
+        "Li, J.",
+        "Rafiee, Y.",
+        "Jones, B.C.",
+        "Shiramizu, V.K.M."
+      ],
+      "year": 2025,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1038/s41598-025-86974-0",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Scientific Reports 15(1):5498 (PMID 39953080). Usa modelos lineales mixtos para evaluar contribuciones independientes de averageness, feminidad, simetría y masculinidad al atractivo facial. Encuentra que averageness predice atractivo en rostros masculinos y femeninos, y feminidad en rostros femeninos; ni masculinidad ni simetría tuvieron efecto significativo.",
+      "reliability_note": "Peer-reviewed reciente (2025) en Scientific Reports (Nature). Metodología estadística sólida. Es la evidencia más actualizada sobre predictores reales de atractivo facial."
+    },
+    {
+      "id": "vis_2014_013",
+      "title": "Cross-Cultural Agreement in Facial Attractiveness Preferences: The Role of Ethnicity and Gender",
+      "authors": [
+        "Coetzee, V.",
+        "Greeff, J.M.",
+        "Stephen, I.D.",
+        "Perrett, D.I."
+      ],
+      "year": 2014,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0099629",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en PLOS ONE 9(7):e99629. Estudio cross-cultural con observadores escoceses blancos y sudafricanos negros. Encuentra acuerdo significativo en juicios de atractivo (r=0.623) pero mayor consenso para rostros del grupo étnico propio. Observadores africanos pesaron más color de piel; observadores europeos pesaron más forma facial.",
+      "reliability_note": "Peer-reviewed en PLOS ONE, acceso abierto, alto número de citas. Referencia estándar sobre diferencias culturales y de familiaridad en percepción de atractivo facial."
+    },
+    {
+      "id": "vis_2007_014",
+      "title": "Perceived health contributes to the attractiveness of facial symmetry, averageness, and sexual dimorphism",
+      "authors": [
+        "Rhodes, Gillian",
+        "Yoshikawa, Sakiko",
+        "Palermo, Romina",
+        "Simmons, Leigh W.",
+        "Peters, Marianne",
+        "Lee, Kieran",
+        "Halberstadt, Jamin",
+        "Crawford, John R."
+      ],
+      "year": 2007,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1068/p5712",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Perception 36(8):1244-52 (PMID 17972486). Estudio clásico que demuestra que gran parte del atractivo asociado a simetría facial se explica por percepción de salud, no por preferencia geométrica directa. Es referencia obligada para entender los factores subyacentes a atractivo facial.",
+      "reliability_note": "Peer-reviewed, altamente citado, autores referentes en psicología del atractivo facial. Estudio robusto y replicado."
+    },
+    {
+      "id": "vis_2018_015",
+      "title": "Craniofacial Changes in Children-Birth to Late Adolescence",
+      "authors": [
+        "Varios autores (revisión)"
+      ],
+      "year": 2018,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://www.arcjournals.org/pdfs/ajfs/v4-i1/1.pdf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en ARC Journal of Forensic Science 4(1). Revisión de cambios craneofaciales desde el nacimiento hasta adolescencia tardía. Documenta picos de velocidad de crecimiento (10-12 años mujeres, 13.6-14.5 años hombres) y maduración mandibular (14 años mujeres, 16 años hombres).",
+      "reliability_note": "Revisión publicada en revista de acceso abierto especializada en ciencias forenses. Datos antropométricos consistentes con literatura ortodóntica establecida."
+    },
+    {
+      "id": "vis_2024_016",
+      "title": "Influence of BMI percentile on craniofacial morphology and development in adolescents",
+      "authors": [
+        "Lione, R.",
+        "et al."
+      ],
+      "year": 2024,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10783153/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio que demuestra que el IMC elevado en adolescentes se asocia con dimensiones faciales finales mayores. Relevante para entender que la forma facial percibida durante la adolescencia puede cambiar significativamente con composición corporal y crecimiento.",
+      "reliability_note": "Peer-reviewed, reciente. Estudio observacional; correlación con IMC no implica causalidad estricta sobre forma facial específica."
+    },
+    {
+      "id": "vis_2019_017",
+      "title": "Cómo aplicar la técnica del visagismo en maquillaje",
+      "authors": [
+        "Medina, Diego"
+      ],
+      "year": 2019,
+      "type": "professional_website",
+      "doi_or_url": "https://www.blog.cazcarra.com/tecnica-visagismo-en-maquillaje/",
+      "accessed_date": "2026-08-08",
+      "summary_es": "Guía práctica de la escuela de imagen Cazcarra sobre cómo aplicar el visagismo al maquillaje. Explica que el visagismo estudia las formas y proporciones del rostro para armonizar las facciones mediante sombreado e iluminación, y atribuye el concepto moderno al estilista francés Claude Juillard. Detalla técnicas de corrección por tipología facial (alargado, cuadrado, rectangular, redondo, triangular, hexagonal) con recomendaciones específicas de cejas, ojos, colorete y labios para cada forma.",
+      "reliability_note": "Blog de una escuela profesional de imagen y estética (Cazcarra Image School). No es peer-reviewed; material divulgativo/formativo aplicado, útil como referencia práctica de técnica de maquillaje según la forma del rostro."
+    }
+  ],
+  "last_updated": "2026-08-08"
+}

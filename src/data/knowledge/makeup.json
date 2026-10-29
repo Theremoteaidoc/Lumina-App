@@ -1,0 +1,287 @@
+{
+  "domain": "makeup",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "topics": [
+    {
+      "id": "makeup_foundation_match",
+      "title": "Cómo encontrar tu tono y subtono de base",
+      "summary_es": "La base correcta desaparece sobre la piel: no se nota ni más clara, ni más oscura, ni de otro color. Para encontrarla hay dos variables: el tono (qué tan clara u oscura es tu piel) y el subtono (la temperatura subyacente: cálido, frío o neutro). El tono se prueba en la mandíbula o el cuello —nunca en la mano, porque suele tener color distinto— y se valida con luz natural de día. El subtono se identifica observando si las venas de la muñeca se ven azules/moradas (frío), verdosas (cálido) o ambas (neutro), y confirmando con qué color de joyería favorece más (plata = frío, oro = cálido). Cuando el subtono coincide, la base se funde con la piel; cuando no, se ve grisácea, anaranjada o apagada.",
+      "key_findings_es": [
+        "Probar la base en la mandíbula bajo luz natural; la base correcta 'desaparece'.",
+        "El subtono permanece estable aunque la piel se broncee o se aclare con la estación.",
+        "Test de venas: azul/morado = frío, verde = cálido, mixto = neutro.",
+        "Un subtono mal elegido es la causa #1 de bases que se ven 'enmascaradas' o anaranjadas.",
+        "La piel humana forma un continuo de color, no categorías rígidas: a veces hay que mezclar dos tonos."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que pregunta cómo elegir su primera base",
+        "Usuaria cuya base se ve 'anaranjada' o 'gris' en fotos",
+        "Usuaria que cambia de marca y no sabe qué número pedir"
+      ],
+      "source_ids": ["mk_2006_009", "mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_application_order",
+      "title": "Orden correcto de aplicación de un look básico",
+      "summary_es": "Cada paso prepara o sella el siguiente. Una secuencia que funciona para principiantes: 1) skincare ligera (hidratante + SPF en el día), 2) primer si la piel lo necesita, 3) corrector en zonas puntuales y bajo el ojo, 4) base en capas finas desde el centro del rostro hacia afuera, 5) polvo solo donde brilla (zona T) si tu piel lo necesita, 6) cejas, 7) sombras y delineador, 8) máscara de pestañas, 9) contorno y rubor, 10) iluminador (puntos altos de pómulos, nariz, arco de cupido), 11) labial, 12) spray fijador. Trabajar en capas finas siempre supera a una capa gruesa.",
+      "key_findings_es": [
+        "La piel bien preparada (hidratada, con SPF) hace que cualquier base se vea mejor y dure más.",
+        "Capas finas duplicadas se ven más naturales que una capa única gruesa.",
+        "Aplicar polvo solo donde brilla evita el aspecto 'apagado' o 'envejecido'.",
+        "El orden cejas → ojos → cara → labios es el más usado en industria, pero algunos profesionales hacen los ojos primero para limpiar fallout sin arruinar la base."
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente aprendiendo su primera rutina completa",
+        "Usuaria que aplica todo y su maquillaje 'se cae' al mediodía",
+        "Usuaria con dudas sobre si va antes el corrector o la base"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_concealer_basics",
+      "title": "Corrector: cuándo, qué color y cómo aplicarlo",
+      "summary_es": "El corrector cumple dos funciones distintas: iluminar (bajo el ojo, centro del rostro) y camuflar (granitos, marcas rojas, ojeras oscuras). Para iluminar se usa medio tono más claro que la base, en forma de triángulo invertido bajo el ojo. Para camuflar marcas rojas se neutraliza con un corrector verde antes de aplicar el tono piel. Para ojeras moradas/azules se neutraliza con tono melocotón/naranja según la profundidad de la piel. Se difumina con dedo tibio o esponja húmeda. Aplicar poco producto y construir es mejor que cargar de golpe.",
+      "key_findings_es": [
+        "Iluminador bajo el ojo: medio tono más claro, no dos tonos (el blanco se ve 'reverse panda' en foto).",
+        "Verde neutraliza rojo; melocotón/naranja neutraliza azul/morado de ojeras.",
+        "Sellar con polvo translúcido solo si tiendes a que el corrector se cuartee.",
+        "Demasiado corrector bajo el ojo acentúa líneas finas y arrugas de expresión."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con ojeras genéticas oscuras",
+        "Usuaria con granitos rojos que quiere cubrir sin que se note",
+        "Usuaria cuyo corrector se cuartea a las pocas horas"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_contour_face_shape",
+      "title": "Contorno e iluminador según la forma del rostro",
+      "summary_es": "El contorno crea sombras y el iluminador atrae luz; juntos modelan la percepción del relieve facial. Las recomendaciones por forma son herramientas, no obligaciones: rostro ovalado (proporciones equilibradas, contorno suave bajo pómulos); rostro redondo (contorno en los lados de la frente y mandíbula para alargar); rostro cuadrado (suavizar esquinas de mandíbula y sienes); rostro corazón (contorno en sienes y punta del mentón); rostro alargado (contorno en la línea del cabello y bajo el mentón para acortar). Usar producto mate para sombras y un poco luminoso para highlight. La regla universal: difuminar hasta que no se vea dónde empieza el producto.",
+      "key_findings_es": [
+        "Contorno = sombra, debe ser MATE (no shimmer) para imitar una sombra real.",
+        "El contorno debe ser 1–2 tonos más oscuro que tu piel, no más.",
+        "Rostro ovalado se considera 'equilibrado'; suele necesitar menos contorno.",
+        "Difuminado defectuoso es la causa más común de que el contorno se vea 'sucio' o postizo.",
+        "La forma del rostro es una guía, no una regla; muchas personas se ven mejor sin contorno."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria experimentando con contorno por primera vez",
+        "Usuaria a quien el contorno se le ve 'a rayas' o sucio",
+        "Usuaria que quiere saber si necesita contornear su rostro"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_014"]
+    },
+    {
+      "id": "makeup_blush_placement",
+      "title": "Rubor: colocación según la forma del rostro",
+      "summary_es": "El rubor da vitalidad y calidez. Su colocación cambia el efecto óptico del rostro: aplicado en la 'manzana' (el punto más alto al sonreír) da apariencia juvenil y redondea; aplicado en línea diagonal hacia la sien estiliza y alarga; muy alto en los pómulos crea efecto lifting. Las pieles claras suelen favorecerse con rosas y melocotones; pieles medias con corales y terracota; pieles oscuras con frambuesa, ciruela y bronces intensos. Crema antes de polvo si quieres más duración; solo polvo si tu piel es grasa.",
+      "key_findings_es": [
+        "Aplicado en la manzana: efecto juvenil; aplicado diagonal hacia sien: efecto estilizado.",
+        "Rubor en crema funciona mejor sobre piel seca; polvo sobre piel grasa.",
+        "Demasiado rubor o muy oscuro hace que la piel parezca enrojecida o irritada.",
+        "Sobre pieles oscuras los tonos pastel pueden desaparecer; mejor pigmentos intensos."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que aprende a colocar rubor por primera vez",
+        "Usuaria a quien el rubor se le ve 'de muñeca' o demasiado intenso",
+        "Usuaria de piel oscura cuyo rubor no se nota"
+      ],
+      "source_ids": ["mk_2015_010"]
+    },
+    {
+      "id": "makeup_eyes_by_shape",
+      "title": "Sombras y delineador según la forma del ojo",
+      "summary_es": "La técnica base es 'transición + lid + outer V': un tono medio en la cuenca para crear profundidad, un tono principal sobre el párpado móvil, y un tono más oscuro en la V externa para definir. Adaptaciones por forma: ojos almendrados son los más versátiles, casi cualquier técnica les favorece, incluido el delineado alado; ojos redondos se elongan con delineado que se extiende horizontalmente y sombra oscura en la V externa; ojos encapuchados necesitan trazos más gruesos y fórmulas de larga duración (los líquidos waterproof no se corren al pestañear), y conviene aplicar la sombra oscura más arriba de la cuenca natural para que se vea con el ojo abierto; ojos caídos se levantan llevando el delineado hacia arriba en la esquina externa.",
+      "key_findings_es": [
+        "La técnica 'transición + lid + V externa' es la estructura básica de casi todo look de ojo.",
+        "Ojos encapuchados: la sombra debe aplicarse por encima de la cuenca natural para que se vea al abrir el ojo.",
+        "Delineado alado funciona en casi todas las formas si se ajusta el ángulo a la forma natural del ojo.",
+        "Para ojos sensibles o que se irritan: evitar el waterline interno y revisar ingredientes con isotiazolinonas."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con ojos encapuchados cuya sombra 'desaparece'",
+        "Usuaria que quiere aprender delineado alado por primera vez",
+        "Usuaria con ojos pequeños que quiere agrandarlos visualmente"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_brow_mapping",
+      "title": "Cejas: mapeo en tres puntos y técnica de relleno",
+      "summary_es": "La técnica profesional estándar (método 'Golden Ratio' de Anastasia Soare, adoptado por la industria) mapea tres puntos con un lápiz: inicio (línea vertical desde la aleta de la nariz hacia arriba), arco (línea desde la aleta de la nariz pasando por el centro del iris) y final (línea desde la aleta de la nariz hasta la comisura externa del ojo). Para rellenar de forma natural: trazos finos en la dirección del pelo (no rayas sólidas), producto un tono más claro que el pelo natural si eres morena, y un tono más oscuro si eres rubia. Sellar con gel transparente o teñido. Si solo dominas una técnica de maquillaje, que sean las cejas: enmarcan el rostro entero.",
+      "key_findings_es": [
+        "Mapeo en tres puntos da simetría sin tener que medir cada vez.",
+        "Trazos finos imitando pelo > línea sólida pintada.",
+        "Producto un tono más claro que el pelo se ve más natural que un tono igual o más oscuro.",
+        "Cejas demasiado oscuras o demasiado definidas envejecen y endurecen las facciones."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que quiere aprender a rellenar cejas por primera vez",
+        "Usuaria con cejas asimétricas que busca equilibrarlas",
+        "Usuaria cuyas cejas quedaron demasiado depiladas y quiere reconstruirlas"
+      ],
+      "source_ids": ["mk_2024_014", "mk_2015_010"]
+    },
+    {
+      "id": "makeup_lip_basics",
+      "title": "Labiales: tipos, longevidad y elección de tono",
+      "summary_es": "Los labiales se diferencian por acabado y longevidad. Mate líquido: máxima duración (8–12 h) pero puede resecar; satinado/cremoso: confort y color medio (3–5 h); gloss: brillo y volumen visual, mínima duración; tintes: efecto 'comido' natural, duran horas pero pueden marcar resequedad. Para que duren más: exfoliar labios suavemente, aplicar bálsamo de base, perfilar con lápiz del mismo tono y, en mates, esperar a que sequen sin presionar. La elección del tono se rige por el subtono: pieles frías favorecen rosas azulados, rojos cereza y berry; pieles cálidas favorecen corales, terracota y rojos anaranjados; pieles neutras pueden usar casi todos.",
+      "key_findings_es": [
+        "Mate líquido = más duración, más resequedad; gloss = más confort, menos duración.",
+        "Exfoliar labios antes de mate evita que el producto resalte pieles muertas.",
+        "Subtono frío: rojos azulados; subtono cálido: rojos anaranjados.",
+        "Perfilador del mismo tono que el labial alarga la duración y evita el 'sangrado'."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria buscando su primer labial rojo y dudando entre tonos",
+        "Usuaria a quien los labiales se le caen muy rápido",
+        "Usuaria con labios resecos que quiere usar mate sin que se cuartee"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_tools_brushes_sponges",
+      "title": "Herramientas: brochas, esponjas y dedos",
+      "summary_es": "Cada herramienta da un acabado distinto. Esponja húmeda (estilo beauty blender): acabado natural y aireado, perfecta para base líquida; absorbe parte del producto, así que conviene aplicar capas finas. Brocha plana o densa (kabuki): mayor cobertura, ideal para piel con manchas o textura que se quiere camuflar. Dedos: calor corporal funde mejor cremas y correctores en zonas pequeñas; perfecto para puntos de iluminador o difuminar bordes. Para sombras: brocha pequeña densa para depositar color en el párpado, brocha esponjosa de pelo natural para difuminar. La regla: cuanto más densa la brocha, más cobertura; cuanto más esponjosa, más difuminado.",
+      "key_findings_es": [
+        "Esponja húmeda = más natural; brocha densa = más cobertura.",
+        "Los dedos son la mejor 'herramienta' para difuminar correctores cremosos.",
+        "Brocha esponjosa de difuminado de sombras es la pieza más infravalorada de un kit principiante.",
+        "Una brocha de calidad media bien usada supera a una brocha cara mal usada."
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente armando su primer set de brochas",
+        "Usuaria cuya base se ve 'rayada' (probable problema de herramienta)",
+        "Usuaria que duda entre esponja o brocha"
+      ],
+      "source_ids": ["mk_2015_010", "mk_2024_012"]
+    },
+    {
+      "id": "makeup_day_vs_night",
+      "title": "Diferencias entre maquillaje de día y de noche",
+      "summary_es": "El maquillaje de día se ve a luz natural y a corta distancia: los acabados muy brillantes, pigmentos intensos y contornos marcados se exageran y pueden verse 'duros'. El maquillaje de noche se ve bajo luz artificial cálida y a más distancia: tolera y a menudo necesita mayor intensidad para no 'desaparecer' (pestañas más cargadas, labial más definido, brillos estratégicos, sombras más profundas). La transición rápida 'día a noche' típica: añadir sombra oscura en la V externa, intensificar máscara, agregar iluminador y cambiar a labial más pigmentado.",
+      "key_findings_es": [
+        "Luz natural exagera todo: el de día siempre tiende a menos.",
+        "Luz artificial 'come' color: el de noche tolera y agradece más intensidad.",
+        "Truco 'día a noche': sombra oscura en V + labial intenso suelen ser suficientes.",
+        "Si tu maquillaje se ve perfecto al espejo del baño pero raro a luz de día, probablemente es demasiado intenso."
+      ],
+      "applicable_user_scenarios": [
+        "Estudiante que quiere maquillaje sutil para el colegio",
+        "Usuaria que prepara un look para fiesta o evento nocturno",
+        "Usuaria que necesita pasar de un look de día a uno de noche sin desmaquillarse"
+      ],
+      "source_ids": ["mk_2015_010"]
+    },
+    {
+      "id": "makeup_product_shelf_life",
+      "title": "Caducidad de productos: PAO y cuándo descartar",
+      "summary_es": "En EE. UU. la FDA no obliga a imprimir fecha de caducidad ni PAO (Period After Opening); la responsabilidad recae en el fabricante. En la UE el PAO es obligatorio: aparece como un envase abierto con un número y la letra M (12M = 12 meses tras abrir). Como guía general de seguridad: máscara y delineador líquido de ojo, 2–4 meses (alto riesgo de contaminación bacteriana en zona ocular); delineador en lápiz, hasta 2 años (se afila y renueva la punta); sombras y polvos, 1–2 años; base líquida, 6–12 meses; base en polvo, hasta 2 años; labial mate y satinado, 1–2 años; gloss, 1 año; corrector líquido, 6–12 meses. Señales de alarma: cambio de color, olor extraño, separación de fases, textura granulada. En productos de ojo, ante la duda: desechar.",
+      "key_findings_es": [
+        "EU: el PAO es obligatorio (símbolo de envase abierto + número + M); EE. UU.: no hay obligación legal de PAO ni caducidad.",
+        "Máscara: 2–4 meses tras abrir; nunca prolongar añadiendo agua o saliva (introduce bacterias).",
+        "Cambio de color, olor o textura = descartar sin importar la fecha.",
+        "Nunca aplicar maquillaje sobre piel con lesiones, ojo rojo o conjuntivitis activa.",
+        "Compartir cosméticos —especialmente de ojo y labios— multiplica el riesgo de infecciones."
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente con maquillaje heredado de hermanas o amigas",
+        "Usuaria que quiere saber si puede seguir usando su máscara de hace 8 meses",
+        "Usuaria que sospecha que un producto le está irritando los ojos"
+      ],
+      "source_ids": ["mk_2023_001", "mk_2023_002", "mk_2023_003", "mk_2024_013"]
+    },
+    {
+      "id": "makeup_brush_hygiene",
+      "title": "Higiene de brochas, esponjas y aplicadores",
+      "summary_es": "Las brochas y esponjas acumulan piel muerta, sebo, restos de producto y bacterias. Estudios microbiológicos recientes encuentran que el 81% de los aislados bacterianos en brochas usadas son Gram-positivos, con predominio de Staphylococcus y Micrococcus —flora cutánea normal que puede causar infecciones si entra en contacto con piel comprometida (acné, granitos abiertos, herida). La Academia Americana de Dermatología recomienda lavar brochas cada 7–10 días con jabón suave o champú neutro, enjuagar bien y secar planas sobre toalla (nunca de pie con cerdas hacia arriba: se daña el pegamento). Las esponjas, por su porosidad, son nido bacteriano: lavar tras cada uso y reemplazar cada 1–3 meses. Nunca compartir aplicadores entre personas.",
+      "key_findings_es": [
+        "Lavar brochas cada 7–10 días con jabón neutro o champú suave.",
+        "Secar planas sobre toalla, nunca de pie con cerdas hacia arriba.",
+        "Las esponjas se contaminan más rápido que las brochas: lavar tras cada uso, reemplazar cada 1–3 meses.",
+        "Nunca compartir aplicadores —menos aún de ojo y labios— por riesgo de conjuntivitis y herpes labial.",
+        "En el 27,8% de usuarias encuestadas, problemas cutáneos coincidieron con baja frecuencia de limpieza."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con brotes de acné inexplicables",
+        "Usuaria que nunca ha lavado sus brochas y no sabe cómo",
+        "Usuaria que comparte maquillaje con amigas y quiere saber si es seguro"
+      ],
+      "source_ids": ["mk_2025_008", "mk_2024_015", "mk_2023_003"]
+    },
+    {
+      "id": "makeup_sensitive_skin_ingredients",
+      "title": "Ingredientes a vigilar en piel sensible o reactiva",
+      "summary_es": "La dermatitis de contacto alérgica al maquillaje proviene casi siempre de dos grupos: fragancias y conservantes. Entre conservantes, los más implicados en alergias actuales son metilisotiazolinona (MI) y metilcloroisotiazolinona (MCI); también formaldehído y sus liberadores (DMDM hydantoin, quaternium-15, imidazolidinyl urea). Entre fragancias, balsam of Peru, cinnamic alcohol y eugenol. Las pieles sensibles se benefician de fórmulas 'fragrance-free' (no perfumadas) y con sistemas conservantes alternativos. La etiqueta 'hypoallergenic' no está regulada por FDA y no garantiza ausencia de alérgenos; lo que sí ayuda es revisar el INCI y, ante reacciones repetidas, hacer prueba de parche con dermatólogo (gold standard diagnóstico).",
+      "key_findings_es": [
+        "Fragancias y conservantes son los dos grupos más asociados a alergia cosmética.",
+        "Metilisotiazolinona (MI) y metilcloroisotiazolinona (MCI) son los conservantes más implicados hoy.",
+        "'Hypoallergenic' no es un término regulado; 'fragrance-free' es más útil para piel sensible.",
+        "Ante reacciones repetidas, el patch test médico es el estándar diagnóstico.",
+        "La UE prohíbe muchos más ingredientes que EE. UU. (29 añadidos solo en 2023)."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con piel reactiva que enrojece con cosméticos nuevos",
+        "Usuaria con dermatitis atópica buscando productos seguros",
+        "Usuaria que tuvo una reacción y no sabe a qué ingrediente"
+      ],
+      "source_ids": ["mk_2011_007", "mk_2023_005", "mk_2022_004"]
+    },
+    {
+      "id": "makeup_fda_vs_eu",
+      "title": "Diferencias regulatorias: FDA (EE. UU.) vs SCCS (UE)",
+      "summary_es": "La regulación cosmética estadounidense y europea son muy distintas. En la UE, el reglamento (CE) 1223/2009 y los dictámenes del SCCS (Scientific Committee on Consumer Safety) imponen evaluación pre-mercado de seguridad, listas amplias de ingredientes prohibidos o restringidos (cientos), declaración obligatoria de 26 alérgenos de fragancia y símbolo PAO en envase. En EE. UU., hasta 2022 la FDA prácticamente no había actualizado su marco desde 1938. La ley MoCRA (2022) introduce por primera vez registro obligatorio de productos, reporte de eventos adversos graves y futuras reglas de alérgenos de fragancia —pero EE. UU. sigue prohibiendo muchos menos ingredientes que la UE (solo en 2023 la UE añadió 29 a su lista). Por eso un producto vendido en ambos mercados a veces tiene fórmula distinta: la versión europea suele ser más restrictiva.",
+      "key_findings_es": [
+        "UE = evaluación pre-mercado obligatoria; EE. UU. = responsabilidad del fabricante.",
+        "UE prohíbe cientos de ingredientes; EE. UU. prohíbe alrededor de una decena.",
+        "Símbolo PAO obligatorio en UE; opcional en EE. UU.",
+        "Misma marca puede formular distinto para UE y EE. UU.",
+        "MoCRA (2022) es la mayor reforma cosmética estadounidense desde 1938 pero aún deja brecha con UE."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria curiosa por qué un producto americano se ve distinto al europeo",
+        "Usuaria preocupada por seguridad e ingredientes",
+        "Usuaria comprando online en tiendas extranjeras"
+      ],
+      "source_ids": ["mk_2023_005", "mk_2022_004", "mk_2023_001"]
+    },
+    {
+      "id": "makeup_clean_beauty_evidence",
+      "title": "'Clean beauty': qué dice la evidencia y qué es marketing",
+      "summary_es": "El término 'clean beauty' no está regulado y cada marca lo define a conveniencia. Suele apoyarse en listas de ingredientes 'demonizados' (parabenos, siliconas, sulfatos, ftalatos) que en muchos casos tienen perfiles de seguridad bien establecidos por organismos como SCCS y CIR. La química Michelle Wong (PhD) y otros divulgadores con base científica señalan que reemplazar un ingrediente con décadas de estudio por uno 'natural' menos estudiado no garantiza más seguridad —a veces es lo contrario. 'Natural' tampoco equivale a 'seguro' (muchos alérgenos potentes son naturales: aceites esenciales, balsam of Peru). La forma honesta de evaluar un cosmético es: ¿la dosis/concentración es segura?, ¿está bien conservado?, ¿la marca declara sus ingredientes? —no el 'free of' del envase.",
+      "key_findings_es": [
+        "'Clean beauty' no es categoría regulada; cada marca usa su propia definición.",
+        "Parabenos en concentraciones cosméticas son considerados seguros por SCCS (metilparabeno seguro hasta 0,4%).",
+        "Ingredientes 'naturales' pueden ser tanto o más alergénicos que sintéticos.",
+        "Greenwashing común: listas 'libre de X' sin contexto de qué reemplaza X.",
+        "Lo que importa para seguridad: dosis, formulación completa y conservación, no etiquetas de marketing."
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente influida por TikTok que evita 'químicos' en cosmética",
+        "Usuaria que paga premium por 'clean' y duda si vale la pena",
+        "Usuaria escéptica del marketing buscando entender qué es real"
+      ],
+      "source_ids": ["mk_2024_011", "mk_2024_012", "mk_2023_005", "mk_2015_006"]
+    },
+    {
+      "id": "makeup_eye_safety",
+      "title": "Seguridad ocular: hábitos que protegen los ojos",
+      "summary_es": "El área ocular es la zona más vulnerable a infecciones por maquillaje. Reglas básicas avaladas por la Academia Americana de Oftalmología y la FDA: 1) desmaquillarse siempre antes de dormir —el maquillaje retenido obstruye glándulas de Meibomio y aumenta riesgo de blefaritis y orzuelo; 2) reemplazar máscara cada 3 meses máximo; 3) no aplicar delineador en el waterline interno (borde palpebral mucoso) —bloquea las glándulas que producen la capa lipídica de la lágrima; 4) nunca compartir productos de ojo; 5) no usar testers de tienda directamente; 6) descartar al primer signo de irritación, enrojecimiento o cambio del producto; 7) nunca aplicar máscara en vehículo en movimiento (riesgo de lesión corneal); 8) si hay conjuntivitis o infección activa, suspender maquillaje y descartar productos en uso (pueden estar contaminados).",
+      "key_findings_es": [
+        "Dormir con maquillaje obstruye glándulas y favorece blefaritis y orzuelos.",
+        "Delineado en waterline interno bloquea glándulas de Meibomio y altera la película lagrimal.",
+        "Reemplazar máscara cada 3 meses máximo, antes si cambia de olor o textura.",
+        "No usar testers de tienda; no compartir productos de ojo.",
+        "Suspender y descartar productos durante infección ocular activa."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que duerme con maquillaje 'a veces' y tiene granitos en el párpado",
+        "Usuaria con orzuelos recurrentes",
+        "Usuaria que delinea el waterline interno y tiene ojos secos o irritados"
+      ],
+      "source_ids": ["mk_2024_013", "mk_2023_003", "mk_2023_002"]
+    }
+  ]
+}

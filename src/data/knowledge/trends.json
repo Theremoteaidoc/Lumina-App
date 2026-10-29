@@ -1,0 +1,460 @@
+{
+  "domain": "trends",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "notes_for_lumina": "Las tendencias cambian rápido. Lumina las presenta con curiosidad genuina y distancia crítica — nunca como mandatos. Cuando una usuaria pregunta por una tendencia, Lumina puede explicarla, contextualizarla culturalmente, y ofrecer alternativas o adaptaciones honestas. Topics con 'cultural_context_notes_es' deben presentarse SIEMPRE con esa capa de contexto — no glorificar sin crítica.",
+  "review_cadence": "Cada 3-6 meses revisar topics; las microtendencias TikTok evolucionan en semanas.",
+  "topics": [
+    {
+      "id": "trend_clean_girl_aesthetic",
+      "title": "Clean girl aesthetic — qué es, origen y críticas",
+      "summary_es": "Estética viralizada en TikTok (2022-2024) que privilegia un look 'sin esfuerzo': piel hidratada y casi sin maquillaje, slicked back bun (chongo pulido), aros pequeños, fragancia limpia, uñas naturales. Asociada inicialmente a Hailey Bieber, Bella Hadid y Sofia Richie. La estética se vendió como minimalista, pero requiere una base de privilegios (piel genéticamente 'limpia' o tratamientos costosos, productos premium, tiempo).",
+      "key_findings_es": [
+        "El slicked back bun y las edges (baby hairs peinadas) son técnicas históricamente de mujeres negras y latinas, estigmatizadas como 'ghetto' o 'no profesionales' hasta que mujeres blancas las adoptaron y fueron reframeadas como 'pulidas' y 'gorgeous'.",
+        "El término 'clean' aplicado a un cuerpo o un rostro sugiere por contraste que otros son 'sucios' — una elección de lenguaje cargada.",
+        "Es accesible visualmente pero costoso de mantener: facials regulares, lash lifts, brow lamination, productos premium.",
+        "Como respuesta cultural surgió el rejection trend de 'mob wife aesthetic' (2024) — maquillaje dramático, abrigos de piel, estética opuesta."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta '¿cómo logro el look clean girl?'",
+        "Usuaria comenta que se siente mal porque no logra verse 'clean'",
+        "Usuaria pregunta por la diferencia entre clean girl y otras estéticas TikTok",
+        "Usuaria menciona que ve a una influencer y se compara"
+      ],
+      "cultural_context_notes_es": [
+        "Críticas centrales: apropiación cultural de estética de mujeres de color, exclusión socioeconómica (requiere recursos), implícito body norm delgado-blanco-cisgénero.",
+        "Lumina puede explicar que la 'simplicidad' visible esconde mucho trabajo y dinero invisibles — no es 'natural', es construido.",
+        "Lumina nunca recomienda perseguir un look como validación, especialmente uno con cuestionamientos éticos vigentes."
+      ],
+      "source_ids": ["trd_2024_001", "trd_2024_002"]
+    },
+    {
+      "id": "trend_skinimalism",
+      "title": "Skinimalism — rutinas mínimas, piel-first",
+      "summary_es": "Movimiento de reducción radical de productos de skincare. Reacción a las rutinas coreanas de 10 pasos (2018-2021) que generaron irritación, fatiga de barrera y agotamiento. La tendencia regresa al básico: limpiador suave, hidratante, protector solar, y máximo un activo (vitamina C, retinol o ácido) según necesidad. Respaldado por dermatólogos.",
+      "key_findings_es": [
+        "75% de los hogares estadounidenses compran 3 o menos productos diferentes de skincare (2024).",
+        "Dermatólogos respaldan: menos productos = menor irritación, mejor barrera cutánea, mejores resultados a largo plazo.",
+        "Skincare domina la industria de belleza con 42% del market share (vs 18% maquillaje).",
+        "Marcas dermatológicas (CeraVe, La Roche-Posay, The Ordinary) capitalizan esta tendencia por sus formulaciones simples y clínicamente validadas.",
+        "En maquillaje se traduce en bases ligeras, tinted moisturizers y skin tints que dejan ver textura real."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria abrumada con cuántos productos 'debe' usar",
+        "Usuaria con piel irritada por sobreuso de activos",
+        "Usuaria que pregunta por la rutina mínima viable",
+        "Usuaria adolescente que ve rutinas de 10 pasos en TikTok"
+      ],
+      "cultural_context_notes_es": [
+        "Tendencia rara: alineada con consejo dermatológico real, no solo marketing.",
+        "Útil contrapeso a la presión consumista del 'Sephora kids' phenomenon."
+      ],
+      "source_ids": ["trd_2024_003", "trd_2024_004"]
+    },
+    {
+      "id": "trend_glass_skin",
+      "title": "Glass skin — origen K-beauty, técnica y realidad",
+      "summary_es": "Ideal de piel vítrea, translúcida, ultra-hidratada — refleja la luz como un espejo. Originada en estándares coreanos históricos (piel 'pura' como símbolo de pureza/estatus). Popularizada globalmente entre 2015-2020 por K-pop, K-dramas y marcas como Laneige, COSRX, Sulwhasoo. Se logra con capas ligeras y graduales de toners, esencias, serums y oclusivos finales.",
+      "key_findings_es": [
+        "Técnica base: hidratación en capas (no productos pesados), exfoliación suave regular, énfasis en salud de barrera cutánea.",
+        "Dermatólogos modernos han añadido enfoques clínicos: microneedling, láseres, mesoterapia.",
+        "Realidad importante: poros y textura son normales y saludables. El glass skin extremo en redes suele estar filtrado o post-procesado.",
+        "Cultura coreana de belleza enfatiza prevención sobre corrección — ese es el espíritu más valioso de la tendencia."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta cómo lograr glass skin",
+        "Usuaria frustrada porque su piel 'no se ve como en TikTok'",
+        "Usuaria interesada en K-beauty"
+      ],
+      "cultural_context_notes_es": [
+        "Importante: lo que se ve en redes está casi siempre filtrado. La piel real, incluso bien cuidada, tiene poros visibles, textura y variación de color.",
+        "Los estándares coreanos de piel también pueden ser presionantes — han sido criticados internamente por sus exigencias."
+      ],
+      "source_ids": ["trd_2025_005"]
+    },
+    {
+      "id": "trend_microtrends_food_aesthetics",
+      "title": "Microtendencias de maquillaje gourmet — latte, cherry, strawberry, tomato",
+      "summary_es": "Cadena de microtendencias TikTok (2023-2024) que nombran looks con vocabulario de comida/bebida. Latte makeup (Rachel Rigler, 2023): paleta cálida bronzy. Cherry makeup (Danielle Marcan, 2022, revival 2024): rosas suaves cohesivos labio-mejilla. Strawberry makeup: pecas dibujadas + blush rosado. Tomato girl: rojos cálidos. Espresso, mocha, cappuccino — variantes infinitas.",
+      "key_findings_es": [
+        "El video original de latte makeup superó 2.7M vistas y 183K likes; Hailey Bieber lo respaldó en menos de un mes.",
+        "Las microtendencias TikTok tienen ciclos cortos (semanas a meses), a diferencia de las macrotendencias industriales.",
+        "El vocabulario gourmet es una técnica de naming — el look real suele ser una variante leve de soft glam o monocromático.",
+        "Muchas de estas tendencias son rebrandeos de técnicas clásicas (monocromático, blush draping, smoky cálido)."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta '¿qué es el latte makeup?' o cualquier microtendencia gourmet",
+        "Usuaria abrumada por cuántas tendencias nuevas aparecen cada semana",
+        "Usuaria que quiere adaptar una microtendencia a su subtono"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina puede ayudar a la usuaria a ver que muchas de estas tendencias son la misma técnica con nombres distintos — el conocimiento técnico (cómo armonizar tonos, qué favorece a su rostro) es más duradero.",
+        "No hay que perseguir cada microtendencia; saber traducirlas a principios es más útil."
+      ],
+      "source_ids": ["trd_2024_006", "trd_2024_007", "trd_2024_035"]
+    },
+    {
+      "id": "trend_liquid_cream_blush_boom",
+      "title": "Auge de blushes líquidos y cremosos",
+      "summary_es": "Categoría dominante 2023-2025: blush líquido, en barra, en bálsamo y stick reemplazan parcialmente a los blushes en polvo. Mercado: $2.6B (2024) → proyectado $3.8B (2032). Más de 30 lanzamientos en 2024. Texturas dewy/glow se prefieren para look 'flushed natural'. Marcas que lideraron: Rare Beauty (Soft Pinch), Rhode (Pocket Blush), Merit (Flush Balm).",
+      "key_findings_es": [
+        "Crecimiento impulsado por skinimalism y 'no-makeup makeup' — el blush líquido se funde con la piel mejor que el polvo.",
+        "Matte liquid blush captura 45% del mercado (transfer-proof, larga duración).",
+        "Técnica clave: aplicar con dedos limpios o esponja húmeda, difuminar antes de que seque.",
+        "Funciona en piel desnuda o sobre base; combinación blush líquido + polvo encima da máximo aguante."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que quiere probar blush líquido por primera vez",
+        "Usuaria que pregunta diferencia entre polvo y líquido",
+        "Usuaria con piel grasa preguntando si el líquido le sirve"
+      ],
+      "cultural_context_notes_es": [
+        "Categoría útil de tendencia: la técnica realmente es democratizadora (más perdonadora que el polvo bien aplicado)."
+      ],
+      "source_ids": ["trd_2024_034"]
+    },
+    {
+      "id": "trend_lipstick_comeback",
+      "title": "Lipstick comeback — el regreso del labial post-mascarillas",
+      "summary_es": "Durante COVID (2020-2021), ventas de labial cayeron 70%+ globalmente. El 'lipstick index' clásico (la idea de Leonard Lauder de que las ventas de labial suben en recesiones) fue suspendido. Reemplazado temporalmente por el 'fragrance index'. Tras las mascarillas (2022-2023): lip makeup categoría más rápida en crecimiento, +48% en Q1 2022 vs 2021. Variantes que dominan: lip oils, lip stains, satin lipsticks, glosses.",
+      "key_findings_es": [
+        "70% de usuarias volvieron a su rutina pre-pandemia o usan más maquillaje que antes (NPD).",
+        "Los formatos cómodos ganaron: tints, oils, balms con color — menos los labiales mate clásicos.",
+        "La generación que se acostumbró a vivir sin labial durante la pandemia integró el labial de forma distinta: menos rigurosa, más expresiva.",
+        "Lip oils (Dior Lip Oil, Rhode) crearon una subcategoría completa."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que se reincorpora al maquillaje tras años de uso mínimo",
+        "Usuaria que pregunta qué labial le favorece",
+        "Conversación sobre cómo encontrar SU rojo / SU nude"
+      ],
+      "cultural_context_notes_es": [
+        "Tendencia descomplicada — el labial es expresión, no obligación."
+      ],
+      "source_ids": ["trd_2023_029"]
+    },
+    {
+      "id": "trend_face_oils_return",
+      "title": "Aceites faciales — el regreso (con formulación moderna)",
+      "summary_es": "Tras una década en que los aceites cayeron en desuso por miedo a 'engrasar' la piel, regresan en 2024 con formulaciones científicamente más sofisticadas. No solo face oils: hair oils, body oils, lip oils, lash/brow oils. El shift cultural: de 'glossy skin' (brillo plástico) a 'plump skin' (piel saludable, rebotada).",
+      "key_findings_es": [
+        "Aceites como rosa mosqueta, squalane, argán, jojoba ofrecen lípidos esenciales que la piel reconoce.",
+        "Mito desmentido: aceite no causa acné en sí — el problema histórico era formulación mala u oclusión excesiva.",
+        "Funciona como último paso (sellador) en climas secos; en climas húmedos, mejor diluido en hidratante.",
+        "Tendencia paralela: aceites multiusos (cabello, cuerpo, uñas) — packaging y marketing simplificados."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con piel seca preguntando si debe usar aceite",
+        "Usuaria con miedo a aceites por su tipo de piel",
+        "Usuaria que ve aceites virales y quiere entenderlos"
+      ],
+      "cultural_context_notes_es": [
+        "Útil aclarar: no todos los aceites son iguales. Aceite de coco puro = comedogénico para muchas. Squalane = ligero, no oclusivo. Saber leer formulaciones importa más que la categoría."
+      ],
+      "source_ids": ["trd_2024_036"]
+    },
+    {
+      "id": "trend_slugging_origin_evidence",
+      "title": "Slugging — vaselina nocturna, evidencia dermatológica",
+      "summary_es": "Aplicar capa gruesa de vaselina (petrolato) como último paso nocturno para sellar humedad. Origen en Corea del Sur; viralizado en TikTok hacia 2022. El nombre viene del aspecto brillante/baboso ('slug-like') que deja en la piel. Técnica usada por dermatólogos por décadas para reparar barrera comprometida y post-procedimientos.",
+      "key_findings_es": [
+        "La vaselina (petrolato) es no-comedogénica — el mito de que tapa poros viene de un estudio antiguo desacreditado.",
+        "AAD (American Academy of Dermatology): puede ser útil para barrera comprometida o piel muy seca; con cautela en piel acneica activa.",
+        "Funciona como oclusivo: NO hidrata por sí solo, sino que sella la hidratación de productos previos.",
+        "No es para todos los días ni para todos los tipos de piel — uso estratégico, no rutina permanente."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con piel deshidratada o irritada preguntando por slugging",
+        "Usuaria adolescente con acné preguntando si debe hacerlo",
+        "Usuaria que vio el trend y quiere entender si le sirve"
+      ],
+      "cultural_context_notes_es": [
+        "Una tendencia TikTok respaldada por evidencia real — pero contexto importante: para piel adolescente acneica, NO es recomendable."
+      ],
+      "source_ids": ["trd_2024_025"]
+    },
+    {
+      "id": "trend_actives_popularization",
+      "title": "Popularización de activos: vitamina C, niacinamida, retinoides",
+      "summary_es": "Entre 2020-2026 los activos antes 'profesionales' (vitamina C, niacinamida, ácidos exfoliantes, retinoides) se democratizaron por marcas como The Ordinary, La Roche-Posay, CeraVe. Cada activo cumple función distinta: vitamina C (antioxidante, luminosidad), niacinamida (regula sebo, calma, atenúa manchas), retinoides (renovación celular, anti-edad, acné).",
+      "key_findings_es": [
+        "Niacinamida 5-10% es de los activos más seguros y mejor tolerados; útil para casi cualquier tipo de piel.",
+        "Vitamina C (ácido L-ascórbico 10-20%) requiere formulación estable (pH ácido, empaque opaco); buena para luminosidad y protección antioxidante diurna.",
+        "Retinoides son los más potentes para anti-edad y acné — pero requieren introducción gradual y NO son apropiados para piel preadolescente sin indicación médica.",
+        "Combinaciones populares: vitamina C + niacinamida (sí compatible, mito desmentido); retinol nocturno + vitamina C diurna."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta qué activo necesita",
+        "Usuaria confundida por información contradictoria en redes",
+        "Usuaria adolescente preguntando por retinol"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina debe ser firme: retinoides NO son para preadolescentes/adolescentes salvo prescripción médica para acné. Para piel joven sana: limpiador, hidratante, protector solar — y listo.",
+        "La idea de que 'todas necesitamos vitamina C/retinol' es marketing — no necesidad biológica universal."
+      ],
+      "source_ids": ["trd_2024_011", "trd_2024_012"]
+    },
+    {
+      "id": "trend_sephora_kids_phenomenon",
+      "title": "Fenómeno Sephora Kids — preadolescentes y skincare anti-edad",
+      "summary_es": "Fenómeno 2023-2024: niñas de 8-13 años acudiendo masivamente a Sephora y Ulta a comprar productos anti-edad para adultos (especialmente Drunk Elephant, Sol de Janeiro, Glow Recipe). Impulsado por TikTok y la aspiracionalidad de hermanas mayores/influencers. Dermatólogos reportan dermatitis retinoidal, quemaduras químicas y reacciones alérgicas. Sephora implementó disclaimers tras presión pública.",
+      "key_findings_es": [
+        "Solo 18% de videos de retinol en TikTok mencionan efectos secundarios; solo 12% explican técnica correcta (Dermatology Times).",
+        "Ingredientes problemáticos en piel joven: retinol/retinoides, ácidos exfoliantes (glycólico, salicílico altos %), vitamina C concentrada, ácidos en perfumes (Sol de Janeiro Bum Bum Cream).",
+        "Implicaciones psicológicas: niñas internalizando ansiedad anti-edad antes de tener arrugas; presión estética desde la infancia.",
+        "Lo que SÍ es apropiado para preadolescentes: limpiador suave (gel o crema), hidratante ligero, SPF 30+ diario, y nada más."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria adolescente que ya compró productos para adultas",
+        "Usuaria preguntando por retinol/ácidos antes de los 18",
+        "Usuaria con dermatitis tras seguir TikTok",
+        "Hermana mayor o madre preguntando qué darle a una preadolescente"
+      ],
+      "cultural_context_notes_es": [
+        "TEMA SENSIBLE: requiere coordinación con principios de salud y seguridad. Lumina debe redirigir firmemente a rutinas apropiadas para la edad sin avergonzar a la usuaria.",
+        "El fenómeno es síntoma de algo más grande: presión estética y ansiedad de apariencia infiltrándose en infancias.",
+        "Lumina puede validar el interés por el skincare como cuidado, mientras enseña que más productos NO es mejor cuidado — especialmente en piel joven."
+      ],
+      "source_ids": ["trd_2024_011", "trd_2024_012", "trd_2024_013", "trd_2025_014"]
+    },
+    {
+      "id": "trend_body_positivity_vs_neutrality",
+      "title": "Body positivity vs body neutrality — diferencias y evidencia",
+      "summary_es": "Body positivity (movimiento popular en 2010s): amar el cuerpo en cualquier forma, tamaño, color. Body neutrality (respuesta de 2020s): el cuerpo no necesita ser amado ni odiado — basta con apreciar lo que HACE (camina, abraza, respira). Investigación muestra que ambas tienen efectos psicológicos distintos y complementarios.",
+      "key_findings_es": [
+        "Body positivity puede generar presión implícita ('debo amar mi cuerpo todo el tiempo'); body neutrality alivia esa presión al permitir días neutros.",
+        "Evidencia: body neutrality asociada a mayor sensación de liberación de demandas sociales (PMC 2025).",
+        "Body positivity asociada a mejoras en ánimo y satisfacción pero también riesgo de auto-objetivación si se enfoca solo en aceptar el cuerpo VISIBLE.",
+        "Para adolescentes en crisis de imagen corporal, body neutrality suele ser más accesible que positivity."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que dice 'no logro amar mi cuerpo como dicen las redes'",
+        "Usuaria preguntando por body positivity",
+        "Usuaria en momento de baja autoestima corporal"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina puede ofrecer body neutrality como alternativa válida cuando positivity se siente forzado.",
+        "El cuerpo no tiene por qué ser amado ni odiado — puede simplemente SER. Esto es liberador para muchas usuarias.",
+        "Importante: Lumina NUNCA debe hacer comentarios sobre el cuerpo de la usuaria (positivos o negativos). Su rol es belleza y autoexpresión, no juicio corporal."
+      ],
+      "source_ids": ["trd_2024_015", "trd_2025_016"]
+    },
+    {
+      "id": "trend_anti_aging_to_pro_aging",
+      "title": "De 'anti-aging' a 'pro-aging' — el cambio de lenguaje",
+      "summary_es": "Septiembre 2017: Allure Magazine anuncia que deja de usar 'anti-aging'. Editora en jefe: 'al usar ese término reforzamos sutilmente que envejecer es algo que combatir'. Industria pivotó a 'pro-aging', 'aging gracefully', 'preserv-aging'. Pero crítica vigente: muchas marcas adoptaron el lenguaje sin cambiar las promesas reales de producto (sigue prometiendo 'borrar arrugas').",
+      "key_findings_es": [
+        "El cambio de lenguaje fue real; el cambio de producto fue parcial.",
+        "Marcas pioneras del shift: Allure, RoC, Estée Lauder en algunos lanzamientos.",
+        "Envejecer es un proceso natural, no una enfermedad ni un defecto.",
+        "El ageismo en belleza sigue vigente — mujeres mayores de 40 siguen subrepresentadas en marketing."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria adulta joven preguntando por 'productos anti-edad'",
+        "Conversación sobre arrugas/expresión",
+        "Usuaria que se siente presionada por mensajes anti-edad"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina usa lenguaje pro-aging: 'piel madura', 'líneas de expresión', 'piel que cuenta una historia'. NO usa 'antiarrugas', 'rejuvenecimiento', 'borrar la edad'.",
+        "Para usuarias adolescentes: explicar que el cuidado de piel es para tener piel saludable hoy y mañana — no para prevenir un futuro temido."
+      ],
+      "source_ids": ["trd_2017_017", "trd_2024_018"]
+    },
+    {
+      "id": "trend_inclusive_shade_ranges_fenty_effect",
+      "title": "Efecto Fenty — rango inclusivo de tonos como estándar",
+      "summary_es": "Septiembre 2017: Fenty Beauty (Rihanna) lanza con 40 tonos de Pro Filt'r Foundation, cubriendo desde el más claro al más oscuro. Reframeó la inclusividad de 'campaña marketing' a 'expectativa base'. Efecto dominó: Maybelline SuperStay pasó de 28 a 50 tonos; CoverGirl TruBlend lanzó con 40; Too Faced expandió a 35 tras críticas. Hoy 40+ tonos es el mínimo competitivo.",
+      "key_findings_es": [
+        "Antes de Fenty, marcas premium ofrecían típicamente 8-20 tonos — sesgo abrumador hacia tonos claros.",
+        "Fenty actualmente ofrece 59 tonos de Pro Filt'r.",
+        "Inclusividad expandida también a: undertones (rosa/dorado/oliva/neutral), edades, géneros, capacidades.",
+        "Crítica vigente: muchas marcas tienen los tonos en catálogo pero no en stock de tiendas físicas — disponibilidad real ≠ catálogo."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con tono difícil de encontrar (muy claro/oscuro/oliva)",
+        "Conversación sobre la importancia de encontrar SU tono",
+        "Usuaria interesada en historia de la inclusividad en belleza"
+      ],
+      "cultural_context_notes_es": [
+        "Marca comercial mencionada (Fenty) está justificada por su impacto cultural verificable, no como recomendación de compra.",
+        "Lumina celebra que la inclusividad sea ahora línea base — pero reconoce que el trabajo sigue (especialmente fuera de USA/Europa)."
+      ],
+      "source_ids": ["trd_2024_033"]
+    },
+    {
+      "id": "trend_male_beauty_growth",
+      "title": "Belleza masculina y genderless — crecimiento del segmento",
+      "summary_es": "Gen Z masculina lidera el cambio: 68% de hombres 18-27 usaban skincare facial en 2024 (vs 42% dos años antes). Gasto masculino en belleza creció 9.9% en 2024 (vs 5.8% femenino). Hombres que dicen 'nunca uso maquillaje' bajaron de 90%+ (2019) a 75% (2024). Mercado global masculino: $61.6B (2024) → proyectado $85B (2032). Ulta y Sephora integran productos masculinos en displays gender-neutral.",
+      "key_findings_es": [
+        "Categorías que más crecen para hombres: skincare (limpiador, hidratante, SPF), concealer, brow gel, tinted moisturizer.",
+        "Marcas gender-neutral preferidas por Gen Z: Fenty Beauty, The Ordinary, Haus Labs, Glossier.",
+        "Hasta 70% de hombres Gen Z siguen influencers de belleza/grooming.",
+        "Movimiento más fuerte en USA, Reino Unido, Corea, Japón; creciendo en LATAM (especialmente México y Brasil)."
+      ],
+      "applicable_user_scenarios": [
+        "Usuario masculino preguntando por skincare/maquillaje",
+        "Usuaria que pregunta por su hermano/pareja/amigo",
+        "Conversación sobre belleza genderless"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina es para todes — su lenguaje debe ser inclusivo de género desde el diseño, no como añadido.",
+        "Importante en contexto hispanohablante: el machismo cultural sigue siendo barrera para muchos hombres. Lumina puede normalizar sin presionar."
+      ],
+      "source_ids": ["trd_2025_019"]
+    },
+    {
+      "id": "trend_sustainable_refillable_beauty",
+      "title": "Belleza sostenible y empaque refillable — interés vs adopción real",
+      "summary_es": "Gen Z y Millennials valoran sostenibilidad: 67.7% de Gen Z prioriza sostenibilidad en compras de belleza; 56.2% dispuestos a pagar más. Pero brecha real: solo 40% efectivamente compraron producto refillable en 2024. Razón principal: inconveniencia. McKinsey 2025 matiza: muchas marcas intentaron refillable y consumidores no lo adoptaron masivamente.",
+      "key_findings_es": [
+        "Crecimiento de búsquedas 'refillable beauty': +64% (período reciente).",
+        "Categorías con mejor adopción refillable: fragancia, labial, base. Peor adopción: máscara, eyeliner.",
+        "Greenwashing es preocupación: 'clean beauty' a menudo no significa nada regulado.",
+        "Ingredientes percibidos como sostenibles ≠ ingredientes científicamente sostenibles (ej. el 'natural' no siempre es mejor)."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria preguntando por marcas sostenibles",
+        "Usuaria con interés ambiental que quiere reducir consumo",
+        "Conversación sobre clean beauty"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina enseña pensamiento crítico sobre claims de sostenibilidad — sin marcas específicas a recomendar.",
+        "El mayor acto sostenible en belleza: usar menos productos y terminar los que ya tienes (alineado con skinimalism)."
+      ],
+      "source_ids": ["trd_2024_020", "trd_2025_021", "trd_2024_030"]
+    },
+    {
+      "id": "trend_instagram_face_critique",
+      "title": "Instagram face — homogeneización y crítica cultural",
+      "summary_es": "Término acuñado por Jia Tolentino en The New Yorker (diciembre 2019). Describe un rostro idealizado global: labios voluminosos, pómulos altos, ojos felinos, nariz pequeña, piel sin poros — un rostro 'distintivamente blanco pero étnicamente ambiguo'. Combina rasgos apropiados de múltiples culturas (boca afro, cejas surasiáticas, pómulos nativoamericanos/medioorientales). Homogeneiza la belleza global vía filtros y cirugía.",
+      "key_findings_es": [
+        "Plástica facial aumentó dramáticamente post-2015, especialmente entre mujeres 18-35.",
+        "Rellenos faciales (filler) son la categoría más demandada por usuarias jóvenes.",
+        "El 'Instagram face' es financiable: cuesta tiempo, dinero y disponibilidad — no es un look 'natural'.",
+        "Hay backlash creciente (2024-2026): movimientos 'undone beauty', 'natural features pride', dissolver filler."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria que compara su rostro con influencers",
+        "Usuaria preguntando por procedimientos estéticos",
+        "Usuaria que siente que 'no es bonita' porque no se parece a las redes"
+      ],
+      "cultural_context_notes_es": [
+        "TEMA CRÍTICO: Lumina enseña que los rostros que se ven en redes son construidos (filtros + maquillaje + iluminación + ángulo + cirugía). No es un estándar real.",
+        "Lumina celebra rasgos únicos — la nariz, los pómulos, los ojos propios son lo que hacen a cada rostro reconocible y bello.",
+        "Visagismo (que Lumina maneja) es lo opuesto al Instagram face: realza lo individual en vez de homogeneizar."
+      ],
+      "source_ids": ["trd_2019_022"]
+    },
+    {
+      "id": "trend_filters_mental_health_adolescents",
+      "title": "Filtros y salud mental adolescente — evidencia y riesgo",
+      "summary_es": "Filtros de redes (Instagram, TikTok, Snapchat) modifican rostros en tiempo real: ojos más grandes, narices más finas, piel uniforme, labios más voluminosos. Evidencia robusta de impacto en imagen corporal adolescente. 'Snapchat dysmorphia' (Boston University, JAMA 2018): pacientes solicitando cirugía para parecerse a su propia versión filtrada. Fenómeno en aumento (2025).",
+      "key_findings_es": [
+        "54% de niñas 11-21 años desearían verse como con filtros (Girlguiding 2024).",
+        "46% se sentirían más seguras online con más contenido sin editar.",
+        "Reducir uso de redes 50% por unas semanas mejora significativamente body esteem en adolescentes (APA 2023).",
+        "55% de cirujanos plásticos reportan pacientes pidiendo cirugía para parecerse a versiones filtradas de sí mismos.",
+        "Riesgo asociado: trastorno dismórfico corporal (BDD), trastornos alimentarios, ansiedad social, depresión."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria adolescente que dice 'sin filtro no me veo bien'",
+        "Usuaria que pregunta por cirugía estética",
+        "Usuaria con baja autoestima vinculada a comparación en redes",
+        "Usuaria que solo se reconoce con filtro"
+      ],
+      "cultural_context_notes_es": [
+        "TEMA DE SEGURIDAD CRÍTICA — coordinación obligatoria con agente de boundaries/seguridad.",
+        "Lumina puede validar emociones sin validar la distorsión: 'sentirte así es real y entendible, pero los filtros muestran un rostro que no existe — ningún rostro real puede competir con eso porque ningún rostro real ES eso'.",
+        "Si una usuaria muestra señales de dismorfia (ansiedad severa por apariencia, evita salir, considera cirugía siendo menor), Lumina debe redirigir a apoyo profesional con calma y sin alarma.",
+        "Lumina NUNCA recomienda procedimientos estéticos invasivos, especialmente a menores."
+      ],
+      "source_ids": ["trd_2023_008", "trd_2024_009", "trd_2024_010", "trd_2018_023", "trd_2025_024"]
+    },
+    {
+      "id": "trend_bigorexia_male_adolescents",
+      "title": "Bigorexia y dismorfia muscular en adolescentes varones",
+      "summary_es": "Bigorexia (formalmente dismorfia muscular): fijación con sentirse 'no suficientemente musculoso', incluso en cuerpos objetivamente musculosos. Forma de trastorno dismórfico corporal especialmente prevalente en hombres adolescentes y adultos jóvenes (15-32 años). Síntomas emergen frecuentemente en pubertad. Asociado a ansiedad, depresión, uso de esteroides anabólicos y trastornos alimentarios.",
+      "key_findings_es": [
+        "Medios y redes son el predictor más significativo de dismorfia muscular (revisión NPR/PMC 2025-2026).",
+        "Algoritmos de TikTok/Instagram amplifican contenido fitness extremo cuando el usuario interactúa con uno.",
+        "Frecuencia de comparación física e intensidad de dependencia de validación por likes correlacionan con severidad.",
+        "Es la cara masculina (y menos hablada) de la presión estética que afecta a adolescentes — paralela pero distinta a trastornos alimentarios en mujeres."
+      ],
+      "applicable_user_scenarios": [
+        "Usuario adolescente preocupado por no verse 'suficientemente fuerte'",
+        "Usuaria preguntando por hermano/pareja con obsesión por ejercicio",
+        "Conversación sobre presión estética masculina"
+      ],
+      "cultural_context_notes_es": [
+        "TEMA DE SEGURIDAD — coordinación con agente de boundaries.",
+        "Lumina (aunque enfocada en belleza/maquillaje) puede reconocer que la presión estética cruza géneros. No es solo problema 'femenino'.",
+        "Si usuario muestra señales claras (entrena 3+h diarias, evita comer ciertos macros, considera esteroides), Lumina redirige a profesional."
+      ],
+      "source_ids": ["trd_2026_026", "trd_2025_027"]
+    },
+    {
+      "id": "trend_latin_beauty_ideals",
+      "title": "Ideales de belleza en cultura latina — contexto regional",
+      "summary_es": "Investigación con adolescentes latinas muestra consenso de que la cultura latina valora cuerpo 'delgado pero curvilíneo' (caderas y pecho) mientras percibe que cultura europea-americana valora delgadez extrema. Influencias clave en autoimagen: amigas, percepción de preferencias masculinas, normas comunitarias, celebridades en medios latinos. Insatisfacción corporal es preocupación creciente en Latinoamérica.",
+      "key_findings_es": [
+        "Las latinas adolescentes navegan dos sets de ideales simultáneamente: el latino (curvilíneo) y el dominante anglosajón (delgado extremo).",
+        "La presión bicultural puede intensificar la insatisfacción corporal en comparación con monocultural.",
+        "Procedimientos estéticos para acentuar curvas (BBL, aumento mamario, lipo) tienen tasas altas en países latinoamericanos — y son crecientemente solicitados por menores en algunos contextos.",
+        "Instrumentos validados en español (BESAA-LA) confirman que body esteem en LATAM requiere medición culturalmente apropiada."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria latina preguntando por estándares de belleza que la presionan",
+        "Usuaria que se siente 'gorda' o 'flaca' según el estándar",
+        "Conversación sobre cirugías estéticas en contexto latino"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina, siendo en español y para audiencia hispanohablante, debe reconocer estos ideales sin reproducirlos como aspiracionales.",
+        "Ningún cuerpo tiene 'la forma correcta' — los ideales cambian por época, cultura y clase. Lo que NO cambia: el cuerpo de cada quien es suyo.",
+        "Lumina nunca celebra ni recomienda cirugías estéticas, especialmente en menores. Esto es coordinación obligatoria con seguridad."
+      ],
+      "source_ids": ["trd_2016_031", "trd_2023_032"]
+    },
+    {
+      "id": "trend_tiktok_microtrends_culture",
+      "title": "Cultura de microtendencias en TikTok — velocidad y fatiga",
+      "summary_es": "TikTok genera microtendencias de belleza a velocidad sin precedente: ciclos de 2-8 semanas de pico. Cada microtendencia tiene un nombre, una estética visual reconocible (a menudo con vocabulario gourmet/girlie/aspiracional) y una influencer asociada. Mintel 2024 identifica esto como característica definitoria de Gen Z en belleza — pero también fuente de fatiga, ansiedad de consumo y descarte rápido.",
+      "key_findings_es": [
+        "Una microtendencia típica vive: pico de TikTok → cobertura periodística → adopción mainstream → backlash o reemplazo.",
+        "Empuja consumo (cada trend 'requiere' productos específicos) — contradice valores de sostenibilidad simultáneamente sostenidos por Gen Z.",
+        "Mintel señala 'Sophisticated Simplicity' como respuesta: consumidores valorando productos eficientes que no caduquen estéticamente cada mes.",
+        "Las usuarias informadas en redes saben que las tendencias caducan — esa conciencia es protectora."
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria abrumada por cuántas tendencias nuevas hay",
+        "Usuaria que pregunta '¿qué está de moda ahora?'",
+        "Usuaria que compra producto cada vez que ve nueva tendencia"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina puede ayudar a la usuaria a desarrollar pensamiento crítico: 'esta tendencia es divertida — ¿te conecta contigo o estás persiguiéndola por ansiedad?'",
+        "Saber técnica (colorimetría, visagismo) protege contra fatiga de tendencias — son saberes duraderos."
+      ],
+      "source_ids": ["trd_2024_006", "trd_2024_028"]
+    },
+    {
+      "id": "trend_gen_z_beauty_values",
+      "title": "Valores de belleza Gen Z vs Millennials — diferencias clave",
+      "summary_es": "Gen Z (1997-2010): autenticidad, transparencia (ingredientes, ética), inclusividad de género/raza/cuerpo, valores ecológicos declarados, IA y personalización digital. Millennials (1981-1996): contouring elaborado, looks Instagram-ready estilo Kim K., aspiracionalidad de 'lujo accesible'. Gen Z reacciona contra el maximalismo millennial: prefiere skin-first, brow-light, lip-forward.",
+      "key_findings_es": [
+        "Gen Z gasta menos en base/contour, más en skincare y labial.",
+        "Gen Z confía más en peer creators (TikTok) que en celebridades tradicionales (revolución de la confianza).",
+        "Mintel: 'Beaut-AI' es marca distintiva Gen Z — esperan diagnóstico personalizado, virtual try-on, recomendaciones algorítmicas.",
+        "Gen Z es la generación más diversa en USA; espera representación como base, no como 'campaña especial'."
+      ],
+      "applicable_user_scenarios": [
+        "Conversación generacional sobre belleza",
+        "Usuaria adolescente comparando con maquillaje de su madre/hermana mayor",
+        "Pregunta sobre diferencias generacionales en estéticas"
+      ],
+      "cultural_context_notes_es": [
+        "Lumina, hecha por y para adolescente Gen Z, encarna estos valores sin necesidad de declararlos.",
+        "Importante: estos son rasgos AGREGADOS — cada usuaria es individual, no se le habla como 'una Gen Z' estereotipada."
+      ],
+      "source_ids": ["trd_2024_028", "trd_2024_030"]
+    }
+  ]
+}

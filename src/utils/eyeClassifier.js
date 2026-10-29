@@ -1,14 +1,23 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Eye Shape Classification v2 — MediaPipe Landmarks
-   
+   Eye Shape Classification v3 — Geometric Scoring (MediaPipe Landmarks)
+
    Based on: "AI-Driven Makeup Suggestions Leveraging MediaPipe Face
    Landmarks For Eye Shape Detection" (Technomedia Journal, 2024)
    + "Eye-makeup Guidance System" (JAIST thesis)
-   
-   v2 FIX: Almond was always winning because its scoring ranges
-   overlapped with every other shape. Now uses PRIORITY-BASED
-   exclusive classification — checks distinctive shapes first,
-   almendra is the fallback for "normal" eyes.
+
+   v3 FIX: v2 used a strict if/elif PRIORITY chain, which meant a face
+   that was mildly hooded AND mildly upturned always resolved to
+   whichever branch happened to be checked first — order bias, not
+   geometry. Now every shape accumulates a SCORE from independent
+   conditions (same pattern as faceShapeRules.js) and the highest
+   score wins, with confidence derived from the margin to the runner-up.
+
+   Distinguishes the 5 shapes that exist in EYE_DATA (src/data/appData.js):
+     almendra   — almond, the common/balanced shape
+     redondo    — round, wide open, circular
+     rasgado    — upturned outer corner ("cat eye")
+     caido      — downturned outer corner
+     encapotado — hooded, brow presses on the lid
    ═══════════════════════════════════════════════════════════════════ */
 
 // MediaPipe eye landmark indices
@@ -50,7 +59,8 @@ function dist(a, b) {
 }
 
 /**
- * EAR — 3 vertical measurements averaged / horizontal
+ * EAR (eye aspect ratio) — 3 vertical measurements averaged / horizontal.
+ * Higher = more open/circular eye, lower = more elongated/almond eye.
  */
 function calcEAR(lm, eye) {
   const v1 = dist(lm[eye.upperLid3], lm[eye.lowerLid3]);
@@ -61,8 +71,9 @@ function calcEAR(lm, eye) {
 }
 
 /**
- * Corner angle: inner→outer tilt in degrees
- * Positive = upturned, Negative = downturned
+ * Corner angle: inner→outer tilt in degrees.
+ * Positive = outer corner higher (upturned/"rasgado"),
+ * Negative = outer corner lower (downturned/"caido").
  */
 function calcCornerAngle(lm, eye) {
   const inner = lm[eye.innerCorner];
@@ -74,8 +85,8 @@ function calcCornerAngle(lm, eye) {
 }
 
 /**
- * Hood score: brow-to-lid distance / eye opening height
- * Lower = more hooded
+ * Hood score: brow-to-lid distance / eye opening height.
+ * Lower = more hooded (brow sits closer to / presses on the lid).
  */
 function calcHoodScore(lm, eye) {
   const browPt = lm[eye.browCenter];
@@ -87,8 +98,11 @@ function calcHoodScore(lm, eye) {
 }
 
 /**
- * Classify eye shape — PRIORITY-BASED exclusive logic
- * Checks most distinctive shapes first, almendra is fallback
+ * Classify eye shape — geometric SCORING (not a priority chain).
+ * Each shape starts at 0 and only earns points from the specific
+ * conditions that define it; almendra keeps a small baseline because
+ * it is genuinely the most common eye shape worldwide, but it still
+ * has to compete on score like everything else.
  */
 export function classifyEyeShape(lm) {
   if (!lm || lm.length < 468) return null;
@@ -105,66 +119,50 @@ export function classifyEyeShape(lm) {
   const avgEyeWidth = (eyeWidthR + eyeWidthL) / 2;
   const eyeSpacingRatio = avgEyeWidth > 0 ? interEye / avgEyeWidth : 1;
 
-  // ═══ PRIORITY CLASSIFICATION ═══
-  // Most eyes are almendra (almond) — this is the natural default.
-  // Other shapes require STRONG, distinctive features to override.
-  // Thresholds are intentionally high to avoid false classifications.
-  let shape = 'almendra';
-  let confidence = 50;
+  const scores = { almendra: 0, redondo: 0, rasgado: 0, caido: 0, encapotado: 0 };
 
-  // 1️⃣ ENCAPOTADO (hooded) — brow presses on lid
-  if (hoodScore < 0.9) {
-    shape = 'encapotado';
-    confidence = 80;
-  } else if (hoodScore < 1.15 && ear < 0.24) {
-    shape = 'encapotado';
-    confidence = 60;
-  }
+  // ── ENCAPOTADO (hooded) — brow presses close to the lid ─────────────
+  if (hoodScore < 0.85) scores.encapotado += 5;
+  else if (hoodScore < 1.05) scores.encapotado += 3;
+  else if (hoodScore < 1.20) scores.encapotado += 1;
 
-  // 2️⃣ RASGADO (upturned) — VERY noticeable upward tilt
-  // Normal almond eyes often have 2-7° uptilt — that's NOT rasgado
-  // Rasgado needs 10°+ to be visually obvious
-  else if (cornerAngle > 12) {
-    shape = 'rasgado';
-    confidence = Math.min(60 + Math.round(cornerAngle), 85);
-  } else if (cornerAngle > 9 && ear < 0.28) {
-    shape = 'rasgado';
-    confidence = 55;
-  }
+  // ── RASGADO (upturned / cat-eye) — outer corner clearly higher ──────
+  if (cornerAngle > 10) scores.rasgado += 5;
+  else if (cornerAngle > 6) scores.rasgado += 3;
+  else if (cornerAngle > 3) scores.rasgado += 1;
 
-  // 3️⃣ CAÍDO (downturned) — strong negative angle
-  else if (cornerAngle < -6) {
-    shape = 'caido';
-    confidence = Math.min(55 + Math.round(Math.abs(cornerAngle) * 2), 85);
-  } else if (cornerAngle < -4 && ear >= 0.24) {
-    shape = 'caido';
-    confidence = 50;
-  }
+  // ── CAIDO (downturned) — outer corner clearly lower ─────────────────
+  if (cornerAngle < -8) scores.caido += 5;
+  else if (cornerAngle < -4) scores.caido += 3;
+  else if (cornerAngle < -2) scores.caido += 1;
 
-  // 4️⃣ REDONDO (round) — clearly open, circular eyes
-  else if (ear > 0.34 && Math.abs(cornerAngle) < 6) {
-    shape = 'redondo';
-    confidence = Math.min(55 + Math.round((ear - 0.30) * 200), 85);
-  } else if (ear > 0.38) {
-    shape = 'redondo';
-    confidence = 70;
-  }
+  // ── REDONDO (round) — wide open, close to circular, little tilt ────
+  if (ear > 0.36) scores.redondo += 5;
+  else if (ear > 0.32) scores.redondo += 3;
+  if (Math.abs(cornerAngle) < 5) scores.redondo += 2;
+  if (hoodScore >= 1.2) scores.redondo += 1; // lid fully visible reinforces "round & open"
 
-  // 5️⃣ ALMENDRA (almond) — the natural default
-  // Most people have almond eyes. This is not a "leftover" category,
-  // it's the most common shape worldwide.
-  else {
-    shape = 'almendra';
-    const earOk = ear >= 0.20 && ear <= 0.34;
-    const angleOk = Math.abs(cornerAngle) <= 9;
-    const hoodOk = hoodScore >= 1.15;
-    confidence = 45 + [earOk, angleOk, hoodOk].filter(Boolean).length * 14;
-  }
+  // ── ALMENDRA (almond) — the balanced, most common shape ─────────────
+  // Small baseline reflecting real-world prevalence, PERO tiene que
+  // competir: cualquier forma con condiciones marcadas (arriba) puede
+  // superarla sin problema.
+  scores.almendra += 1;
+  if (ear >= 0.24 && ear <= 0.33) scores.almendra += 3;       // medium opening
+  if (cornerAngle >= 1 && cornerAngle <= 7) scores.almendra += 3; // slight natural uptilt
+  if (hoodScore >= 1.15) scores.almendra += 2;                // lid visible, not hooded
+
+  // ── Rank + confidence ────────────────────────────────────────────────
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const [shape, topScore] = sorted[0];
+  const secondScore = sorted[1]?.[1] ?? 0;
+  const marginRatio = topScore > 0 ? (topScore - secondScore) / topScore : 0;
+  const confidence = Math.min(90, Math.max(40, Math.round(40 + marginRatio * 50)));
 
   return {
     shape,
     confidence,
-    allScores: { [shape]: confidence },
+    scores,
+    allScores: scores, // kept for backward compatibility
     features: {
       ear: ear.toFixed(3),
       cornerAngle: cornerAngle.toFixed(1),

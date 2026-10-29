@@ -1,13 +1,24 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Face Shape Classification v4.0 — Hybrid ML + Rules
-   
+   Face Shape Classification v5.0 — Geometric Rules (visagism-anchored)
+
    Corrected landmark indices using FACE_OVAL contour.
-   Classification via hybrid system: Random Forest (trained on 5000 faces
-   from Kaggle Face Shape Dataset) + rule-based disambiguation.
+   Classification via classifyFaceShapeGeometric() in faceShapeRules.js —
+   100% local geometric rules anchored in
+   src/data/knowledge/visagism.json, no ML model, no network.
+
+   v5 replaces the old Random Forest (hybridClassifier.js, ~734KB,
+   trained on a small Kaggle dataset) which systematically over-
+   predicted "ovalado". hybridClassifier.js is kept on disk as dead
+   code for reference but is no longer imported anywhere.
    ═══════════════════════════════════════════════════════════════════ */
 
-// Import the trained hybrid classifier
-import { classifyFaceShape as hybridClassify } from './hybridClassifier.js';
+import { classifyFaceShapeGeometric } from './faceShapeRules.js';
+
+// Kept as a no-op for backward compatibility — nothing lazy-loads the
+// Random Forest anymore, so this simply resolves immediately.
+export async function loadHybridClassifier() {
+  return Promise.resolve();
+}
 
 // ─── MediaPipe FACE_OVAL contour (official from FACEMESH_FACE_OVAL) ──
 // These are the points that trace the actual face boundary
@@ -113,47 +124,57 @@ function findWidthAtLevel(lm, yLevel, tolerance) {
 
 // ─── 19-Feature Extraction with corrected landmarks ──────────────
 
-export function extractFeatures(lm) {
+export function extractFeatures(lm, aspect = 1) {
   const L = LANDMARKS;
-  const faceHeight = dist(lm[L.hairline], lm[L.chin]);
+
+  // ─── ASPECT-RATIO CORRECTION (root fix) ───────────────────────────
+  // MediaPipe returns x normalized by image WIDTH and y by image HEIGHT.
+  // On a non-square image those axes are NOT in the same unit, so mixing
+  // horizontal widths with vertical height (e.g. length/width ratio) is
+  // distorted — which made every real face collapse toward "ovalado".
+  // Scaling x by aspect (imgW/imgH) puts both axes in "height units" so all
+  // distances and ratios become geometrically correct.
+  const A = lm.map((p) => ({ x: p.x * aspect, y: p.y, z: p.z }));
+
+  const faceHeight = dist(A[L.hairline], A[L.chin]);
   if (faceHeight < 0.01) return null;
 
   // Use boundary points for width measurements
-  const foreheadW = dist(lm[L.foreheadLeft], lm[L.foreheadRight]);
-  const cheekW = dist(lm[L.cheekLeft], lm[L.cheekRight]);
-  const jawW = dist(lm[L.jawLeft], lm[L.jawRight]);
-  const chinW = dist(lm[L.chinLeft], lm[L.chinRight]);
-  
+  const foreheadW = dist(A[L.foreheadLeft], A[L.foreheadRight]);
+  const cheekW = dist(A[L.cheekLeft], A[L.cheekRight]);
+  const jawW = dist(A[L.jawLeft], A[L.jawRight]);
+  const chinW = dist(A[L.chinLeft], A[L.chinRight]);
+
   // Dynamic width measurement as fallback/validation
-  const hairY = lm[L.hairline].y;
-  const chinY = lm[L.chin].y;
+  const hairY = A[L.hairline].y;
+  const chinY = A[L.chin].y;
   const range = chinY - hairY;
-  
-  // Try dynamic measurement at each zone
-  const dynForehead = findWidthAtLevel(lm, hairY + range * 0.25, range * 0.08);
-  const dynCheek = findWidthAtLevel(lm, hairY + range * 0.45, range * 0.08);
-  const dynJaw = findWidthAtLevel(lm, hairY + range * 0.75, range * 0.08);
-  
+
+  // Try dynamic measurement at each zone (on aspect-corrected coords)
+  const dynForehead = findWidthAtLevel(A, hairY + range * 0.25, range * 0.08);
+  const dynCheek = findWidthAtLevel(A, hairY + range * 0.45, range * 0.08);
+  const dynJaw = findWidthAtLevel(A, hairY + range * 0.75, range * 0.08);
+
   // Use the wider of fixed or dynamic measurement (boundary should be wider)
   const fW = dynForehead ? Math.max(foreheadW, dynForehead.width) : foreheadW;
   const cW = dynCheek ? Math.max(cheekW, dynCheek.width) : cheekW;
   const jW = dynJaw ? Math.max(jawW, dynJaw.width) : jawW;
 
   // Vertical proportions
-  const upperFace = dist(lm[L.hairline], lm[L.nasion]);
-  const lowerFace = dist(lm[L.noseTip], lm[L.chin]);
-  const chinLen = dist(lm[L.lipBottom], lm[L.chin]);
+  const upperFace = dist(A[L.hairline], A[L.nasion]);
+  const lowerFace = dist(A[L.noseTip], A[L.chin]);
+  const chinLen = dist(A[L.lipBottom], A[L.chin]);
   const maxW = Math.max(fW, cW, jW);
   const minW = Math.min(fW, cW, jW);
 
-  // Jawline angles
-  const jawAngL = angle(lm[L.cheekLeft], lm[L.jawLeft], lm[L.chin]);
-  const jawAngR = angle(lm[L.cheekRight], lm[L.jawRight], lm[L.chin]);
-  const chinAng = angle(lm[L.jawLeft], lm[L.chin], lm[L.jawRight]);
+  // Jawline angles (on aspect-corrected coords so angles are true)
+  const jawAngL = angle(A[L.cheekLeft], A[L.jawLeft], A[L.chin]);
+  const jawAngR = angle(A[L.cheekRight], A[L.jawRight], A[L.chin]);
+  const chinAng = angle(A[L.jawLeft], A[L.chin], A[L.jawRight]);
 
   // Jaw curvature
-  const jCurveL = ptLineDist(lm[L.jawMidLeft], lm[L.cheekLeft], lm[L.chin]);
-  const jCurveR = ptLineDist(lm[L.jawMidRight], lm[L.cheekRight], lm[L.chin]);
+  const jCurveL = ptLineDist(A[L.jawMidLeft], A[L.cheekLeft], A[L.chin]);
+  const jCurveR = ptLineDist(A[L.jawMidRight], A[L.cheekRight], A[L.chin]);
 
   return {
     f1_whr: cW / faceHeight,
@@ -180,30 +201,21 @@ export function extractFeatures(lm) {
   };
 }
 
-// ─── Backward compat: getMeasurements ────────────────────────────
-// Used by FaceScanScreen overlay drawing
-
-export function getMeasurements(landmarks, videoW, videoH) {
-  const L = LANDMARKS;
-  return {
-    faceLength: euclidean(landmarks[L.hairline], landmarks[L.chin], videoW, videoH),
-    foreheadWidth: euclidean(landmarks[L.foreheadLeft], landmarks[L.foreheadRight], videoW, videoH),
-    cheekboneWidth: euclidean(landmarks[L.cheekLeft], landmarks[L.cheekRight], videoW, videoH),
-    jawlineWidth: euclidean(landmarks[L.jawLeft], landmarks[L.jawRight], videoW, videoH),
-  };
-}
-
 // ═══════════════════════════════════════════════════════════════════
-// CLASSIFIER v4 — Hybrid (ML trained on 5000 faces + rule-based)
+// CLASSIFIER v5 — Geometric rules (visagism-anchored, 100% local)
 // ═══════════════════════════════════════════════════════════════════
 
-export function classifyFaceShape(input) {
+// Kept `async` so existing `await classifyFaceShape(...)` call sites
+// (e.g. FaceScanScreen.jsx) keep working unchanged — there is no
+// dynamic import to await anymore, it just resolves immediately.
+export async function classifyFaceShape(input) {
   let f;
   if (input.f1_whr !== undefined) {
     f = input;
   } else {
     const { faceLength: fh, foreheadWidth: fw, cheekboneWidth: cw, jawlineWidth: jw } = input;
     const h = fh || 1;
+    const chinW = cw * 0.85; // no dedicated chin measurement in this legacy input shape
     f = {
       f1_whr: cw / h, f2_fwR: fw / h, f3_jwR: jw / h,
       f4_jfR: jw / fw, f5_cjR: cw / jw, f6_cfR: cw / fw,
@@ -214,9 +226,29 @@ export function classifyFaceShape(input) {
       f13_jawAng: 125, f14_chinAng: 120, f15_jawSq: 0.5,
       f16_jawCurve: 0.02, f17_wVar: 0.15,
       f18_fhAng: 25, f19_ckAng: 30,
+      _raw: { faceHeight: h, foreheadWidth: fw, cheekboneWidth: cw, jawlineWidth: jw, chinWidth: chinW },
     };
   }
 
-  // Use hybrid ML + rules classifier
-  return hybridClassify(f);
+  const result = classifyFaceShapeGeometric(f);
+
+  // Shape the output to match what FaceScanScreen.jsx / localFaceAnalysis.js
+  // already expect from the old hybrid classifier (shape, confidence,
+  // whr/jfr/cjr strings, features{...}), plus the new transparency fields.
+  return {
+    shape: result.shape,
+    confidence: result.confidence,
+    scores: result.scores,
+    allScores: result.scores, // backward-compat alias
+    secondaryInfluences: result.secondaryInfluences,
+    metrics: result.metrics,
+    whr: (f.f1_whr || 0).toFixed(3),
+    jfr: (f.f4_jfR || 0).toFixed(3),
+    cjr: (f.f5_cjR || 0).toFixed(3),
+    features: {
+      whr: f.f1_whr, cheekTaper: f.f10_cheekTaper,
+      foreheadTaper: f.f11_fhTaper, jawAngle: f.f13_jawAng,
+      chinAngle: f.f14_chinAng, widthVariance: f.f17_wVar,
+    },
+  };
 }

@@ -1,0 +1,126 @@
+{
+  "domain": "colorTheory",
+  "sources": [
+    {
+      "id": "col_1905_001",
+      "title": "A Color Notation",
+      "authors": ["Munsell, Albert H."],
+      "year": 1905,
+      "type": "book",
+      "doi_or_url": "https://en.wikipedia.org/wiki/Munsell_color_system",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional donde Munsell presenta su sistema de notacion de color basado en tres dimensiones independientes: matiz (hue), valor (value) y croma (chroma). Es la base cientifica de la que parten muchos sistemas modernos de clasificacion del color, incluidos los usados en colorimetria personal.",
+      "reliability_note": "Fuente primaria canonica. Aunque tiene mas de un siglo, su sistema sigue siendo usado por organismos como ANSI, USGS y la industria odontologica. Las referencias modernas (CIE Lab) lo superan en precision instrumental pero no en intuicion perceptual."
+    },
+    {
+      "id": "col_1976_001",
+      "title": "Recommendations on Uniform Color Spaces, Color-Difference Equations, Psychometric Color Terms (CIE Publication 15)",
+      "authors": ["Commission Internationale de l'Eclairage (CIE)"],
+      "year": 1976,
+      "type": "standard",
+      "doi_or_url": "https://en.wikipedia.org/wiki/CIELAB_color_space",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estandar internacional que define el espacio de color CIELAB (L*a*b*), pensado como espacio perceptualmente uniforme. L* representa luminosidad (0-100), a* el eje rojo-verde y b* el eje amarillo-azul. Es la base para metricas modernas de color en piel como el ITA.",
+      "reliability_note": "Estandar oficial CIE. Posteriormente se demostro que la uniformidad perceptual de CIELAB no es perfecta, lo que llevo al desarrollo de formulas mejoradas (CIEDE2000), pero sigue siendo el espacio de referencia en industria."
+    },
+    {
+      "id": "col_1980_001",
+      "title": "Color Me Beautiful: Discover Your Natural Beauty Through the Colors That Make You Look Great and Feel Fabulous",
+      "authors": ["Jackson, Carole"],
+      "year": 1980,
+      "type": "book",
+      "doi_or_url": "https://www.goodreads.com/book/show/171111.Color_Me_Beautiful",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Libro best-seller que popularizo masivamente el sistema de las 4 estaciones (Primavera, Verano, Otono, Invierno). Jackson simplifica el metodo de Caygill para hacerlo accesible al publico general, clasificando a las personas segun la temperatura y claridad de piel, ojos y cabello.",
+      "reliability_note": "Fuente canonica de la colorimetria personal moderna. Tiene impacto cultural masivo pero NO es un texto cientifico: sus categorias se basan en observacion estetica, no en evidencia clinica. Util como marco conceptual, no como verdad absoluta."
+    },
+    {
+      "id": "col_1980_002",
+      "title": "Color: The Essence of You",
+      "authors": ["Caygill, Suzanne"],
+      "year": 1980,
+      "type": "book",
+      "doi_or_url": "https://colordesigners.org/suzanne-caygill/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra de la creadora original (anos 40) del metodo de analisis estacional de color. Caygill desarrollo 64 subtipos personales basados no solo en piel/ojos/cabello sino en estructura osea, voz y somatica. Mas complejo y artistico que el sistema de Jackson.",
+      "reliability_note": "Fuente primaria del enfoque seasonal original. Muy detallada pero subjetiva: depende fuertemente del juicio del analista. No tiene validacion cientifica formal pero es referencia obligada historica."
+    },
+    {
+      "id": "col_1988_001",
+      "title": "The Validity and Practicality of Sun-Reactive Skin Types I Through VI",
+      "authors": ["Fitzpatrick, Thomas B."],
+      "year": 1988,
+      "type": "paper",
+      "doi_or_url": "https://doi.org/10.1001/archderm.1988.01670060015008",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo donde Fitzpatrick expande y formaliza su escala de fototipos (originalmente publicada en 1975) anadiendo tipos V y VI. Publicado en Archives of Dermatology. Clasifica la piel en 6 tipos segun su reaccion a la radiacion UV (quemadura vs bronceado).",
+      "reliability_note": "Fuente cientifica canonica en dermatologia. CRUCIAL: es una escala MEDICA para evaluar riesgo solar y dosificar fototerapia, NO una clasificacion de belleza. Confundirla con analisis de color personal es un error frecuente."
+    },
+    {
+      "id": "col_1991_001",
+      "title": "Skin Colour Typology and Suntanning Pathways",
+      "authors": ["Chardon, A.", "Cretois, I.", "Hourseau, C."],
+      "year": 1991,
+      "type": "paper",
+      "doi_or_url": "https://doi.org/10.1111/j.1467-2494.1991.tb00561.x",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo seminal publicado en International Journal of Cosmetic Science que introduce el Individual Typology Angle (ITA), una metrica colorimetrica objetiva calculada a partir de los valores L* y b* del espacio CIELAB para clasificar la piel en 6 categorias (muy clara, clara, intermedia, mate, morena, oscura).",
+      "reliability_note": "Fuente cientifica revisada por pares. Es el metodo cuantitativo mas usado en dermatologia y cosmetica para clasificar pigmentacion. Mas objetivo que Fitzpatrick pero requiere instrumentacion (colorimetro o foto calibrada)."
+    },
+    {
+      "id": "col_2024_001",
+      "title": "Integrating skin color assessments into clinical practice and research: A review of current approaches",
+      "authors": ["Journal of the American Academy of Dermatology editorial team"],
+      "year": 2024,
+      "type": "review",
+      "doi_or_url": "https://www.jaad.org/article/S0190-9622(24)00215-9/abstract",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revision reciente en JAAD sobre los metodos actuales de evaluacion del color de piel en clinica e investigacion. Compara Fitzpatrick, ITA, escala Monk y otros sistemas, discutiendo sus limitaciones y la necesidad de metricas mas inclusivas y reproducibles.",
+      "reliability_note": "Revision por pares en revista de alto impacto. Util para entender el estado del arte 2024 y por que los sistemas tradicionales tienen sesgos eurocentricos."
+    },
+    {
+      "id": "col_2023_001",
+      "title": "Optimisation of skin phototype classification",
+      "authors": ["Lim, H. W. et al."],
+      "year": 2023,
+      "type": "paper",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/pcmr.13110",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo en Pigment Cell & Melanoma Research que propone optimizar la clasificacion de fototipos cutaneos combinando autoreporte con medidas instrumentales. Demuestra que la escala Fitzpatrick por si sola tiene baja concordancia entre paciente y profesional.",
+      "reliability_note": "Investigacion revisada por pares actual. Confirma cientificamente que los metodos subjetivos de clasificacion son poco fiables y refuerza la necesidad de complementarlos con metricas objetivas como ITA."
+    },
+    {
+      "id": "col_2024_002",
+      "title": "Color analysis (entry)",
+      "authors": ["Wikipedia contributors"],
+      "year": 2024,
+      "type": "wiki",
+      "doi_or_url": "https://en.wikipedia.org/wiki/Color_analysis",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Entrada de Wikipedia que resume la historia del analisis personal del color desde Chevreul (1839) y Munsell (1905) hasta Caygill, Jackson, los sistemas de 12 y 16 estaciones, y el resurgimiento viral en TikTok (2024). Incluye criticas al campo.",
+      "reliability_note": "Wikipedia es punto de partida util pero NO fuente primaria. Las referencias citadas dentro del articulo (Caygill, Jackson, Dorr) son las que tienen valor academico. Usar para contexto general."
+    },
+    {
+      "id": "col_2024_003",
+      "title": "Lab Muffin Beauty Science - Foundation and Color Matching",
+      "authors": ["Wong, Michelle (Lab Muffin)"],
+      "year": 2024,
+      "type": "blog_with_citations",
+      "doi_or_url": "https://labmuffin.com/tag/foundation/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recopilacion de articulos de Michelle Wong (PhD en quimica) sobre la ciencia detras del match de base de maquillaje, subtonos y como la quimica de pigmentos afecta el color percibido sobre piel.",
+      "reliability_note": "Divulgacion de alta calidad: la autora tiene doctorado y cita fuentes primarias. No es paper revisado por pares pero es de las mejores fuentes accesibles en publico general."
+    },
+    {
+      "id": "col_2024_004",
+      "title": "Beyond Fitzpatrick: automated artificial intelligence-based skin tone analysis in dermatological patients",
+      "authors": ["npj Digital Medicine editorial team"],
+      "year": 2025,
+      "type": "paper",
+      "doi_or_url": "https://www.nature.com/articles/s41746-025-01770-4",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio en npj Digital Medicine (Nature) que usa IA para clasificar tono de piel de manera automatizada en pacientes dermatologicos, mostrando que los sistemas modernos basados en imagen pueden superar las limitaciones de Fitzpatrick.",
+      "reliability_note": "Revisado por pares en revista Nature de alto impacto. Relevante para Lumina porque valida usar analisis de imagen automatizado como alternativa a autoreporte subjetivo."
+    }
+  ]
+}

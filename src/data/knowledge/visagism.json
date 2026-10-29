@@ -1,0 +1,262 @@
+{
+  "domain": "visagism",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "topics": [
+    {
+      "id": "vis_hallawell_method",
+      "title": "El método Hallawell de visagismo integrado",
+      "summary_es": "El visagismo moderno fue sistematizado por el artista plástico brasileño Philip Hallawell, quien lo definió como el arte de crear una imagen personalizada usando el lenguaje visual (líneas, formas, colores) aplicado al rostro. Su libro 'Visagismo Integrado' (Editora Senac, 2003) es la referencia canónica del campo y combina análisis morfológico con interpretación de temperamento basada en los cuatro tipos clásicos hipocráticos (sanguíneo, colérico, melancólico y flemático).",
+      "key_findings_es": [
+        "Hallawell define el visagismo como una práctica que une morfología facial, temperamento y expresión personal, no solo como técnica de corrección estética.",
+        "Su método identifica cuatro líneas y cuatro formas arquetípicas en el rostro asociadas a los cuatro temperamentos clásicos.",
+        "El objetivo es ayudar a la persona a expresar su identidad a través de la imagen, no homogeneizar hacia un ideal único.",
+        "La obra fundacional 'Visagismo: harmonia e estética' se publicó por Editora Senac en 2003; 'Visagismo Integrado' es la versión ampliada de 2009.",
+        "Es importante recordar que el método es una propuesta profesional brasileña ampliamente difundida en peluquería y maquillaje, pero no equivale a evidencia científica peer-reviewed."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta qué es el visagismo o de dónde viene",
+        "Cuando pregunta por el origen del término o por Philip Hallawell",
+        "Cuando quiere saber por qué se asocia el rostro con personalidad o temperamento"
+      ],
+      "source_ids": ["vis_2003_001", "vis_undated_002"]
+    },
+    {
+      "id": "vis_face_shapes_overview",
+      "title": "Las formas faciales clásicas (6-7 categorías)",
+      "summary_es": "La literatura técnica de visagismo y los sistemas de clasificación automática reconocen entre 6 y 7 formas faciales estándar: ovalada, redonda, cuadrada, rectangular/alargada (oblonga), corazón, diamante y triángulo invertido. Son categorías descriptivas y la mayoría de los rostros reales son combinaciones, no encajan en una sola categoría pura.",
+      "key_findings_es": [
+        "Las 7 formas más citadas en literatura técnica son: oval, round, rectangle, square, heart, diamond y triangle.",
+        "La ovalada se considera 'referencia' por proporciones equilibradas, pero esto refleja un canon occidental y no una superioridad estética objetiva.",
+        "Cada forma se define por la relación entre ancho de frente, ancho de pómulos y ancho de mandíbula, junto con la altura facial total.",
+        "Los sistemas de clasificación automática por machine learning suelen reducir a 5 categorías (heart, oblong, oval, round, square) por practicidad estadística.",
+        "Ningún estudio antropométrico ha demostrado prevalencias universales de una forma sobre otra: varían por ascendencia, edad y sexo."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta 'qué forma de cara tengo'",
+        "Cuando pregunta cuántas formas faciales existen",
+        "Cuando quiere entender las diferencias entre forma corazón y diamante (suelen confundirse)"
+      ],
+      "source_ids": ["vis_2021_003", "vis_2003_001"]
+    },
+    {
+      "id": "vis_measuring_face_shape",
+      "title": "Cómo medir y clasificar la forma facial",
+      "summary_es": "La clasificación moderna usa landmarks faciales (puntos anatómicos como pómulos, mandíbula, frente y mentón) extraídos automáticamente con tecnologías como MediaPipe Face Mesh de Google, que detecta 468 puntos 3D en tiempo real. A partir de estos landmarks se calculan ratios (ancho/alto, frente/mandíbula, pómulos/mandíbula) que un clasificador asigna a una forma.",
+      "key_findings_es": [
+        "MediaPipe Face Mesh (Kartynnik et al., 2019) genera 468 landmarks 3D del rostro en tiempo real desde una sola cámara, sin sensor de profundidad.",
+        "Para clasificar forma facial los algoritmos usan principalmente: anchura bicigomática, anchura bigonial (mandíbula), anchura frontal y altura total del rostro.",
+        "Marinescu (2021) propuso un sistema con clasificador Naive Bayes sobre mediciones de landmarks que distingue 7 formas: oval, round, rectangle, square, heart, diamond y triangle.",
+        "Estudios con redes neuronales (Inception v3, EfficientNet) reportan precisiones de 85-91% sobre 5 categorías, indicando que incluso para máquinas la clasificación tiene ambigüedad inherente.",
+        "Para auto-medición, una regla práctica es comparar ancho de pómulos vs largo de cara: si son similares, es redonda; si el largo es 1.5x el ancho, es oval o alargada."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta cómo se mide la forma de la cara",
+        "Cuando pregunta cómo funciona la detección automática de la app",
+        "Cuando quiere medirse ella misma con un espejo o foto"
+      ],
+      "source_ids": ["vis_2019_004", "vis_2021_003", "vis_2020_005"]
+    },
+    {
+      "id": "vis_proportions_thirds_fifths",
+      "title": "Sistema de proporciones: tercios y quintos faciales",
+      "summary_es": "El análisis facial clásico divide el rostro verticalmente en tres tercios iguales (frente a glabela, glabela a base de la nariz, base de nariz a mentón) y horizontalmente en cinco quintos (cada uno equivalente a un ancho de ojo). Estas proporciones fueron sistematizadas por Powell y Humphreys (1984) en 'Proportions of the Aesthetic Face' y son referencia en cirugía plástica facial y faciometría.",
+      "key_findings_es": [
+        "Los tercios verticales: superior (trichion-glabela), medio (glabela-subnasal), inferior (subnasal-mentón) deben ser aproximadamente iguales en un rostro 'equilibrado'.",
+        "Los quintos horizontales dividen el ancho facial en cinco partes iguales, cada una del ancho de un ojo; la boca debe alinearse con los bordes mediales del iris.",
+        "El ancho bicigomático corresponde a aproximadamente 70-75% de la altura facial fisionómica en rostros considerados balanceados (Cozer et al., 2020 - Faciometrics).",
+        "Estas proporciones son guía clínica, no obligación: la variación natural es alta y no implica falta de armonía.",
+        "El estudio de Farkas (1985) ya demostró que la mayoría de personas reales no cumplen los cánones neoclásicos: las proporciones perfectas son la excepción, no la regla."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta por las 'proporciones ideales' del rostro",
+        "Cuando pregunta por la regla de los tercios o los quintos",
+        "Cuando quiere entender de dónde viene la idea de que ciertas caras son 'más proporcionadas'"
+      ],
+      "source_ids": ["vis_2020_005", "vis_2021_006"]
+    },
+    {
+      "id": "vis_marquardt_phi_mask",
+      "title": "La máscara phi de Marquardt y la proporción áurea facial",
+      "summary_es": "En 2002 el cirujano estadounidense Stephen Marquardt propuso una máscara facial basada en la proporción áurea (phi = 1.618) que supuestamente representaría el rostro ideal universal. Esta teoría ha sido extensamente criticada por la literatura peer-reviewed: estudios en poblaciones diversas demuestran que la máscara no representa proporciones reales de personas consideradas bellas fuera de un subconjunto específico de mujeres blancas con rasgos masculinizados.",
+      "key_findings_es": [
+        "Holland (2008) en Aesthetic Plastic Surgery demostró que la máscara de Marquardt es inadecuada para poblaciones no europeas, especialmente africanas subsaharianas y asiáticas orientales.",
+        "Veerala et al. (2016) encontraron que rostros sudindios tienen anchuras cigomáticas y gonial mayores que las predichas por la máscara.",
+        "Naini (2024) en Maxillofacial Plastic and Reconstructive Surgery concluye que 'no hay evidencia convincente de que la proporción áurea esté ligada a proporciones humanas idealizadas o belleza facial'.",
+        "Khoshab et al. (2021) en Aesthetic Surgery Journal encontraron que ningún grupo étnico/género mostró aproximación consistente al 'ideal' de los cánones neoclásicos ni a phi.",
+        "Análisis de las ganadoras de Miss Universo 2001-2015 mostraron correlación estadísticamente inválida con la máscara de Marquardt."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria menciona la 'proporción áurea' o 'golden ratio' aplicada a su cara",
+        "Cuando vio en redes un análisis de belleza basado en phi",
+        "Cuando pregunta si su cara es 'matemáticamente bella'"
+      ],
+      "source_ids": ["vis_2008_007", "vis_2016_008", "vis_2024_009", "vis_2021_010"]
+    },
+    {
+      "id": "vis_visagism_critique",
+      "title": "Crítica académica al visagismo y a los cánones clásicos",
+      "summary_es": "El visagismo es una práctica profesional útil para tomar decisiones estéticas con criterio, pero no es una ciencia exacta. Múltiples estudios revisados por pares (Farkas 1985, Khoshab 2021, Naini 2024) demuestran que los cánones neoclásicos y la proporción áurea no se cumplen en la mayoría de poblaciones reales y no predicen percepción de belleza de manera universal. Lumina debe presentar el visagismo como vocabulario descriptivo, no como prescripción.",
+      "key_findings_es": [
+        "Farkas y colaboradores (1985 en adelante) fueron los primeros en demostrar empíricamente que los cánones neoclásicos rara vez se cumplen en adultos jóvenes reales: solo 2 de 9 proporciones se validaron con frecuencia >40%.",
+        "Khoshab et al. (2021) concluyen que 'la educación contemporánea en cirugía estética no debe basarse en estándares centenarios' derivados de proporciones europeas.",
+        "La predicción real de atractivo facial está más asociada a 'averageness' (cercanía a la media facial poblacional) y feminidad en rostros femeninos, no a phi ni a cánones rígidos (Lee et al., 2025 en Scientific Reports).",
+        "Babacan & Deniz (2025) recomiendan ecuaciones de regresión personalizadas por población y género, en vez de estándares universales.",
+        "El visagismo aplicado a peluquería/maquillaje es útil como heurística, pero las recomendaciones rígidas tipo 'tu cara redonda no puede llevar bob' carecen de respaldo empírico."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta si el visagismo 'realmente funciona'",
+        "Cuando se siente mal porque su cara 'no encaja' en un canon",
+        "Cuando una recomendación rígida la ha hecho dudar de su apariencia"
+      ],
+      "source_ids": ["vis_2021_010", "vis_2025_011", "vis_2025_012", "vis_2024_009"]
+    },
+    {
+      "id": "vis_makeup_contouring",
+      "title": "Visagismo aplicado al maquillaje: contorno e iluminación",
+      "summary_es": "El maquillaje correctivo aplica principios de visagismo usando luz y sombra: tonos oscuros mate (contorno) crean sombra y visualmente reducen volumen; tonos claros (iluminador) atraen la luz y proyectan zonas hacia adelante. La estrategia depende de la forma facial percibida y del efecto deseado, pero no hay una 'regla obligatoria': la elección es estilística.",
+      "key_findings_es": [
+        "El principio físico es válido: el ojo humano percibe zonas oscuras como retraídas y zonas claras como prominentes (base de la pintura claroscuro renacentista).",
+        "Para rostro redondo se suele contornear los laterales (sienes, lados del rostro) y aplicar iluminador en la línea central para alargar visualmente.",
+        "Para rostro cuadrado se suaviza la mandíbula con contorno en los ángulos goniales y se ilumina el centro de la frente y barbilla.",
+        "Para rostro alargado/oblongo se contornea la frente alta y el mentón para acortar visualmente, y se ilumina lateralmente.",
+        "No hay estudios peer-reviewed que demuestren que el contouring 'mejore' atractivo percibido; sí hay literatura clínica abundante sobre principios de claroscuro facial aplicados en cirugía y dermatología estética."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta cómo contornear su tipo de cara",
+        "Cuando pregunta dónde poner el iluminador",
+        "Cuando ve un tutorial y no entiende por qué se ponen las sombras en esos lugares"
+      ],
+      "source_ids": ["vis_2020_005", "vis_2003_001"]
+    },
+    {
+      "id": "vis_haircuts_face_shape",
+      "title": "Visagismo aplicado a cortes de cabello",
+      "summary_es": "El visagismo capilar es la aplicación más popular y comercial del campo: la idea es que ciertos cortes equilibran la forma del rostro (alargando lo redondo, suavizando lo cuadrado, ensanchando lo estrecho). Es práctica profesional ampliamente enseñada en peluquería, pero las recomendaciones específicas son heurísticas, no leyes: la textura del cabello, el estilo personal y la edad importan tanto o más que la forma facial.",
+      "key_findings_es": [
+        "Para rostro redondo: cortes con volumen en la coronilla y largos por debajo de la mandíbula tienden a alargar visualmente; flequillo lateral profundo en vez de recto.",
+        "Para rostro alargado/oblongo: flequillo recto, capas a la altura de los pómulos y ondas laterales acortan visualmente.",
+        "Para rostro cuadrado: capas suaves, ondas y largos asimétricos suavizan los ángulos de la mandíbula.",
+        "Para rostro corazón (frente ancha, mentón estrecho): cortes que dan volumen a la altura del mentón equilibran (bobs, lobs con puntas hacia adentro).",
+        "Para rostro diamante (pómulos prominentes, frente y mandíbula estrechas): flequillo o capas en la frente y volumen en mandíbula equilibran.",
+        "No existen ensayos clínicos sobre la efectividad real de estas recomendaciones; provienen de tradición profesional y observación práctica."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta qué corte le quedaría según su forma de cara",
+        "Cuando duda si llevar flequillo",
+        "Cuando quiere cambiar de look y necesita guía"
+      ],
+      "source_ids": ["vis_2003_001", "vis_undated_002"]
+    },
+    {
+      "id": "vis_eyebrows_face_shape",
+      "title": "Visagismo aplicado a cejas",
+      "summary_es": "La forma de las cejas modula visualmente las proporciones del rostro: arcos altos elevan y alargan, cejas rectas ensanchan y dan juventud, cejas curvas suavizan ángulos. La práctica profesional sugiere que la forma de la ceja contraste con la forma del rostro (por ejemplo: caras angulares con cejas curvas, caras suaves con cejas más definidas) para crear equilibrio visual.",
+      "key_findings_es": [
+        "Cara redonda: cejas con arco definido y cola alargada crean angularidad y verticalidad.",
+        "Cara cuadrada: cejas curvas y suaves equilibran los ángulos de la mandíbula.",
+        "Cara alargada/oblonga: cejas más horizontales (rectas) acortan visualmente el rostro.",
+        "Cara corazón: cejas redondeadas o con arco suave equilibran la frente amplia.",
+        "Cara ovalada: admite prácticamente cualquier forma; la regla más conservadora es seguir la curva natural.",
+        "El principio profesional es: la forma de la ceja debe diferir de la forma del rostro para crear equilibrio agradable visualmente."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta cómo depilarse o diseñarse las cejas",
+        "Cuando duda si su ceja debe ser recta, curva o con arco",
+        "Cuando quiere maquillarse las cejas con dirección"
+      ],
+      "source_ids": ["vis_2003_001", "vis_undated_002"]
+    },
+    {
+      "id": "vis_jewelry_necklines",
+      "title": "Visagismo aplicado a joyería y escotes",
+      "summary_es": "Los aretes, collares y escotes funcionan visualmente como extensiones del rostro: alargan, ensanchan o equilibran según su forma. La práctica de estilismo recomienda que la geometría del accesorio o escote contraste con la forma facial para crear balance, aunque también es válido jugar con repetición de formas para acentuar identidad.",
+      "key_findings_es": [
+        "Cara redonda: aretes alargados (gota, barra), collares en V y escotes V o cuello pico alargan visualmente.",
+        "Cara cuadrada: aretes redondeados o curvos y escotes ovalados, halter o redondos suavizan los ángulos.",
+        "Cara alargada/oblonga: aretes anchos tipo botón, gargantillas y escotes horizontales (barco, off-shoulder) acortan visualmente.",
+        "Cara corazón: aretes que se ensanchan abajo (triángulo invertido o gota ancha) equilibran el mentón estrecho.",
+        "Cara ovalada: prácticamente cualquier forma funciona; es la más versátil para joyería.",
+        "Cara diamante: aretes en triángulo o anchos en el lóbulo equilibran los pómulos prominentes."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta qué aretes le quedan bien",
+        "Cuando elige un escote para un evento",
+        "Cuando va a comprar joyería y duda entre estilos"
+      ],
+      "source_ids": ["vis_2003_001", "vis_undated_002"]
+    },
+    {
+      "id": "vis_attractiveness_science",
+      "title": "Qué dice la ciencia sobre percepción de belleza facial",
+      "summary_es": "La investigación peer-reviewed identifica tres factores que correlacionan con atractivo facial percibido: averageness (cercanía a la media facial poblacional), simetría y dimorfismo sexual (feminidad en mujeres, masculinidad en hombres). Estudios recientes (Lee et al., 2025) sugieren que averageness y feminidad son los predictores más fuertes, mientras que simetría y masculinidad pierden peso cuando se controla por salud percibida.",
+      "key_findings_es": [
+        "Averageness: los rostros más cercanos al promedio matemático de su población son percibidos como más atractivos (efecto demostrado desde Langlois & Roggman 1990).",
+        "Simetría: correlaciona con atractivo, pero gran parte de ese efecto se explica por la salud percibida asociada (Rhodes et al., 2007).",
+        "Dimorfismo sexual: en rostros femeninos la feminidad predice atractivo; en masculinos la masculinidad tiene efecto débil o nulo (Lee et al., 2025).",
+        "Hay alto acuerdo cross-cultural en juicios de atractivo (Coetzee et al., 2014), pero el acuerdo es mayor para rostros del propio grupo étnico por familiaridad.",
+        "No existe una 'fórmula universal' de belleza: los factores culturales, hormonales, de familiaridad y de contexto modulan fuertemente la percepción."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta qué hace que una cara sea bella científicamente",
+        "Cuando duda de su atractivo y busca perspectiva basada en evidencia",
+        "Cuando quiere entender por qué hay ideales tan distintos entre culturas"
+      ],
+      "source_ids": ["vis_2014_013", "vis_2025_012", "vis_2007_014"]
+    },
+    {
+      "id": "vis_cultural_differences",
+      "title": "Diferencias culturales en proporciones e ideales faciales",
+      "summary_es": "Las proporciones faciales consideradas 'ideales' varían significativamente entre poblaciones. Estudios antropométricos demuestran que poblaciones africanas, asiáticas orientales, sudindias y europeas tienen distribuciones distintas de anchuras, alturas y ratios faciales. Los cánones neoclásicos europeos no aplican universalmente y aplicar la máscara de Marquardt a rostros no europeos lleva a conclusiones erróneas sobre 'falta de belleza'.",
+      "key_findings_es": [
+        "Khoshab et al. (2021) analizaron grupos étnicos diversos y encontraron variabilidad significativa interétnica en mediciones phi 2, 5, 8, 10 y 17.",
+        "Veerala et al. (2016) mostraron que rostros sudindios tienen mayor anchura intercigomática e intergonial que la máscara estándar.",
+        "Holland (2008) demostró que la máscara phi es 'inadecuada para poblaciones no europeas, especialmente africanas subsaharianas y asiáticas orientales'.",
+        "En culturas del este de Asia se valora frecuentemente el rostro en V (V-line) y contornos suaves; en culturas occidentales contemporáneas se destacan pómulos altos y mandíbula definida.",
+        "Coetzee et al. (2014) encontraron que observadores africanos pesan más el color de piel y observadores europeos pesan más la forma del rostro al juzgar atractivo en mismas imágenes."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria es de origen latino/indígena/asiático/africano y siente que las recomendaciones 'no le aplican'",
+        "Cuando pregunta por qué los ideales de belleza cambian según el país",
+        "Cuando quiere entender por qué su forma facial no encaja en categorías europeas"
+      ],
+      "source_ids": ["vis_2021_010", "vis_2016_008", "vis_2008_007", "vis_2014_013"]
+    },
+    {
+      "id": "vis_youth_facial_changes",
+      "title": "Cambios faciales durante la pubertad y adolescencia",
+      "summary_es": "El rostro cambia significativamente durante la pubertad y adolescencia: el crecimiento facial alcanza su pico de velocidad alrededor de los 10-12 años en mujeres y 13.6-14.5 años en hombres. La cabeza femenina alcanza tamaño adulto hacia los 13-14 años; la masculina sigue creciendo hasta los 16-17. Esto significa que la 'forma facial' de una adolescente puede cambiar notablemente en pocos años y las recomendaciones deben adaptarse.",
+      "key_findings_es": [
+        "Pico de crecimiento facial en mujeres: 10-12 años; mandíbula madura alrededor de los 14 años.",
+        "Pico de crecimiento facial en hombres: 13.6-14.5 años; mandíbula madura alrededor de los 16 años.",
+        "Diferencias en frente, región bucal y mentón ya son evidentes antes de la pubertad, no solo resultado de hormonas puberales.",
+        "El IMC y la composición corporal influyen en el desarrollo craneofacial: IMC elevado se asocia con dimensiones faciales finales mayores (Lione et al., 2024).",
+        "Para adolescentes de 13-17 años, una clasificación rígida de forma facial puede quedar obsoleta en 1-2 años; conviene revisarse periódicamente."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando una usuaria adolescente nota que su cara está cambiando",
+        "Cuando pregunta si su forma facial actual será la definitiva",
+        "Cuando compara su cara con la de adultas y se siente diferente"
+      ],
+      "source_ids": ["vis_2018_015", "vis_2024_016"]
+    },
+    {
+      "id": "vis_facial_landmarks_tech",
+      "title": "Tecnología de detección facial: MediaPipe y landmarks",
+      "summary_es": "MediaPipe Face Mesh, desarrollado por Google y publicado por Kartynnik et al. (2019), es la tecnología más usada para detectar puntos del rostro en tiempo real desde una sola cámara. Detecta 468 landmarks 3D (478 con refinamiento de iris) y funciona en móviles a 100-1000+ FPS. Es la base técnica que permite a apps como Lumina clasificar formas faciales automáticamente desde una selfie.",
+      "key_findings_es": [
+        "MediaPipe Face Mesh genera 468 vértices 3D del rostro desde una sola cámara RGB, sin sensor de profundidad.",
+        "Error medio normalizado de 3.12 en el dataset 300W de alineación facial, comparable al estado del arte.",
+        "El modelo Attention Mesh refina con más precisión labios, ojos e iris al costo de más cómputo.",
+        "Los landmarks numerados (puntos 10, 152, 234, 454, etc.) corresponden a posiciones anatómicas estándar: frente alta, mentón, sienes laterales.",
+        "A partir de estos landmarks se calculan distancias y ratios (WHR, JFR, CJR) que alimentan al clasificador de forma facial."
+      ],
+      "applicable_user_scenarios": [
+        "Cuando la usuaria pregunta cómo funciona el análisis automático",
+        "Cuando le preocupa la privacidad y quiere saber qué se procesa",
+        "Cuando pregunta por la precisión del análisis"
+      ],
+      "source_ids": ["vis_2019_004"]
+    }
+  ]
+}

@@ -1,0 +1,565 @@
+{
+  "domain": "skincare",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "audience": "Adolescentes 13-18 y adultas jóvenes hispanohablantes",
+  "safety_disclaimer_global": "Esta base de conocimiento es educativa y no sustituye consulta dermatológica profesional. Para condiciones moderadas o severas, lesiones que sangran, cambios rápidos o cualquier duda diagnóstica, consultar dermatólogo certificado.",
+  "topics": [
+    {
+      "id": "skin_classification_basic",
+      "title": "Tipos de piel básicos — cómo reconocerlos sin equivocarse",
+      "summary_es": "El modelo clásico clasifica la piel en cinco tipos: grasa, seca, mixta, normal y sensible. La piel grasa produce sebo en exceso (brillo, poros visibles, predisposición a comedones). La piel seca produce poco sebo y retiene poca agua (tirantez, opacidad, descamación fina). La piel mixta combina zona T grasa con mejillas normales o secas. La piel normal mantiene equilibrio sin tendencias marcadas. La piel sensible es una característica que puede coexistir con cualquier tipo y se define por reactividad a estímulos (picor, ardor, enrojecimiento). Identificar correctamente el tipo requiere observar la piel 1-2 horas después de lavarla sin productos, en condiciones normales.",
+      "key_findings_es": [
+        "El tipo de piel está principalmente determinado por genética y puede modificarse ligeramente por edad, hormonas y clima, pero no se 'cambia' con productos",
+        "La piel grasa también necesita hidratación; no hidratarla puede paradójicamente aumentar la producción de sebo",
+        "Sensibilidad no es lo mismo que sequedad: una persona puede tener piel grasa Y sensible",
+        "El test más confiable: lavar el rostro con limpiador suave, esperar 1-2 horas sin aplicar nada, observar"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta '¿qué tipo de piel tengo?'",
+        "Usuaria reporta brillo + descamación (mixta, no contradictoria)",
+        "Usuaria confunde deshidratación temporal con piel seca crónica"
+      ],
+      "safety_notes_es": [
+        "El tipo de piel no es un diagnóstico médico: enrojecimiento persistente, picor intenso o lesiones requieren evaluación dermatológica",
+        "No recomendar productos solo por 'tipo de piel' sin considerar condiciones específicas (acné, rosácea, dermatitis)"
+      ],
+      "source_ids": ["skin_2008_001", "skin_2024_011"]
+    },
+    {
+      "id": "skin_baumann_16_types",
+      "title": "Sistema Baumann — los 16 tipos de piel modernos",
+      "summary_es": "El Baumann Skin Type Indicator (BSTI), desarrollado por la dermatóloga Leslie Baumann en 2008, clasifica la piel mediante cuatro ejes binarios independientes: seca u oleosa (D/O), sensible o resistente (S/R), pigmentada o no pigmentada (P/N), arrugada o tensa/joven (W/T). Las combinaciones generan 16 tipos identificados por código de 4 letras (ej. OSNT = oleosa, sensible, no pigmentada, tensa). Este sistema es más útil que la clasificación clásica porque captura dimensiones independientes: por ejemplo, dos personas con piel grasa pueden necesitar rutinas opuestas según sensibilidad o tendencia a hiperpigmentación.",
+      "key_findings_es": [
+        "Los 4 ejes son independientes: la piel seca no implica sensibilidad ni arrugas",
+        "La sensibilidad se subdivide en 4 patrones clínicos (acneica, rosaceiforme, alérgica, urente)",
+        "El eje pigmentación predice riesgo de manchas postinflamatorias y melasma",
+        "El sistema se basa en un cuestionario validado, no en inspección visual sola"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria quiere clasificación más precisa que 'mixta'",
+        "Test de tipo de piel dentro de la app Lumina",
+        "Personalización de recomendaciones según ejes independientes"
+      ],
+      "safety_notes_es": [
+        "El BSTI clasifica tendencias cosméticas, no condiciones médicas: acné moderado-severo, rosácea o dermatitis atópica requieren diagnóstico dermatológico"
+      ],
+      "source_ids": ["skin_2008_001"]
+    },
+    {
+      "id": "skin_fitzpatrick_phototypes",
+      "title": "Escala Fitzpatrick — fototipos y riesgo solar",
+      "summary_es": "La escala Fitzpatrick (1975, ampliada 1988) clasifica la piel en 6 fototipos según respuesta a radiación UV. Tipo I: muy clara, siempre se quema, nunca broncea. Tipo II: clara, se quema fácilmente, broncea poco. Tipo III: trigueña clara, a veces se quema, broncea gradualmente. Tipo IV: trigueña/oliva, raramente se quema, broncea con facilidad. Tipo V: morena, rara vez se quema, pigmenta intensamente. Tipo VI: muy oscura, prácticamente no se quema, pigmentación profunda. La población latina suele agruparse en III-V. Mayor melanina = más protección natural, pero NO inmunidad: todos los fototipos necesitan protector solar y todos pueden desarrollar cáncer de piel.",
+      "key_findings_es": [
+        "Mayor fototipo no significa 'no necesita SPF' — la fotoprotección sigue siendo necesaria en pieles oscuras",
+        "Fototipos III-VI tienen mayor riesgo de hiperpigmentación postinflamatoria tras lesiones",
+        "El fototipo predice dosis seguras de fototerapia y láseres",
+        "La autoevaluación es razonablemente fiable usando criterios de quemadura y bronceado"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta por SPF para piel morena",
+        "Usuaria latina con tendencia a marcas oscuras tras acné",
+        "Personalización de mensajes sobre fotoprotección por fototipo"
+      ],
+      "safety_notes_es": [
+        "Todos los fototipos necesitan SPF 30+ broad-spectrum, incluyendo V y VI",
+        "Cambios en lunares, lesiones que no cicatrizan o nuevas manchas sospechosas requieren evaluación dermatológica independientemente del fototipo"
+      ],
+      "source_ids": ["skin_2024_012", "skin_2024_008"]
+    },
+    {
+      "id": "skin_teen_basic_routine",
+      "title": "Rutina básica para piel adolescente — qué necesitas realmente",
+      "summary_es": "La American Academy of Dermatology recomienda para adolescentes una rutina simple de tres pasos: limpiador suave, hidratante sin fragancia y protector solar de amplio espectro SPF 30+. Si hay acné, puede añadirse un activo específico como ácido salicílico o peróxido de benzoilo en baja concentración. La AAD enfatiza explícitamente que 'más no es mejor' y desaconseja en menores los activos antienvejecimiento como retinol, vitamina C concentrada y ácidos exfoliantes fuertes, porque causan irritación sin beneficio en piel joven. La consistencia diaria de una rutina simple supera cualquier rutina compleja abandonada en semanas.",
+      "key_findings_es": [
+        "Rutina mínima eficaz: limpiador suave + hidratante sin fragancia + SPF 30+ broad-spectrum",
+        "Activos a EVITAR en adolescentes según AAD: retinol cosmético, vitamina C alta concentración, AHA/BHA fuertes (salvo ácido salicílico bajo para acné)",
+        "El hidratante NO se omite en piel grasa — buscar texturas en gel o no comedogénicas",
+        "Lavar el rostro máximo 2 veces al día con limpiador suave; agua sola en la mañana también es válido"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente pregunta 'qué productos necesito'",
+        "Adolescente quiere imitar rutinas de TikTok con 10 pasos",
+        "Pre-adolescente (10-12 años) pregunta por skincare"
+      ],
+      "safety_notes_es": [
+        "Si hay irritación, ardor o enrojecimiento persistente tras un producto, descontinuar inmediatamente",
+        "Las rutinas virales con múltiples activos pueden dañar la barrera cutánea de la piel joven — consultar dermatólogo si la piel reacciona",
+        "Antes de incorporar cualquier ingrediente activo (BHA, retinol, ácidos), consultar con dermatólogo si se es menor de 16 años"
+      ],
+      "source_ids": ["skin_2024_011", "skin_2024_008"]
+    },
+    {
+      "id": "skin_teen_hormonal_acne",
+      "title": "Acné adolescente — qué pasa hormonalmente y por qué",
+      "summary_es": "Durante la pubertad, el aumento de andrógenos (testosterona y DHT, producidos por glándulas suprarrenales y gónadas) estimula las glándulas sebáceas, que crecen y producen más sebo. Este exceso combinado con células muertas obstruye los folículos, creando un ambiente donde Cutibacterium acnes prolifera y desencadena inflamación. Afecta hasta al 85% de adolescentes según la AAD. En varones tiende a ser más severo por mayores niveles de andrógenos circulantes. En mujeres, las fluctuaciones del ciclo menstrual provocan brotes premenstruales típicos. No es 'culpa' del adolescente ni de su higiene: es biología hormonal.",
+      "key_findings_es": [
+        "El acné adolescente tiene base hormonal — lavar más fuerte no lo resuelve y puede empeorarlo",
+        "85% de adolescentes experimentan acné en algún grado (AAD 2024)",
+        "En mujeres, brotes premenstruales son normales y no indican fallo en la rutina",
+        "El acné severo o que deja cicatrices/manchas requiere tratamiento dermatológico, no más productos OTC"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente avergonzado/a por brotes acneicos",
+        "Usuaria pregunta por brotes premenstruales",
+        "Pregunta sobre si 'lavar más' ayuda"
+      ],
+      "safety_notes_es": [
+        "El acné NO se cura con productos cosméticos; se controla. Para acné moderado-severo (grado III-IV: muchas pústulas, nódulos, cicatrización), referir a dermatólogo siempre",
+        "Si el acné causa malestar emocional significativo, es razón válida para consultar dermatólogo independientemente del grado clínico",
+        "Acné con marcas oscuras persistentes (PIH) en pieles III-VI requiere tratamiento dirigido para prevenir hiperpigmentación crónica"
+      ],
+      "source_ids": ["skin_2023_003", "skin_2024_001", "skin_2025_001"]
+    },
+    {
+      "id": "skin_acne_classification_treatment",
+      "title": "Acné vulgar — clasificación por severidad y tratamientos",
+      "summary_es": "DermNet clasifica el acné en tres grados: leve (menos de 30 lesiones totales, principalmente comedones), moderado (30-125 lesiones, inflamación clara y posible cicatrización leve), severo (más de 125 lesiones, nódulos, pseudocistos, cicatrización marcada). Para acné leve, las guidelines AAD 2024 recomiendan tratamiento tópico multimodal: peróxido de benzoilo + retinoide tópico (adapaleno OTC en muchos países, tretinoína con receta). Para moderado se añaden antibióticos tópicos (siempre combinados con peróxido de benzoilo para prevenir resistencia) o antibióticos orales (doxiciclina) bajo supervisión. Para severo o resistente: isotretinoína oral bajo control dermatológico estricto. La hormonoterapia (anticonceptivos combinados, espironolactona) es opción en mujeres adultas.",
+      "key_findings_es": [
+        "Combinar mecanismos de acción es más efectivo que monoterapia (AAD 2024)",
+        "Peróxido de benzoilo (2.5-5%) es bactericida y no genera resistencia",
+        "Antibióticos tópicos NUNCA solos — siempre con peróxido de benzoilo para evitar resistencia",
+        "Isotretinoína oral es el tratamiento más efectivo para acné severo pero requiere monitoreo médico estricto",
+        "Resultados visibles típicamente 6-12 semanas; cambiar productos antes es contraproducente"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria intenta autoclasificar severidad de su acné",
+        "Pregunta sobre antibióticos para acné",
+        "Pregunta sobre isotretinoína (popularmente 'Roacután')"
+      ],
+      "safety_notes_es": [
+        "Acné moderado-severo NO se trata sin dermatólogo. Auto-medicación con antibióticos orales contribuye a resistencia bacteriana global",
+        "Isotretinoína es teratogénica: requiere programa de prevención de embarazo estricto en mujeres en edad fértil (EMA, FDA iPLEDGE)",
+        "Si el acné causa cicatrices, atróficas o hipertróficas, referir a dermatólogo urgentemente — las cicatrices son permanentes pero prevenibles con tratamiento temprano"
+      ],
+      "source_ids": ["skin_2024_001", "skin_2025_001", "skin_2020_001"]
+    },
+    {
+      "id": "skin_active_retinoids",
+      "title": "Retinoides — qué son, edades apropiadas y precauciones",
+      "summary_es": "Los retinoides son derivados de vitamina A. En orden ascendente de potencia tópica: retinil ésteres → retinol (cosmético) → retinaldehído → ácido retinoico/tretinoína (prescripción). El adapaleno es un retinoide sintético OTC en muchos países, con buena tolerancia. Mecanismo: normalizan queratinización, reducen comedones, modulan inflamación y estimulan colágeno a largo plazo. La AAD considera que tretinoína puede iniciarse a partir de los 10 años para acné bajo supervisión dermatológica. Sin embargo, la AAD explícitamente desaconseja retinol cosmético para fines antienvejecimiento en menores: causa irritación sin beneficio en piel joven. Efectos adversos comunes: descamación, eritema, sequedad, ardor inicial.",
+      "key_findings_es": [
+        "Para acné en adolescentes, los retinoides tópicos (adapaleno, tretinoína) son tratamiento de primera línea según AAD 2024",
+        "Retinol cosmético antienvejecimiento NO se recomienda antes de los 25 años aproximadamente (consenso AAD)",
+        "Adapaleno 0.1% es mejor tolerado que tretinoína a concentraciones equivalentes",
+        "Introducir gradualmente: 1 noche/semana, subir a 2-3, luego diario según tolerancia",
+        "Aumenta fotosensibilidad — SPF diario obligatorio"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente pregunta por retinol viral en redes",
+        "Usuaria con acné pregunta por adapaleno",
+        "Pregunta sobre 'ácido retinoico'"
+      ],
+      "safety_notes_es": [
+        "Tretinoína y otros retinoides recetados solo bajo supervisión dermatológica. No usar productos de familiares con receta",
+        "CONTRAINDICADO en embarazo y lactancia: aunque la absorción sistémica tópica es baja, se contraindica por precaución. La isotretinoína oral es claramente teratogénica",
+        "Retinol cosmético en adolescentes NO recomendado según AAD: causa irritación, daño de barrera y fotosensibilidad sin beneficio",
+        "Combinar con peróxido de benzoilo solo si el producto está formulado para ello (algunos retinoides se inactivan con BPO)"
+      ],
+      "source_ids": ["skin_2024_011", "skin_2024_001", "skin_2024_006", "skin_2024_007"]
+    },
+    {
+      "id": "skin_active_niacinamide",
+      "title": "Niacinamida — el activo versátil con buena evidencia",
+      "summary_es": "La niacinamida es la forma activa de vitamina B3. Con evidencia consolidada en revisión 2024 (Drug Delivery and Translational Research), demuestra: regulación de producción de sebo, refuerzo de barrera mediante síntesis de ceramidas, acción antiinflamatoria, antioxidante, mejora de pigmentación irregular (comparable a 4% hidroquinona en algunos estudios) y estímulo de colágeno. Concentraciones eficaces: 2-5%. Tolerada por mayoría de pieles incluida la sensible. Compatible con otros activos (vitamina C, retinoides, ácidos). Es uno de los pocos activos cosméticos que la dermatología considera seguro y útil para adolescentes con acné o tendencia oleosa.",
+      "key_findings_es": [
+        "Concentraciones 2-5% son las más estudiadas; 10% no aporta beneficio adicional y puede irritar",
+        "Reduce producción de sebo y enrojecimiento (útil en acné y piel sensible)",
+        "Apoya la función barrera al estimular síntesis endógena de ceramidas",
+        "Compatible con casi todos los activos; el viejo mito de incompatibilidad con vitamina C ha sido refutado en formulaciones modernas"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente con piel mixta/grasa busca primer 'activo'",
+        "Usuaria con enrojecimiento postacné",
+        "Pregunta por niacinamida vs otras opciones"
+      ],
+      "safety_notes_es": [
+        "Generalmente segura, pero hacer parche de prueba detrás de oreja durante 2-3 días en piel muy sensible",
+        "Si causa enrojecimiento o picor, suspender — algunas personas son sensibles a la niacinamida o a sus impurezas (ácido nicotínico)"
+      ],
+      "source_ids": ["skin_2024_002"]
+    },
+    {
+      "id": "skin_active_salicylic_bha",
+      "title": "Ácido salicílico (BHA) — para acné y poros obstruidos",
+      "summary_es": "El ácido salicílico es un beta-hidroxiácido (BHA) liposoluble, lo que le permite penetrar el sebo y exfoliar el interior del poro. La FDA lo reconoce como ingrediente OTC para acné en concentraciones de 0.5-2%, consideradas seguras incluso para adolescentes. Reduce comedones (puntos negros y blancos) y tiene acción antiinflamatoria leve. Las guidelines AAD 2024 lo incluyen con recomendación condicional para acné. Para piel adolescente, comenzar con concentraciones bajas (0.5-1%) y frecuencia moderada (2-3 veces por semana) para evaluar tolerancia.",
+      "key_findings_es": [
+        "Concentraciones seguras OTC: 0.5-2% (FDA, British Association of Dermatologists)",
+        "Liposoluble: penetra el sebo del poro mejor que los AHA",
+        "Útil para piel grasa, comedones y acné leve",
+        "Puede causar fotosensibilidad — SPF diario obligatorio"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente con comedones (puntos negros) en zona T",
+        "Piel grasa con poros visibles",
+        "Acné leve sin tratamiento médico"
+      ],
+      "safety_notes_es": [
+        "Evitar si hay alergia conocida a aspirina (ácido acetilsalicílico) — relación química",
+        "No usar en piel agrietada, con eczema activo o irritada",
+        "Embarazo y lactancia: uso tópico de salicílico en pequeñas áreas se considera generalmente seguro, pero consultar profesional para tratamientos extensos",
+        "Si causa ardor persistente, descamación severa o empeoramiento, suspender y consultar"
+      ],
+      "source_ids": ["skin_2024_001", "skin_2024_011"]
+    },
+    {
+      "id": "skin_active_benzoyl_peroxide",
+      "title": "Peróxido de benzoilo — bactericida sin generar resistencia",
+      "summary_es": "El peróxido de benzoilo es uno de los tratamientos tópicos más eficaces y estudiados para acné. Es bactericida contra Cutibacterium acnes y, crítico, NO genera resistencia bacteriana (a diferencia de los antibióticos). La evidencia muestra eficacia equivalente entre concentraciones 2.5%, 5% y 10%, pero la irritación aumenta proporcionalmente. Por eso la recomendación dermatológica actual es empezar con 2.5-5%. Es la base de la mayoría de regímenes para acné leve-moderado y se combina habitualmente con retinoides tópicos y antibióticos para potenciar y prevenir resistencia.",
+      "key_findings_es": [
+        "Concentraciones 2.5% y 5% son tan eficaces como 10% pero con menos irritación",
+        "No genera resistencia bacteriana — siempre debe acompañar a antibióticos tópicos",
+        "Decolora telas (toallas, fundas, ropa) — usar toallas blancas o viejas",
+        "Inicio: cada 2-3 días, 5-10 minutos enjuagando, luego dejar puesto si tolera"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente con acné inflamatorio leve",
+        "Usuaria pregunta por 'BPO' o 'Benzac'",
+        "Combinación con antibióticos tópicos recetados"
+      ],
+      "safety_notes_es": [
+        "Causa irritación, sequedad y descamación al inicio — introducir gradualmente",
+        "Aumenta fotosensibilidad — SPF obligatorio",
+        "Puede inactivar la tretinoína si se aplican juntos; alternar mañana/noche o usar productos formulados como combinación estable",
+        "Embarazo: uso tópico generalmente considerado seguro pero consultar profesional"
+      ],
+      "source_ids": ["skin_2020_001", "skin_2024_001"]
+    },
+    {
+      "id": "skin_active_aha",
+      "title": "Alfa-hidroxiácidos (AHA) — glicólico, láctico, mandélico",
+      "summary_es": "Los AHA son ácidos hidrosolubles que exfolian la superficie cutánea disolviendo uniones entre células muertas. Glicólico (el más pequeño, mayor penetración, también más irritante), láctico (humectante además de exfoliante, mejor tolerado), mandélico (más grande, suave, útil en piel sensible y pieles oscuras por menor riesgo de PIH). Mejoran textura, luminosidad, pigmentación irregular y arrugas finas con uso prolongado. Para adolescentes, la AAD desaconseja AHA como rutina antienvejecimiento, pero pueden tener uso puntual en concentraciones bajas para problemas específicos como queratosis pilar bajo orientación profesional.",
+      "key_findings_es": [
+        "Glicólico: más penetrante, también más irritante; mandélico: más suave, recomendado para fototipos altos",
+        "Aumentan fotosensibilidad significativamente — SPF obligatorio durante uso y al menos 1 semana después",
+        "No combinar con retinoides en la misma rutina (alta irritación) — alternar días",
+        "Resultados visibles tras 4-8 semanas de uso constante"
+      ],
+      "applicable_user_scenarios": [
+        "Adulta joven con textura irregular",
+        "Pregunta por exfoliación química",
+        "Hiperpigmentación leve postacné"
+      ],
+      "safety_notes_es": [
+        "La AAD desaconseja AHA en adolescentes para uso antienvejecimiento",
+        "Iniciar con concentraciones bajas (5-8%) y baja frecuencia (1-2 veces por semana)",
+        "Suspender si hay ardor sostenido, descamación severa o aparición de manchas",
+        "Peelings con concentraciones altas (>20%) deben realizarse solo por profesional"
+      ],
+      "source_ids": ["skin_2024_011", "skin_2024_010"]
+    },
+    {
+      "id": "skin_active_vitamin_c",
+      "title": "Vitamina C tópica — antioxidante y luminosidad",
+      "summary_es": "El ácido L-ascórbico es la forma biológicamente activa de vitamina C en formulación tópica. Revisión 2022 confirma acción antioxidante, fotoprotectora (potencia el SPF), estimulante de síntesis de colágeno (cofactor enzimático) y despigmentante leve. Concentraciones eficaces 10-20%, pH <3.5. Retos importantes: inestabilidad química (se oxida y vuelve amarillenta/marrón perdiendo eficacia), penetración limitada y potencial irritante a altas concentraciones. Derivados (ascorbil fosfato de sodio, ascorbil glucósido, tetrahexildecil ascorbato) son más estables pero menos potentes. La AAD desaconseja vitamina C concentrada en adolescentes como rutina antienvejecimiento.",
+      "key_findings_es": [
+        "Forma más estudiada: ácido L-ascórbico 10-20% pH ácido — pero inestable",
+        "Si la fórmula está amarilla/marrón oscuro, ha perdido eficacia — descartar",
+        "Mejor en mañana sobre piel limpia, antes del SPF (potencia protección antioxidante)",
+        "Derivados estables sirven para pieles sensibles pero con eficacia variable"
+      ],
+      "applicable_user_scenarios": [
+        "Adulta joven busca activo antioxidante",
+        "Pregunta por luminosidad o manchas leves",
+        "Comparación entre vitamina C y otros antioxidantes"
+      ],
+      "safety_notes_es": [
+        "AAD desaconseja vitamina C concentrada en adolescentes — sin beneficio antienvejecimiento y con riesgo de irritación",
+        "Hacer parche de prueba: el ácido L-ascórbico a pH bajo puede causar ardor",
+        "Conservar en envase opaco y hermético, lejos de calor y luz directa",
+        "Si causa picor o eritema persistente, suspender"
+      ],
+      "source_ids": ["skin_2022_001", "skin_2024_011"]
+    },
+    {
+      "id": "skin_active_hyaluronic_acid",
+      "title": "Ácido hialurónico — el humectante apto para todos",
+      "summary_es": "El ácido hialurónico es un humectante que retiene hasta 1000 veces su peso en agua. Existe en alto peso molecular (HMW-HA, capa superficial hidratante) y bajo peso molecular (LMW-HA, penetra estrato córneo y reduce profundidad de arrugas). Las formulaciones combinadas (multi-peso) muestran mejor desempeño. Aumenta hidratación cutánea hasta 55% (medida por corneometría). Es uno de los activos más seguros y compatibles, apto desde edad adolescente. Funciona mejor sobre piel ligeramente húmeda, sellado por un emoliente encima para evitar evaporación.",
+      "key_findings_es": [
+        "Apto para todos los tipos de piel desde adolescencia",
+        "Funciona mejor en ambientes húmedos o aplicado sobre piel húmeda + sellado con crema",
+        "Bajo peso molecular penetra más, alto peso se queda superficial",
+        "No reemplaza barrera lipídica — no sirve solo en piel seca crónica"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente o adulta busca hidratación ligera",
+        "Piel deshidratada estacional",
+        "Combinación con otros activos para amortiguar irritación"
+      ],
+      "safety_notes_es": [
+        "Muy seguro en general, raramente causa reacciones",
+        "En climas muy secos sin sellar con crema puede paradójicamente deshidratar (jala agua de las capas profundas)"
+      ],
+      "source_ids": ["skin_2022_002"]
+    },
+    {
+      "id": "skin_active_ceramides",
+      "title": "Ceramidas — reconstrucción de barrera cutánea",
+      "summary_es": "Las ceramidas son lípidos estructurales que constituyen aproximadamente el 50% de la composición lipídica del estrato córneo. En pieles con dermatitis atópica, eczema, sensibilidad o barrera dañada, hay déficit y alteración de ceramidas. Los emolientes ricos en ceramidas restauran la composición lipídica normal, reducen pérdida transepidérmica de agua y mejoran síntomas de DA. Aprobados como tratamiento adyuvante de barrera. Son ingrediente clave en hidratantes para piel sensible, seca, post-tratamiento (post-retinoide, post-peeling) o reparación.",
+      "key_findings_es": [
+        "Componente natural de la barrera cutánea — bien tolerados por casi todas las pieles",
+        "Mejor evidencia en dermatitis atópica, eczema y barrera dañada",
+        "Frecuentemente combinados con colesterol y ácidos grasos en proporción 3:1:1 para mayor eficacia",
+        "Excelente complemento durante uso de retinoides o tras procedimientos"
+      ],
+      "applicable_user_scenarios": [
+        "Piel seca, sensible o reactiva",
+        "Reparación tras irritación por activos",
+        "Eczema leve estacional"
+      ],
+      "safety_notes_es": [
+        "Para dermatitis atópica diagnosticada, ceramidas son adyuvantes — los corticoides tópicos en brotes pueden ser necesarios bajo supervisión médica",
+        "Si hay enrojecimiento intenso, picor severo o eczema que no mejora con hidratación, consultar dermatólogo"
+      ],
+      "source_ids": ["skin_2023_002", "skin_2024_009"]
+    },
+    {
+      "id": "skin_active_azelaic_acid",
+      "title": "Ácido azelaico — multitarea para acné, rosácea y manchas",
+      "summary_es": "El ácido azelaico es un ácido dicarboxílico con propiedades antimicrobianas, antiinflamatorias, queratolíticas y despigmentantes (inhibe tirosinasa). Una revisión sistemática 2023 (King et al.) confirma eficacia clínicamente significativa en acné, rosácea, melasma e hiperpigmentación postinflamatoria a concentraciones 15-20%. Comparable a retinoides para acné con mejor tolerancia en algunos estudios. Especialmente valioso para pieles oscuras (Fitzpatrick III-VI) propensas a PIH porque combate acné Y mancha simultáneamente. Mucho mejor tolerado que hidroquinona o retinoides en piel sensible.",
+      "key_findings_es": [
+        "Multitarea único: acné + manchas + rosácea con buena tolerancia",
+        "Especialmente útil en piel oscura para prevenir y tratar PIH postacné",
+        "Concentraciones 15-20% son las más estudiadas (prescripción en muchos países)",
+        "Seguro en embarazo según múltiples fuentes dermatológicas (a diferencia de retinoides)"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con acné + manchas oscuras simultáneas",
+        "Piel sensible que no tolera retinoides",
+        "Rosácea leve con tendencia a brotes acneicos"
+      ],
+      "safety_notes_es": [
+        "Puede causar leve sensación de hormigueo o ardor inicial — habitualmente transitorio",
+        "Disponible OTC en bajas concentraciones (10%) y receta en altas (15-20%) según país",
+        "Consultar dermatólogo para hiperpigmentación persistente o melasma"
+      ],
+      "source_ids": ["skin_2023_001", "skin_2024_004"]
+    },
+    {
+      "id": "skin_sunscreen_essentials",
+      "title": "Protección solar — qué SPF, qué tipo y cómo aplicar",
+      "summary_es": "La AAD recomienda usar todos los días un protector solar de amplio espectro (broad-spectrum, cubre UVA + UVB), SPF 30 o superior, resistente al agua, en todas las pieles independientemente del fototipo. SPF mide protección frente a UVB (quemadura, cáncer); PA o estrellas miden protección UVA (envejecimiento, manchas). Tipos: filtros minerales (óxido de zinc, dióxido de titanio) reflejan/dispersan radiación, preferibles en piel sensible y embarazo; filtros químicos (avobenzona, octinoxato, octisalato, ensulizol) absorben radiación, suelen tener texturas más ligeras y elegantes. Cantidad: ~2 mg/cm² (regla de los dos dedos para rostro). Reaplicar cada 2 horas en exposición prolongada o tras nadar/sudar.",
+      "key_findings_es": [
+        "SPF 30+ broad-spectrum es el estándar AAD, todos los días, todos los fototipos",
+        "Cantidad insuficiente reduce drásticamente el SPF real (la mayoría aplica 25-50% de lo recomendado)",
+        "Mineral y químico son ambos seguros y eficaces — la elección es por tolerancia y preferencia",
+        "El protector solar debajo del maquillaje requiere reaplicación; existen polvos y brumas con SPF para retoque",
+        "Cabeza descubierta, cuero cabelludo y orejas también requieren protección"
+      ],
+      "applicable_user_scenarios": [
+        "Cualquier consulta sobre rutina de skincare — el SPF es no negociable",
+        "Usuaria con piel oscura preguntando si necesita SPF (sí, siempre)",
+        "Pregunta por filtros minerales vs químicos"
+      ],
+      "safety_notes_es": [
+        "Bebés menores de 6 meses: evitar SPF cuando sea posible, priorizar sombra y ropa",
+        "Algunos filtros químicos (oxibenzona, octinoxato) están restringidos en ciertos lugares por impacto en arrecifes coralinos — opciones minerales son alternativa",
+        "Si causa irritación o brotes, probar formulación mineral o buscar 'oil-free', 'non-comedogenic'",
+        "El protector solar no reemplaza otras medidas: sombra, ropa, gorro, evitar horas pico (10am-4pm)"
+      ],
+      "source_ids": ["skin_2024_008", "skin_2024_011"]
+    },
+    {
+      "id": "skin_pih_dark_marks",
+      "title": "Hiperpigmentación postinflamatoria (PIH) — manchas oscuras tras acné",
+      "summary_es": "La hiperpigmentación postinflamatoria (PIH) es la sobreproducción de melanina tras inflamación cutánea (acné, eczema, traumatismo, procedimientos). Es significativamente más común y persistente en fototipos Fitzpatrick III-VI, lo que la hace especialmente relevante para la población latina. El tratamiento prioritario es controlar la causa primaria (acné activo) y proteger del sol estrictamente (sin SPF, la PIH no mejora y empeora). Agentes despigmentantes con buena evidencia: ácido azelaico 15-20%, adapaleno, niacinamida, vitamina C, retinoides (bajo supervisión). Hidroquinona 2-4% es el gold standard despigmentante pero solo con prescripción y por tiempo limitado. La PIH puede tardar meses en aclararse incluso con tratamiento adecuado.",
+      "key_findings_es": [
+        "PIH es más común y severa en fototipos III-VI",
+        "Sin SPF estricto diario, ningún tratamiento despigmentante funciona",
+        "El primer paso es controlar el acné activo — si sigue brotando, seguirán apareciendo manchas nuevas",
+        "Tratamientos agresivos (peelings fuertes, láser sin ajuste) pueden EMPEORAR la PIH en pieles oscuras",
+        "Tiempo realista de mejoría: 3-12 meses con tratamiento adecuado"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria latina con marcas oscuras tras acné",
+        "Pregunta '¿cómo quito las manchas del acné?'",
+        "Diferenciación PIH vs cicatriz (PIH es plana y pigmentaria; cicatriz es relieve)"
+      ],
+      "safety_notes_es": [
+        "Para PIH extensa, melasma o pigmentación que no responde, consultar dermatólogo — los tratamientos más efectivos requieren prescripción",
+        "Evitar 'recetas caseras' con limón, vinagre o aspirina — pueden quemar y EMPEORAR la pigmentación",
+        "Procedimientos como peelings y láser en fototipos altos solo con dermatólogo especializado en piel de color",
+        "El SPF diario broad-spectrum SPF 50+ con protección UVA alta es el tratamiento más importante"
+      ],
+      "source_ids": ["skin_2024_004", "skin_2024_010", "skin_2024_001"]
+    },
+    {
+      "id": "skin_sensitive_skin",
+      "title": "Piel sensible — qué es, cómo identificarla y cómo cuidarla",
+      "summary_es": "La piel sensible es un síndrome heterogéneo que se manifiesta con reactividad aumentada a estímulos comunes: picor, ardor, hormigueo, tirantez o enrojecimiento ante productos, clima, agua, sol, estrés. Sin criterios diagnósticos plenamente objetivos, la herramienta validada más usada es el cuestionario Sensitive Scale-10 (SS-10). Score ≥20 sugiere piel sensible; >50 sensibilidad severa. Una revisión 2025 clasifica 4 subtipos clínicos: alérgico, tipo rosácea, tipo acné, tipo punzante. Manejo: identificar y evitar gatillos específicos, productos sin fragancia, simples, con barrera (ceramidas, niacinamida, ácido hialurónico). Fotoprotección con filtros minerales suele tolerarse mejor.",
+      "key_findings_es": [
+        "Piel sensible es subjetiva — no es lo mismo que piel reactiva alérgica",
+        "Productos a evitar generalmente: fragancia, alcohol denaturado en altas cantidades, exfoliantes mecánicos, esponjas, agua muy caliente",
+        "Productos amigables: limpiadores sin sulfatos, hidratantes con ceramidas y niacinamida, SPF mineral",
+        "Introducir productos nuevos UNO a la vez, esperar 1-2 semanas para evaluar tolerancia"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria reporta ardor con muchos productos",
+        "Enrojecimiento facial frecuente",
+        "Necesidad de rutina minimalista"
+      ],
+      "safety_notes_es": [
+        "Si hay enrojecimiento persistente con flushing, telangiectasias visibles o brotes papulopustulares sin comedones, descartar rosácea con dermatólogo",
+        "Si hay placas descamativas con picor recurrente, descartar dermatitis atópica o seborreica",
+        "Las reacciones a un ingrediente específico (dermatitis de contacto) requieren identificación y eliminación — un dermatólogo puede hacer pruebas epicutáneas (patch test)"
+      ],
+      "source_ids": ["skin_2025_002"]
+    },
+    {
+      "id": "skin_rosacea_young",
+      "title": "Rosácea en jóvenes — cuándo no es 'solo acné'",
+      "summary_es": "Aunque clásicamente la rosácea se diagnostica en edad media, puede aparecer en adolescentes y adultos jóvenes, especialmente con predisposición genética. Se confunde fácilmente con acné, pero hay diferencias clave: rosácea NO tiene comedones (puntos negros/blancos), SÍ tiene flushing (enrojecimiento súbito por estímulos), eritema persistente en mejillas/nariz, y telangiectasias (vasos sanguíneos visibles). Puede tener componente ocular (ojos secos, conjuntivitis, blefaritis). Gatillos típicos: comida picante, alcohol, sol, calor, estrés, ejercicio intenso. Tratamiento similar al adulto: evitar gatillos, fotoprotección estricta (mineral preferible), antibióticos tópicos (metronidazol, ivermectina) o sistémicos (doxiciclina dosis subantimicrobianas), todos bajo supervisión dermatológica.",
+      "key_findings_es": [
+        "La diferencia clave con acné: rosácea NO tiene comedones",
+        "Flushing recurrente con estímulos típicos sugiere rosácea más que acné",
+        "Tratamiento requiere diagnóstico dermatológico — auto-tratar como acné puede empeorar rosácea",
+        "Manejo de gatillos es tan importante como el tratamiento tópico"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente/joven con enrojecimiento persistente sin puntos negros",
+        "Usuaria reporta brotes desencadenados por comida o calor",
+        "'Acné' que no responde a tratamientos típicos"
+      ],
+      "safety_notes_es": [
+        "La rosácea requiere diagnóstico médico — los tratamientos para acné (BPO, retinoides altos) pueden empeorarla",
+        "Componente ocular (ojos rojos, sensación arenosa) requiere evaluación oftalmológica y dermatológica",
+        "Es condición crónica con brotes — el objetivo es control, no cura",
+        "Productos irritantes (mentol, fragancia, alcohol, exfoliantes) deben evitarse estrictamente"
+      ],
+      "source_ids": ["skin_2024_005"]
+    },
+    {
+      "id": "skin_atopic_dermatitis",
+      "title": "Dermatitis atópica (eczema) — barrera y manejo básico",
+      "summary_es": "La dermatitis atópica (DA) es una enfermedad inflamatoria crónica con base genética asociada a alteraciones de filagrina y déficit de ceramidas en la barrera cutánea. Manifestaciones: piel seca crónica, prurito (picor) intenso, placas eritematosas en pliegues (codos, rodillas, cuello), brotes recurrentes. Las guidelines NICE establecen los emolientes diarios como base del tratamiento, incluso cuando la piel está aparentemente clara, sin fragancia, con generosa aplicación (250-500g/semana en niños). En brotes se añaden corticoides tópicos de potencia ajustada a la zona, bajo supervisión médica. Antihistamínicos no son tratamiento de DA pero pueden ayudar con el picor nocturno. Identificar y evitar gatillos: ácaros, ciertos tejidos, jabones agresivos, estrés.",
+      "key_findings_es": [
+        "Emolientes diarios sin fragancia son el cimiento del tratamiento — siempre, incluso sin brotes",
+        "Corticoides tópicos en brotes son seguros si se usan correctamente; la fobia infundada a corticoides empeora pronóstico",
+        "Baño tibio (no caliente) corto, secado a toques, emoliente en piel aún húmeda",
+        "Casos moderado-severos pueden requerir tratamiento sistémico (dupilumab, inhibidores JAK) bajo dermatólogo"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente con eczema diagnosticado preguntando por rutina cosmética",
+        "Diferenciación con piel solo seca",
+        "Manejo de picor"
+      ],
+      "safety_notes_es": [
+        "Dermatitis atópica REQUIERE diagnóstico y seguimiento médico, no es solo 'piel seca'",
+        "No usar exfoliantes, retinoides o ácidos sin orientación específica del dermatólogo",
+        "Brotes severos, supuración o sospecha de infección requieren atención médica urgente",
+        "Productos 'naturales' (aceite de coco, manteca de karité) pueden ayudar a algunos pero empeorar a otros — individualizar"
+      ],
+      "source_ids": ["skin_2024_009", "skin_2023_002"]
+    },
+    {
+      "id": "skin_folliculitis",
+      "title": "Foliculitis vs acné — no son lo mismo",
+      "summary_es": "La foliculitis es la inflamación del folículo piloso, frecuentemente confundida con acné. Mayo Clinic identifica varios tipos: foliculitis bacteriana (S. aureus, pústulas con pus), foliculitis por Malassezia o pityrosporum (común en espalda, pecho, hombros — pápulas itchy uniformes que NO mejoran con tratamiento antiacné), foliculitis del 'jacuzzi' (Pseudomonas), pseudofoliculitis barbae (pelos encarnados por afeitado). Diferencia clave: la foliculitis puede aparecer en zonas no típicas de acné (cuero cabelludo, glúteos, muslos) y no presenta comedones. Tratamientos específicos por tipo: antibacterianos tópicos, antifúngicos (ketoconazol champú/loción), mejor técnica de afeitado.",
+      "key_findings_es": [
+        "La foliculitis pityrospórica (hongos) es frecuente en adolescentes y NO mejora con antiacné — requiere antifúngico",
+        "Pseudofoliculitis barbae se previene con técnica de afeitado correcta (afeitar a favor del pelo, navaja afilada, hidratación)",
+        "Foliculitis en espalda/pecho con pápulas uniformes y picor sugiere pityrosporum",
+        "La foliculitis del jacuzzi suele autoresolverse en 1-2 semanas"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con 'acné' en cuero cabelludo, glúteos o muslos",
+        "'Acné' que pica y no mejora con BPO/retinoides",
+        "Pelos encarnados tras afeitado/depilación"
+      ],
+      "safety_notes_es": [
+        "Foliculitis persistente, dolorosa o con fiebre requiere evaluación médica",
+        "No reventar lesiones — riesgo de cicatriz y diseminación bacteriana",
+        "Si se sospecha foliculitis pityrospórica, dermatólogo puede confirmar y prescribir antifúngico adecuado"
+      ],
+      "source_ids": ["skin_2023_004"]
+    },
+    {
+      "id": "skin_double_cleansing",
+      "title": "Doble limpieza — ¿necesaria o moda?",
+      "summary_es": "La doble limpieza consiste en limpiar primero con un agente oleoso (bálsamo, aceite, leche) para disolver maquillaje, SPF y sebo, seguido de un limpiador acuoso suave. La evidencia sugiere que NO es necesaria para la mayoría de personas: para piel sin maquillaje pesado ni SPF intenso, una sola limpieza suave es suficiente. PUEDE ser útil si: se usa maquillaje extenso o resistente al agua, se usa SPF mineral denso o resistente al agua, hay alta producción de sebo en zonas específicas. La doble limpieza realizada sin necesidad — especialmente con limpiadores agresivos — puede dañar la barrera cutánea por sobre-limpieza. La AAD recomienda no lavar la cara más de dos veces al día.",
+      "key_findings_es": [
+        "No es obligatoria — depende del uso de maquillaje/SPF resistente",
+        "Una limpieza demasiado agresiva o frecuente daña la barrera y puede aumentar producción de sebo",
+        "La 'limpieza con aceite' no obstruye los poros si el aceite se emulsiona y enjuaga correctamente",
+        "Para adolescentes sin maquillaje, lavar con agua + limpiador suave 1-2 veces al día es suficiente"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria pregunta si necesita 'doble limpieza' por TikTok",
+        "Maquillaje resistente al agua",
+        "Piel con tendencia a obstrucción zona T"
+      ],
+      "safety_notes_es": [
+        "Si la doble limpieza causa tirantez, descamación o sensibilidad, suspender",
+        "Evitar agua muy caliente, esponjas abrasivas y cepillos eléctricos rotatorios — dañan barrera",
+        "En piel con dermatitis o rosácea, simplificar limpieza al máximo"
+      ],
+      "source_ids": ["skin_2024_011"]
+    },
+    {
+      "id": "skin_overexfoliation",
+      "title": "Sobre-exfoliación — el daño invisible más común",
+      "summary_es": "La sobre-exfoliación con AHA/BHA es uno de los daños cutáneos más frecuentes observados en consulta dermatológica. La barrera cutánea necesita 14-21 días para renovarse completamente; exfoliar agresivamente (diario o múltiples activos) interrumpe ese ciclo. Signos: enrojecimiento persistente, ardor con productos antes tolerados, descamación fina, brillo 'tirante' y deshidratado, brotes acneicos paradójicos, hipersensibilidad al sol. Recomendación: máximo 1-3 veces por semana para la mayoría, comenzar con concentraciones bajas, no combinar con retinol el mismo día, SPF diario. La frecuencia importa más que la concentración: un 15% bisemanal puede ser menos dañino que un 5% diario sin recuperación.",
+      "key_findings_es": [
+        "Frecuencia óptima: 1-3 veces por semana según tipo de piel y producto",
+        "Frecuencia > concentración: más importante no exceder frecuencia que la potencia",
+        "Síntomas de barrera dañada: tirantez constante, ardor con agua/productos, eritema fácil",
+        "Recuperación: suspender todos los activos, hidratación intensiva con ceramidas/niacinamida 2-4 semanas"
+      ],
+      "applicable_user_scenarios": [
+        "Usuaria con irritación tras incorporar varios activos",
+        "'Mi piel reacciona con todo de repente'",
+        "Pregunta sobre frecuencia de exfoliación"
+      ],
+      "safety_notes_es": [
+        "Si la barrera está dañada, NO añadir más productos — restar y simplificar",
+        "Suspender todos los ácidos y retinoides; volver a básicos: limpiador suave + hidratante con ceramidas + SPF",
+        "Si tras 4 semanas no mejora, consultar dermatólogo — descartar dermatitis perioral, rosácea u otra condición"
+      ],
+      "source_ids": ["skin_2024_011", "skin_2025_002"]
+    },
+    {
+      "id": "skin_diet_acne",
+      "title": "Dieta y acné — qué dice la evidencia actual",
+      "summary_es": "La revisión sistemática 2022 en JAAD International concluye que las dietas de bajo índice/carga glucémica tienen evidencia consistente de reducir severidad del acné (11 estudios con resultados positivos). El mecanismo propuesto involucra insulina/IGF-1 estimulando andrógenos y producción de sebo. La asociación entre lácteos y acné es más mixta y dependiente de etnia, sexo y patrón dietético global — más evidente en poblaciones con dieta occidental. Chocolate, comida grasa y picante: evidencia débil/no concluyente. Recomendación práctica: si hay sospecha personal de gatillos alimentarios, llevar diario y discutir con dermatólogo, sin restricciones extremas que afecten salud nutricional del adolescente.",
+      "key_findings_es": [
+        "Mejor evidencia: bajo índice glucémico mejora acné (carbohidratos refinados, azúcares simples como factor)",
+        "Lácteos: evidencia mixta, más probable factor en algunas personas/poblaciones",
+        "Chocolate, comida frita, picante: no hay evidencia sólida directa",
+        "Restricciones dietéticas extremas en adolescentes pueden causar déficits nutricionales y desórdenes alimentarios"
+      ],
+      "applicable_user_scenarios": [
+        "Adolescente pregunta '¿el chocolate causa acné?'",
+        "Familia restringe lácteos sin evidencia clínica",
+        "Pregunta sobre dietas detox para acné"
+      ],
+      "safety_notes_es": [
+        "NUNCA promover dietas restrictivas en adolescentes sin orientación profesional — riesgo de desórdenes alimentarios",
+        "La dieta es un factor modulador, no la causa principal del acné — base hormonal sigue ahí",
+        "Suplementos para acné (zinc, omega-3, vitamina D) tienen evidencia limitada y deben discutirse con profesional",
+        "Si hay sospecha de alergia alimentaria con manifestaciones cutáneas (urticaria, angioedema), evaluación alergológica"
+      ],
+      "source_ids": ["skin_2022_003"]
+    },
+    {
+      "id": "skin_water_hydration_myth",
+      "title": "Beber agua e hidratación de la piel — separar mito de realidad",
+      "summary_es": "La revisión sistemática de Akdeniz et al. (2018) concluye que la evidencia que vincula el aumento de ingesta hídrica con mejoría de hidratación cutánea es débil. Beneficio modesto observado solo en personas con ingesta basal muy baja. La hidratación cutánea depende principalmente de: integridad de la barrera lipídica, contenido de factor de hidratación natural (NMF), uso de humectantes tópicos y condiciones ambientales (humedad relativa, viento, calefacción). Mantener buena hidratación general es saludable por muchas razones (renal, cognitiva, termoregulación) pero no es 'tratamiento dermatológico' eficaz. No existe evidencia para el mito de 'beber 2-3 litros para la piel'.",
+      "key_findings_es": [
+        "No hay evidencia robusta del clásico '8 vasos al día' para hidratación cutánea",
+        "Hidratación de la piel depende mayoritariamente de cuidado tópico, no de agua bebida",
+        "Personas muy deshidratadas SÍ pueden notar mejoría al normalizar ingesta",
+        "Mensaje útil: 'bebe agua según tu sed y necesidad, sin obsesionarte por la piel'"
+      ],
+      "applicable_user_scenarios": [
+        "Pregunta '¿cuánta agua tengo que tomar para la piel?'",
+        "Frustración con piel deshidratada pese a tomar mucha agua",
+        "Mitos de detox"
+      ],
+      "safety_notes_es": [
+        "Ingesta excesiva de agua sin necesidad puede causar hiponatremia en casos extremos",
+        "Piel seca persistente puede tener causa subyacente (hipotiroidismo, eczema, ictiosis) — consultar si no mejora con cuidado tópico"
+      ],
+      "source_ids": ["skin_2018_001"]
+    }
+  ]
+}

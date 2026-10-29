@@ -1,0 +1,1603 @@
+{
+  "last_updated": "2026-08-08",
+  "total_sources": 104,
+  "by_domain": {
+    "visagism": 17,
+    "colorTheory": 11,
+    "skincare": 25,
+    "makeup": 15,
+    "trends": 36
+  },
+  "sources": [
+    {
+      "id": "vis_2003_001",
+      "title": "Visagismo: harmonia e estética (obra fundacional, posteriormente ampliada como 'Visagismo Integrado: identidade, estilo e beleza')",
+      "authors": [
+        "Hallawell, Philip Charles"
+      ],
+      "year": 2003,
+      "type": "book",
+      "doi_or_url": "https://www.editorasenacsp.com.br/livro/visagismo-harmonia-estetica-6-edicao",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional del visagismo moderno publicada por Editora Senac São Paulo. Sistematiza el campo combinando análisis morfológico facial con interpretación de temperamento basada en los cuatro tipos hipocráticos. La versión ampliada 'Visagismo Integrado' fue publicada en 2009. Es la referencia canónica internacional del visagismo profesional.",
+      "reliability_note": "Libro profesional, no peer-reviewed, pero es la obra fundacional del campo y referencia obligada en escuelas de peluquería y estética en Latinoamérica y Europa. Su valor es como sistematización de práctica profesional, no como evidencia científica.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_undated_002",
+      "title": "O Método Philip Hallawell de Análise do Temperamento (sitio oficial Visagismo.com.br)",
+      "authors": [
+        "Hallawell, Philip Charles"
+      ],
+      "year": null,
+      "type": "professional_website",
+      "doi_or_url": "https://visagismo.com.br/index.php/pt/visagismo-pt-br/sobre-o-visagismo/o-metodo-de-analise-do-temperamento",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Sitio oficial del método Hallawell donde se describe la metodología de análisis de temperamento. Aplica el sistema hipocrático de cuatro temperamentos (sanguíneo, colérico, melancólico, flemático) al análisis de líneas y formas faciales arquetípicas.",
+      "reliability_note": "Fuente primaria del método (sitio del autor), no peer-reviewed. Útil para describir la metodología; no aporta evidencia científica externa.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2021_003",
+      "title": "Automatic Face Shape Classification Via Facial Landmark Measurements",
+      "authors": [
+        "Marinescu, A.-I."
+      ],
+      "year": 2021,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.24193/subbi.2021.2.05",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Studia Universitatis Babeș-Bolyai Informatica, 66(2), 69-78. Propone un sistema automático de clasificación de forma facial usando medidas de landmarks faciales y un clasificador Naive Bayes. Distingue 7 categorías: oval, round, rectangle, square, heart, diamond y triangle. Justifica el uso para sistemas recomendadores de peinado y gafas.",
+      "reliability_note": "Peer-reviewed en revista universitaria de informática. Metodología sólida en visión por computador; las categorías son las estándar en literatura técnica de visagismo aplicado.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2019_004",
+      "title": "Real-time Facial Surface Geometry from Monocular Video on Mobile GPUs",
+      "authors": [
+        "Kartynnik, Yury",
+        "Ablavatski, Artsiom",
+        "Grishchenko, Ivan",
+        "Grundmann, Matthias"
+      ],
+      "year": 2019,
+      "type": "conference_paper_arxiv",
+      "doi_or_url": "https://arxiv.org/abs/1907.06724",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Paper técnico de Google que describe la arquitectura de MediaPipe Face Mesh, capaz de generar 468 landmarks 3D del rostro en tiempo real (100-1000+ FPS) desde una sola cámara. Es la base técnica usada por la mayoría de apps de análisis facial actuales, incluida la posibilidad de implementación en Lumina.",
+      "reliability_note": "Paper técnico de Google Research presentado en CVPR Workshop 2019. No es estudio clínico sino implementación técnica. Es el estándar de facto en detección facial móvil.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2020_005",
+      "title": "Faciometrics: A Practical Guide for Orofacial Harmonization",
+      "authors": [
+        "Cozer, Tatiany Bertollo",
+        "Espaladori, Marcela Carvalho",
+        "Alves e Silva, Micena Roberta Miranda",
+        "Scardua, Maria Tereza"
+      ],
+      "year": 2020,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.30654/MJDE.10014",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Mathews Journal of Dermatology 4(1):14. Describe el sistema faciométrico para análisis de armonía orofacial: divisiones en tercios y quintos, ratios ancho-alto (70-75%), proporciones dentales y de labios. Es una guía clínica práctica para profesionales de armonización orofacial.",
+      "reliability_note": "Peer-reviewed pero en revista de acceso abierto con factor de impacto moderado. Sus mediciones son aplicaciones prácticas de cánones establecidos; no son evidencia experimental sino sistematización clínica.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2021_006",
+      "title": "Proportions of the Aesthetic Face (libro de referencia clásica)",
+      "authors": [
+        "Powell, Nelson",
+        "Humphreys, Brian"
+      ],
+      "year": 1984,
+      "type": "book",
+      "doi_or_url": "https://books.google.com/books/about/Proportions_of_the_Aesthetic_Face.html?id=ZV1sAAAAMAAJ",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional de 1984 que sistematizó el análisis estético facial en cirugía plástica facial usando tercios verticales y quintos horizontales. Sigue siendo referencia en literatura quirúrgica aunque su validez universal ha sido cuestionada por estudios posteriores.",
+      "reliability_note": "Libro clínico de referencia histórica. Sus proporciones son guía profesional pero no representan validez estadística universal según Farkas (1985) y estudios posteriores.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2008_007",
+      "title": "Marquardt's Phi Mask: Pitfalls of Relying on Fashion Models and the Golden Ratio to Describe a Beautiful Face",
+      "authors": [
+        "Holland, E."
+      ],
+      "year": 2008,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1007/s00266-007-9080-z",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Aesthetic Plastic Surgery 32(2):200-8 (PMID 18175168). Crítica metodológica seminal a la máscara phi de Marquardt: demuestra que es inadecuada para poblaciones no europeas (especialmente africanas subsaharianas y asiáticas orientales) y que representa proporciones de mujeres blancas masculinizadas tipo modelo de pasarela.",
+      "reliability_note": "Peer-reviewed en revista de impacto (Aesthetic Plastic Surgery, Springer). Es la crítica académica seminal a la máscara de Marquardt y referencia obligada al discutir proporción áurea facial.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2016_008",
+      "title": "Marquardt's Facial Golden Decagon Mask and Its Fitness with South Indian Facial Traits",
+      "authors": [
+        "Veerala, G.",
+        "Gandikota, C.S.",
+        "Yadagiri, P.K.",
+        "Manne, R.",
+        "Juvvadi, S.R.",
+        "Farah, T.",
+        "Vattipelli, S.",
+        "Gumbelli, S."
+      ],
+      "year": 2016,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.7860/JCDR/2016/16791.7593",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Journal of Clinical and Diagnostic Research. Estudio en 150 individuos sudindios (75 hombres, 75 mujeres) que evaluó ajuste con la máscara phi de Marquardt. Encontraron anchuras intercigomáticas y intergonial mayores que la máscara y altura mediofacial menor. Concluyen que las diferencias étnicas no pueden ignorarse y recomiendan máscaras específicas por etnia.",
+      "reliability_note": "Peer-reviewed. Estudio observacional con tamaño muestral moderado. Refuerza la crítica de Holland (2008) con datos de otra población.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2024_009",
+      "title": "The golden ratio—dispelling the myth",
+      "authors": [
+        "Naini, Farhad B."
+      ],
+      "year": 2024,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1186/s40902-024-00411-2",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Maxillofacial Plastic and Reconstructive Surgery 46(1):2 (PMID 38228978). Revisión crítica que argumenta que no hay evidencia convincente de que la proporción áurea esté ligada a proporciones humanas idealizadas o belleza facial. Demuestra que Leonardo da Vinci y los antiguos griegos probablemente nunca usaron phi como se afirma, y rechaza su uso en planificación quirúrgica.",
+      "reliability_note": "Peer-reviewed, reciente (2024) y de un autor de referencia en cirugía maxilofacial. Es la crítica académica más actualizada al mito del golden ratio facial.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2021_010",
+      "title": "Historical Tools of Anthropometric Facial Assessment: A Systematic Raw Data Analysis on the Applicability of the Neoclassical Canons and Golden Ratio",
+      "authors": [
+        "Khoshab, Nima",
+        "Donnelly, Megan R.",
+        "Sayadi, Lohrasb R.",
+        "Vyas, Raj M.",
+        "Banyard, Derek A."
+      ],
+      "year": 2021,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1093/asj/sjab339",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Aesthetic Surgery Journal 42(1):NP1-NP10. Análisis sistemático que encontró variabilidad interétnica significativa en mediciones phi y concluye que ningún grupo étnico/género mostró aproximación consistente al 'ideal' de cánones neoclásicos ni a phi. Recomienda no basar la educación contemporánea en cirugía estética en estándares centenarios.",
+      "reliability_note": "Peer-reviewed en revista de alto impacto en cirugía estética. Estudio metodológicamente robusto que sintetiza datos multipoblacionales.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2025_011",
+      "title": "The Harmony and Balance of the Facial Organs for a Natural Face Beauty: A Novel Perspective for Cosmetic/Aesthetic Interventions",
+      "authors": [
+        "Babacan, S.",
+        "Deniz, M."
+      ],
+      "year": 2025,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.3390/medicina61060958",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Medicina (Kaunas) 61(6):958. Desarrolla ecuaciones de regresión lineal para predecir proporciones faciales individualizadas en lugar de aplicar estándares universales. Analiza 100 adultos jóvenes con 40 parámetros faciales. Argumenta que la armonía y balance varían según norma poblacional y de género, no según protocolos estandarizados.",
+      "reliability_note": "Peer-reviewed, reciente (2025), en revista MDPI Medicina indexada. Tamaño muestral moderado y población homogénea son limitaciones que los propios autores reconocen.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2025_012",
+      "title": "Further evidence that averageness and femininity, rather than symmetry and masculinity, predict facial attractiveness judgments",
+      "authors": [
+        "Lee, P.",
+        "Li, J.",
+        "Rafiee, Y.",
+        "Jones, B.C.",
+        "Shiramizu, V.K.M."
+      ],
+      "year": 2025,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1038/s41598-025-86974-0",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Scientific Reports 15(1):5498 (PMID 39953080). Usa modelos lineales mixtos para evaluar contribuciones independientes de averageness, feminidad, simetría y masculinidad al atractivo facial. Encuentra que averageness predice atractivo en rostros masculinos y femeninos, y feminidad en rostros femeninos; ni masculinidad ni simetría tuvieron efecto significativo.",
+      "reliability_note": "Peer-reviewed reciente (2025) en Scientific Reports (Nature). Metodología estadística sólida. Es la evidencia más actualizada sobre predictores reales de atractivo facial.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2014_013",
+      "title": "Cross-Cultural Agreement in Facial Attractiveness Preferences: The Role of Ethnicity and Gender",
+      "authors": [
+        "Coetzee, V.",
+        "Greeff, J.M.",
+        "Stephen, I.D.",
+        "Perrett, D.I."
+      ],
+      "year": 2014,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0099629",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en PLOS ONE 9(7):e99629. Estudio cross-cultural con observadores escoceses blancos y sudafricanos negros. Encuentra acuerdo significativo en juicios de atractivo (r=0.623) pero mayor consenso para rostros del grupo étnico propio. Observadores africanos pesaron más color de piel; observadores europeos pesaron más forma facial.",
+      "reliability_note": "Peer-reviewed en PLOS ONE, acceso abierto, alto número de citas. Referencia estándar sobre diferencias culturales y de familiaridad en percepción de atractivo facial.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2007_014",
+      "title": "Perceived health contributes to the attractiveness of facial symmetry, averageness, and sexual dimorphism",
+      "authors": [
+        "Rhodes, Gillian",
+        "Yoshikawa, Sakiko",
+        "Palermo, Romina",
+        "Simmons, Leigh W.",
+        "Peters, Marianne",
+        "Lee, Kieran",
+        "Halberstadt, Jamin",
+        "Crawford, John R."
+      ],
+      "year": 2007,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://doi.org/10.1068/p5712",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en Perception 36(8):1244-52 (PMID 17972486). Estudio clásico que demuestra que gran parte del atractivo asociado a simetría facial se explica por percepción de salud, no por preferencia geométrica directa. Es referencia obligada para entender los factores subyacentes a atractivo facial.",
+      "reliability_note": "Peer-reviewed, altamente citado, autores referentes en psicología del atractivo facial. Estudio robusto y replicado.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2018_015",
+      "title": "Craniofacial Changes in Children-Birth to Late Adolescence",
+      "authors": [
+        "Varios autores (revisión)"
+      ],
+      "year": 2018,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://www.arcjournals.org/pdfs/ajfs/v4-i1/1.pdf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Publicado en ARC Journal of Forensic Science 4(1). Revisión de cambios craneofaciales desde el nacimiento hasta adolescencia tardía. Documenta picos de velocidad de crecimiento (10-12 años mujeres, 13.6-14.5 años hombres) y maduración mandibular (14 años mujeres, 16 años hombres).",
+      "reliability_note": "Revisión publicada en revista de acceso abierto especializada en ciencias forenses. Datos antropométricos consistentes con literatura ortodóntica establecida.",
+      "domain": "visagism"
+    },
+    {
+      "id": "vis_2024_016",
+      "title": "Influence of BMI percentile on craniofacial morphology and development in adolescents",
+      "authors": [
+        "Lione, R.",
+        "et al."
+      ],
+      "year": 2024,
+      "type": "peer_reviewed_journal",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10783153/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio que demuestra que el IMC elevado en adolescentes se asocia con dimensiones faciales finales mayores. Relevante para entender que la forma facial percibida durante la adolescencia puede cambiar significativamente con composición corporal y crecimiento.",
+      "reliability_note": "Peer-reviewed, reciente. Estudio observacional; correlación con IMC no implica causalidad estricta sobre forma facial específica.",
+      "domain": "visagism"
+    },
+    {
+      "id": "col_1905_001",
+      "title": "A Color Notation",
+      "authors": [
+        "Munsell, Albert H."
+      ],
+      "year": 1905,
+      "type": "book",
+      "doi_or_url": "https://en.wikipedia.org/wiki/Munsell_color_system",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra fundacional donde Munsell presenta su sistema de notacion de color basado en tres dimensiones independientes: matiz (hue), valor (value) y croma (chroma). Es la base cientifica de la que parten muchos sistemas modernos de clasificacion del color, incluidos los usados en colorimetria personal.",
+      "reliability_note": "Fuente primaria canonica. Aunque tiene mas de un siglo, su sistema sigue siendo usado por organismos como ANSI, USGS y la industria odontologica. Las referencias modernas (CIE Lab) lo superan en precision instrumental pero no en intuicion perceptual.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_1976_001",
+      "title": "Recommendations on Uniform Color Spaces, Color-Difference Equations, Psychometric Color Terms (CIE Publication 15)",
+      "authors": [
+        "Commission Internationale de l'Eclairage (CIE)"
+      ],
+      "year": 1976,
+      "type": "standard",
+      "doi_or_url": "https://en.wikipedia.org/wiki/CIELAB_color_space",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estandar internacional que define el espacio de color CIELAB (L*a*b*), pensado como espacio perceptualmente uniforme. L* representa luminosidad (0-100), a* el eje rojo-verde y b* el eje amarillo-azul. Es la base para metricas modernas de color en piel como el ITA.",
+      "reliability_note": "Estandar oficial CIE. Posteriormente se demostro que la uniformidad perceptual de CIELAB no es perfecta, lo que llevo al desarrollo de formulas mejoradas (CIEDE2000), pero sigue siendo el espacio de referencia en industria.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_1980_001",
+      "title": "Color Me Beautiful: Discover Your Natural Beauty Through the Colors That Make You Look Great and Feel Fabulous",
+      "authors": [
+        "Jackson, Carole"
+      ],
+      "year": 1980,
+      "type": "book",
+      "doi_or_url": "https://www.goodreads.com/book/show/171111.Color_Me_Beautiful",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Libro best-seller que popularizo masivamente el sistema de las 4 estaciones (Primavera, Verano, Otono, Invierno). Jackson simplifica el metodo de Caygill para hacerlo accesible al publico general, clasificando a las personas segun la temperatura y claridad de piel, ojos y cabello.",
+      "reliability_note": "Fuente canonica de la colorimetria personal moderna. Tiene impacto cultural masivo pero NO es un texto cientifico: sus categorias se basan en observacion estetica, no en evidencia clinica. Util como marco conceptual, no como verdad absoluta.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_1980_002",
+      "title": "Color: The Essence of You",
+      "authors": [
+        "Caygill, Suzanne"
+      ],
+      "year": 1980,
+      "type": "book",
+      "doi_or_url": "https://colordesigners.org/suzanne-caygill/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra de la creadora original (anos 40) del metodo de analisis estacional de color. Caygill desarrollo 64 subtipos personales basados no solo en piel/ojos/cabello sino en estructura osea, voz y somatica. Mas complejo y artistico que el sistema de Jackson.",
+      "reliability_note": "Fuente primaria del enfoque seasonal original. Muy detallada pero subjetiva: depende fuertemente del juicio del analista. No tiene validacion cientifica formal pero es referencia obligada historica.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_1988_001",
+      "title": "The Validity and Practicality of Sun-Reactive Skin Types I Through VI",
+      "authors": [
+        "Fitzpatrick, Thomas B."
+      ],
+      "year": 1988,
+      "type": "paper",
+      "doi_or_url": "https://doi.org/10.1001/archderm.1988.01670060015008",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo donde Fitzpatrick expande y formaliza su escala de fototipos (originalmente publicada en 1975) anadiendo tipos V y VI. Publicado en Archives of Dermatology. Clasifica la piel en 6 tipos segun su reaccion a la radiacion UV (quemadura vs bronceado).",
+      "reliability_note": "Fuente cientifica canonica en dermatologia. CRUCIAL: es una escala MEDICA para evaluar riesgo solar y dosificar fototerapia, NO una clasificacion de belleza. Confundirla con analisis de color personal es un error frecuente.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_1991_001",
+      "title": "Skin Colour Typology and Suntanning Pathways",
+      "authors": [
+        "Chardon, A.",
+        "Cretois, I.",
+        "Hourseau, C."
+      ],
+      "year": 1991,
+      "type": "paper",
+      "doi_or_url": "https://doi.org/10.1111/j.1467-2494.1991.tb00561.x",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo seminal publicado en International Journal of Cosmetic Science que introduce el Individual Typology Angle (ITA), una metrica colorimetrica objetiva calculada a partir de los valores L* y b* del espacio CIELAB para clasificar la piel en 6 categorias (muy clara, clara, intermedia, mate, morena, oscura).",
+      "reliability_note": "Fuente cientifica revisada por pares. Es el metodo cuantitativo mas usado en dermatologia y cosmetica para clasificar pigmentacion. Mas objetivo que Fitzpatrick pero requiere instrumentacion (colorimetro o foto calibrada).",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_2024_001",
+      "title": "Integrating skin color assessments into clinical practice and research: A review of current approaches",
+      "authors": [
+        "Journal of the American Academy of Dermatology editorial team"
+      ],
+      "year": 2024,
+      "type": "review",
+      "doi_or_url": "https://www.jaad.org/article/S0190-9622(24)00215-9/abstract",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revision reciente en JAAD sobre los metodos actuales de evaluacion del color de piel en clinica e investigacion. Compara Fitzpatrick, ITA, escala Monk y otros sistemas, discutiendo sus limitaciones y la necesidad de metricas mas inclusivas y reproducibles.",
+      "reliability_note": "Revision por pares en revista de alto impacto. Util para entender el estado del arte 2024 y por que los sistemas tradicionales tienen sesgos eurocentricos.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_2023_001",
+      "title": "Optimisation of skin phototype classification",
+      "authors": [
+        "Lim, H. W. et al."
+      ],
+      "year": 2023,
+      "type": "paper",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/pcmr.13110",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Articulo en Pigment Cell & Melanoma Research que propone optimizar la clasificacion de fototipos cutaneos combinando autoreporte con medidas instrumentales. Demuestra que la escala Fitzpatrick por si sola tiene baja concordancia entre paciente y profesional.",
+      "reliability_note": "Investigacion revisada por pares actual. Confirma cientificamente que los metodos subjetivos de clasificacion son poco fiables y refuerza la necesidad de complementarlos con metricas objetivas como ITA.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_2024_002",
+      "title": "Color analysis (entry)",
+      "authors": [
+        "Wikipedia contributors"
+      ],
+      "year": 2024,
+      "type": "wiki",
+      "doi_or_url": "https://en.wikipedia.org/wiki/Color_analysis",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Entrada de Wikipedia que resume la historia del analisis personal del color desde Chevreul (1839) y Munsell (1905) hasta Caygill, Jackson, los sistemas de 12 y 16 estaciones, y el resurgimiento viral en TikTok (2024). Incluye criticas al campo.",
+      "reliability_note": "Wikipedia es punto de partida util pero NO fuente primaria. Las referencias citadas dentro del articulo (Caygill, Jackson, Dorr) son las que tienen valor academico. Usar para contexto general.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_2024_003",
+      "title": "Lab Muffin Beauty Science - Foundation and Color Matching",
+      "authors": [
+        "Wong, Michelle (Lab Muffin)"
+      ],
+      "year": 2024,
+      "type": "blog_with_citations",
+      "doi_or_url": "https://labmuffin.com/tag/foundation/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recopilacion de articulos de Michelle Wong (PhD en quimica) sobre la ciencia detras del match de base de maquillaje, subtonos y como la quimica de pigmentos afecta el color percibido sobre piel.",
+      "reliability_note": "Divulgacion de alta calidad: la autora tiene doctorado y cita fuentes primarias. No es paper revisado por pares pero es de las mejores fuentes accesibles en publico general.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "col_2024_004",
+      "title": "Beyond Fitzpatrick: automated artificial intelligence-based skin tone analysis in dermatological patients",
+      "authors": [
+        "npj Digital Medicine editorial team"
+      ],
+      "year": 2025,
+      "type": "paper",
+      "doi_or_url": "https://www.nature.com/articles/s41746-025-01770-4",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio en npj Digital Medicine (Nature) que usa IA para clasificar tono de piel de manera automatizada en pacientes dermatologicos, mostrando que los sistemas modernos basados en imagen pueden superar las limitaciones de Fitzpatrick.",
+      "reliability_note": "Revisado por pares en revista Nature de alto impacto. Relevante para Lumina porque valida usar analisis de imagen automatizado como alternativa a autoreporte subjetivo.",
+      "domain": "colorTheory"
+    },
+    {
+      "id": "skin_2024_001",
+      "title": "Guidelines of Care for the Management of Acne Vulgaris (AAD 2024)",
+      "authors": [
+        "Reynolds RV",
+        "Yeung H",
+        "Cheng CE",
+        "Cook-Bolden F",
+        "Desai SR",
+        "Druby KM",
+        "Freeman EE",
+        "Keri JE",
+        "Stein Gold L",
+        "Tan JK",
+        "Tollefson MM",
+        "Weiss JS",
+        "Wu PA",
+        "Zaenglein AL",
+        "Han JM",
+        "Barbieri JS"
+      ],
+      "year": 2024,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.aad.org/news/updated-guidelines-acne-management",
+      "journal": "Journal of the American Academy of Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guideline oficial de la American Academy of Dermatology (enero 2024) que actualiza las recomendaciones de 2016 para manejo del acné vulgar en adultos, adolescentes y niños mayores de 9 años. Incluye 18 recomendaciones basadas en evidencia y 5 declaraciones de buena práctica. Recomienda terapia multimodal combinando peróxido de benzoilo + retinoide tópico + antibiótico tópico cuando proceda. Indica que el acné afecta al 85% de adolescentes. Para casos severos o con cicatrización, recomienda isotretinoína oral con seguimiento dermatológico.",
+      "reliability_note": "Tier 1 — Guideline oficial de la principal sociedad dermatológica de EE.UU., publicada en JAAD (peer-reviewed). Estándar de referencia clínica.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_002",
+      "title": "Niacinamide: a review on dermal delivery strategies and clinical evidence",
+      "authors": [
+        "Marques C",
+        "Hadjab F",
+        "Porcello A",
+        "Lourenço K",
+        "Scaletta C",
+        "Abdel-Sayed P",
+        "Hirt-Burri N",
+        "Applegate LA",
+        "Laurent A"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://link.springer.com/article/10.1007/s13346-024-01593-y",
+      "journal": "Drug Delivery and Translational Research",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2024 que consolida la evidencia clínica sobre niacinamida tópica (forma activa de vitamina B3). Demuestra acción antiinflamatoria, antioxidante, regulación de producción de sebo, mejora de la función barrera mediante síntesis de ceramidas, y estimulación de colágeno/elastina. Concentraciones eficaces típicas 2-5%. Evidencia consolidada para uso cosmético y como adyuvante en dermatitis, acné vulgar y queratosis actínica.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed reciente en revista indexada con factor de impacto.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2023_001",
+      "title": "A systematic review to evaluate the efficacy of azelaic acid in the management of acne, rosacea, melasma and skin aging",
+      "authors": [
+        "King M",
+        "Jankowski H",
+        "Glaab E"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15923",
+      "journal": "Journal of Cosmetic Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2023 que confirma que formulaciones de ácido azelaico 15-20% producen mejoras clínicamente significativas en acné, rosácea, melasma e hiperpigmentación postinflamatoria, con irritación local leve y transitoria. Reducción de lesiones inflamatorias y no inflamatorias comparable a retinoides tópicos/adapaleno, con mejor tolerancia en algunos estudios.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed con evaluación de calidad de evidencia.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2025_001",
+      "title": "Acne Vulgaris: Features, Types, and Treatments",
+      "authors": [
+        "Oakley A",
+        "DermNet editorial team"
+      ],
+      "year": 2025,
+      "type": "clinical_reference",
+      "doi_or_url": "https://dermnetnz.org/topics/acne-vulgaris",
+      "journal": "DermNet (New Zealand)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recurso clínico de referencia mantenido por dermatólogos. Detalla clasificación por severidad (leve: <30 lesiones; moderado: 30-125; severo: >125 lesiones o pseudocistos), escalas de gradación (Leeds, Cook, Pillsbury), epidemiología (85% adolescentes), tratamientos por grado de severidad e hiperpigmentación postinflamatoria asociada (particularmente relevante en fototipos altos).",
+      "reliability_note": "Tier 2 — Referencia clínica abierta utilizada internacionalmente por dermatólogos. Revisada por especialistas.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2008_001",
+      "title": "Understanding and treating various skin types: the Baumann Skin Type Indicator",
+      "authors": [
+        "Baumann L"
+      ],
+      "year": 2008,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/18555952/",
+      "journal": "Dermatologic Clinics",
+      "doi": "10.1016/j.det.2008.03.007",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Artículo seminal de Leslie Baumann que introduce el Baumann Skin Type Indicator (BSTI), sistema validado de 16 tipos de piel basado en cuatro ejes binarios: seca/grasa, sensible/resistente, pigmentada/no pigmentada, y arrugada/lisa. Permite tipificación más precisa que el modelo clásico de 4 tipos.",
+      "reliability_note": "Tier 1 — Publicación peer-reviewed fundacional de la dermocosmética moderna. Sistema citado por miles de papers posteriores.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_003",
+      "title": "Inside the 2024 AAD Acne Guidelines: New Therapies Join Old Standbys",
+      "authors": [
+        "Barbieri JS",
+        "Reynolds RV"
+      ],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "https://www.mdedge.com/internalmedicinenews/article/268230/dermatology/inside-2024-aad-acne-guidelines-new-therapies-join",
+      "journal": "MDedge Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Resumen profesional de los puntos clave de las guías AAD 2024 con énfasis en nuevas terapias aprobadas (clascoterona, trifaroteno, sarecyclina) y estrategias para limitar el uso de antibióticos y prevenir resistencia.",
+      "reliability_note": "Tier 2 — Comunicación profesional citada por autores de la guideline original.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_004",
+      "title": "Treatment of Post-Inflammatory Hyperpigmentation in Skin of Colour: A Systematic Review",
+      "authors": [
+        "Mar K",
+        "Khalid B",
+        "Maazi M",
+        "Ahmed R",
+        "Wang OJE",
+        "Khosravi-Hafshejani T"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/12034754241265716",
+      "journal": "Journal of Cutaneous Medicine and Surgery",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2024 sobre tratamiento de hiperpigmentación postinflamatoria en pieles de color (Fitzpatrick III-VI). Conclusiones: terapia combinada es la más efectiva; agentes tópicos con evidencia favorable incluyen ácido azelaico, adapaleno y crema de cisteamina; láseres y peelings agresivos pueden empeorar PIH en fototipos altos si no se ajustan cuidadosamente.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed reciente, particularmente relevante para audiencias latinas (fototipos III-V predominantes).",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2022_001",
+      "title": "Topical Application of Ascorbic Acid and its Derivatives: A Review Considering Clinical Trials",
+      "authors": [
+        "Enescu CD",
+        "Bedford LM",
+        "Potts G",
+        "Fahs F"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/36200216/",
+      "journal": "Journal of Drugs in Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión de ensayos clínicos sobre vitamina C tópica (ácido L-ascórbico y derivados). Confirma acciones antioxidante, fotoprotectora, estimulante de colágeno y despigmentante. Concentraciones eficaces 10-20% para L-AA, con pH <3.5. Retos: inestabilidad química, baja penetración a pH fisiológico, irritación a altas concentraciones.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed enfocada en evidencia de ensayos clínicos.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2023_002",
+      "title": "The Pathogenic and Therapeutic Implications of Ceramide Abnormalities in Atopic Dermatitis",
+      "authors": [
+        "Li Q",
+        "Fang H",
+        "Dang E",
+        "Wang G"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8468445/",
+      "journal": "Cells (MDPI)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre el papel de las ceramidas en la función barrera y dermatitis atópica. Los emolientes ricos en ceramidas mejoran función barrera y normalizan composición lipídica alterada. Aprobados como tratamiento adyuvante de barrera en DA.",
+      "reliability_note": "Tier 1 — Peer-reviewed, alojado en PubMed Central.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2022_002",
+      "title": "Benefits of topical hyaluronic acid for skin quality and signs of skin aging: From literature review to clinical evidence",
+      "authors": [
+        "Bravo B",
+        "Correia P",
+        "Gonçalves Junior JE",
+        "Sant'Anna B",
+        "Kerob D"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.15903",
+      "journal": "Dermatologic Therapy",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre ácido hialurónico tópico. Alto peso molecular (HMW-HA) forma capa protectora superficial e hidratación; bajo peso molecular (LMW-HA) penetra estrato córneo y reduce profundidad de arrugas. Formulaciones combinadas mejoran hidratación cutánea hasta 55% medida por corneometría.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed en revista dermatológica indexada.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_005",
+      "title": "Adolescent Rosacea — Review and 2017 National Rosacea Society Updated Guidelines Use",
+      "authors": [
+        "Korsing S",
+        "Schneider SW"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ddg.15693",
+      "journal": "JDDG: Journal der Deutschen Dermatologischen Gesellschaft",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión 2025 sobre rosácea en infancia y adolescencia. Aunque infrecuente, existe y se confunde con acné. Diferencial clave: ausencia de comedones, presencia de flushing persistente, eritema fijo y telangiectasias. Tratamiento similar a adultos pero con dosis y vehículos ajustados.",
+      "reliability_note": "Tier 1 — Peer-reviewed en revista oficial de la sociedad dermatológica alemana.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2022_003",
+      "title": "Diet and acne: A systematic review",
+      "authors": [
+        "Penso L",
+        "Touvier M",
+        "Deschasaux M",
+        "Hercberg S",
+        "Ezzedine K",
+        "Sbidian E"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.jaadinternational.org/article/S2666-3287(22)00028-1/fulltext",
+      "journal": "JAAD International",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática sobre dieta y acné. Evidencia consistente de que dietas de bajo índice/carga glucémica reducen severidad de acné (11 estudios con resultados positivos). Lácteos: asociación con acné observada principalmente en poblaciones occidentales; evidencia mixta dependiente de sexo, etnia y patrón dietético. Chocolate y comida grasa: evidencia débil/no concluyente.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed en suplemento internacional de JAAD.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_006",
+      "title": "MotherToBaby Fact Sheet: Topical Tretinoin in Pregnancy",
+      "authors": [
+        "MotherToBaby (Organization of Teratology Information Specialists)"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK582989/",
+      "journal": "NCBI Bookshelf / MotherToBaby",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Ficha técnica de OTIS/MotherToBaby sobre uso de tretinoína tópica durante embarazo. Datos humanos sugieren absorción sistémica mínima, pero por precaución se contraindica en embarazadas o mujeres que planean embarazo. Tretinoína oral (isotretinoína) es claramente teratogénica.",
+      "reliability_note": "Tier 2 — Referencia clínica oficial de organización de teratología, alojada en NCBI Bookshelf.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_007",
+      "title": "Updated measures for pregnancy prevention during retinoid use",
+      "authors": [
+        "European Medicines Agency"
+      ],
+      "year": 2018,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.ema.europa.eu/en/news/updated-measures-pregnancy-prevention-during-retinoid-use",
+      "journal": "EMA Communication",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Comunicación oficial de la Agencia Europea de Medicamentos (EMA) sobre medidas de prevención de embarazo durante uso de retinoides orales (isotretinoína, acitretina, alitretinoína). Programa de prevención de embarazo obligatorio. Tópicos: no usar en embarazadas ni planificando embarazo por precaución, aunque absorción sistémica es baja.",
+      "reliability_note": "Tier 1 — Guideline regulatoria oficial europea.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_008",
+      "title": "Sunscreen FAQs",
+      "authors": [
+        "American Academy of Dermatology"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.aad.org/media/stats-sunscreen",
+      "journal": "AAD Public Information",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recomendación oficial AAD: usar protector solar SPF 30 o superior, broad-spectrum y resistente al agua, todos los días. Reaplicar cada 2 horas o tras nadar/sudar. Filtros minerales (óxido de zinc, dióxido de titanio) preferibles en piel sensible. Filtros químicos (avobenzona, octinoxato) tienden a texturas más ligeras y mejor cosmeticidad.",
+      "reliability_note": "Tier 1 — Información oficial de AAD para público general, alineada con guidelines clínicas.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2025_002",
+      "title": "Comprehensive Approaches to Diagnosis and Treatment of Sensitive Skin",
+      "authors": [
+        "Kim BR",
+        "Kwon SH"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12318783/",
+      "journal": "Annals of Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión 2025 sobre piel sensible: síndrome heterogéneo sin criterios objetivos plenos. Herramientas de diagnóstico subjetivas (cuestionario Sensitive Scale-10) y objetivas (TEWL, test de ácido láctico). Cuatro subtipos: alérgico, tipo rosácea, tipo acné, tipo punzante. Manejo: evitar gatillos, productos hipoalergénicos sin fragancia, fotoprotección, hidratación con ceramidas/niacinamida.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed reciente en revista dermatológica.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_009",
+      "title": "Atopic eczema in under 12s: diagnosis and management — NICE Guideline",
+      "authors": [
+        "National Institute for Health and Care Excellence (NICE)"
+      ],
+      "year": 2023,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK571009/",
+      "journal": "NICE Clinical Guideline CG57 (updated)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guideline NICE para diagnóstico y manejo de eczema atópico. Emolientes son la base del tratamiento (uso diario sin perfume, incluso cuando la piel está clara). Corticoides tópicos solo en brotes. Escalada terapéutica según severidad. Aplicable como referencia conservadora para audiencia joven.",
+      "reliability_note": "Tier 1 — Guideline oficial del sistema de salud británico, ampliamente citada.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2020_001",
+      "title": "Topical benzoyl peroxide for acne",
+      "authors": [
+        "Matin T",
+        "Goodman MB"
+      ],
+      "year": 2020,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7077870/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre peróxido de benzoilo: bactericida contra Cutibacterium acnes. Eficacia equivalente entre concentraciones 2.5%, 5% y 10%, pero la irritación aumenta con la concentración. Recomendación dermatológica: comenzar con 2.5-5%. No genera resistencia bacteriana. Combinable con retinoides tópicos y antibióticos.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls revisada por dermatólogos, alojada en NCBI.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_010",
+      "title": "Postinflammatory Hyperpigmentation",
+      "authors": [
+        "Lawrence E",
+        "Al Aboud KM"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK559150/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Capítulo StatPearls sobre hiperpigmentación postinflamatoria (PIH). Resulta de sobreproducción de melanina tras inflamación cutánea. Más común y severa en Fitzpatrick III-VI. Tratamiento: controlar primero la inflamación de base, luego despigmentantes (hidroquinona, ácido azelaico, retinoides, vitamina C). Fotoprotección estricta es fundamental.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls, alojada en NCBI.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_011",
+      "title": "AAD: A dermatologist's guide to skincare from growing up to glowing up",
+      "authors": [
+        "Garshick M (board-certified dermatologist, AAD spokesperson)"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.aad.org/news/dermatologist-guide-skincare",
+      "journal": "AAD Public Communication",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía oficial AAD por dermatóloga certificada Marisa Garshick sobre skincare por edad. Para pre-adolescentes: limpiador suave + hidratante sin fragancia + SPF 30+. Para adolescentes: añadir ácido salicílico o peróxido de benzoilo si hay acné. EXPLÍCITAMENTE evitar en menores: retinol, vitamina C, ácidos exfoliantes (causan irritación sin beneficio). Consultar dermatólogo si: reacciones, acné con marcas/cicatrices, persistencia tras meses de tratamiento OTC.",
+      "reliability_note": "Tier 1 — Comunicación oficial AAD por dermatóloga acreditada. Crítica para audiencia adolescente.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2023_003",
+      "title": "Adolescent acne: association to sex, puberty, testosterone and dihydrotestosterone",
+      "authors": [
+        "Multiple authors (Norwegian cohort study)"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12002860/",
+      "journal": "BMC Dermatology / Archives",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio sobre asociación entre acné adolescente, sexo, etapa puberal, testosterona y DHT. Confirma el rol central de andrógenos en estimular glándulas sebáceas durante la pubertad. Acné masculino tiende a ser más severo por mayores niveles de andrógenos circulantes; en mujeres, fluctuaciones del ciclo menstrual exacerban brotes premenstruales.",
+      "reliability_note": "Tier 1 — Peer-reviewed, hospedado en PubMed Central.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2023_004",
+      "title": "Folliculitis — Diagnosis and Treatment",
+      "authors": [
+        "Mayo Clinic editorial team"
+      ],
+      "year": 2023,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.mayoclinic.org/diseases-conditions/folliculitis/diagnosis-treatment/drc-20361662",
+      "journal": "Mayo Clinic Patient Education",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Información clínica Mayo Clinic sobre foliculitis: inflamación de folículos pilosos por infección bacteriana (S. aureus), fúngica (Malassezia/pityrosporum), por hot tub (Pseudomonas), o por afeitado (pseudofoliculitis barbae). Tratamiento varía: lavados antisépticos, antibióticos tópicos/orales, antifúngicos, mejora de técnica de afeitado. La pseudofoliculitis no es acné — confusión común.",
+      "reliability_note": "Tier 2 — Información clínica de institución médica de referencia internacional.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2024_012",
+      "title": "Laser Fitzpatrick Skin Type Recommendations",
+      "authors": [
+        "Roberts WE",
+        "StatPearls editorial team"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK557626/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Capítulo StatPearls sobre escala Fitzpatrick (1975, ampliada 1988): 6 fototipos basados en respuesta a UV. Tipo I: muy clara, siempre se quema, nunca broncea. Tipo VI: muy oscura, nunca se quema, siempre pigmenta. Aplicaciones: dosis de fototerapia, calibración láser, riesgo de cáncer de piel, recomendaciones de fotoprotección. Audiencia latina típicamente III-V.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls.",
+      "domain": "skincare"
+    },
+    {
+      "id": "skin_2018_001",
+      "title": "Does dietary fluid intake affect skin hydration in healthy humans? A systematic literature review",
+      "authors": [
+        "Akdeniz M",
+        "Tomova-Simitchieva T",
+        "Dobos G",
+        "Blume-Peytavi U",
+        "Kottner J"
+      ],
+      "year": 2018,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/srt.12454",
+      "journal": "Skin Research and Technology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática que evalúa el mito de '8 vasos de agua hidratan la piel'. Conclusión: evidencia débil. Beneficio modesto solo en personas con ingesta basal baja. La hidratación cutánea depende primariamente de la barrera lipídica y cuidado tópico, no del agua bebida. Mantener buena hidratación general es saludable, pero no es 'tratamiento' dermatológico.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed que desmonta mito popular con evidencia.",
+      "domain": "skincare"
+    },
+    {
+      "id": "mk_2023_001",
+      "title": "Shelf Life and Expiration Dating of Cosmetics",
+      "authors": [
+        "U.S. Food and Drug Administration"
+      ],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetics-labeling/shelf-life-and-expiration-dating-cosmetics",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Documento oficial de la FDA que aclara que en EE. UU. no existe obligación legal de imprimir fecha de caducidad ni PAO (Period After Opening) en cosméticos. La responsabilidad de garantizar la seguridad y estabilidad del producto recae en el fabricante. La FDA reconoce que algunos productos —especialmente los de zona ocular— tienen vida útil corta por riesgo de contaminación microbiana.",
+      "reliability_note": "Fuente regulatoria primaria (gobierno EE. UU.). Máxima fiabilidad para política regulatoria estadounidense; no equivale a guía científica de uso seguro para consumidores.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2023_002",
+      "title": "Cosmetics Safety Q&A: Shelf Life",
+      "authors": [
+        "U.S. Food and Drug Administration"
+      ],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/resources-consumers-cosmetics/cosmetics-safety-qa-shelf-life",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía orientativa de FDA para consumidores. Recomienda desechar la máscara de pestañas en 2 a 4 meses tras abrir el envase por el alto riesgo de contaminación, y reemplazar productos de ojo si cambian de color, olor o textura. Subraya que compartir maquillaje multiplica el riesgo de infecciones.",
+      "reliability_note": "Documento divulgativo oficial. Cifras alineadas con consenso de oftalmología y dermatología.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2023_003",
+      "title": "Eye Cosmetic Safety",
+      "authors": [
+        "U.S. Food and Drug Administration"
+      ],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetic-products/eye-cosmetic-safety",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía de FDA sobre seguridad ocular en cosméticos: no compartir productos de ojo, no usar testers en tienda, desechar productos cuando cambien de aspecto, no aplicar maquillaje dentro del borde palpebral (waterline) por riesgo de bloqueo de glándulas de Meibomio, y nunca aplicar maquillaje en vehículos en movimiento por riesgo de lesión corneal.",
+      "reliability_note": "Fuente regulatoria primaria. Recomendaciones consensuadas con AAO y AAD.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2022_004",
+      "title": "Modernization of Cosmetics Regulation Act of 2022 (MoCRA)",
+      "authors": [
+        "U.S. Congress",
+        "U.S. Food and Drug Administration"
+      ],
+      "year": 2022,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetics-laws-regulations/modernization-cosmetics-regulation-act-2022-mocra",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reforma legal más importante del marco cosmético estadounidense desde 1938. Introduce registro obligatorio de fábricas y productos, reporte de eventos adversos graves en 15 días, retención de registros de seguridad, y obligación futura de declarar alérgenos de fragancia en la etiqueta —acercando EE. UU. al modelo europeo. Aún así, EE. UU. prohíbe muchos menos ingredientes que la UE.",
+      "reliability_note": "Ley federal vigente. Útil para contextualizar diferencias FDA vs UE.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2023_005",
+      "title": "SCCS Notes of Guidance for the Testing of Cosmetic Ingredients and Their Safety Evaluation (12th Revision)",
+      "authors": [
+        "Scientific Committee on Consumer Safety (SCCS), European Commission"
+      ],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://health.ec.europa.eu/scientific-committees/scientific-committee-consumer-safety-sccs/sccs-opinions_en",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Documento guía del comité científico europeo (SCCS) que establece la metodología de evaluación de seguridad de ingredientes cosméticos en la UE. La 12ª revisión (mayo 2023) incorpora alternativas sin experimentación animal, valoración de exposición agregada y consideración explícita de exposición infantil. La UE añadió 29 ingredientes a su lista de prohibidos solo en 2023.",
+      "reliability_note": "Fuente regulatoria europea de primer nivel. Marco más estricto que FDA en restricción de ingredientes.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2015_006",
+      "title": "Safety Assessment of Talc as Used in Cosmetics",
+      "authors": [
+        "Fiume MM",
+        "Boyer I",
+        "Bergfeld WF",
+        "Belsito DV",
+        "Hill RA",
+        "Klaassen CD",
+        "Cosmetic Ingredient Review Expert Panel"
+      ],
+      "year": 2015,
+      "type": "industry_reference",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/1091581815586797",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión del panel CIR sobre el talco. Concluye que el talco cosmético —que por norma de industria debe estar libre de fibras de asbesto detectables— es seguro en las condiciones de uso actuales. No debe aplicarse sobre piel con barrera epidérmica rota. Existe debate público y litigios por casos vinculando talco de zonas íntimas con cáncer ovárico y mesotelioma; en maquillaje facial (sombras, polvos compactos) la exposición y riesgo son distintos.",
+      "reliability_note": "CIR está financiado por la industria; sus conclusiones se consideran orientativas pero deben contrastarse con literatura independiente, sobre todo en ingredientes polémicos.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2011_007",
+      "title": "Allergic contact dermatitis to preservatives and fragrances in cosmetics",
+      "authors": [
+        "Yim E",
+        "Baquerizo Nole KL",
+        "Tosti A"
+      ],
+      "year": 2011,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/21611680/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión publicada en Skin Therapy Letter / PubMed. Identifica fragancias y conservantes como los dos grupos de ingredientes cosméticos más asociados a dermatitis de contacto alérgica. Entre los conservantes, metilisotiazolinona (MI) y metilcloroisotiazolinona (MCI) son los alérgenos en ascenso; formaldehído y liberadores de formaldehído también figuran. La prueba de parche es el estándar de oro para identificar el alérgeno responsable.",
+      "reliability_note": "Revisión académica revisada por pares. Útil para advertir sobre piel sensible sin alarmar.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2025_008",
+      "title": "Assessing the Levels and Types of Bacterial Contamination in Cosmetic Brushes: Implications for Beauty and Hygiene in Jeddah City",
+      "authors": [
+        "Attar R",
+        "et al."
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1155/ijm/2128581",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio publicado en International Journal of Microbiology. Analiza brochas y esponjas usadas: 81% de los aislados bacterianos fueron Gram-positivos, dominados por Micrococcus (31%) y Staphylococcus (23%). Encuesta a 370 personas: el 44,3% rara vez lava sus brochas y el 27,8% reportó problemas cutáneos posiblemente vinculados. La Academia Americana de Dermatología recomienda lavar brochas cada 7–10 días.",
+      "reliability_note": "Estudio observacional reciente, muestra regional pero metodología sólida. Refuerza la consigna estándar de higiene.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2006_009",
+      "title": "Skin color and makeup strategies of women from different ethnic groups",
+      "authors": [
+        "Caisey L",
+        "Grangeat F",
+        "Lemasson A",
+        "Talabot J",
+        "Voirin A"
+      ],
+      "year": 2006,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1467-2494.2006.00329.x",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio publicado en International Journal of Cosmetic Science. Mide colorimétricamente la piel de mujeres caucásicas francesas y estadounidenses, japonesas, afroamericanas e hispanas usando espectrorradiometría. Demuestra que el color de piel forma un continuo —no categorías discretas— y que los espectros se solapan entre grupos étnicos. Justifica científicamente el uso del espacio CIE L*a*b* para matching de bases.",
+      "reliability_note": "Estudio peer-reviewed clásico en la literatura cosmética; base científica del color matching moderno.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2015_010",
+      "title": "Face Paint: The Story of Makeup",
+      "authors": [
+        "Eldridge, Lisa"
+      ],
+      "year": 2015,
+      "type": "book",
+      "doi_or_url": "ISBN 978-1-4197-1796-3 (Abrams Image)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra de referencia escrita por Lisa Eldridge, maquilladora profesional con décadas de trayectoria editorial y de pasarela. Recorre la historia cultural del maquillaje desde el kohl egipcio al contouring contemporáneo, e incluye explicaciones técnicas sobre pigmentos, fórmulas y técnicas profesionales de aplicación. Bestseller del New York Times.",
+      "reliability_note": "Fuente profesional reconocida internacionalmente. Útil para técnica y contexto cultural; no es fuente científica para temas de seguridad.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2024_011",
+      "title": "The Science of Beauty: Debunk the Myths and Discover What Goes into Your Beauty Routine",
+      "authors": [
+        "Wong, Michelle (PhD)"
+      ],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "ISBN 978-0-7440-9283-7 (DK / Penguin Random House)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Libro divulgativo de Michelle Wong (PhD en química, fundadora de Lab Muffin Beauty Science). Aborda con rigor científico mitos del 'clean beauty', greenwashing, ingredientes demonizados sin base y diferencias entre marketing y evidencia. Reconocida por NYT, Wired y ABC News como una de las voces más escépticas e influyentes en ciencia cosmética.",
+      "reliability_note": "Divulgación con citas científicas. Autora con credenciales químicas verificables; explícitamente aclara que no es profesional médica.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2024_012",
+      "title": "Lab Muffin Beauty Science (blog y canal de divulgación)",
+      "authors": [
+        "Wong, Michelle (PhD)"
+      ],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "https://labmuffin.com/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Plataforma de divulgación científica fundada en 2011. Publica análisis de ingredientes, desmontaje de mitos virales y guías prácticas con base química. Su autora tiene doctorado en química medicinal/supramolecular y diploma en formulación cosmética del Institute of Personal Care Science.",
+      "reliability_note": "Divulgación de alta calidad con referencias a literatura primaria. Útil como puente entre ciencia y consumidor general.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2024_013",
+      "title": "How To Use Cosmetics Safely Around Your Eyes",
+      "authors": [
+        "American Academy of Ophthalmology (AAO)"
+      ],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.aao.org/eye-health/tips-prevention/eye-makeup",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recomendaciones de la Academia Americana de Oftalmología para usar maquillaje sin dañar la salud ocular: desmaquillarse antes de dormir, no aplicar delineador en el borde interior del párpado, reemplazar máscara cada 3 meses, no compartir productos, descartar al primer signo de irritación.",
+      "reliability_note": "Asociación médica profesional. Consenso clínico bien establecido.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2024_014",
+      "title": "The Golden Ratio Brow Mapping Method",
+      "authors": [
+        "Soare, Anastasia (Anastasia Beverly Hills educational content)"
+      ],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.anastasiabeverlyhills.com/pages/the-golden-ratio",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Método de mapeo de cejas en tres puntos basado en la proporción áurea: inicio alineado vertical con la aleta de la nariz; arco alineado entre aleta de la nariz y centro del iris; final alineado entre aleta y comisura externa del ojo. Es la técnica de referencia adoptada por la industria profesional para diseñar cejas armónicas con cada rostro.",
+      "reliability_note": "Técnica de industria, no estudio científico, pero estándar profesional ampliamente aceptado.",
+      "domain": "makeup"
+    },
+    {
+      "id": "mk_2024_015",
+      "title": "Eye Cosmetic Safety educational materials",
+      "authors": [
+        "American Academy of Dermatology (AAD)"
+      ],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.aad.org/public/everyday-care/skin-care-secrets",
+      "accessed_date": "2026-06-09",
+      "summary_es": "La AAD recomienda lavar brochas y esponjas cada 7–10 días con jabón suave y agua tibia, dejar secar planas, desmaquillarse antes de dormir y no compartir cosméticos de ojo. Establece que dormir con maquillaje obstruye glándulas sebáceas y puede generar acné, irritación y conjuntivitis.",
+      "reliability_note": "Asociación médica profesional. Consigna estándar de higiene cosmética.",
+      "domain": "makeup"
+    },
+    {
+      "id": "trd_2024_001",
+      "title": "Clean girl aesthetic: cute and classy, or culturally appropriative?",
+      "authors": [
+        "Urban Legend Staff"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.urbanlegendnews.org/features/2024/02/28/clean-girl-aesthetic-cute-and-classy-or-culturally-appropriative/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reportaje sobre las acusaciones de apropiación cultural a la estética 'clean girl' — específicamente cómo elementos popularizados por mujeres negras y latinas (slicked back bun, edges, aros) fueron históricamente estigmatizados como 'ghetto' o 'no profesionales' hasta que mujeres blancas los adoptaron y fueron reframeados como 'puestos' y 'gorgeous'.",
+      "reliability_note": "Periodismo estudiantil bien documentado. Útil para citar críticas estructurales; complementar con análisis académico cuando esté disponible.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_002",
+      "title": "Effortless or exclusionary? The problem with the 'clean girl' aesthetic",
+      "authors": [
+        "Varsity Fashion"
+      ],
+      "year": 2024,
+      "type": "cultural_analysis",
+      "doi_or_url": "https://www.varsity.co.uk/fashion/28135",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Análisis cultural de cómo la estética 'clean girl' está asociada a privilegio racial y socioeconómico — requiere piel 'perfecta' (genéticamente o por tratamientos costosos), tiempo, productos premium, y un cuerpo delgado normativo. Excluyente para muchas usuarias reales.",
+      "reliability_note": "Varsity (revista universitaria de Cambridge). Análisis bien argumentado, útil para contexto crítico.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_003",
+      "title": "Skinimalism Is Continuing to Trend in 2024",
+      "authors": [
+        "U.S. Dermatology Partners"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.usdermatologypartners.com/press-media/skinimalism-is-continuing-to-trend-in-2024/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reporte dermatológico que valida el skinimalism como respuesta a las rutinas de 10 pasos. 75% de los hogares compran 3 o menos productos de skincare. Dermatólogos respaldan rutinas más simples por reducir irritación y mejorar barrera cutánea.",
+      "reliability_note": "Reporte de grupo dermatológico — sesgo posible hacia productos médicos, pero datos verificables sobre comportamiento de consumo.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_004",
+      "title": "Skinimalism and Beautility Among BeautyHealth's 2025 Trends",
+      "authors": [
+        "Skin Inc."
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.skininc.com/business/trends/article/22928647/the-hydrafacial-company-skinimalism-and-beautility-among-beautyhealths-2025-trends",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reporte Skintuition de BeautyHealth. Identifica skinimalism como tendencia dominante 2024-2025, junto con 'medicalización de la belleza' y 'skintellectual consumers' que priorizan ciencia sobre marketing.",
+      "reliability_note": "Reporte industrial. Útil para tamaño de mercado y dirección de tendencias.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_005",
+      "title": "Glass Skin: The Rise and Reality Behind the K-Beauty Trend",
+      "authors": [
+        "Jane Yoo, MD"
+      ],
+      "year": 2025,
+      "type": "industry_report",
+      "doi_or_url": "https://www.janeyoomd.com/glass-skin-the-rise-and-reality-behind-the-k-beauty-trend/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Dermatóloga explica el origen del glass skin en cultura coreana (estándar histórico de piel 'pura'). El boom moderno (post-2010) lo impulsaron K-pop, K-dramas y marcas como Laneige y COSRX. Técnica clave: capas ligeras de tónicos, esencias y serums para hidratación gradual. Dermatólogos enfatizan que poros y textura son normales y saludables.",
+      "reliability_note": "Dermatóloga certificada, contenido educativo. Buen balance entre validar la técnica y desmitificar el ideal.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_006",
+      "title": "How TikTok Beauty Aesthetics Emerge and Grow",
+      "authors": [
+        "WWD"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://wwd.com/beauty-industry-news/beauty-features/tiktok-beauty-trends-makeup-hair-1236171410/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reportaje de Women's Wear Daily sobre cómo emergen las microtendencias en TikTok. Caso 'latte makeup': la creadora Rachel Rigler acuñó el término en 2023; el video original superó 2.7M vistas. Hailey Bieber lo respaldó un mes después. Inició era de aesthetics gourmet (strawberry girl, cherry cola lips, tomato girl).",
+      "reliability_note": "WWD es periodismo industrial de referencia en moda y belleza. Alta fiabilidad.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_007",
+      "title": "Cherry Makeup: Viral TikTok trend explained",
+      "authors": [
+        "Dexerto Staff"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.dexerto.com/tiktok/cherry-makeup-viral-tiktok-trend-explained-2839517/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Cherry makeup: maquillaje dominado por rosas suaves, glow sutil y armonía labial/mejillas que evoca 'haber mordido una cherry'. Originada en 2022 por Danielle Marcan (usando jugo de cherry real); resurgió en verano 2024 con variantes inspiradas en frutas (strawberry, tomato, latte).",
+      "reliability_note": "Dexerto cubre tendencias digitales. Información factual sobre origen del trend verificable.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2023_008",
+      "title": "Reducing social media use significantly improves body image in teens, young adults",
+      "authors": [
+        "American Psychological Association"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.apa.org/news/press/releases/2023/02/social-media-body-image",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio publicado en Psychology of Popular Media (febrero 2023): adolescentes y adultos jóvenes que redujeron uso de redes sociales 50% durante semanas mostraron mejoras significativas en cómo se sentían respecto a su peso y apariencia, comparado con quienes mantuvieron uso constante.",
+      "reliability_note": "Peer-reviewed publicado por APA. Evidencia de causalidad (no solo correlación).",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_009",
+      "title": "The Impact of Social Media on Adolescent Body Image: A Comprehensive Review",
+      "authors": [
+        "NCBI / PMC review authors"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12437731/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión exhaustiva. Plataformas centradas en apariencia (Instagram, TikTok) promueven estándares idealizados que adolescentes internalizan como ideales irreales. Resultado: insatisfacción corporal, búsqueda de validación vía likes, mayor riesgo de trastornos alimentarios y ansiedad.",
+      "reliability_note": "Revisión peer-reviewed en PubMed Central. Fuente principal para riesgos psicológicos.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_010",
+      "title": "Girls' Attitudes Survey 2024",
+      "authors": [
+        "Girlguiding UK"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.girlguiding.org.uk/what-we-do/our-stories-and-news/research/girls-attitudes-survey/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Encuesta anual a niñas y jóvenes 11-21 años en Reino Unido. 54% afirmaron 'desearía verme como cuando uso filtros en redes sociales'; 46% se sentirían más seguras online si hubiera más contenido sin editar. Evidencia directa del impacto de filtros en autoimagen adolescente.",
+      "reliability_note": "Reporte anual respetado, muestra grande, metodología pública.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_011",
+      "title": "Tweens are getting rashes from some skin care products popularized on social media, dermatologists say",
+      "authors": [
+        "NBC News Health"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.nbcnews.com/health/health-news/tweens-getting-rashes-skin-care-products-anti-aging-acne-rcna139757",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reportaje con 7 dermatólogos: niñas preadolescentes presentando dermatitis por retinoides aplicados sin necesidad médica. Ingredientes anti-aging causan irritación, dermatitis retinoidal y efecto contrario al deseado en piel joven.",
+      "reliability_note": "Periodismo de salud con fuentes médicas múltiples. Alta fiabilidad.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_012",
+      "title": "Social Media Fails on Retinol Safety Education",
+      "authors": [
+        "Dermatology Times"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.dermatologytimes.com/view/social-media-fails-on-retinol-safety-education",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Análisis de contenido de retinol en TikTok, Instagram, Facebook. Solo 18% de videos mencionan efectos secundarios; solo 12% explican técnica correcta. Adolescentes especialmente vulnerables a desinformación dermatológica.",
+      "reliability_note": "Publicación dermatológica industrial. Análisis cuantitativo de contenido en redes.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_013",
+      "title": "The 'Sephora kid' trend shows tweens are psyched about skincare. But their overzealous approach is raising concerns",
+      "authors": [
+        "CNN Business"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.cnn.com/2024/03/12/business/sephora-kid-tweens-skincare-obsession/index.html",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Fenómeno 'Sephora kids' (2024): preadolescentes comprando productos anti-aging para adultos. Dermatólogos reportan quemaduras y reacciones alérgicas. Discusión incluye implicaciones para identidad y autoestima en una etapa de cambio físico y psicológico.",
+      "reliability_note": "CNN Business — periodismo de referencia. Cubre tanto el ángulo médico como el de marketing.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_014",
+      "title": "Dermatological Safety of Cosmetic Products Marketed to Children: Insights on the Sephora Kids Phenomenon",
+      "authors": [
+        "JDD authors"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://jddonline.com/articles/dermatological-safety-of-cosmetic-products-marketed-children-insights-on-sephora-kids-phenomenon-S1545961625P8800X/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Artículo en Journal of Drugs in Dermatology. Análisis de seguridad de cosméticos comercializados a niñas. Evidencia clínica de daños por uso de ácidos exfoliantes y retinoides en piel joven sin supervisión.",
+      "reliability_note": "Peer-reviewed dermatológico. Fuente médica primaria para el tema.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_015",
+      "title": "Body Positivity vs. Body Neutrality",
+      "authors": [
+        "Cleveland Clinic Health Essentials"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://health.clevelandclinic.org/body-positivity-vs-body-neutrality",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Explicación clínica de la diferencia: body positivity = amar el cuerpo independientemente de forma/tamaño/color; body neutrality = apreciar lo que el cuerpo HACE más que cómo se ve. Neutrality surge como respuesta a la presión implícita de body positivity ('debes amarte').",
+      "reliability_note": "Cleveland Clinic — fuente médica de referencia. Explicación pedagógica clara.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_016",
+      "title": "Relationship between body positivity and body neutrality with body image, self-esteem, mindfulness and gratitude",
+      "authors": [
+        "PMC review authors"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12589514/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio comparativo: body positivity y body neutrality son constructos distintos con efectos psicológicos separables. Body neutrality asociada a mayor sensación de liberación de demandas sociales; body positivity asociada a mejoras en estado de ánimo pero también a riesgo de autoobjetivación.",
+      "reliability_note": "Peer-reviewed en PubMed Central. Evidencia empírica reciente.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2017_017",
+      "title": "Allure officially drops the term 'anti-aging'",
+      "authors": [
+        "AARP / Allure Magazine"
+      ],
+      "year": 2017,
+      "type": "journalism",
+      "doi_or_url": "https://www.aarp.org/entertainment/beauty-style/allure-magazine-not-using-anti-aging-term-2017/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Allure (septiembre 2017) anuncia que dejará de usar 'anti-aging'. Editora en jefe: 'al usar este término estamos reforzando sutilmente el mensaje de que envejecer es una condición que debemos combatir'. Inicio del shift industrial hacia 'pro-aging', 'aging gracefully'.",
+      "reliability_note": "Evento histórico documentado. Marca un cambio de lenguaje verificable.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_018",
+      "title": "Beauty Brands Are Using The Term 'Pro-Aging,' But Is The Industry Making Strides Against Ageism?",
+      "authors": [
+        "Beauty Independent"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.beautyindependent.com/beauty-brands-using-term-pro-aging-industry-making-strides-ageism/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Análisis crítico: ¿el cambio de lenguaje refleja un cambio real o es marketing? Argumenta que muchas marcas adoptan el término sin cambiar las promesas de producto (sigue prometiendo 'borrar arrugas'). Crítica desde dentro de la industria.",
+      "reliability_note": "Beauty Independent — publicación industrial respetada. Crítica matizada útil.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_019",
+      "title": "Gen Z and social media are helping men's makeup go mainstream",
+      "authors": [
+        "CNBC"
+      ],
+      "year": 2026,
+      "type": "journalism",
+      "doi_or_url": "https://www.cnbc.com/2026/01/10/mens-makeup-gen-z-tiktok-instagram-ulta-sephora.html",
+      "accessed_date": "2026-06-09",
+      "summary_es": "68% de hombres Gen Z (18-27) usaban skincare facial en 2024, vs 42% dos años antes. Gasto masculino en belleza creció 9.9% en 2024 (vs 5.8% mujeres). Hombres que dicen 'nunca uso maquillaje' bajaron de 90%+ (2019) a 75% (2024). Ulta y Sephora integran productos masculinos en displays gender-neutral.",
+      "reliability_note": "CNBC — periodismo financiero de referencia. Datos de mercado verificables.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_020",
+      "title": "The future of beauty and wellness: Inclusive, personalized, and sustainable",
+      "authors": [
+        "McKinsey & Company"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.mckinsey.com/featured-insights/themes/the-future-of-beauty-and-wellness-inclusive-personalized-and-sustainable",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reporte temático McKinsey. Mercado proyectado a $590B en 2030. Tres ejes estructurales: inclusividad (rango de tonos/edad/género), personalización (IA, diagnóstico), sostenibilidad (con resistencia real de consumidores a pagar premium). Belleza converge con wellness.",
+      "reliability_note": "McKinsey — referencia industrial de máxima fiabilidad. Datos macroeconómicos sólidos.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_021",
+      "title": "State of Beauty industry trends 2025",
+      "authors": [
+        "McKinsey & Company"
+      ],
+      "year": 2025,
+      "type": "industry_report",
+      "doi_or_url": "https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-beauty",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Crecimiento esperado 5% próximos 5 años (vs 7% en 2022-2024). Empaque refillable: muchas marcas intentaron, mayoritariamente no adoptado por consumidores. Marcas que basaron identidad en demografía específica encuentran que ya no impulsa crecimiento — los compradores priorizan eficacia y estética compartida.",
+      "reliability_note": "McKinsey reporte 2025. Importante: matiza el discurso 'sostenibilidad importa siempre' con datos de comportamiento real.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2019_022",
+      "title": "The Age of Instagram Face",
+      "authors": [
+        "Jia Tolentino"
+      ],
+      "year": 2019,
+      "type": "cultural_analysis",
+      "doi_or_url": "https://www.newyorker.com/culture/decade-in-review/the-age-of-instagram-face",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Ensayo seminal de Jia Tolentino en The New Yorker. Acuña 'Instagram Face': labios voluminosos, pómulos altos, ojos felinos, nariz pequeña, piel sin poros — un rostro 'distintivamente blanco pero étnicamente ambiguo' que homogeniza la belleza global. Combina rasgos apropiados de múltiples culturas (boca afro, cejas surasiáticas, etc.).",
+      "reliability_note": "Pieza fundacional de crítica cultural de belleza. Citada en literatura académica posterior.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2018_023",
+      "title": "Selfies-Living in the Era of Filtered Photographs (JAMA Facial Plastic Surgery)",
+      "authors": [
+        "Rajanala S, Maymone MBC, Vashi NA"
+      ],
+      "year": 2018,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://jamanetwork.com/journals/jamafacialplasticsurgery/fullarticle/2688763",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Artículo de Boston University en JAMA Facial Plastic Surgery que introduce el término 'Snapchat dysmorphia': fijación con un defecto imaginario basado en selfies filtrados. Una variante tecnológica del trastorno dismórfico corporal (BDD). 55% de cirujanos plásticos reportaban pacientes solicitando alteraciones para parecerse a sus fotos filtradas.",
+      "reliability_note": "Peer-reviewed JAMA. Fuente médica primaria del fenómeno.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_024",
+      "title": "Influence of Social Media Filters on Plastic Surgery: A Surgeon's Perspective on Evolving Patient Demands",
+      "authors": [
+        "PMC plastic surgery authors"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11991445/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Actualización 2025 del fenómeno: pacientes ya no llevan fotos de celebridades a consulta sino fotos filtradas de SÍ MISMOS solicitando cirugía para parecerse a su versión digital. Tendencia creciente, preocupación clínica documentada.",
+      "reliability_note": "Peer-reviewed reciente. Evolución del fenómeno post-2018.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_025",
+      "title": "'Slugging': A TikTok Skin Trend That Has Some Merit",
+      "authors": [
+        "Medscape"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.medscape.com/viewarticle/984772",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Análisis dermatológico del slugging. Técnica originada en Corea del Sur; viralizada en TikTok 2022. Evidencia: vaselina (petrolato) es no-comedogénica (mito desmentido). Útil para barrera comprometida y piel muy seca. Caveat AAD: evitar en piel acneica por riesgo de oclusión para algunos.",
+      "reliability_note": "Medscape — referencia médica con revisión editorial. Validación matizada.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2026_026",
+      "title": "'Bigorexia' is a type of body dysmorphia afflicting boys and young men",
+      "authors": [
+        "NPR Health"
+      ],
+      "year": 2026,
+      "type": "journalism",
+      "doi_or_url": "https://www.npr.org/2026/01/14/nx-s1-5671789/bigorexia-dysmorphia-eating-disorder-boys",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Cobertura NPR sobre el aumento de bigorexia (dismorfia muscular) en adolescentes varones, impulsada por contenido de fitness/bodybuilding en redes. Sintomatología puede emerger en pubertad; especialmente prevalente entre 15-32 años.",
+      "reliability_note": "NPR — periodismo público de calidad. Cubre el ángulo de salud mental adolescente masculino frecuentemente ignorado.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2025_027",
+      "title": "Social Media Exposure and Muscle Dysmorphia Risk in Young German Athletes",
+      "authors": [
+        "PMC research authors"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12294503/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio cross-sectional en jóvenes atletas alemanes. Confirma correlación entre intensidad de comparación física en redes, dependencia de validación por likes, y severidad de patología de imagen corporal en adolescentes/jóvenes adultos.",
+      "reliability_note": "Peer-reviewed con muestra significativa. Evidencia europea complementaria.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_028",
+      "title": "Mintel Global Beauty and Personal Care Trends 2024",
+      "authors": [
+        "Mintel"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.mintel.com/press-centre/mintel-announces-global-beauty-and-personal-care-trends-for-2024/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Tres ejes Mintel 2024: 'NeuroGlow' (belleza mente-cuerpo), 'Beaut-AI' (IA personalizada), 'Sophisticated Simplicity' (productos eficientes). Identifica a Gen Z (1997-2010) como demanda dominante en autenticidad, transparencia, inclusividad y belleza genderless.",
+      "reliability_note": "Mintel — referencia industrial de tendencias. Marco analítico ampliamente citado.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2023_029",
+      "title": "NPD: The Evolution of the 'Lipstick Index'",
+      "authors": [
+        "NPD Group / Cosmoprof North America"
+      ],
+      "year": 2023,
+      "type": "industry_report",
+      "doi_or_url": "https://cosmoprofnorthamerica.com/npd-the-evolution-of-the-lipstick-index/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Datos NPD post-pandemia: ventas de labial cayeron 70%+ durante mascarillas. Repunte en 2022: lip makeup categoría más rápida en crecimiento, +48% Q1 2022 vs 2021. 'Lipstick comeback' como fenómeno cultural post-COVID.",
+      "reliability_note": "NPD Group — referencia en datos de mercado de belleza. Verificable.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_030",
+      "title": "The Clean Beauty Trend Among Millennial and Generation Z Consumers",
+      "authors": [
+        "Shim J, Woo J, Yeo H, et al."
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/21582440241255430",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio peer-reviewed sobre el comportamiento de consumidores millennial y Gen Z respecto a clean beauty: priorizan seguridad, ética y sostenibilidad. Evalúa qué atributos son percibidos como genuinos vs greenwashing.",
+      "reliability_note": "Peer-reviewed SAGE. Útil para entender motivaciones de compra de la audiencia objetivo de Lumina.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2016_031",
+      "title": "Cultural, Media, and Peer Influences on Body Beauty Perceptions of Mexican American Adolescent Girls",
+      "authors": [
+        "Romo LF, Mireles-Rios R, Hurtado A"
+      ],
+      "year": 2016,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/0743558415594424",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio cualitativo con 27 adolescentes latinas (14-16 años). Consenso de que la cultura latina valora figura 'delgada pero curvilínea' mientras percibe que cultura europea-americana valora delgadez extrema. Influencias clave: amigas, percepción de preferencias masculinas, celebridades en medios latinos.",
+      "reliability_note": "Peer-reviewed. Importante para audiencia hispanohablante de Lumina — los ideales no son universales.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2023_032",
+      "title": "Validation of a Latin-American Spanish version of the Body Esteem Scale for Adolescents and Adults (BESAA-LA)",
+      "authors": [
+        "Authors per PMC publication"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10709846/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Validación de instrumento de medición de body esteem en español latinoamericano (muestras colombiana y nicaragüense). Reconoce que insatisfacción corporal es preocupación creciente en LATAM y que se requieren herramientas culturalmente apropiadas.",
+      "reliability_note": "Peer-reviewed. Útil para contexto regional hispanohablante.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_033",
+      "title": "The Fenty Effect: Inclusive Foundation Shades",
+      "authors": [
+        "Hollywood Insider / various"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.hollywoodinsider.com/rihanna-fenty-beauty/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Lanzamiento Fenty Beauty (2017) con 40 tonos de base (actualmente 59). Efecto dominó: Maybelline SuperStay (28→50 tonos), CoverGirl TruBlend (40 tonos 2018), Too Faced Born This Way (35 tonos 2019). Reframeó la inclusividad de 'campaña' a 'expectativa base'.",
+      "reliability_note": "Hecho cultural ampliamente documentado. Reliable para citar el cambio estructural en shade ranges.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_034",
+      "title": "Liquid Blush Market Size, Share, Trends & Forecast",
+      "authors": [
+        "Verified Market Research"
+      ],
+      "year": 2024,
+      "type": "industry_report",
+      "doi_or_url": "https://www.verifiedmarketresearch.com/product/liquid-blush-market/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Mercado de blush líquido: $2.6B en 2024, proyectado a $3.8B en 2032 (CAGR 8.03%). Más de 30 lanzamientos de blush en 2024. Crecimiento impulsado por skinimalism y no-makeup makeup. Matte liquid blush captura 45% del mercado.",
+      "reliability_note": "Reporte de investigación de mercado. Datos cuantitativos útiles.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_035",
+      "title": "Order Up! TikTok's Viral 'Latte Makeup' Trend",
+      "authors": [
+        "Grazia Magazine"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://graziamagazine.com/articles/latte-makeup-trend/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Latte makeup: paleta de tonos café/canela/dorado para look bronzy cálido. Cobertura de Grazia con contexto del origen y la cadena de microtendencias gourmet derivadas (espresso makeup, cappuccino, mocha eyes).",
+      "reliability_note": "Grazia — revista de moda establecida. Buena cobertura de microtendencias.",
+      "domain": "trends"
+    },
+    {
+      "id": "trd_2024_036",
+      "title": "9 New Skincare Trends That'll Be Everywhere In 2024",
+      "authors": [
+        "Refinery29"
+      ],
+      "year": 2024,
+      "type": "journalism",
+      "doi_or_url": "https://www.refinery29.com/en-us/skincare-trends-2024",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Refinery29: incluye retorno de aceites faciales (face, hair, body, lip), shift de glossy skin a plump skin, regreso a rutinas balanceadas oil + water. Cita cosmetic chemist Ron Robinson sobre el arte de formulación para usar aceites sin oclusión.",
+      "reliability_note": "Refinery29 — periodismo de belleza de calidad para audiencia joven.",
+      "domain": "trends"
+    },
+    {
+      "id": "vis_2019_017",
+      "title": "Cómo aplicar la técnica del visagismo en maquillaje",
+      "authors": [
+        "Medina, Diego"
+      ],
+      "year": 2019,
+      "type": "professional_website",
+      "doi_or_url": "https://www.blog.cazcarra.com/tecnica-visagismo-en-maquillaje/",
+      "accessed_date": "2026-08-08",
+      "summary_es": "Guía práctica de la escuela de imagen Cazcarra sobre cómo aplicar el visagismo al maquillaje. Explica que el visagismo estudia las formas y proporciones del rostro para armonizar las facciones mediante sombreado e iluminación, y atribuye el concepto moderno al estilista francés Claude Juillard. Detalla técnicas de corrección por tipología facial (alargado, cuadrado, rectangular, redondo, triangular, hexagonal) con recomendaciones específicas de cejas, ojos, colorete y labios para cada forma.",
+      "reliability_note": "Blog de una escuela profesional de imagen y estética (Cazcarra Image School). No es peer-reviewed; material divulgativo/formativo aplicado, útil como referencia práctica de técnica de maquillaje según la forma del rostro.",
+      "domain": "visagism"
+    },
+    {
+      "id": "skin_2005_001",
+      "title": "Nueva clasificación de los tipos de piel y sus implicaciones en Dermatología Cosmética",
+      "authors": [
+        "Baumann, Leslie",
+        "Amini, Sadegh",
+        "Weiss, Eduardo"
+      ],
+      "year": 2005,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://revista.svderma.org/index.php/ojs/article/view/179",
+      "journal": "Dermatología Venezolana",
+      "accessed_date": "2026-08-08",
+      "summary_es": "Artículo que presenta el sistema de clasificación de tipos de piel de Baumann (Baumann Skin Type Indicator). Expande la clasificación tradicional de cuatro tipos (seca, grasa, mixta, sensible) a un modelo de cuatro parámetros independientes: seca vs. grasa, sensible vs. resistente, pigmentada vs. no pigmentada, y con arrugas vs. sin arrugas. Al combinarlos identifica 16 tipos de piel distintos, permitiendo recomendaciones cosméticas y de producto mucho más personalizadas.",
+      "reliability_note": "Publicado en la revista Dermatología Venezolana. Obra de referencia de la Dra. Leslie Baumann, creadora del sistema Baumann Skin Type, marco ampliamente citado en dermatología cosmética. Peer-reviewed, confiabilidad alta.",
+      "domain": "skincare"
+    }
+  ]
+}

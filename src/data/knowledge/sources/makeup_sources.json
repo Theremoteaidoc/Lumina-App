@@ -1,0 +1,172 @@
+{
+  "domain": "makeup",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "sources": [
+    {
+      "id": "mk_2023_001",
+      "title": "Shelf Life and Expiration Dating of Cosmetics",
+      "authors": ["U.S. Food and Drug Administration"],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetics-labeling/shelf-life-and-expiration-dating-cosmetics",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Documento oficial de la FDA que aclara que en EE. UU. no existe obligación legal de imprimir fecha de caducidad ni PAO (Period After Opening) en cosméticos. La responsabilidad de garantizar la seguridad y estabilidad del producto recae en el fabricante. La FDA reconoce que algunos productos —especialmente los de zona ocular— tienen vida útil corta por riesgo de contaminación microbiana.",
+      "reliability_note": "Fuente regulatoria primaria (gobierno EE. UU.). Máxima fiabilidad para política regulatoria estadounidense; no equivale a guía científica de uso seguro para consumidores."
+    },
+    {
+      "id": "mk_2023_002",
+      "title": "Cosmetics Safety Q&A: Shelf Life",
+      "authors": ["U.S. Food and Drug Administration"],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/resources-consumers-cosmetics/cosmetics-safety-qa-shelf-life",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía orientativa de FDA para consumidores. Recomienda desechar la máscara de pestañas en 2 a 4 meses tras abrir el envase por el alto riesgo de contaminación, y reemplazar productos de ojo si cambian de color, olor o textura. Subraya que compartir maquillaje multiplica el riesgo de infecciones.",
+      "reliability_note": "Documento divulgativo oficial. Cifras alineadas con consenso de oftalmología y dermatología."
+    },
+    {
+      "id": "mk_2023_003",
+      "title": "Eye Cosmetic Safety",
+      "authors": ["U.S. Food and Drug Administration"],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetic-products/eye-cosmetic-safety",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía de FDA sobre seguridad ocular en cosméticos: no compartir productos de ojo, no usar testers en tienda, desechar productos cuando cambien de aspecto, no aplicar maquillaje dentro del borde palpebral (waterline) por riesgo de bloqueo de glándulas de Meibomio, y nunca aplicar maquillaje en vehículos en movimiento por riesgo de lesión corneal.",
+      "reliability_note": "Fuente regulatoria primaria. Recomendaciones consensuadas con AAO y AAD."
+    },
+    {
+      "id": "mk_2022_004",
+      "title": "Modernization of Cosmetics Regulation Act of 2022 (MoCRA)",
+      "authors": ["U.S. Congress", "U.S. Food and Drug Administration"],
+      "year": 2022,
+      "type": "regulatory",
+      "doi_or_url": "https://www.fda.gov/cosmetics/cosmetics-laws-regulations/modernization-cosmetics-regulation-act-2022-mocra",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Reforma legal más importante del marco cosmético estadounidense desde 1938. Introduce registro obligatorio de fábricas y productos, reporte de eventos adversos graves en 15 días, retención de registros de seguridad, y obligación futura de declarar alérgenos de fragancia en la etiqueta —acercando EE. UU. al modelo europeo. Aún así, EE. UU. prohíbe muchos menos ingredientes que la UE.",
+      "reliability_note": "Ley federal vigente. Útil para contextualizar diferencias FDA vs UE."
+    },
+    {
+      "id": "mk_2023_005",
+      "title": "SCCS Notes of Guidance for the Testing of Cosmetic Ingredients and Their Safety Evaluation (12th Revision)",
+      "authors": ["Scientific Committee on Consumer Safety (SCCS), European Commission"],
+      "year": 2023,
+      "type": "regulatory",
+      "doi_or_url": "https://health.ec.europa.eu/scientific-committees/scientific-committee-consumer-safety-sccs/sccs-opinions_en",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Documento guía del comité científico europeo (SCCS) que establece la metodología de evaluación de seguridad de ingredientes cosméticos en la UE. La 12ª revisión (mayo 2023) incorpora alternativas sin experimentación animal, valoración de exposición agregada y consideración explícita de exposición infantil. La UE añadió 29 ingredientes a su lista de prohibidos solo en 2023.",
+      "reliability_note": "Fuente regulatoria europea de primer nivel. Marco más estricto que FDA en restricción de ingredientes."
+    },
+    {
+      "id": "mk_2015_006",
+      "title": "Safety Assessment of Talc as Used in Cosmetics",
+      "authors": ["Fiume MM", "Boyer I", "Bergfeld WF", "Belsito DV", "Hill RA", "Klaassen CD", "Cosmetic Ingredient Review Expert Panel"],
+      "year": 2015,
+      "type": "industry_reference",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/1091581815586797",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión del panel CIR sobre el talco. Concluye que el talco cosmético —que por norma de industria debe estar libre de fibras de asbesto detectables— es seguro en las condiciones de uso actuales. No debe aplicarse sobre piel con barrera epidérmica rota. Existe debate público y litigios por casos vinculando talco de zonas íntimas con cáncer ovárico y mesotelioma; en maquillaje facial (sombras, polvos compactos) la exposición y riesgo son distintos.",
+      "reliability_note": "CIR está financiado por la industria; sus conclusiones se consideran orientativas pero deben contrastarse con literatura independiente, sobre todo en ingredientes polémicos."
+    },
+    {
+      "id": "mk_2011_007",
+      "title": "Allergic contact dermatitis to preservatives and fragrances in cosmetics",
+      "authors": ["Yim E", "Baquerizo Nole KL", "Tosti A"],
+      "year": 2011,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/21611680/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión publicada en Skin Therapy Letter / PubMed. Identifica fragancias y conservantes como los dos grupos de ingredientes cosméticos más asociados a dermatitis de contacto alérgica. Entre los conservantes, metilisotiazolinona (MI) y metilcloroisotiazolinona (MCI) son los alérgenos en ascenso; formaldehído y liberadores de formaldehído también figuran. La prueba de parche es el estándar de oro para identificar el alérgeno responsable.",
+      "reliability_note": "Revisión académica revisada por pares. Útil para advertir sobre piel sensible sin alarmar."
+    },
+    {
+      "id": "mk_2025_008",
+      "title": "Assessing the Levels and Types of Bacterial Contamination in Cosmetic Brushes: Implications for Beauty and Hygiene in Jeddah City",
+      "authors": ["Attar R", "et al."],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1155/ijm/2128581",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio publicado en International Journal of Microbiology. Analiza brochas y esponjas usadas: 81% de los aislados bacterianos fueron Gram-positivos, dominados por Micrococcus (31%) y Staphylococcus (23%). Encuesta a 370 personas: el 44,3% rara vez lava sus brochas y el 27,8% reportó problemas cutáneos posiblemente vinculados. La Academia Americana de Dermatología recomienda lavar brochas cada 7–10 días.",
+      "reliability_note": "Estudio observacional reciente, muestra regional pero metodología sólida. Refuerza la consigna estándar de higiene."
+    },
+    {
+      "id": "mk_2006_009",
+      "title": "Skin color and makeup strategies of women from different ethnic groups",
+      "authors": ["Caisey L", "Grangeat F", "Lemasson A", "Talabot J", "Voirin A"],
+      "year": 2006,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1467-2494.2006.00329.x",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio publicado en International Journal of Cosmetic Science. Mide colorimétricamente la piel de mujeres caucásicas francesas y estadounidenses, japonesas, afroamericanas e hispanas usando espectrorradiometría. Demuestra que el color de piel forma un continuo —no categorías discretas— y que los espectros se solapan entre grupos étnicos. Justifica científicamente el uso del espacio CIE L*a*b* para matching de bases.",
+      "reliability_note": "Estudio peer-reviewed clásico en la literatura cosmética; base científica del color matching moderno."
+    },
+    {
+      "id": "mk_2015_010",
+      "title": "Face Paint: The Story of Makeup",
+      "authors": ["Eldridge, Lisa"],
+      "year": 2015,
+      "type": "book",
+      "doi_or_url": "ISBN 978-1-4197-1796-3 (Abrams Image)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Obra de referencia escrita por Lisa Eldridge, maquilladora profesional con décadas de trayectoria editorial y de pasarela. Recorre la historia cultural del maquillaje desde el kohl egipcio al contouring contemporáneo, e incluye explicaciones técnicas sobre pigmentos, fórmulas y técnicas profesionales de aplicación. Bestseller del New York Times.",
+      "reliability_note": "Fuente profesional reconocida internacionalmente. Útil para técnica y contexto cultural; no es fuente científica para temas de seguridad."
+    },
+    {
+      "id": "mk_2024_011",
+      "title": "The Science of Beauty: Debunk the Myths and Discover What Goes into Your Beauty Routine",
+      "authors": ["Wong, Michelle (PhD)"],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "ISBN 978-0-7440-9283-7 (DK / Penguin Random House)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Libro divulgativo de Michelle Wong (PhD en química, fundadora de Lab Muffin Beauty Science). Aborda con rigor científico mitos del 'clean beauty', greenwashing, ingredientes demonizados sin base y diferencias entre marketing y evidencia. Reconocida por NYT, Wired y ABC News como una de las voces más escépticas e influyentes en ciencia cosmética.",
+      "reliability_note": "Divulgación con citas científicas. Autora con credenciales químicas verificables; explícitamente aclara que no es profesional médica."
+    },
+    {
+      "id": "mk_2024_012",
+      "title": "Lab Muffin Beauty Science (blog y canal de divulgación)",
+      "authors": ["Wong, Michelle (PhD)"],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "https://labmuffin.com/",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Plataforma de divulgación científica fundada en 2011. Publica análisis de ingredientes, desmontaje de mitos virales y guías prácticas con base química. Su autora tiene doctorado en química medicinal/supramolecular y diploma en formulación cosmética del Institute of Personal Care Science.",
+      "reliability_note": "Divulgación de alta calidad con referencias a literatura primaria. Útil como puente entre ciencia y consumidor general."
+    },
+    {
+      "id": "mk_2024_013",
+      "title": "How To Use Cosmetics Safely Around Your Eyes",
+      "authors": ["American Academy of Ophthalmology (AAO)"],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.aao.org/eye-health/tips-prevention/eye-makeup",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recomendaciones de la Academia Americana de Oftalmología para usar maquillaje sin dañar la salud ocular: desmaquillarse antes de dormir, no aplicar delineador en el borde interior del párpado, reemplazar máscara cada 3 meses, no compartir productos, descartar al primer signo de irritación.",
+      "reliability_note": "Asociación médica profesional. Consenso clínico bien establecido."
+    },
+    {
+      "id": "mk_2024_014",
+      "title": "The Golden Ratio Brow Mapping Method",
+      "authors": ["Soare, Anastasia (Anastasia Beverly Hills educational content)"],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.anastasiabeverlyhills.com/pages/the-golden-ratio",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Método de mapeo de cejas en tres puntos basado en la proporción áurea: inicio alineado vertical con la aleta de la nariz; arco alineado entre aleta de la nariz y centro del iris; final alineado entre aleta y comisura externa del ojo. Es la técnica de referencia adoptada por la industria profesional para diseñar cejas armónicas con cada rostro.",
+      "reliability_note": "Técnica de industria, no estudio científico, pero estándar profesional ampliamente aceptado."
+    },
+    {
+      "id": "mk_2024_015",
+      "title": "Eye Cosmetic Safety educational materials",
+      "authors": ["American Academy of Dermatology (AAD)"],
+      "year": 2024,
+      "type": "industry_reference",
+      "doi_or_url": "https://www.aad.org/public/everyday-care/skin-care-secrets",
+      "accessed_date": "2026-06-09",
+      "summary_es": "La AAD recomienda lavar brochas y esponjas cada 7–10 días con jabón suave y agua tibia, dejar secar planas, desmaquillarse antes de dormir y no compartir cosméticos de ojo. Establece que dormir con maquillaje obstruye glándulas sebáceas y puede generar acné, irritación y conjuntivitis.",
+      "reliability_note": "Asociación médica profesional. Consigna estándar de higiene cosmética."
+    }
+  ]
+}

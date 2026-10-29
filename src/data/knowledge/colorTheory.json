@@ -1,0 +1,220 @@
+{
+  "domain": "colorTheory",
+  "language": "es",
+  "last_updated": "2026-06-09",
+  "topics": [
+    {
+      "id": "color_wheel_fundamentals",
+      "title": "Rueda cromatica: complementarios, analogos y temperatura",
+      "summary_es": "La rueda cromatica organiza los colores en un circulo donde los opuestos (complementarios) crean maximo contraste y los vecinos (analogos) crean armonia. La temperatura divide los colores en calidos (rojos, naranjas, amarillos) y frios (azules, verdes, violetas). Estos principios son la base teorica de toda recomendacion de color en moda y maquillaje: por ejemplo, una sombra violeta (complementario del amarillo) realza ojos verdes-amarillos.",
+      "key_findings_es": [
+        "Los colores complementarios maximizan el contraste y hacen que el otro se vea mas vivo (ley de Chevreul, 1839).",
+        "Los colores analogos producen combinaciones armoniosas y suaves, ideales para looks no-makeup.",
+        "La temperatura del color (calido/frio) es la dimension mas importante en colorimetria personal."
+      ],
+      "applicable_user_scenarios": [
+        "Recomendar sombras complementarias al color de ojos",
+        "Sugerir paletas analogas para looks naturales",
+        "Explicar por que un labial corrige tonos de piel"
+      ],
+      "source_ids": ["col_1905_001", "col_2024_002"]
+    },
+    {
+      "id": "munsell_system",
+      "title": "Sistema Munsell: matiz, valor y croma",
+      "summary_es": "Albert Munsell publico en 1905 (A Color Notation) el primer sistema cientifico para describir cualquier color con tres parametros independientes: matiz (que color es), valor (que tan claro u oscuro) y croma (que tan saturado o apagado). Es la base conceptual de los sistemas modernos de analisis personal que hablan de profundidad (valor), claridad (croma) y temperatura (matiz).",
+      "key_findings_es": [
+        "Munsell separa por primera vez las tres dimensiones del color de forma independiente, algo que la rueda cromatica clasica no permite.",
+        "El sistema sigue vigente: lo usan dermatologos (Munsell para color de piel), USGS para suelos y la industria odontologica.",
+        "Conceptos modernos como 'soft autumn' o 'bright winter' son traducciones esteticas de matiz/valor/croma."
+      ],
+      "applicable_user_scenarios": [
+        "Explicar tecnicamente por que un color 'apaga' la piel (croma equivocado)",
+        "Diferenciar entre claro y suave (valor vs croma) en recomendaciones"
+      ],
+      "source_ids": ["col_1905_001", "col_2024_002"]
+    },
+    {
+      "id": "cielab_space",
+      "title": "Espacio de color CIELAB y LCh",
+      "summary_es": "En 1976 la CIE estandarizo el espacio CIELAB (L*a*b*), pensado para ser perceptualmente uniforme: L* mide luminosidad (0-100), a* el eje rojo-verde y b* el eje amarillo-azul. Es el espacio usado en colorimetria profesional y en metricas cientificas de tono de piel como el ITA. Su variante LCh (luminosidad, croma, matiz) es mas intuitiva para humanos.",
+      "key_findings_es": [
+        "CIELAB es el estandar internacional para medir color objetivamente en cosmetica, dermatologia y manufactura.",
+        "Aunque no es perfectamente uniforme (lo que motivo CIEDE2000), sigue siendo la referencia practica.",
+        "Las apps que analizan piel por foto convierten RGB de camara a CIELAB para calcular metricas como ITA."
+      ],
+      "applicable_user_scenarios": [
+        "Calcular subtono desde una foto calibrada",
+        "Comparar colores de base de maquillaje cientificamente"
+      ],
+      "source_ids": ["col_1976_001", "col_1991_001"]
+    },
+    {
+      "id": "caygill_origin",
+      "title": "Suzanne Caygill: origen del analisis estacional",
+      "summary_es": "Suzanne Caygill (1911-1994) creo el metodo original de analisis personal de color en los anos 40, formalizado en su libro Color: The Essence of You (1980). Su sistema era muy detallado: 64 subtipos basados en piel, ojos, cabello, estructura osea, voz y 'somatica'. Caygill defendia una armonia profunda entre la persona y la naturaleza, no solo una paleta de ropa.",
+      "key_findings_es": [
+        "Caygill empezo a trabajar con color personal en 1942, casi 40 anos antes que Jackson.",
+        "Su metodo es mucho mas complejo y artistico que las 4 estaciones populares; usaba nombres como 'Early Spring' o 'Apple Blossom Spring'.",
+        "Tuvo programa de TV propio en los anos 50 ('Living With Suzanne'), pero su sistema nunca fue tan mainstream como el de Jackson."
+      ],
+      "applicable_user_scenarios": [
+        "Dar contexto historico cuando se explica de donde viene el sistema",
+        "Justificar enfoques mas matizados que las 4 estaciones rigidas"
+      ],
+      "source_ids": ["col_1980_002", "col_2024_002"]
+    },
+    {
+      "id": "jackson_four_seasons",
+      "title": "Carole Jackson y las 4 estaciones (Color Me Beautiful)",
+      "summary_es": "Carole Jackson publico Color Me Beautiful en 1980 y popularizo el sistema de 4 estaciones: Primavera (calido + claro), Verano (frio + claro), Otono (calido + oscuro), Invierno (frio + oscuro). El libro vendio millones de copias y convirtio el 'analisis de color' en fenomeno cultural en los 80. Es la base de toda la colorimetria personal moderna, aunque simplifica mucho el sistema original de Caygill.",
+      "key_findings_es": [
+        "Jackson clasifica usando solo 3 variables: piel, ojos y cabello (Caygill usaba mas).",
+        "Cada estacion se asocia a una metafora natural: Primavera=narciso, Verano=mar en junio, Otono=hojas de octubre, Invierno=nieve.",
+        "El sistema renacio viralmente en TikTok hacia 2024."
+      ],
+      "applicable_user_scenarios": [
+        "Asignar una estacion base como primera aproximacion",
+        "Explicar el sistema clasico antes de profundizar"
+      ],
+      "source_ids": ["col_1980_001", "col_2024_002"]
+    },
+    {
+      "id": "twelve_seasons_modern",
+      "title": "Sistema moderno de 12 estaciones",
+      "summary_es": "La evolucion moderna del sistema clasico subdivide cada estacion en 3 variantes segun la caracteristica secundaria dominante: Primavera Brillante / Calida / Clara, Verano Claro / Frio / Suave, Otono Suave / Calido / Oscuro, Invierno Frio / Oscuro / Brillante. Las 6 'direcciones tonales' son: calido, frio, profundo, claro, brillante y suave. Permite mayor precision que las 4 categorias originales.",
+      "key_findings_es": [
+        "Las 6 direcciones tonales (warm, cool, deep, light, clear, soft) son el lenguaje moderno de la colorimetria.",
+        "Cada persona tiene una estacion 'madre' y una direccion secundaria que afina la paleta.",
+        "Existen ampliaciones a 16 estaciones (House of Colour, Sci\\Art) que dividen aun mas."
+      ],
+      "applicable_user_scenarios": [
+        "Refinar la recomendacion mas alla de 4 categorias",
+        "Distinguir entre 'Verano claro' y 'Primavera clara' que pueden parecer similares"
+      ],
+      "source_ids": ["col_1980_001", "col_2024_002"]
+    },
+    {
+      "id": "skin_undertones_basics",
+      "title": "Subtonos de piel: calido, frio, neutro y oliva",
+      "summary_es": "El subtono es el matiz subyacente y permanente de la piel (no cambia con el bronceado). Los cuatro tipos principales son: calido (dorado, amarillo, durazno), frio (rosado, azulado), neutro (mezcla equilibrada) y oliva (verdoso/gris muy particular, mezcla compleja de calido y frio). El subtono es la base para elegir base de maquillaje, joyeria y paleta de ropa que armonice.",
+      "key_findings_es": [
+        "El subtono se mantiene aunque la piel se broncee; lo que cambia es el tono superficial.",
+        "El subtono oliva no encaja bien en warm/cool clasico: tiene un cast verdoso unico.",
+        "Aproximadamente la mayoria de personas son ligeramente neutras; subtonos extremos son menos comunes."
+      ],
+      "applicable_user_scenarios": [
+        "Punto de partida de cualquier recomendacion de color",
+        "Elegir base de maquillaje (warm=Y, cool=C/P, neutral=N en codigos comerciales)"
+      ],
+      "source_ids": ["col_1980_001", "col_2024_003"]
+    },
+    {
+      "id": "undertone_detection_methods",
+      "title": "Metodos para detectar subtono y sus limitaciones",
+      "summary_es": "Existen varios tests caseros: venas (azules/moradas=frio, verdes=calido, mixtas=neutro), joyeria (oro=calido, plata=frio, ambos=neutro), papel blanco vs crema (cual contrasta), reaccion al sol (quemarse=mas probable frio, broncearse=mas probable calido). NINGUN metodo es 100% fiable: la temperatura ambiente afecta venas, la iluminacion afecta percepcion, y personas oliva pueden dar resultados contradictorios. Lo recomendable es combinar varios.",
+      "key_findings_es": [
+        "El test de venas falla en pieles oscuras (bajo contraste) y en habitaciones frias (venas se ven mas azules).",
+        "Las camaras de telefono capturan luz reflejada, no pigmento real: pueden enganar al algoritmo.",
+        "Combinar 3+ tests en luz natural indirecta aumenta significativamente la fiabilidad."
+      ],
+      "applicable_user_scenarios": [
+        "Guiar al usuario en autoanalisis",
+        "Advertir cuando los resultados son ambiguos y sugerir reanalisis"
+      ],
+      "source_ids": ["col_2024_003", "col_2024_004"]
+    },
+    {
+      "id": "ita_scientific_method",
+      "title": "Individual Typology Angle (ITA): metodo cientifico",
+      "summary_es": "El ITA, introducido por Chardon, Cretois y Hourseau en 1991, es la metrica objetiva mas usada para clasificar pigmentacion de piel. Se calcula desde el espacio CIELAB con la formula ITA = arctan((L*-50)/b*) x 180/pi. Resultado: 6 categorias (muy clara >55 grados, clara 41-55, intermedia 28-41, mate 10-28, morena -30 a 10, oscura <-30). Es la base cientifica de las apps modernas de analisis de piel.",
+      "key_findings_es": [
+        "ITA es objetivo y reproducible si se mide con colorimetro o foto bien calibrada.",
+        "Estudios recientes (2024-2025) muestran que ITA agreement con smartphone puede llegar a +-1 grado.",
+        "ITA mide pigmentacion (cantidad de melanina), no subtono estetico: son cosas distintas."
+      ],
+      "applicable_user_scenarios": [
+        "Backend de analisis automatico desde foto",
+        "Clasificar tono base antes de afinar subtono"
+      ],
+      "source_ids": ["col_1991_001", "col_1976_001", "col_2024_004"]
+    },
+    {
+      "id": "fitzpatrick_medical_scale",
+      "title": "Escala Fitzpatrick: clasificacion MEDICA, no de belleza",
+      "summary_es": "Thomas Fitzpatrick desarrollo esta escala en 1975 (formalizada en 1988) para dosificar la fototerapia con UV en pacientes. Clasifica la piel en 6 tipos segun como reacciona al sol: I (siempre se quema, nunca se broncea) hasta VI (nunca se quema, profundamente pigmentada). IMPORTANTE: Es una herramienta dermatologica para evaluar riesgo de quemadura solar y cancer de piel, NO para recomendar paletas de colores ni maquillaje.",
+      "key_findings_es": [
+        "Originalmente tenia solo tipos I-IV (sesgo eurocentrico); V y VI se anadieron despues como adicion tardia.",
+        "Es subjetiva (autoreporte), tiene baja concordancia paciente-medico y critica por confundir raza con color de piel.",
+        "Confundir Fitzpatrick con colorimetria personal es un error frecuente que Lumina debe evitar."
+      ],
+      "applicable_user_scenarios": [
+        "Educar al usuario sobre cuidado solar (no estetica)",
+        "Distinguir claramente entre 'fototipo' (medico) y 'estacion de color' (estetico)"
+      ],
+      "source_ids": ["col_1988_001", "col_2023_001", "col_2024_004"]
+    },
+    {
+      "id": "foundation_undertone_matching",
+      "title": "Match de base de maquillaje segun subtono",
+      "summary_es": "Las bases de maquillaje comerciales se etiquetan con codigos de subtono: Y/W (warm/yellow), C/P (cool/pink), N (neutral) y a veces O (olive). El match correcto se hace probando la base en la mandibula (no en la mano: es mas oscura) bajo luz natural. Una base mal subtonada puede verse anaranjada (warm sobre piel cool), grisacea (cool sobre piel warm) o como mascara (cualquier subtono incorrecto sobre piel oliva).",
+      "key_findings_es": [
+        "Para piel oliva, las opciones tradicionales W o C suelen fallar: necesita base oliva especifica o neutra muy desaturada.",
+        "El test en mandibula es mas fiable que cuello o muneca porque iguala la zona donde se aplica.",
+        "La oxidacion (la base se ve mas oscura al cabo de horas) es real y depende de quimica de pigmentos."
+      ],
+      "applicable_user_scenarios": [
+        "Recomendar base segun subtono detectado",
+        "Explicar por que la base 'no le queda' a un usuario"
+      ],
+      "source_ids": ["col_2024_003", "col_1991_001"]
+    },
+    {
+      "id": "color_perception_face",
+      "title": "Como el color afecta la percepcion del rostro",
+      "summary_es": "Un color usado cerca del rostro proyecta su tono sobre la piel: un amarillo intenso puede hacer ver la piel mas amarilla/cetrina; un rojo frio puede acentuar rojeces. Los colores armoniosos hacen que la piel se vea uniforme, descansada y luminosa; los disarmonicos resaltan ojeras, marcas y desigualdades. La iluminacion (calida/fria) y el contraste con el cabello tambien modifican drasticamente como se ve un color sobre la persona.",
+      "key_findings_es": [
+        "El efecto del contraste simultaneo (Chevreul, 1839) explica por que un complementario al subtono apaga la piel.",
+        "Las personas de alto contraste natural (cabello oscuro + piel clara) toleran mejor colores intensos y contrastantes.",
+        "La iluminacion calida (foco amarillo) hace ver toda piel mas warm; recomendar siempre luz natural para autoanalisis."
+      ],
+      "applicable_user_scenarios": [
+        "Explicar por que un color hace 'ver mejor' o 'ver enferma' a la persona",
+        "Recomendar nivel de contraste en outfits y maquillaje"
+      ],
+      "source_ids": ["col_1905_001", "col_1980_001"]
+    },
+    {
+      "id": "system_limitations_critique",
+      "title": "Limitaciones y criticas al sistema de estaciones",
+      "summary_es": "El sistema de estaciones NO es ciencia exacta: no existen estudios revisados por pares que validen rigurosamente las 4/12/16 categorias. Las criticas principales son: 1) no hay estandar de formacion para analistas, 2) los resultados varian segun el profesional y la luz, 3) las apps automaticas dan resultados inconsistentes, 4) el sistema fue creado originalmente para mujeres blancas europeas y se adapta mal a otras etnias, 5) reduce identidad estetica a categorias rigidas. Lumina debe presentarlo como herramienta util pero no como verdad absoluta.",
+      "key_findings_es": [
+        "No hay licencia oficial: cualquiera puede llamarse 'analista de color' (Wikipedia, 2024).",
+        "Estudios muestran inconsistencia entre diferentes analistas para la misma persona.",
+        "Los algoritmos automaticos sufren ademas por calibracion de camara, iluminacion y sesgos en datos de entrenamiento.",
+        "El sistema es util como guia, no como diagnostico definitivo."
+      ],
+      "applicable_user_scenarios": [
+        "Establecer expectativas honestas al usuario sobre limitaciones",
+        "Sugerir que pruebe colores fuera de su 'estacion' si le gustan",
+        "Evitar lenguaje absolutista en recomendaciones"
+      ],
+      "source_ids": ["col_2024_002", "col_2024_001"]
+    },
+    {
+      "id": "cultural_color_preferences",
+      "title": "Diferencias culturales en paletas y preferencias",
+      "summary_es": "Las preferencias de color en belleza varian fuertemente por cultura. America Latina favorece colores vibrantes y saturados (rojos, naranjas, dorados) inspirados en festivales como Dia de Muertos y Carnaval. Asia Oriental (Corea, Japon, China) tiende a colores delicados, simbolismo cultural y estetica 'glass skin'. Los sistemas de colorimetria originales (Jackson, Caygill) se desarrollaron en EEUU para una base demografica especifica y pueden no traducirse bien a otras culturas sin adaptacion.",
+      "key_findings_es": [
+        "El estandar de belleza coreano enfatiza claridad y juventud; el latinoamericano enfatiza sensualidad y vitalidad.",
+        "Los colores 'flatteringes' culturalmente no siempre coinciden con los 'flattering' colorimetricamente.",
+        "Una app de colorimetria en espanol debe respetar ambos planos: la armonia tecnica y la preferencia personal/cultural."
+      ],
+      "applicable_user_scenarios": [
+        "Adaptar tono y vocabulario para usuarias latinoamericanas",
+        "Permitir que el usuario priorice colores que le gustan aunque no sean 'su paleta'"
+      ],
+      "source_ids": ["col_2024_002"]
+    }
+  ]
+}

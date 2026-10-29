@@ -1,0 +1,417 @@
+{
+  "domain": "skincare",
+  "language": "es",
+  "last_updated": "2026-08-08",
+  "notes": "Fuentes verificadas para la base de conocimiento dermatológica de Lumina. Prioridad estricta a Tier 1 (guidelines y peer-reviewed) por tratarse de consejos a menores. IDs con prefijo skin_YYYY_NNN.",
+  "sources": [
+    {
+      "id": "skin_2024_001",
+      "title": "Guidelines of Care for the Management of Acne Vulgaris (AAD 2024)",
+      "authors": [
+        "Reynolds RV",
+        "Yeung H",
+        "Cheng CE",
+        "Cook-Bolden F",
+        "Desai SR",
+        "Druby KM",
+        "Freeman EE",
+        "Keri JE",
+        "Stein Gold L",
+        "Tan JK",
+        "Tollefson MM",
+        "Weiss JS",
+        "Wu PA",
+        "Zaenglein AL",
+        "Han JM",
+        "Barbieri JS"
+      ],
+      "year": 2024,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.aad.org/news/updated-guidelines-acne-management",
+      "journal": "Journal of the American Academy of Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guideline oficial de la American Academy of Dermatology (enero 2024) que actualiza las recomendaciones de 2016 para manejo del acné vulgar en adultos, adolescentes y niños mayores de 9 años. Incluye 18 recomendaciones basadas en evidencia y 5 declaraciones de buena práctica. Recomienda terapia multimodal combinando peróxido de benzoilo + retinoide tópico + antibiótico tópico cuando proceda. Indica que el acné afecta al 85% de adolescentes. Para casos severos o con cicatrización, recomienda isotretinoína oral con seguimiento dermatológico.",
+      "reliability_note": "Tier 1 — Guideline oficial de la principal sociedad dermatológica de EE.UU., publicada en JAAD (peer-reviewed). Estándar de referencia clínica."
+    },
+    {
+      "id": "skin_2024_002",
+      "title": "Niacinamide: a review on dermal delivery strategies and clinical evidence",
+      "authors": [
+        "Marques C",
+        "Hadjab F",
+        "Porcello A",
+        "Lourenço K",
+        "Scaletta C",
+        "Abdel-Sayed P",
+        "Hirt-Burri N",
+        "Applegate LA",
+        "Laurent A"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://link.springer.com/article/10.1007/s13346-024-01593-y",
+      "journal": "Drug Delivery and Translational Research",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2024 que consolida la evidencia clínica sobre niacinamida tópica (forma activa de vitamina B3). Demuestra acción antiinflamatoria, antioxidante, regulación de producción de sebo, mejora de la función barrera mediante síntesis de ceramidas, y estimulación de colágeno/elastina. Concentraciones eficaces típicas 2-5%. Evidencia consolidada para uso cosmético y como adyuvante en dermatitis, acné vulgar y queratosis actínica.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed reciente en revista indexada con factor de impacto."
+    },
+    {
+      "id": "skin_2023_001",
+      "title": "A systematic review to evaluate the efficacy of azelaic acid in the management of acne, rosacea, melasma and skin aging",
+      "authors": [
+        "King M",
+        "Jankowski H",
+        "Glaab E"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/jocd.15923",
+      "journal": "Journal of Cosmetic Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2023 que confirma que formulaciones de ácido azelaico 15-20% producen mejoras clínicamente significativas en acné, rosácea, melasma e hiperpigmentación postinflamatoria, con irritación local leve y transitoria. Reducción de lesiones inflamatorias y no inflamatorias comparable a retinoides tópicos/adapaleno, con mejor tolerancia en algunos estudios.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed con evaluación de calidad de evidencia."
+    },
+    {
+      "id": "skin_2025_001",
+      "title": "Acne Vulgaris: Features, Types, and Treatments",
+      "authors": [
+        "Oakley A",
+        "DermNet editorial team"
+      ],
+      "year": 2025,
+      "type": "clinical_reference",
+      "doi_or_url": "https://dermnetnz.org/topics/acne-vulgaris",
+      "journal": "DermNet (New Zealand)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recurso clínico de referencia mantenido por dermatólogos. Detalla clasificación por severidad (leve: <30 lesiones; moderado: 30-125; severo: >125 lesiones o pseudocistos), escalas de gradación (Leeds, Cook, Pillsbury), epidemiología (85% adolescentes), tratamientos por grado de severidad e hiperpigmentación postinflamatoria asociada (particularmente relevante en fototipos altos).",
+      "reliability_note": "Tier 2 — Referencia clínica abierta utilizada internacionalmente por dermatólogos. Revisada por especialistas."
+    },
+    {
+      "id": "skin_2008_001",
+      "title": "Understanding and treating various skin types: the Baumann Skin Type Indicator",
+      "authors": [
+        "Baumann L"
+      ],
+      "year": 2008,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/18555952/",
+      "journal": "Dermatologic Clinics",
+      "doi": "10.1016/j.det.2008.03.007",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Artículo seminal de Leslie Baumann que introduce el Baumann Skin Type Indicator (BSTI), sistema validado de 16 tipos de piel basado en cuatro ejes binarios: seca/grasa, sensible/resistente, pigmentada/no pigmentada, y arrugada/lisa. Permite tipificación más precisa que el modelo clásico de 4 tipos.",
+      "reliability_note": "Tier 1 — Publicación peer-reviewed fundacional de la dermocosmética moderna. Sistema citado por miles de papers posteriores."
+    },
+    {
+      "id": "skin_2024_003",
+      "title": "Inside the 2024 AAD Acne Guidelines: New Therapies Join Old Standbys",
+      "authors": [
+        "Barbieri JS",
+        "Reynolds RV"
+      ],
+      "year": 2024,
+      "type": "divulgative_with_citations",
+      "doi_or_url": "https://www.mdedge.com/internalmedicinenews/article/268230/dermatology/inside-2024-aad-acne-guidelines-new-therapies-join",
+      "journal": "MDedge Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Resumen profesional de los puntos clave de las guías AAD 2024 con énfasis en nuevas terapias aprobadas (clascoterona, trifaroteno, sarecyclina) y estrategias para limitar el uso de antibióticos y prevenir resistencia.",
+      "reliability_note": "Tier 2 — Comunicación profesional citada por autores de la guideline original."
+    },
+    {
+      "id": "skin_2024_004",
+      "title": "Treatment of Post-Inflammatory Hyperpigmentation in Skin of Colour: A Systematic Review",
+      "authors": [
+        "Mar K",
+        "Khalid B",
+        "Maazi M",
+        "Ahmed R",
+        "Wang OJE",
+        "Khosravi-Hafshejani T"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://journals.sagepub.com/doi/10.1177/12034754241265716",
+      "journal": "Journal of Cutaneous Medicine and Surgery",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática 2024 sobre tratamiento de hiperpigmentación postinflamatoria en pieles de color (Fitzpatrick III-VI). Conclusiones: terapia combinada es la más efectiva; agentes tópicos con evidencia favorable incluyen ácido azelaico, adapaleno y crema de cisteamina; láseres y peelings agresivos pueden empeorar PIH en fototipos altos si no se ajustan cuidadosamente.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed reciente, particularmente relevante para audiencias latinas (fototipos III-V predominantes)."
+    },
+    {
+      "id": "skin_2022_001",
+      "title": "Topical Application of Ascorbic Acid and its Derivatives: A Review Considering Clinical Trials",
+      "authors": [
+        "Enescu CD",
+        "Bedford LM",
+        "Potts G",
+        "Fahs F"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/36200216/",
+      "journal": "Journal of Drugs in Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión de ensayos clínicos sobre vitamina C tópica (ácido L-ascórbico y derivados). Confirma acciones antioxidante, fotoprotectora, estimulante de colágeno y despigmentante. Concentraciones eficaces 10-20% para L-AA, con pH <3.5. Retos: inestabilidad química, baja penetración a pH fisiológico, irritación a altas concentraciones.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed enfocada en evidencia de ensayos clínicos."
+    },
+    {
+      "id": "skin_2023_002",
+      "title": "The Pathogenic and Therapeutic Implications of Ceramide Abnormalities in Atopic Dermatitis",
+      "authors": [
+        "Li Q",
+        "Fang H",
+        "Dang E",
+        "Wang G"
+      ],
+      "year": 2023,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8468445/",
+      "journal": "Cells (MDPI)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre el papel de las ceramidas en la función barrera y dermatitis atópica. Los emolientes ricos en ceramidas mejoran función barrera y normalizan composición lipídica alterada. Aprobados como tratamiento adyuvante de barrera en DA.",
+      "reliability_note": "Tier 1 — Peer-reviewed, alojado en PubMed Central."
+    },
+    {
+      "id": "skin_2022_002",
+      "title": "Benefits of topical hyaluronic acid for skin quality and signs of skin aging: From literature review to clinical evidence",
+      "authors": [
+        "Bravo B",
+        "Correia P",
+        "Gonçalves Junior JE",
+        "Sant'Anna B",
+        "Kerob D"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/10.1111/dth.15903",
+      "journal": "Dermatologic Therapy",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre ácido hialurónico tópico. Alto peso molecular (HMW-HA) forma capa protectora superficial e hidratación; bajo peso molecular (LMW-HA) penetra estrato córneo y reduce profundidad de arrugas. Formulaciones combinadas mejoran hidratación cutánea hasta 55% medida por corneometría.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed en revista dermatológica indexada."
+    },
+    {
+      "id": "skin_2024_005",
+      "title": "Adolescent Rosacea — Review and 2017 National Rosacea Society Updated Guidelines Use",
+      "authors": [
+        "Korsing S",
+        "Schneider SW"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ddg.15693",
+      "journal": "JDDG: Journal der Deutschen Dermatologischen Gesellschaft",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión 2025 sobre rosácea en infancia y adolescencia. Aunque infrecuente, existe y se confunde con acné. Diferencial clave: ausencia de comedones, presencia de flushing persistente, eritema fijo y telangiectasias. Tratamiento similar a adultos pero con dosis y vehículos ajustados.",
+      "reliability_note": "Tier 1 — Peer-reviewed en revista oficial de la sociedad dermatológica alemana."
+    },
+    {
+      "id": "skin_2022_003",
+      "title": "Diet and acne: A systematic review",
+      "authors": [
+        "Penso L",
+        "Touvier M",
+        "Deschasaux M",
+        "Hercberg S",
+        "Ezzedine K",
+        "Sbidian E"
+      ],
+      "year": 2022,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.jaadinternational.org/article/S2666-3287(22)00028-1/fulltext",
+      "journal": "JAAD International",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática sobre dieta y acné. Evidencia consistente de que dietas de bajo índice/carga glucémica reducen severidad de acné (11 estudios con resultados positivos). Lácteos: asociación con acné observada principalmente en poblaciones occidentales; evidencia mixta dependiente de sexo, etnia y patrón dietético. Chocolate y comida grasa: evidencia débil/no concluyente.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed en suplemento internacional de JAAD."
+    },
+    {
+      "id": "skin_2024_006",
+      "title": "MotherToBaby Fact Sheet: Topical Tretinoin in Pregnancy",
+      "authors": [
+        "MotherToBaby (Organization of Teratology Information Specialists)"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK582989/",
+      "journal": "NCBI Bookshelf / MotherToBaby",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Ficha técnica de OTIS/MotherToBaby sobre uso de tretinoína tópica durante embarazo. Datos humanos sugieren absorción sistémica mínima, pero por precaución se contraindica en embarazadas o mujeres que planean embarazo. Tretinoína oral (isotretinoína) es claramente teratogénica.",
+      "reliability_note": "Tier 2 — Referencia clínica oficial de organización de teratología, alojada en NCBI Bookshelf."
+    },
+    {
+      "id": "skin_2024_007",
+      "title": "Updated measures for pregnancy prevention during retinoid use",
+      "authors": [
+        "European Medicines Agency"
+      ],
+      "year": 2018,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.ema.europa.eu/en/news/updated-measures-pregnancy-prevention-during-retinoid-use",
+      "journal": "EMA Communication",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Comunicación oficial de la Agencia Europea de Medicamentos (EMA) sobre medidas de prevención de embarazo durante uso de retinoides orales (isotretinoína, acitretina, alitretinoína). Programa de prevención de embarazo obligatorio. Tópicos: no usar en embarazadas ni planificando embarazo por precaución, aunque absorción sistémica es baja.",
+      "reliability_note": "Tier 1 — Guideline regulatoria oficial europea."
+    },
+    {
+      "id": "skin_2024_008",
+      "title": "Sunscreen FAQs",
+      "authors": [
+        "American Academy of Dermatology"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.aad.org/media/stats-sunscreen",
+      "journal": "AAD Public Information",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Recomendación oficial AAD: usar protector solar SPF 30 o superior, broad-spectrum y resistente al agua, todos los días. Reaplicar cada 2 horas o tras nadar/sudar. Filtros minerales (óxido de zinc, dióxido de titanio) preferibles en piel sensible. Filtros químicos (avobenzona, octinoxato) tienden a texturas más ligeras y mejor cosmeticidad.",
+      "reliability_note": "Tier 1 — Información oficial de AAD para público general, alineada con guidelines clínicas."
+    },
+    {
+      "id": "skin_2025_002",
+      "title": "Comprehensive Approaches to Diagnosis and Treatment of Sensitive Skin",
+      "authors": [
+        "Kim BR",
+        "Kwon SH"
+      ],
+      "year": 2025,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12318783/",
+      "journal": "Annals of Dermatology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión 2025 sobre piel sensible: síndrome heterogéneo sin criterios objetivos plenos. Herramientas de diagnóstico subjetivas (cuestionario Sensitive Scale-10) y objetivas (TEWL, test de ácido láctico). Cuatro subtipos: alérgico, tipo rosácea, tipo acné, tipo punzante. Manejo: evitar gatillos, productos hipoalergénicos sin fragancia, fotoprotección, hidratación con ceramidas/niacinamida.",
+      "reliability_note": "Tier 1 — Revisión peer-reviewed reciente en revista dermatológica."
+    },
+    {
+      "id": "skin_2024_009",
+      "title": "Atopic eczema in under 12s: diagnosis and management — NICE Guideline",
+      "authors": [
+        "National Institute for Health and Care Excellence (NICE)"
+      ],
+      "year": 2023,
+      "type": "clinical_guideline",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK571009/",
+      "journal": "NICE Clinical Guideline CG57 (updated)",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guideline NICE para diagnóstico y manejo de eczema atópico. Emolientes son la base del tratamiento (uso diario sin perfume, incluso cuando la piel está clara). Corticoides tópicos solo en brotes. Escalada terapéutica según severidad. Aplicable como referencia conservadora para audiencia joven.",
+      "reliability_note": "Tier 1 — Guideline oficial del sistema de salud británico, ampliamente citada."
+    },
+    {
+      "id": "skin_2020_001",
+      "title": "Topical benzoyl peroxide for acne",
+      "authors": [
+        "Matin T",
+        "Goodman MB"
+      ],
+      "year": 2020,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7077870/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sobre peróxido de benzoilo: bactericida contra Cutibacterium acnes. Eficacia equivalente entre concentraciones 2.5%, 5% y 10%, pero la irritación aumenta con la concentración. Recomendación dermatológica: comenzar con 2.5-5%. No genera resistencia bacteriana. Combinable con retinoides tópicos y antibióticos.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls revisada por dermatólogos, alojada en NCBI."
+    },
+    {
+      "id": "skin_2024_010",
+      "title": "Postinflammatory Hyperpigmentation",
+      "authors": [
+        "Lawrence E",
+        "Al Aboud KM"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK559150/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Capítulo StatPearls sobre hiperpigmentación postinflamatoria (PIH). Resulta de sobreproducción de melanina tras inflamación cutánea. Más común y severa en Fitzpatrick III-VI. Tratamiento: controlar primero la inflamación de base, luego despigmentantes (hidroquinona, ácido azelaico, retinoides, vitamina C). Fotoprotección estricta es fundamental.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls, alojada en NCBI."
+    },
+    {
+      "id": "skin_2024_011",
+      "title": "AAD: A dermatologist's guide to skincare from growing up to glowing up",
+      "authors": [
+        "Garshick M (board-certified dermatologist, AAD spokesperson)"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.aad.org/news/dermatologist-guide-skincare",
+      "journal": "AAD Public Communication",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Guía oficial AAD por dermatóloga certificada Marisa Garshick sobre skincare por edad. Para pre-adolescentes: limpiador suave + hidratante sin fragancia + SPF 30+. Para adolescentes: añadir ácido salicílico o peróxido de benzoilo si hay acné. EXPLÍCITAMENTE evitar en menores: retinol, vitamina C, ácidos exfoliantes (causan irritación sin beneficio). Consultar dermatólogo si: reacciones, acné con marcas/cicatrices, persistencia tras meses de tratamiento OTC.",
+      "reliability_note": "Tier 1 — Comunicación oficial AAD por dermatóloga acreditada. Crítica para audiencia adolescente."
+    },
+    {
+      "id": "skin_2023_003",
+      "title": "Adolescent acne: association to sex, puberty, testosterone and dihydrotestosterone",
+      "authors": [
+        "Multiple authors (Norwegian cohort study)"
+      ],
+      "year": 2024,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12002860/",
+      "journal": "BMC Dermatology / Archives",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Estudio sobre asociación entre acné adolescente, sexo, etapa puberal, testosterona y DHT. Confirma el rol central de andrógenos en estimular glándulas sebáceas durante la pubertad. Acné masculino tiende a ser más severo por mayores niveles de andrógenos circulantes; en mujeres, fluctuaciones del ciclo menstrual exacerban brotes premenstruales.",
+      "reliability_note": "Tier 1 — Peer-reviewed, hospedado en PubMed Central."
+    },
+    {
+      "id": "skin_2023_004",
+      "title": "Folliculitis — Diagnosis and Treatment",
+      "authors": [
+        "Mayo Clinic editorial team"
+      ],
+      "year": 2023,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.mayoclinic.org/diseases-conditions/folliculitis/diagnosis-treatment/drc-20361662",
+      "journal": "Mayo Clinic Patient Education",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Información clínica Mayo Clinic sobre foliculitis: inflamación de folículos pilosos por infección bacteriana (S. aureus), fúngica (Malassezia/pityrosporum), por hot tub (Pseudomonas), o por afeitado (pseudofoliculitis barbae). Tratamiento varía: lavados antisépticos, antibióticos tópicos/orales, antifúngicos, mejora de técnica de afeitado. La pseudofoliculitis no es acné — confusión común.",
+      "reliability_note": "Tier 2 — Información clínica de institución médica de referencia internacional."
+    },
+    {
+      "id": "skin_2024_012",
+      "title": "Laser Fitzpatrick Skin Type Recommendations",
+      "authors": [
+        "Roberts WE",
+        "StatPearls editorial team"
+      ],
+      "year": 2024,
+      "type": "clinical_reference",
+      "doi_or_url": "https://www.ncbi.nlm.nih.gov/books/NBK557626/",
+      "journal": "StatPearls / NCBI Bookshelf",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Capítulo StatPearls sobre escala Fitzpatrick (1975, ampliada 1988): 6 fototipos basados en respuesta a UV. Tipo I: muy clara, siempre se quema, nunca broncea. Tipo VI: muy oscura, nunca se quema, siempre pigmenta. Aplicaciones: dosis de fototerapia, calibración láser, riesgo de cáncer de piel, recomendaciones de fotoprotección. Audiencia latina típicamente III-V.",
+      "reliability_note": "Tier 2 — Referencia clínica StatPearls."
+    },
+    {
+      "id": "skin_2018_001",
+      "title": "Does dietary fluid intake affect skin hydration in healthy humans? A systematic literature review",
+      "authors": [
+        "Akdeniz M",
+        "Tomova-Simitchieva T",
+        "Dobos G",
+        "Blume-Peytavi U",
+        "Kottner J"
+      ],
+      "year": 2018,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/srt.12454",
+      "journal": "Skin Research and Technology",
+      "accessed_date": "2026-06-09",
+      "summary_es": "Revisión sistemática que evalúa el mito de '8 vasos de agua hidratan la piel'. Conclusión: evidencia débil. Beneficio modesto solo en personas con ingesta basal baja. La hidratación cutánea depende primariamente de la barrera lipídica y cuidado tópico, no del agua bebida. Mantener buena hidratación general es saludable, pero no es 'tratamiento' dermatológico.",
+      "reliability_note": "Tier 1 — Revisión sistemática peer-reviewed que desmonta mito popular con evidencia."
+    },
+    {
+      "id": "skin_2005_001",
+      "title": "Nueva clasificación de los tipos de piel y sus implicaciones en Dermatología Cosmética",
+      "authors": [
+        "Baumann, Leslie",
+        "Amini, Sadegh",
+        "Weiss, Eduardo"
+      ],
+      "year": 2005,
+      "type": "peer_reviewed",
+      "doi_or_url": "https://revista.svderma.org/index.php/ojs/article/view/179",
+      "journal": "Dermatología Venezolana",
+      "accessed_date": "2026-08-08",
+      "summary_es": "Artículo que presenta el sistema de clasificación de tipos de piel de Baumann (Baumann Skin Type Indicator). Expande la clasificación tradicional de cuatro tipos (seca, grasa, mixta, sensible) a un modelo de cuatro parámetros independientes: seca vs. grasa, sensible vs. resistente, pigmentada vs. no pigmentada, y con arrugas vs. sin arrugas. Al combinarlos identifica 16 tipos de piel distintos, permitiendo recomendaciones cosméticas y de producto mucho más personalizadas.",
+      "reliability_note": "Publicado en la revista Dermatología Venezolana. Obra de referencia de la Dra. Leslie Baumann, creadora del sistema Baumann Skin Type, marco ampliamente citado en dermatología cosmética. Peer-reviewed, confiabilidad alta."
+    }
+  ]
+}
