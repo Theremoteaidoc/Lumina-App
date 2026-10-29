@@ -13,12 +13,17 @@ import { LANDMARKS, extractFeatures, classifyFaceShape, loadHybridClassifier, FA
 import { EYE_LANDMARKS } from '../utils/eyeClassifier';
 import { FACE_DATA } from '../data/appData';
 import { getProfile, updateProfile } from '../utils/profile';
+import { buildLocalFaceInsights } from '../utils/localFaceAnalysis';
 
 // Same localStorage key the chat already uses for "may I send your photo to
 // Google's Gemini AI" consent — one consent flag shared across the app.
 // Gemini is now the SOLE decision-maker for face-scan results, so this
 // consent is required before every scan (not just an optional upgrade).
 const IMG_CONSENT_KEY = 'lumina_img_consent';
+
+const MEDIAPIPE_URL = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/+esm';
+const MEDIAPIPE_WASM_URL = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm';
+const FACE_MODEL_URL = 'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
 
 function decap(s) {
   if (!s) return s;
@@ -137,26 +142,24 @@ export default function FaceScanScreen({ onBack }) {
   const loadMediaPipe = useCallback(async () => {
     if (landmarkerRef.current) { setMpReady(true); return; }
     try {
-      if (!window.FilesetResolver || !window.FaceLandmarker) {
-        await new Promise(r => {
-          if (window.FilesetResolver) return r();
-          window.addEventListener('mediapipe-ready', r, { once: true });
-          setTimeout(r, 15000);
-        });
-      }
-      if (!window.FilesetResolver) throw new Error('MediaPipe not loaded');
-
-      const vision = await window.FilesetResolver.forVisionTasks(
-        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm'
+      // Loaded on demand (not from index.html) so a blocked/slow CDN only
+      // affects the face scan instead of leaving the whole app blank.
+      const { FilesetResolver, FaceLandmarker } = await import(
+        /* @vite-ignore */ MEDIAPIPE_URL
       );
-      landmarkerRef.current = await window.FaceLandmarker.createFromOptions(vision, {
-        baseOptions: {
-          modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task',
-          delegate: 'GPU',
-        },
+
+      const vision = await FilesetResolver.forVisionTasks(MEDIAPIPE_WASM_URL);
+      const createLandmarker = (delegate) => FaceLandmarker.createFromOptions(vision, {
+        baseOptions: { modelAssetPath: FACE_MODEL_URL, delegate },
         runningMode: 'IMAGE',
         numFaces: 1,
       });
+      try {
+        landmarkerRef.current = await createLandmarker('GPU');
+      } catch (gpuErr) {
+        console.warn('MediaPipe GPU delegate failed, using CPU:', gpuErr);
+        landmarkerRef.current = await createLandmarker('CPU');
+      }
       setMpReady(true);
     } catch (e) {
       console.error('MediaPipe error:', e);
@@ -299,7 +302,6 @@ export default function FaceScanScreen({ onBack }) {
           return;
         }
 
-        a._model = data.model; // TEMP DEBUG: which cascade model actually answered
         setGeminiAnalysis(a);
 
         updateProfile({
@@ -330,6 +332,18 @@ export default function FaceScanScreen({ onBack }) {
     setAnalyzeStep('Analizando tu rostro con IA... ✨');
     runGeminiFaceAnalysis(lastImageBase64Ref.current, lastProfileRef.current || {});
   }, [runGeminiFaceAnalysis]);
+
+  // Explicit, user-chosen fallback when Gemini is unavailable (no key, quota
+  // exhausted, no connection): show the on-device geometric result, clearly
+  // labeled as such in the results screen.
+  const showLocalAnalysis = useCallback(() => {
+    const local = buildLocalFaceInsights(faceResult, null, lastProfileRef.current || {});
+    if (!local) return;
+    setGeminiAnalysis({ ...local, isAmbiguous: false, _source: 'local' });
+    updateProfile({ faceShape: local.primaryShape, faceScanAt: new Date().toISOString() });
+    setPhase('results');
+    setResultsTab('face');
+  }, [faceResult]);
 
   // ═══════════════════════════════════════════════
   // ANALYZE
@@ -1032,6 +1046,18 @@ export default function FaceScanScreen({ onBack }) {
         <button onClick={retryGeminiAnalysis} className="btn-primary" style={{ marginBottom: 10, maxWidth: 260, width: '100%' }}>
           ↻ Reintentar
         </button>
+        {faceResult?.shape && FACE_DATA[faceResult.shape] && (
+          <button
+            onClick={showLocalAnalysis}
+            style={{
+              marginBottom: 6, maxWidth: 260, width: '100%', padding: 13, borderRadius: 14,
+              background: 'var(--bg-card)', border: '1px solid var(--border)',
+              color: 'var(--rose)', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+            }}
+          >
+            Ver resultado rápido (sin IA)
+          </button>
+        )}
         <button
           onClick={() => { setPhase('intro'); setErrorMsg(null); }}
           style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: 13.5, cursor: 'pointer', padding: 10 }}
@@ -1115,24 +1141,13 @@ export default function FaceScanScreen({ onBack }) {
         )}
       </div>
 
-      {/* ⚠️ TEMP DEBUG — quitar después. Muestra qué vio y decidió el modelo. */}
-      {geminiAnalysis && (
+      {geminiAnalysis?._source === 'local' && (
         <div style={{
-          margin: '0 20px 14px', padding: '10px 12px', borderRadius: 10,
-          background: '#fff5f8', border: '1px dashed #e6a5b8',
-          fontFamily: 'monospace', fontSize: 11, color: '#7a4a58', lineHeight: 1.6,
-          wordBreak: 'break-word',
+          margin: '0 20px 14px', padding: '10px 14px', borderRadius: 12,
+          background: 'var(--bg-soft)', fontSize: 12.5, color: 'var(--text-light)', lineHeight: 1.5,
         }}>
-          <div style={{ fontWeight: 700, marginBottom: 4 }}>🔧 DEBUG (temporal)</div>
-          <div>modelo: {geminiAnalysis._model || '?'}</div>
-          <div>zona más ancha: {geminiAnalysis.observations?.zonaMasAncha || '?'}</div>
-          <div>mandíbula: {geminiAnalysis.observations?.mandibula || '?'}</div>
-          <div>mentón: {geminiAnalysis.observations?.menton || '?'}</div>
-          <div>largo/ancho: {geminiAnalysis.observations?.largoVsAncho || '?'}</div>
-          <div>forma final: {geminiAnalysis.primaryShape}{geminiAnalysis.secondaryShape ? ` (2ª: ${geminiAnalysis.secondaryShape})` : ''}</div>
-          <div>corregido por red: {geminiAnalysis._correctedByObservations
-            ? `SÍ (${geminiAnalysis._correctedByObservations.from}→${geminiAnalysis._correctedByObservations.to})`
-            : 'no'}</div>
+          Resultado rápido calculado en tu teléfono con las proporciones de tu rostro, sin IA.
+          Para un análisis más preciso, toca "Repetir" cuando tengas buena conexión.
         </div>
       )}
 
